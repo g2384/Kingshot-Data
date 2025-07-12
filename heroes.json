@@ -61,98 +61,124 @@
       "image": "images/heroes/hilde.png",
       "class": "Cavalry",
       "rarity": "Legendary",
-      "details": "Healer with situational Expedition value and inconsistent proc chances."
+      "details": "Healer with situational Expedition value and inconsistent proc chances.",
+      "expeditionSkills": ""
     },
     {
       "name": "Amadeus",
       "image": "images/heroes/amadeus.png",
       "class": "Infantry",
       "rarity": "Legendary",
-      "details": "VIP hero with strong longevity; expensive to level up without investment."
+      "details": "VIP hero with strong longevity; expensive to level up without investment.",
+      "expeditionSkills": ""
     },
     {
       "name": "Jabel",
       "image": "images/heroes/jabel.png",
       "class": "Cavalry",
       "rarity": "Legendary",
-      "details": "Starter hero with stuns and buffs; gradually replaced by newer units."
+      "details": "Starter hero with stuns and buffs; gradually replaced by newer units.",
+      "expeditionSkills": ""
     },
     {
       "name": "Helga",
       "image": "images/heroes/helga.webp",
       "class": "Infantry",
       "rarity": "Legendary",
-      "details": "Early powerhouse; loses relevance in later generations."
+      "details": "Early powerhouse; loses relevance in later generations.",
+      "expeditionSkills": ""
     },
     {
       "name": "Howard",
       "image": "images/heroes/howard.png",
       "class": "Infantry",
       "rarity": "Epic",
-      "details": "Tanky suppression specialist with Expedition damage reduction."
+      "details": "Tanky suppression specialist with Expedition damage reduction.",
+      "expeditionSkills": ""
     },
     {
       "name": "Quinn",
       "image": "images/heroes/quinn.png",
       "class": "Archer",
       "rarity": "Epic",
-      "details": "Early-game damage dealer with strong suppression output."
+      "details": "Early-game damage dealer with strong suppression output.",
+      "expeditionSkills": ""
     },
     {
       "name": "Saul",
       "image": "images/heroes/saul.png",
       "class": "Archer",
       "rarity": "Legendary",
-      "details": "Useful for construction boosts via passive Expedition abilities."
+      "details": "Useful for construction boosts via passive Expedition abilities.",
+      "expeditionSkills": ""
     },
     {
       "name": "Diana",
       "image": "images/heroes/diana.webp",
       "class": "Archer",
       "rarity": "Epic",
-      "details": "Expedition march speed and stamina reduction make her handy early on."
+      "details": "Expedition march speed and stamina reduction make her handy early on.",
+      "expeditionSkills": ""
     },
     {
       "name": "Chenko",
       "image": "images/heroes/chenko.webp",
       "class": "Cavalry",
       "rarity": "Epic",
-      "details": "Limited scalability and usefulness after early-game."
+      "details": "Limited scalability and usefulness after early-game.",
+      "expeditionSkills": ""
     },
     {
       "name": "Seth",
       "image": "images/heroes/seth.webp",
       "class": "Infantry",
       "rarity": "Rare",
-      "details": "Suppression tank with passive Iron Mine income buff."
+      "details": "Suppression tank with passive Iron Mine income buff.",
+      "expeditionSkills": [
+        "Iron: Increase the Town's Iron Output by 5%/10%/15%/20%/25%",
+        "Iron: Increase his Iron Mining Speed in the Wilderness by 5%/10%/15%/20%/25%"
+      ]
     },
     {
       "name": "Olive",
       "image": "images/heroes/olive.webp",
       "class": "Archer",
       "rarity": "Rare",
-      "details": "Basic damage dealer with passive hunting income bonus."
+      "details": "Basic damage dealer with passive hunting income bonus.",
+      "expeditionSkills": [
+        "Bread: Increase the Town's Mill Output by 5%/10%/15%/20%/25%",
+        "Bread: Increase her Resource Gathering Speed in the Wilderness by 5%/10%/15%/20%/25%"
+      ]
     },
     {
       "name": "Gordon",
       "image": "images/heroes/gordon.webp",
       "class": "Cavalry",
       "rarity": "Epic",
-      "details": "Healing kit that's not strong enough when really needed."
+      "details": "Healing kit that's not strong enough when really needed.",
+      "expeditionSkills": ""
     },
     {
       "name": "Edwin",
       "image": "images/heroes/edwin.webp",
       "class": "Cavalry",
       "rarity": "Rare",
-      "details": "Early-game AoE and stun; long-term value in Stone Mine passive."
+      "details": "Early-game AoE and stun; long-term value in Stone Mine passive.",
+      "expeditionSkills": [
+        "Stone: Increase the Town's Quarry Output by 5%/10%/15%/20%/25%",
+        "Stone: Increase his Stone Mining Speed in the Wilderness by 5%/10%/15%/20%/25%"
+      ]
     },
     {
       "name": "Forrest",
       "image": "images/heroes/forrest.webp",
       "class": "Infantry",
       "rarity": "Rare",
-      "details": "Only notable for his passive Logging income boost."
+      "details": "Only notable for his passive Logging income boost.",
+      "expeditionSkills": [
+        "Wood: Increase the Town's Sawmill Output by 5%/10%/15%/20%/25%",
+        "Wood: Increase his Wood Gathering Speed in the Wilderness by 5%/10%/15%/20%/25%"
+      ]
     }
   ]
 }
