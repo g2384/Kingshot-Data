@@ -65,6 +65,41 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
 
+        /* Lineup table styles */
+        #lineupsTable {
+            border-spacing: 0;
+            border-collapse: separate;
+        }
+
+        #lineupsTable td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        .lineup-index {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .hero-cell img {
+            width: 48px;
+            height: 48px;
+            display: block;
+            margin: 0 auto 4px auto;
+            border-radius: 8px;
+        }
+
+        .hero-name {
+            font-size: 0.9em;
+            margin-bottom: 2px;
+        }
+
+        .hero-class {
+            font-size: 0.8em;
+            color: #666;
+        }
+
         @media (max-width: 700px) {
             .table-container {
                 padding: 1rem 0.2rem;
@@ -182,47 +217,62 @@
                 .then(response => response.json())
                 .then(data => {
                     const lineupsBody = document.querySelector("#lineupsTable tbody");
-                    const tr = document.createElement('tr');
                     
-                    data.lineups.forEach((lineup, index) => {
-                        const row = document.createElement('tr');
-                        
-                        // Add index number cell
-                        const indexCell = document.createElement('td');
-                        indexCell.textContent = (index + 1);
-                        indexCell.style.textAlign = 'center';
-                        indexCell.style.color = '#666';
-                        indexCell.style.fontSize = '0.9em';
-                        row.appendChild(indexCell);
+                    // First load heroes.json to get hero details
+                    fetch('heroes.json')
+                        .then(response => response.json())
+                        .then(heroesData => {
+                            // Create a map of hero details for quick lookup
+                            const heroMap = new Map();
+                            heroesData.heroes.forEach(hero => {
+                                heroMap.set(hero.name, {
+                                    image: hero.image,
+                                    class: hero.class
+                                });
+                            });
 
-                        const heroes = lineup.split(',');
-                        heroes.forEach(heroName => {
-                            const td = document.createElement('td');
-                            td.style.padding = '8px';
-                            td.style.textAlign = 'center';
-                            
-                            // Create hero image
-                            const img = document.createElement('img');
-                            img.src = `images/heroes/${heroName}.png`;
-                            img.alt = heroName;
-                            img.style.width = '48px';
-                            img.style.height = '48px';
-                            img.style.display = 'block';
-                            img.style.margin = '0 auto 4px auto';
-                            img.style.borderRadius = '8px';
-                            
-                            // Add hero name
-                            const name = document.createElement('div');
-                            name.textContent = heroName;
-                            name.style.fontSize = '0.9em';
-                            
-                            td.appendChild(img);
-                            td.appendChild(name);
-                            row.appendChild(td);
-                        });
-                        
-                        lineupsBody.appendChild(row);
-                    });
+                            // Now process lineups
+                            data.lineups.forEach((lineup, index) => {
+                                const row = document.createElement('tr');
+                                
+                                // Add index number cell
+                                const indexCell = document.createElement('td');
+                                indexCell.textContent = (index + 1);
+                                indexCell.className = 'lineup-index';
+                                row.appendChild(indexCell);
+
+                                const heroes = lineup.split(',');
+                                heroes.forEach(heroName => {
+                                    const td = document.createElement('td');
+                                    td.className = 'hero-cell';
+                                    
+                                    const heroInfo = heroMap.get(heroName);
+                                    if (heroInfo) {
+                                        // Create hero image
+                                        const img = document.createElement('img');
+                                        img.src = heroInfo.image;
+                                        img.alt = heroName;
+                                        
+                                        // Add hero name and class
+                                        const nameDiv = document.createElement('div');
+                                        nameDiv.className = 'hero-name';
+                                        nameDiv.textContent = heroName;
+
+                                        const classDiv = document.createElement('div');
+                                        classDiv.className = 'hero-class';
+                                        classDiv.textContent = heroInfo.class;
+                                        
+                                        td.appendChild(img);
+                                        td.appendChild(nameDiv);
+                                        td.appendChild(classDiv);
+                                    }
+                                    row.appendChild(td);
+                                });
+                                
+                                lineupsBody.appendChild(row);
+                            });
+                        })
+                        .catch(error => console.error("Error loading hero details:", error));
                 })
                 .catch(error => console.error("Error loading lineups:", error));
 
