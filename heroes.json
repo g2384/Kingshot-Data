@@ -1,0 +1,158 @@
+{
+  "heroes": [
+    {
+      "name": "Yaenwoo",
+      "image": "images/heroes/yaenwoo.png",
+      "class": "Archer",
+      "rarity": "Epic",
+      "details": "Great passive research speed buff, useful for F2P players or active use if you lack legendaries."
+    },
+    {
+      "name": "Mikoto",
+      "image": "images/heroes/mikoto.png",
+      "class": "Archer",
+      "rarity": "Epic",
+      "details": "Excellent passive healing speed buff, ideal for lower-legendaries setups."
+    },
+    {
+      "name": "Fahd",
+      "image": "images/heroes/fahd.png",
+      "class": "Cavalry",
+      "rarity": "Epic",
+      "details": "Solo hunting march speed buff, but limited overall utility."
+    },
+    {
+      "name": "Eric",
+      "image": "images/heroes/eric.png",
+      "class": "Infantry",
+      "rarity": "Legendary",
+      "details": "Sturdy defender ideal for Exploration and sustainable in Expedition."
+    },
+    {
+      "name": "Jaeger",
+      "image": "images/heroes/jaeger.png",
+      "class": "Archer",
+      "rarity": "Legendary",
+      "details": "Stun and AoE effects work well in Exploration; decent Expedition support."
+    },
+    {
+      "name": "Petra",
+      "image": "images/heroes/petra.png",
+      "class": "Cavalry",
+      "rarity": "Legendary",
+      "details": "High potential kit hindered by heavy RNG scaling and proc dependency."
+    },
+    {
+      "name": "Zoe",
+      "image": "images/heroes/zoe.png",
+      "class": "Infantry",
+      "rarity": "Legendary",
+      "details": "Damage tank with excellent Conquest and Expedition synergy."
+    },
+    {
+      "name": "Marlin",
+      "image": "images/heroes/marlin.png",
+      "class": "Archer",
+      "rarity": "Legendary",
+      "details": "Powerful AoE and crowd control; Expedition viability depends on RNG."
+    },
+    {
+      "name": "Hilde",
+      "image": "images/heroes/hilde.png",
+      "class": "Cavalry",
+      "rarity": "Legendary",
+      "details": "Healer with situational Expedition value and inconsistent proc chances."
+    },
+    {
+      "name": "Amadeus",
+      "image": "images/heroes/amadeus.png",
+      "class": "Infantry",
+      "rarity": "Legendary",
+      "details": "VIP hero with strong longevity; expensive to level up without investment."
+    },
+    {
+      "name": "Jabel",
+      "image": "images/heroes/jabel.png",
+      "class": "Cavalry",
+      "rarity": "Legendary",
+      "details": "Starter hero with stuns and buffs; gradually replaced by newer units."
+    },
+    {
+      "name": "Helga",
+      "image": "images/heroes/helga.webp",
+      "class": "Infantry",
+      "rarity": "Legendary",
+      "details": "Early powerhouse; loses relevance in later generations."
+    },
+    {
+      "name": "Howard",
+      "image": "images/heroes/howard.png",
+      "class": "Infantry",
+      "rarity": "Epic",
+      "details": "Tanky suppression specialist with Expedition damage reduction."
+    },
+    {
+      "name": "Quinn",
+      "image": "images/heroes/quinn.png",
+      "class": "Archer",
+      "rarity": "Epic",
+      "details": "Early-game damage dealer with strong suppression output."
+    },
+    {
+      "name": "Saul",
+      "image": "images/heroes/saul.png",
+      "class": "Archer",
+      "rarity": "Legendary",
+      "details": "Useful for construction boosts via passive Expedition abilities."
+    },
+    {
+      "name": "Diana",
+      "image": "images/heroes/diana.webp",
+      "class": "Archer",
+      "rarity": "Epic",
+      "details": "Expedition march speed and stamina reduction make her handy early on."
+    },
+    {
+      "name": "Chenko",
+      "image": "images/heroes/chenko.webp",
+      "class": "Cavalry",
+      "rarity": "Epic",
+      "details": "Limited scalability and usefulness after early-game."
+    },
+    {
+      "name": "Seth",
+      "image": "images/heroes/seth.webp",
+      "class": "Infantry",
+      "rarity": "Rare",
+      "details": "Suppression tank with passive Iron Mine income buff."
+    },
+    {
+      "name": "Olive",
+      "image": "images/heroes/olive.webp",
+      "class": "Archer",
+      "rarity": "Rare",
+      "details": "Basic damage dealer with passive hunting income bonus."
+    },
+    {
+      "name": "Gordon",
+      "image": "images/heroes/gordon.webp",
+      "class": "Cavalry",
+      "rarity": "Epic",
+      "details": "Healing kit that's not strong enough when really needed."
+    },
+    {
+      "name": "Edwin",
+      "image": "images/heroes/edwin.webp",
+      "class": "Cavalry",
+      "rarity": "Rare",
+      "details": "Early-game AoE and stun; long-term value in Stone Mine passive."
+    },
+    {
+      "name": "Forrest",
+      "image": "images/heroes/forrest.webp",
+      "class": "Infantry",
+      "rarity": "Rare",
+      "details": "Only notable for his passive Logging income boost."
+    }
+  ]
+}

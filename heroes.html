@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Heroes Table</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+    img {
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Heroes Archive</h1>
+  <table id="heroesTable">
+    <thead>
+      <tr>
+        <th>Hero Image</th>
+        <th>Name</th>
+        <th>Attributes</th>
+        <th>Generation</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    window.onload = function () {
+      fetch('heroes.json')
+        .then(response => response.json())
+        .then(data => {
+          const tableBody = document.querySelector("#heroesTable tbody");
+
+          data.heroes.forEach(hero => {
+            const row = document.createElement("tr");
+
+            const imgCell = document.createElement("td");
+            const img = document.createElement("img");
+            img.src = hero.image;
+            img.alt = hero.name;
+            imgCell.appendChild(img);
+            row.appendChild(imgCell);
+
+            const nameCell = document.createElement("td");
+            nameCell.textContent = hero.name;
+            row.appendChild(nameCell);
+
+            const attrCell = document.createElement("td");
+            attrCell.textContent = hero.class;
+            row.appendChild(attrCell);
+
+            const genCell = document.createElement("td");
+            genCell.textContent = hero.rarity;
+            row.appendChild(genCell);
+
+            const detailsCell = document.createElement("td");
+            genCell.textContent = hero.details;
+            row.appendChild(detailsCell);
+
+            tableBody.appendChild(row);
+          });
+        })
+        .catch(error => console.error("Error loading JSON data:", error));
+    };
+  </script>
+</body>
+</html>
