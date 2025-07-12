@@ -4,43 +4,166 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Heroes Table</title>
+    <title>Heroes Archive</title>
     <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f7fafc;
+            color: #222;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .table-container {
+            background: #fff;
+            padding: 2rem 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+            margin-bottom: 2rem;
+            width: 100%;
+            max-width: 1900px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
+            background: #fff;
         }
 
         th,
         td {
-            padding: 8px;
-            border: 1px solid #ccc;
+            padding: 0.75em 0.5em;
+            border-bottom: 1px solid #e5e7eb;
             text-align: left;
         }
 
+        th {
+            background: #f1f5f9;
+            font-weight: 600;
+            font-size: 1em;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
         img {
-            width: 100px;
+            width: 70px;
+            border-radius: 0.5em;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        @media (max-width: 700px) {
+            .table-container {
+                padding: 1rem 0.2rem;
+            }
+
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tr {
+                margin-bottom: 1.2em;
+                background: #fff;
+                border-radius: 0.7em;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+                padding: 0.7em 0.5em;
+            }
+
+            td {
+                border: none;
+                position: relative;
+                padding-left: 50%;
+                min-height: 2.2em;
+            }
+
+            td:before {
+                position: absolute;
+                left: 0.7em;
+                top: 0.7em;
+                width: 45%;
+                white-space: nowrap;
+                font-weight: 600;
+                color: #888;
+                font-size: 0.98em;
+            }
+
+            td:nth-child(1):before {
+                content: "Hero Image";
+            }
+
+            td:nth-child(2):before {
+                content: "Name";
+            }
+
+            td:nth-child(3):before {
+                content: "Class";
+            }
+
+            td:nth-child(4):before {
+                content: "Rarity";
+            }
+
+            td:nth-child(5):before {
+                content: "Details";
+            }
+
+            td:nth-child(6):before {
+                content: "Expedition Skills";
+            }
         }
     </style>
 </head>
 
 <body>
     <h1>Heroes Archive</h1>
-    <table id="heroesTable">
-        <thead>
-            <tr>
-                <th>Hero Image</th>
-                <th>Name</th>
-                <th>Class</th>
-                <th>Rarity</th>
-                <th>Details</th>
-                <th>Expedition Skills</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-
+    <div class="table-container">
+        <table id="heroesTable">
+            <thead>
+                <tr>
+                    <th>Hero Image</th>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th>Rarity</th>
+                    <th>Details</th>
+                    <th>Expedition Skills</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
     <script>
+        // Helper: icon for resource type
+        function getSkillIcon(skill) {
+            if (/iron/i.test(skill)) return "⛓️";
+            if (/bread/i.test(skill)) return "🥖";
+            if (/stone/i.test(skill)) return "🪨";
+            if (/wood/i.test(skill)) return "🪵";
+            return "⭐";
+        }
+
+
         window.onload = function () {
             fetch('heroes.json')
                 .then(response => response.json())
@@ -75,10 +198,15 @@
 
                         const expeditionCell = document.createElement("td");
                         let expeditionSkills = hero.expeditionSkills;
-                        if (Array.isArray(expeditionSkills)) {
-                            expeditionSkills = expeditionSkills.join(", ");
+                        if (Array.isArray(expeditionSkills) && expeditionSkills.length > 0) {
+                            expeditionCell.innerHTML = expeditionSkills
+                                .map(skill => `<div>${getSkillIcon(skill)} ${skill}</div>`)
+                                .join("");
+                        } else if (typeof expeditionSkills === "string" && expeditionSkills.trim() !== "") {
+                            expeditionCell.innerHTML = `<div>${getSkillIcon(expeditionSkills)} ${expeditionSkills}</div>`;
+                        } else {
+                            expeditionCell.textContent = "";
                         }
-                        expeditionCell.textContent = expeditionSkills;
                         row.appendChild(expeditionCell);
 
                         tableBody.appendChild(row);
