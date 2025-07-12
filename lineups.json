@@ -1,8 +1,11 @@
 {
-    "lineups": [
+    "lineupsGen1": [
         "Amadeus,Helga,Quinn,Saul,Jabel",
         "Helga,Howard,Diana,Saul,Jabel",
         "Helga,Howard,Quinn,Saul,Jabel",
-        "Helga,Jabel,Diana,Saul,Chenko"
-    ]
+        "Helga,Jabel,Diana,Saul,Chenko",
+        "Amadeus,Helga,Quinn,Saul,Jabel",
+        "Howard,Helga,Diana,Quinn,Jabel"
+    ],
+    "lineupsGen1DateModified": "20250712"
 }
