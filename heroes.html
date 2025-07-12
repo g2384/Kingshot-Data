@@ -138,6 +138,18 @@
 
 <body>
     <h1>Heroes Archive</h1>
+    <div id="lineups-section" class="table-container" style="max-width:800px;">
+        <h2 style="margin-top:0;font-size:1.2em;color:#333;">Lineups:</h2>
+        <table id="lineupsTable" style="border-spacing:0;border-collapse:separate;">
+            <thead>
+                <tr>
+                    <th style="width:40px;text-align:center;color:#666;font-weight:500;">#</th>
+                    <th colspan="5"></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
     <div class="table-container">
         <table id="heroesTable">
             <thead>
@@ -165,6 +177,56 @@
 
 
         window.onload = function () {
+            // Load and display lineups
+            fetch('lineups.json')
+                .then(response => response.json())
+                .then(data => {
+                    const lineupsBody = document.querySelector("#lineupsTable tbody");
+                    const tr = document.createElement('tr');
+                    
+                    data.lineups.forEach((lineup, index) => {
+                        const row = document.createElement('tr');
+                        
+                        // Add index number cell
+                        const indexCell = document.createElement('td');
+                        indexCell.textContent = (index + 1);
+                        indexCell.style.textAlign = 'center';
+                        indexCell.style.color = '#666';
+                        indexCell.style.fontSize = '0.9em';
+                        row.appendChild(indexCell);
+
+                        const heroes = lineup.split(',');
+                        heroes.forEach(heroName => {
+                            const td = document.createElement('td');
+                            td.style.padding = '8px';
+                            td.style.textAlign = 'center';
+                            
+                            // Create hero image
+                            const img = document.createElement('img');
+                            img.src = `images/heroes/${heroName}.png`;
+                            img.alt = heroName;
+                            img.style.width = '48px';
+                            img.style.height = '48px';
+                            img.style.display = 'block';
+                            img.style.margin = '0 auto 4px auto';
+                            img.style.borderRadius = '8px';
+                            
+                            // Add hero name
+                            const name = document.createElement('div');
+                            name.textContent = heroName;
+                            name.style.fontSize = '0.9em';
+                            
+                            td.appendChild(img);
+                            td.appendChild(name);
+                            row.appendChild(td);
+                        });
+                        
+                        lineupsBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error("Error loading lineups:", error));
+
+            // Load heroes table
             fetch('heroes.json')
                 .then(response => response.json())
                 .then(data => {
