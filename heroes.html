@@ -201,13 +201,22 @@
         </table>
     </div>
     <script>
-        // Helper: icon for resource type
+        // Helper: icon for resource type and class types
         function getSkillIcon(skill) {
             if (/iron/i.test(skill)) return "⛓️";
             if (/bread/i.test(skill)) return "🥖";
             if (/stone/i.test(skill)) return "🪨";
             if (/wood/i.test(skill)) return "🪵";
             return "⭐";
+        }
+
+        function getClassIcon(className) {
+            switch(className.toLowerCase()) {
+                case 'infantry': return '🛡️';
+                case 'archer': return '🏹';
+                case 'cavalry': return '🐴';
+                default: return className;
+            }
         }
 
 
@@ -260,7 +269,7 @@
 
                                         const classDiv = document.createElement('div');
                                         classDiv.className = 'hero-class';
-                                        classDiv.textContent = heroInfo.class;
+                                        classDiv.textContent = getClassIcon(heroInfo.class);
                                         
                                         td.appendChild(img);
                                         td.appendChild(nameDiv);
@@ -297,7 +306,7 @@
                         row.appendChild(nameCell);
 
                         const attrCell = document.createElement("td");
-                        attrCell.textContent = hero.class;
+                        attrCell.textContent = getClassIcon(hero.class);
                         row.appendChild(attrCell);
 
                         const genCell = document.createElement("td");
