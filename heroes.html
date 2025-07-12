@@ -6,10 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Heroes Archive</title>
     <style>
+        :root {
+            --bg-main: #1a1d21;
+            --bg-card: #282c34;
+            --bg-hover: #2c313a;
+            --text-primary: #e1e7ef;
+            --text-secondary: #a3aab8;
+            --border-color: #363b44;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+        }
+
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f7fafc;
-            color: #222;
+            background: var(--bg-main);
+            color: var(--text-primary);
             margin: 0;
             padding: 0;
             min-height: 100vh;
@@ -24,13 +34,14 @@
             font-size: 2rem;
             letter-spacing: 1px;
             font-weight: 600;
+            color: var(--text-primary);
         }
 
         .table-container {
-            background: #fff;
+            background: var(--bg-card);
             padding: 2rem 1.5rem;
             border-radius: 1rem;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+            box-shadow: 0 4px 24px var(--shadow-color);
             margin-bottom: 2rem;
             width: 100%;
             max-width: 1900px;
@@ -39,30 +50,36 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            background: #fff;
+            background: var(--bg-card);
         }
 
         th,
         td {
             padding: 0.75em 0.5em;
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 1px solid var(--border-color);
             text-align: left;
+            color: var(--text-primary);
         }
 
         th {
-            background: #f1f5f9;
+            background: var(--bg-hover);
             font-weight: 600;
             font-size: 1em;
+            color: var(--text-secondary);
         }
 
         tr:last-child td {
             border-bottom: none;
         }
 
+        tr:hover {
+            background: var(--bg-hover);
+        }
+
         img {
             width: 70px;
             border-radius: 0.5em;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 2px 8px var(--shadow-color);
         }
 
         /* Lineup table styles */
@@ -97,21 +114,21 @@
 
         .hero-class {
             font-size: 0.8em;
-            color: #666;
+            color: var(--text-secondary);
         }
 
         /* Counter chart styles */
         .counter-chart {
-            background: #fff;
+            background: var(--bg-card);
             padding: 1.2rem 1.5rem;
             border-radius: 1rem;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            box-shadow: 0 4px 24px var(--shadow-color);
             margin-bottom: 1.5rem;
             text-align: center;
         }
 
         .counter-title {
-            color: #333;
+            color: var(--text-primary);
             font-size: 1em;
             margin-bottom: 0.8rem;
         }
@@ -127,9 +144,10 @@
         .counter-item {
             font-size: 1.5rem;
             padding: 0.5rem;
-            background: #f8fafc;
+            background: var(--bg-hover);
             border-radius: 0.5rem;
             min-width: 2.5rem;
+            border: 1px solid var(--border-color);
         }
 
         .counter-arrow {
