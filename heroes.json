@@ -102,7 +102,11 @@
       "class": "Infantry",
       "rarity": "Legendary",
       "details": "Early powerhouse; loses relevance in later generations.",
-      "expeditionSkills": ""
+      "expeditionSkills": [
+        "Chance To Reduce 50% Damage Taken: 8%/16%/24%/32%/40%",
+        "Attack Up: 5%/10%/15%/20%/25%",
+        "Lethality Up: 5%/10%/15%/20%/25%"
+      ]
     },
     {
       "name": "Howard",
