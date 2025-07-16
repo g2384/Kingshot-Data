@@ -5,21 +5,33 @@
       "image": "images/heroes/yaenwoo.png",
       "class": "Archer",
       "rarity": "Epic",
-      "details": "Great passive research speed buff, useful for F2P players or active use if you lack legendaries."
+      "details": "Great passive research speed buff, useful for F2P players or active use if you lack legendaries.",
+      "expeditionSkills": [
+        "Lethality Up: 5%/10%/15%/20%/25%",
+        "Research Speed Up: 3%/6%/9%/12%/15%"
+      ]
     },
     {
       "name": "Amane",
       "image": "images/heroes/amane.png",
       "class": "Archer",
       "rarity": "Epic",
-      "details": "Excellent passive healing speed buff, ideal for lower-legendaries setups."
+      "details": "Excellent passive healing speed buff, ideal for lower-legendaries setups.",
+      "expeditionSkills": [
+        "Attack Up: 5%/10%/15%/20%/25%",
+        "Infirmary Healing Speed Up: 10%/20%/30%/40%/50%"
+      ]
     },
     {
       "name": "Fahd",
       "image": "images/heroes/fahd.png",
       "class": "Cavalry",
       "rarity": "Epic",
-      "details": "Solo hunting march speed buff, but limited overall utility."
+      "details": "Solo hunting march speed buff, but limited overall utility.",
+      "expeditionSkills": [
+        "Enemy Damage Down: 4%/8%/12%/16%/20%",
+        "Solo Hunting March Speed Up: 20%/40%/60%/80%/100%"
+      ]
     },
     {
       "name": "Eric",
@@ -102,7 +114,10 @@
       "class": "Archer",
       "rarity": "Epic",
       "details": "Early-game damage dealer with strong suppression output.",
-      "expeditionSkills": ""
+      "expeditionSkills": [
+        "Damage Taken Down: 4%/8%/12%/16%/20%",
+        "50% Change Damage Up: 10%/20%/30%/40$/50%"
+      ]
     },
     {
       "name": "Saul",
@@ -118,7 +133,10 @@
       "class": "Archer",
       "rarity": "Epic",
       "details": "Expedition march speed and stamina reduction make her handy early on.",
-      "expeditionSkills": ""
+      "expeditionSkills": [
+        "Governor Stamina Cost Down: 10%/12%/15%/18%/20%",
+        "Solo and Rally Hunting March Speed: 20%/40%/60%/80%/100%"
+      ]
     },
     {
       "name": "Chenko",
@@ -126,7 +144,10 @@
       "class": "Cavalry",
       "rarity": "Epic",
       "details": "Limited scalability and usefulness after early-game.",
-      "expeditionSkills": ""
+      "expeditionSkills": [
+        "Lethality Up: 5%/10%/15%/20%/25%",
+        "Damage Taken Down: 4%/8%/12%/16%/20%"
+      ]
     },
     {
       "name": "Seth",
