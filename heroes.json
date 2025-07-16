@@ -90,7 +90,11 @@
       "class": "Cavalry",
       "rarity": "Legendary",
       "details": "Starter hero with stuns and buffs; gradually replaced by newer units.",
-      "expeditionSkills": ""
+      "expeditionSkills": [
+        "Chance To Reduce 50% Damage Taken: 8%/16%/24%/32%/40%",
+        "50% Chance Damage Up: 10%/20%/30%/40$/50%",
+        "Lethality Up: 5%/10%/15%/20%/25%"
+      ]
     },
     {
       "name": "Helga",
@@ -106,7 +110,10 @@
       "class": "Infantry",
       "rarity": "Epic",
       "details": "Tanky suppression specialist with Expedition damage reduction.",
-      "expeditionSkills": ""
+      "expeditionSkills": [
+        "Damage Taken Down: 4%/8%/12%/16%/20%",
+        "Enemy Damage Down: 4%/8%/12%/16%/20%"
+      ]
     },
     {
       "name": "Quinn",
@@ -116,7 +123,7 @@
       "details": "Early-game damage dealer with strong suppression output.",
       "expeditionSkills": [
         "Damage Taken Down: 4%/8%/12%/16%/20%",
-        "50% Change Damage Up: 10%/20%/30%/40$/50%"
+        "50% Chance Damage Up: 10%/20%/30%/40$/50%"
       ]
     },
     {
@@ -177,7 +184,10 @@
       "class": "Cavalry",
       "rarity": "Epic",
       "details": "Healing kit that's not strong enough when really needed.",
-      "expeditionSkills": ""
+      "expeditionSkills": [
+        "Health Up: 5%/10%/15%/20%/25%",
+        "Attack Up: 5%/10%/15%/20%/25%"
+      ]
     },
     {
       "name": "Edwin",
