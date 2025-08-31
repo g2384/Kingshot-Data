@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,89 +14,123 @@
             padding: 20px;
             background-color: #f5f5f5;
         }
+
         .container {
             background-color: white;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 12px;
             text-align: left;
         }
+
         th {
             background-color: #f8f9fa;
         }
+
         .input-group {
             margin: 20px 0;
         }
+
         input[type="number"] {
             padding: 8px;
             border: 1px solid #ddd;
             border-radius: 4px;
             margin-right: 10px;
         }
+
         .result {
             margin: 20px 0;
             padding: 15px;
             background-color: #e9ecef;
             border-radius: 4px;
         }
+
         .tables-container {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
         }
+
         .table-section {
             flex: 1;
             min-width: 300px;
         }
+
         h2 {
             color: #333;
             margin-top: 20px;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Points Calculator</h1>
-        
-        <div class="input-group">
-            <label for="speedBoost">Training Speed Boost (%): </label>
-            <input type="number" id="speedBoost" value="0" min="0" step="1">
-            
-            <label for="speedupMinutes">Speedup Minutes to Compare: </label>
-            <input type="number" id="speedupMinutes" value="1" min="1" step="1">
 
-            <label for="maxLevel">Maximum Available Level: </label>
-            <input type="number" id="maxLevel" value="9" min="1" max="9" step="1">
+        <div class="input-group">
+            <div style="margin-bottom: 10px;">
+                <label for="speedBoost">Training Speed Boost (%): </label>
+                <input type="number" id="speedBoost" value="0" min="0" step="1">
+
+                <label for="speedupMinutes">Speedup Minutes to Compare: </label>
+                <input type="number" id="speedupMinutes" value="1" min="1" step="1">
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <label for="maxLevel">Maximum Available Level: </label>
+                <input type="number" id="maxLevel" value="9" min="1" max="9" step="1">
+
+                <label for="currentLevel">Current Level: </label>
+                <input type="number" id="currentLevel" value="1" min="1" max="9" step="1">
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <label for="speedupPoints">Points per Speedup Minute: </label>
+                <input type="number" id="speedupPoints" value="300" min="1" step="1">
+
+                <label for="powerPoints">Points per Power: </label>
+                <input type="number" id="powerPoints" value="20" min="1" step="1">
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <label>
+                    <input type="checkbox" id="showOnlyCurrentToMax" checked>
+                    Only show promotions from current level to max level
+                </label>
+            </div>
         </div>
 
         <div class="tables-container">
             <div class="table-section">
                 <h2>Training Troops</h2>
                 <table id="troopTable">
-            <thead>
-                <tr>
-                    <th>Level</th>
-                    <th>Training Time (seconds)</th>
-                    <th>Power</th>
-                    <th>Points per Troop</th>
-                    <th>Troops Trainable</th>
-                    <th>Total Points</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+                    <thead>
+                        <tr>
+                            <th>Level</th>
+                            <th>Training Time (seconds)</th>
+                            <th>Power</th>
+                            <th>Points per Troop</th>
+                            <th>Troops Trainable</th>
+                            <th>Total Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
-            
+
             <div class="table-section">
                 <h2>Promoting Troops</h2>
                 <table id="promotionTable">
@@ -117,7 +152,7 @@
         </div>
 
         <div class="result" id="comparison"></div>
-        
+
         <div class="chart-container" style="position: relative; height:600px; width:100%; margin-top: 20px;">
             <canvas id="pointsChart"></canvas>
         </div>
@@ -140,7 +175,11 @@
             const speedBoost = 1 + (parseFloat(document.getElementById('speedBoost').value) / 100);
             const speedupMinutes = parseFloat(document.getElementById('speedupMinutes').value);
             const maxLevel = parseInt(document.getElementById('maxLevel').value);
-            const speedupPoints = speedupMinutes * 300;
+            const currentLevel = parseInt(document.getElementById('currentLevel').value);
+            const pointsPerMinute = parseFloat(document.getElementById('speedupPoints').value);
+            const pointsPerPower = parseFloat(document.getElementById('powerPoints').value);
+            const showOnlyCurrentToMax = document.getElementById('showOnlyCurrentToMax').checked;
+            const speedupPoints = speedupMinutes * pointsPerMinute;
 
             const tbody = document.querySelector('#troopTable tbody');
             tbody.innerHTML = '';
@@ -153,7 +192,7 @@
 
             availableTroops.forEach(troop => {
                 const row = document.createElement('tr');
-                
+
                 // Calculate actual training time with speed boost
                 const actualTrainingTimeMinutes = (troop.time / 60) / speedBoost;
                 const troopsTrainable = Math.floor(speedupMinutes / actualTrainingTimeMinutes);
@@ -162,7 +201,7 @@
 
                 row.innerHTML = `
                     <td>${troop.level}</td>
-                    <td>${troop.time.toFixed(2)}</td>
+                    <td>${troop.time}</td>
                     <td>${troop.power}</td>
                     <td>${pointsPerTroop}</td>
                     <td>${troopsTrainable}</td>
@@ -173,14 +212,19 @@
 
             // Update comparison text
             // Calculate promotions
-            for(let fromLevel = 1; fromLevel < maxLevel; fromLevel++) {
-                for(let toLevel = fromLevel + 1; toLevel <= maxLevel; toLevel++) {
+            for (let fromLevel = 1; fromLevel < maxLevel; fromLevel++) {
+                for (let toLevel = fromLevel + 1; toLevel <= maxLevel; toLevel++) {
+                    if (showOnlyCurrentToMax) {
+                        // When checkbox is checked, only show promotions TO max level FROM each level
+                        if (toLevel !== maxLevel) continue;
+                    }
+
                     const fromTroop = troopData.find(t => t.level === fromLevel);
                     const toTroop = troopData.find(t => t.level === toLevel);
-                    
+
                     const timeDiff = toTroop.time - fromTroop.time;
                     const powerGain = toTroop.power - fromTroop.power;
-                    const pointsPerPromotion = powerGain * 20;
+                    const pointsPerPromotion = powerGain * pointsPerPower;
                     const promotionTimeMinutes = timeDiff / 60 / speedBoost;
                     const possiblePromotions = Math.floor(speedupMinutes / promotionTimeMinutes);
                     const totalPoints = possiblePromotions * pointsPerPromotion;
@@ -228,11 +272,15 @@
         function updateChart() {
             const speedBoost = 1 + (parseFloat(document.getElementById('speedBoost').value) / 100);
             const maxLevel = parseInt(document.getElementById('maxLevel').value);
-            const minutes = Array.from({length: 60}, (_, i) => i + 1); // X-axis values from 1 to 60 minutes
-            
+            const currentLevel = parseInt(document.getElementById('currentLevel').value);
+            const pointsPerMinute = parseFloat(document.getElementById('speedupPoints').value);
+            const pointsPerPower = parseFloat(document.getElementById('powerPoints').value);
+            const showOnlyCurrentToMax = document.getElementById('showOnlyCurrentToMax').checked;
+            const minutes = Array.from({ length: 60 }, (_, i) => i + 1); // X-axis values from 1 to 60 minutes
+
             // Calculate points for speedups
             const speedupData = minutes.map(min => min * 300);
-            
+
             // Calculate points for each troop level
             const availableTroops = troopData.filter(troop => troop.level <= maxLevel);
             const troopDatasets = availableTroops.map(troop => {
@@ -241,7 +289,7 @@
                     const troopsTrainable = Math.floor(min / actualTrainingTimeMinutes);
                     return troopsTrainable * troop.power * 20;
                 });
-                
+
                 return {
                     label: `Level ${troop.level} Troops`,
                     data: points,
@@ -252,21 +300,24 @@
 
             // Calculate promotion datasets
             const promotionDatasets = [];
-            for(let fromLevel = 1; fromLevel < maxLevel; fromLevel++) {
-                for(let toLevel = fromLevel + 1; toLevel <= maxLevel; toLevel++) {
+            for (let fromLevel = 1; fromLevel < maxLevel; fromLevel++) {
+                // Skip levels below current level if showOnlyCurrentToMax is checked
+                if (showOnlyCurrentToMax && fromLevel < currentLevel) continue;
+
+                for (let toLevel = fromLevel + 1; toLevel <= maxLevel; toLevel++) {
                     const fromTroop = troopData.find(t => t.level === fromLevel);
                     const toTroop = troopData.find(t => t.level === toLevel);
-                    
+
                     const timeDiff = toTroop.time - fromTroop.time;
                     const powerGain = toTroop.power - fromTroop.power;
-                    const pointsPerPromotion = powerGain * 20;
-                    
+                    const pointsPerPromotion = powerGain * pointsPerPower;
+
                     const points = minutes.map(min => {
                         const promotionTimeMinutes = timeDiff / 60 / speedBoost;
                         const possiblePromotions = Math.floor(min / promotionTimeMinutes);
                         return possiblePromotions * pointsPerPromotion;
                     });
-                    
+
                     promotionDatasets.push({
                         label: `Promote ${fromLevel}→${toLevel}`,
                         data: points,
@@ -342,9 +393,15 @@
         // Add event listeners
         document.getElementById('speedBoost').addEventListener('input', updateAll);
         document.getElementById('speedupMinutes').addEventListener('input', updateAll);
+        document.getElementById('maxLevel').addEventListener('input', updateAll);
+        document.getElementById('currentLevel').addEventListener('input', updateAll);
+        document.getElementById('speedupPoints').addEventListener('input', updateAll);
+        document.getElementById('powerPoints').addEventListener('input', updateAll);
+        document.getElementById('showOnlyCurrentToMax').addEventListener('change', updateAll);
 
         // Initial calculation and chart
         updateAll();
     </script>
 </body>
+
 </html>
