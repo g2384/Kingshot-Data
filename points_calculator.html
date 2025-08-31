@@ -305,6 +305,9 @@
                 if (showOnlyCurrentToMax && fromLevel < currentLevel) continue;
 
                 for (let toLevel = fromLevel + 1; toLevel <= maxLevel; toLevel++) {
+                    // When checkbox is checked, only show promotions TO max level
+                    if (showOnlyCurrentToMax && toLevel !== maxLevel) continue;
+
                     const fromTroop = troopData.find(t => t.level === fromLevel);
                     const toTroop = troopData.find(t => t.level === toLevel);
 
