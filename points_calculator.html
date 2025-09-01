@@ -89,13 +89,6 @@
             }
         }
 
-        .result {
-            margin: 20px 0;
-            padding: 15px;
-            background-color: #e9ecef;
-            border-radius: 4px;
-        }
-
         .table-section {
             overflow-x: auto;
         }
@@ -225,7 +218,6 @@
         </div>
 
         <h2>Speedup vs Troop Training Comparison Analysis</h2>
-        <div class="result" id="comparison"></div>
 
         <div class="chart-container" style="position: relative; height:600px; width:100%; margin-top: 20px;">
             <canvas id="pointsChart"></canvas>
@@ -347,24 +339,6 @@
                     promotionTbody.appendChild(row);
                 }
             }
-
-            const comparisonDiv = document.getElementById('comparison');
-            const bestTrainingPoints = Math.max(...availableTroops.map(troop => {
-                const actualTrainingTimeMinutes = (troop.time / 60) / speedBoost;
-                const troopsTrainable = Math.floor(speedupMinutes / actualTrainingTimeMinutes);
-                return troopsTrainable * troop.power * 20;
-            }));
-
-            const bestPromotionPoints = Math.max(...Array.from(promotionTbody.querySelectorAll('tr'))
-                .map(row => parseInt(row.cells[6].textContent) || 0));
-
-            comparisonDiv.innerHTML = `
-                <h3>Comparison for ${speedupMinutes} minute(s) of speedup:</h3>
-                <p>Points from using speedups directly: ${speedupPoints}</p>
-                <p>Training speed boost: ${((speedBoost - 1) * 100).toFixed(1)}%</p>
-                <p>Best points from training troops: ${bestTrainingPoints}</p>
-                <p>Best points from promoting troops: ${bestPromotionPoints}</p>
-            `;
         }
 
         // Populate the level dropdowns
@@ -405,23 +379,23 @@
             const currentLevel = parseInt(document.getElementById('currentLevel').value);
             const pointsPerMinute = parseFloat(document.getElementById('speedupPoints').value);
             const pointsPerPower = parseFloat(document.getElementById('powerPoints').value);
-            const showOnlyCurrentToMax = document.getElementById('showOnlyCurrentToMax').checked;
+            const showOnlyCurrentToMax = true;
             const minutes = Array.from({ length: 60 }, (_, i) => i + 1); // X-axis values from 1 to 60 minutes
 
             // Calculate points for speedups
-            const speedupData = minutes.map(min => min * 300);
+            const speedupData = minutes.map(min => min * pointsPerMinute);
 
             // Calculate points for each troop level
             const availableTroops = troopData.filter(troop => troop.level <= maxLevel);
             const troopDatasets = availableTroops.map(troop => {
                 const points = minutes.map(min => {
-                    const actualTrainingTimeMinutes = (troop.time / 60) / speedBoost;
-                    const troopsTrainable = Math.floor(min / actualTrainingTimeMinutes);
-                    return troopsTrainable * troop.power * 20;
+                    const troopsTrainable = calculateTroopsTrainable(troop.time, speedBoost, min);
+                    // Calculate points for power boost
+                    return troopsTrainable * troop.power * pointsPerPower;
                 });
 
                 return {
-                    label: `Level ${troop.level} Troops`,
+                    label: `Level ${troop.levelStr} Troops`,
                     data: points,
                     borderWidth: 1,
                     fill: false
@@ -438,17 +412,18 @@
                     // When checkbox is checked, only show promotions TO max level
                     if (showOnlyCurrentToMax && toLevel !== maxLevel) continue;
 
+                    // Skip TG promotions if from level is already TG
+                    if (toLevel > 10 && fromLevel >= 10) continue;
+
                     const fromTroop = troopData.find(t => t.level === fromLevel);
                     const toTroop = troopData.find(t => t.level === toLevel);
 
                     const timeDiff = toTroop.time - fromTroop.time;
                     const powerGain = toTroop.power - fromTroop.power;
-                    const pointsPerPromotion = powerGain * pointsPerPower;
 
                     const points = minutes.map(min => {
-                        const promotionTimeMinutes = timeDiff / 60 / speedBoost;
-                        const possiblePromotions = Math.floor(min / promotionTimeMinutes);
-                        return possiblePromotions * pointsPerPromotion;
+                        const possiblePromotions = calculateTroopsTrainable(timeDiff, speedBoost, min);
+                        return possiblePromotions * powerGain * pointsPerPower;
                     });
 
                     promotionDatasets.push({
