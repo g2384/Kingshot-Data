@@ -200,7 +200,7 @@
                 // Calculate actual training time with speed boost
                 const actualTrainingTimeMinutes = (troop.time / 60) / speedBoost;
                 const troopsTrainable = Math.floor(speedupMinutes / actualTrainingTimeMinutes);
-                const pointsPerTroop = troop.power * 20;
+                const pointsPerTroop = troop.power * pointsPerPower;
                 const totalPoints = troopsTrainable * pointsPerTroop;
 
                 row.innerHTML = `
