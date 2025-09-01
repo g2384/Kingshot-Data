@@ -90,10 +90,10 @@
 
             <div style="margin-bottom: 10px;">
                 <label for="maxLevel">Maximum Available Level: </label>
-                <input type="number" id="maxLevel" value="9" min="1" max="9" step="1">
+                <select id="maxLevel"></select>
 
                 <label for="currentLevel">Current Level: </label>
-                <input type="number" id="currentLevel" value="1" min="1" max="9" step="1">
+                <select id="currentLevel"></select>
             </div>
 
             <div style="margin-bottom: 10px;">
@@ -160,15 +160,19 @@
 
     <script>
         const troopData = [
-            { level: 9, time: 131.00, power: 50 },
-            { level: 8, time: 113.00, power: 38 },
-            { level: 7, time: 83.00, power: 28 },
-            { level: 6, time: 60.00, power: 20 },
-            { level: 5, time: 44.00, power: 13 },
-            { level: 4, time: 32.00, power: 9 },
-            { level: 3, time: 24.00, power: 6 },
-            { level: 2, time: 17.00, power: 4 },
-            { level: 1, time: 12.00, power: 3 }
+            { level: 1, levelStr: '1', time: 12.00, power: 3, hogpoints: 90, svspoints: 3, tsgpoints: 1 },
+            { level: 2, levelStr: '2', time: 17.00, power: 4, hogpoints: 120, svspoints: 4, tsgpoints: 2 },
+            { level: 3, levelStr: '3', time: 24.00, power: 6, hogpoints: 180, svspoints: 5, tsgpoints: 3 },
+            { level: 4, levelStr: '4', time: 32.00, power: 9, hogpoints: 265, svspoints: 8, tsgpoints: 5 },
+            { level: 5, levelStr: '5', time: 44.00, power: 13, hogpoints: 385, svspoints: 12, tsgpoints: 7 },
+            { level: 6, levelStr: '6', time: 60.00, power: 20, hogpoints: 595, svspoints: 18, tsgpoints: 11 },
+            { level: 7, levelStr: '7', time: 83.00, power: 28, hogpoints: 830, svspoints: 25, tsgpoints: 16 },
+            { level: 8, levelStr: '8', time: 113.00, power: 38, hogpoints: 1130, svspoints: 35, tsgpoints: 23 },
+            { level: 9, levelStr: '9', time: 131.00, power: 50, hogpoints: 1485, svspoints: 45, tsgpoints: 30 },
+            { level: 10, levelStr: '10', time: 152.00, power: 66, hogpoints: 1960, svspoints: 60, tsgpoints: 39 },
+            { level: 11, levelStr: 'TG1', time: 152.00, power: 71, hogpoints: 1960, svspoints: 60, tsgpoints: 39 },
+            { level: 12, levelStr: 'TG2', time: 152.00, power: 76, hogpoints: 1960, svspoints: 60, tsgpoints: 39 },
+            { level: 13, levelStr: 'TG3', time: 152.00, power: 83, hogpoints: 1960, svspoints: 60, tsgpoints: 39 }
         ];
 
         function calculatePoints() {
@@ -261,6 +265,31 @@
                 <p>Best points from promoting troops: ${bestPromotionPoints}</p>
             `;
         }
+
+        // Populate the level dropdowns
+        function populateLevelDropdowns() {
+            const maxLevelSelect = document.getElementById('maxLevel');
+            const currentLevelSelect = document.getElementById('currentLevel');
+            
+            // Clear existing options
+            maxLevelSelect.innerHTML = '';
+            currentLevelSelect.innerHTML = '';
+            
+            // Add options for each troop level
+            troopData.forEach(troop => {
+                const maxOption = new Option(troop.levelStr, troop.level);
+                const currentOption = new Option(troop.levelStr, troop.level);
+                
+                if (troop.level === 9) maxOption.selected = true;
+                if (troop.level === 1) currentOption.selected = true;
+                
+                maxLevelSelect.add(maxOption);
+                currentLevelSelect.add(currentOption);
+            });
+        }
+
+        // Initialize dropdowns
+        populateLevelDropdowns();
 
         // Add event listeners
         document.getElementById('speedBoost').addEventListener('input', calculatePoints);
