@@ -41,13 +41,52 @@
 
         .input-group {
             margin: 20px 0;
+            display: grid;
+            gap: 1rem;
         }
 
-        input[type="number"] {
-            padding: 8px;
+        .input-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-field label {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .input-field .hint {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        input[type="number"],
+        select {
+            padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            margin-right: 10px;
+            max-width: 200px;
+            font-size: 1rem;
+        }
+
+        input[type="number"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        }
+
+        @media (max-width: 768px) {
+            .input-group {
+                gap: 1.5rem;
+            }
+
+            input[type="number"],
+            select {
+                max-width: 100%;
+            }
         }
 
         .result {
@@ -87,40 +126,43 @@
 
         <div class="input-group">
             <h2>Inputs</h2>
-            <div style="margin-bottom: 10px;">
-                <label for="speedBoost">Training Speed Boost (%): </label>
+            <div class="input-field">
+                <label for="speedBoost">Training Speed Boost (%)</label>
                 <input type="number" id="speedBoost" value="100" min="0" step="1">
-                (Find this number by clicking on fist icon at the top -> Bonus Overview -> Military -> Training Speed)
+                <span class="hint">Find this number by clicking on fist icon at the top → Bonus Overview → Military → Training Speed</span>
             </div>
 
-            <div style="margin-bottom: 10px;">
-                <label for="speedupMinutes">Speedup Minutes to Compare: </label>
+            <div class="input-field">
+                <label for="speedupMinutes">Speedup Minutes to Compare</label>
                 <input type="number" id="speedupMinutes" value="100" min="1" step="1">
-                (Rounds up training time - e.g., 5m59s counts as 5 minutes if you can wait for the remaining seconds)
+                <span class="hint">Rounds up training time - e.g., 5m59s counts as 5 minutes if you can wait for the remaining seconds</span>
             </div>
 
-            <div style="margin-bottom: 10px;">
-                <label for="maxLevel">Maximum Troop Level: </label>
+            <div class="input-field">
+                <label for="maxLevel">Maximum Troop Level</label>
                 <select id="maxLevel"></select>
             </div>
 
-            <div style="margin-bottom: 10px;">
-                <label for="currentLevel">Starting Level for Promotion: </label>
+            <div class="input-field">
+                <label for="currentLevel">Starting Level for Promotion</label>
                 <select id="currentLevel"></select>
             </div>
 
-            <div style="margin-bottom: 10px;">
-                <label for="speedupPoints">Points per Speedup Minute: </label>
-                <input type="number" id="speedupPoints" value="300" min="1" step="1">
-
-                <label for="powerPoints">Points per Power: </label>
-                <input type="number" id="powerPoints" value="20" min="1" step="1">
+            <div class="input-field" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div>
+                    <label for="speedupPoints">Points per Speedup Minute</label>
+                    <input type="number" id="speedupPoints" value="300" min="1" step="1">
+                </div>
+                <div>
+                    <label for="powerPoints">Points per Power</label>
+                    <input type="number" id="powerPoints" value="20" min="1" step="1">
+                </div>
             </div>
 
-            <div style="margin-bottom: 10px;">
-                <label>
+            <div class="input-field">
+                <label class="checkbox-label" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
                     <input type="checkbox" id="showOnlyCurrentToMax" checked>
-                    Only show promotions from current level to max level
+                    <span>Only show promotions from current level to max level</span>
                 </label>
             </div>
         </div>
