@@ -57,14 +57,6 @@
             border-radius: 4px;
         }
 
-        .section {
-            margin-bottom: 40px;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
         .table-section {
             overflow-x: auto;
         }
@@ -83,20 +75,37 @@
     <div class="container">
         <h1>Points Calculator</h1>
 
+        <div>
+            <h3>TL;DR - Key Points</h3>
+            <ul>
+                <li>Assume that level 4 troops are unlocked</li>
+                <li>Promote troops instead of training new ones</li>
+                <li>Use speedups during <i>"Train 1 Level x Troop(s)"</i> stage, <b>not</b> <i>"Use 1m of Speedups for
+                        Troop Training or Promotion"</i> stage</li>
+            </ul>
+        </div>
+
         <div class="input-group">
+            <h2>Inputs</h2>
             <div style="margin-bottom: 10px;">
                 <label for="speedBoost">Training Speed Boost (%): </label>
-                <input type="number" id="speedBoost" value="0" min="0" step="1">
-
-                <label for="speedupMinutes">Speedup Minutes to Compare: </label>
-                <input type="number" id="speedupMinutes" value="1" min="1" step="1">
+                <input type="number" id="speedBoost" value="100" min="0" step="1">
+                (Find this number by clicking on fist icon at the top -> Bonus Overview -> Military -> Training Speed)
             </div>
 
             <div style="margin-bottom: 10px;">
-                <label for="maxLevel">Maximum Available Level: </label>
-                <select id="maxLevel"></select>
+                <label for="speedupMinutes">Speedup Minutes to Compare: </label>
+                <input type="number" id="speedupMinutes" value="100" min="1" step="1">
+                (Rounds up training time - e.g., 5m59s counts as 5 minutes if you can wait for the remaining seconds)
+            </div>
 
-                <label for="currentLevel">Current Level: </label>
+            <div style="margin-bottom: 10px;">
+                <label for="maxLevel">Maximum Troop Level: </label>
+                <select id="maxLevel"></select>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <label for="currentLevel">Starting Level for Promotion: </label>
                 <select id="currentLevel"></select>
             </div>
 
@@ -119,65 +128,62 @@
         <div>
             <h3>Column Explanations</h3>
             <ul>
-                <li><strong>HOG Points (Train)</strong>: Points earned in the Hall of Governors event's Training Troops stage.</li>
-                <li><strong>HOG Points (Power Boost)</strong>: Points earned in the Hall of Governors event's Power Boost stage. Default is 20 points per power increase, you can adjust this value using the 'Points per Power' option</li>
+                <li><strong>HOG Points (Train)</strong>: Points earned in the Hall of Governors event's Training Troops
+                    stage.</li>
+                <li><strong>HOG Points (Power Boost)</strong>: Points earned in the Hall of Governors event's Power
+                    Boost stage. Default is 20 points per power increase, you can adjust this value using the 'Points
+                    per Power' option</li>
                 <li><strong>KVK Points</strong>: Points earned during the Kingdom versus Kingdom (KvK) Power event.</li>
                 <li><strong>STG Points</strong>: Points earned in the Strongest Governor event.</li>
             </ul>
         </div>
 
-        <div class="section">
-            <h2>Training Troops</h2>
-            <div class="table-section">
-                <table id="troopTable">
-                    <thead>
-                        <tr>
-                            <th>Level</th>
-                            <th>Time (s)</th>
-                            <th>Troops Trainable</th>
-                            <th>Power Increase</th>
-                            <th>HOG Points (Train)</th>
-                            <th>HOG Points (Power Boost)</th>
-                            <th>KVK Points</th>
-                            <th>STG Points</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
+        <h2>Training Troops</h2>
+        <div class="table-section">
+            <table id="troopTable">
+                <thead>
+                    <tr>
+                        <th>Level</th>
+                        <th>Time (s)</th>
+                        <th>Troops Trainable</th>
+                        <th>Power Increase</th>
+                        <th>HOG Points (Train)</th>
+                        <th>HOG Points (Power Boost)</th>
+                        <th>KVK Points</th>
+                        <th>STG Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
 
-        <div class="section">
-            <h2>Promoting Troops</h2>
-            <div class="table-section">
-                <table id="promotionTable">
-                    <thead>
-                        <tr>
-                            <th>From Level</th>
-                            <th>To Level</th>
-                            <th>Time (s)</th>
-                            <th>Promotions Possible</th>
-                            <th>Power Per Troop</th>
-                            <th>HOG Points (Train)</th>
-                            <th>HOG Points (Power Boost)</th>
-                            <th>KVK Points</th>
-                            <th>STG Points</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
+        <h2>Promoting Troops</h2>
+        <div class="table-section">
+            <table id="promotionTable">
+                <thead>
+                    <tr>
+                        <th>From Level</th>
+                        <th>To Level</th>
+                        <th>Time (s)</th>
+                        <th>Promotions Possible</th>
+                        <th>Power Increase</th>
+                        <th>HOG Points (Train)</th>
+                        <th>HOG Points (Power Boost)</th>
+                        <th>KVK Points</th>
+                        <th>STG Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
 
-        <div class="section">
-            <h2>Comparison Analysis</h2>
-            <div class="result" id="comparison"></div>
+        <h2>Speedup vs Troop Training Comparison Analysis</h2>
+        <div class="result" id="comparison"></div>
 
-            <div class="chart-container" style="position: relative; height:600px; width:100%; margin-top: 20px;">
-                <canvas id="pointsChart"></canvas>
-            </div>
+        <div class="chart-container" style="position: relative; height:600px; width:100%; margin-top: 20px;">
+            <canvas id="pointsChart"></canvas>
         </div>
     </div>
 
@@ -283,7 +289,7 @@
                         <td>${toTroop.levelStr}</td>
                         <td>${timeDiff}</td>
                         <td>${possiblePromotions}</td>
-                        <td>${powerGain}</td>
+                        <td>${possiblePromotions * powerGain}</td>
                         <td>${totalHogPoints}</td>
                         <td>${totalPowerPoints}</td>
                         <td>${totalKvkPoints}</td>
