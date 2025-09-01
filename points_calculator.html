@@ -129,13 +129,15 @@
             <div class="input-field">
                 <label for="speedBoost">Training Speed Boost (%)</label>
                 <input type="number" id="speedBoost" value="100" min="0" step="1">
-                <span class="hint">Find this number by clicking on fist icon at the top → Bonus Overview → Military → Training Speed</span>
+                <span class="hint">Find this number by clicking on fist icon at the top → Bonus Overview → Military →
+                    Training Speed</span>
             </div>
 
             <div class="input-field">
                 <label for="speedupMinutes">Speedup Minutes to Compare</label>
                 <input type="number" id="speedupMinutes" value="100" min="1" step="1">
-                <span class="hint">Rounds up training time - e.g., 5m59s counts as 5 minutes if you can wait for the remaining seconds</span>
+                <span class="hint">Rounds up training time - e.g., 5m59s counts as 5 minutes if you can wait for the
+                    remaining seconds</span>
             </div>
 
             <div class="input-field">
@@ -148,7 +150,8 @@
                 <select id="currentLevel"></select>
             </div>
 
-            <div class="input-field" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+            <div class="input-field"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
                 <div>
                     <label for="speedupPoints">Points per Speedup Minute</label>
                     <input type="number" id="speedupPoints" value="300" min="1" step="1">
@@ -307,6 +310,10 @@
                     if (showOnlyCurrentToMax) {
                         // When checkbox is checked, only show promotions TO max level FROM each level
                         if (toLevel !== maxLevel) continue;
+                    }
+
+                    if (toLevel > 10 && fromLevel >= 10) {
+                        continue;
                     }
 
                     const fromTroop = troopData.find(t => t.level === fromLevel);
