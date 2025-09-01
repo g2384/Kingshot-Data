@@ -124,13 +124,12 @@
                         <tr>
                             <th>Level</th>
                             <th>Time (s)</th>
-                            <th>HOG Points</th>
+                            <th>Troops Trainable</th>
+                            <th>Power Increase</th>
+                            <th>HOG Points (Train)</th>
                             <th>SVS Points</th>
                             <th>TSG Points</th>
-                            <th>Power</th>
-                            <th>Points per Troop</th>
-                            <th>Troops Trainable</th>
-                            <th>Total Points</th>
+                            <th>HOG Points (Power Boost)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -174,12 +173,12 @@
     </div>
 
     <script>
-        function calculatePointsForType(pointsPerTroop, troopCount){
+        function calculatePointsForType(pointsPerTroop, troopCount) {
             return pointsPerTroop * troopCount;
         }
 
         function calculateTroopsTrainable(trainingTimeSeconds, speedBoost, speedupMinutes) {
-            const actualTrainingTimeMinutes = (trainingTimeSeconds / 60) / speedBoost;
+            const actualTrainingTimeMinutes = (trainingTimeSeconds / 60) / (1 + speedBoost);
             return Math.ceil(speedupMinutes / actualTrainingTimeMinutes);
         }
 
@@ -222,25 +221,24 @@
                 const row = document.createElement('tr');
 
                 const troopsTrainable = calculateTroopsTrainable(troop.time, speedBoost, speedupMinutes);
-                
+
+                const power = troop.power * troopsTrainable;
+
                 // Calculate points for each type
                 const powerPoints = calculatePointsForType(troop.power * pointsPerPower, troopsTrainable);
                 const hogPoints = calculatePointsForType(troop.hogPoints, troopsTrainable);
                 const svsPoints = calculatePointsForType(troop.svsPoints, troopsTrainable);
                 const tsgPoints = calculatePointsForType(troop.tsgPoints, troopsTrainable);
-                
-                const totalPoints = troopsTrainable * powerPoints; // Keep total points based on power for now
 
                 row.innerHTML = `
                     <td>${troop.levelStr}</td>
                     <td>${troop.time}</td>
+                    <td>${troopsTrainable}</td>
+                    <td>${power}</td>
                     <td>${hogPoints}</td>
                     <td>${svsPoints}</td>
                     <td>${tsgPoints}</td>
-                    <td>${troop.power}</td>
                     <td>${powerPoints}</td>
-                    <td>${troopsTrainable}</td>
-                    <td>${totalPoints}</td>
                 `;
                 tbody.appendChild(row);
             });
@@ -263,7 +261,7 @@
 
                     const powerGain = toTroop.power - fromTroop.power;
                     const pointsPerPromotion = powerGain * pointsPerPower;
-                    
+
                     // Apply number of possible promotions to get total points
                     const totalPowerPoints = possiblePromotions * powerGain * pointsPerPower;
                     const totalHogPoints = possiblePromotions * (toTroop.hogPoints - fromTroop.hogPoints);
@@ -310,19 +308,19 @@
         function populateLevelDropdowns() {
             const maxLevelSelect = document.getElementById('maxLevel');
             const currentLevelSelect = document.getElementById('currentLevel');
-            
+
             // Clear existing options
             maxLevelSelect.innerHTML = '';
             currentLevelSelect.innerHTML = '';
-            
+
             // Add options for each troop level
             troopData.forEach(troop => {
                 const maxOption = new Option(troop.levelStr, troop.level);
                 const currentOption = new Option(troop.levelStr, troop.level);
-                
+
                 if (troop.level === 9) maxOption.selected = true;
                 if (troop.level === 1) currentOption.selected = true;
-                
+
                 maxLevelSelect.add(maxOption);
                 currentLevelSelect.add(currentOption);
             });
