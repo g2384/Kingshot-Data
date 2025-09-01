@@ -123,11 +123,11 @@
                     <thead>
                         <tr>
                             <th>Level</th>
-                            <th>Training Time (seconds)</th>
-                            <th>Power</th>
+                            <th>Time (s)</th>
                             <th>HOG Points</th>
                             <th>SVS Points</th>
                             <th>TSG Points</th>
+                            <th>Power</th>
                             <th>Points per Troop</th>
                             <th>Troops Trainable</th>
                             <th>Total Points</th>
@@ -147,11 +147,11 @@
                         <tr>
                             <th>From Level</th>
                             <th>To Level</th>
-                            <th>Time (seconds)</th>
-                            <th>Power Gain</th>
-                            <th>HOG Points Gain</th>
-                            <th>SVS Points Gain</th>
-                            <th>TSG Points Gain</th>
+                            <th>Time (s)</th>
+                            <th>HOG Points</th>
+                            <th>SVS Points</th>
+                            <th>TSG Points</th>
+                            <th>Power Per Troop</th>
                             <th>Points per Promotion</th>
                             <th>Promotions Possible</th>
                             <th>Total Points</th>
@@ -234,10 +234,10 @@
                 row.innerHTML = `
                     <td>${troop.levelStr}</td>
                     <td>${troop.time}</td>
-                    <td>${troop.power}</td>
                     <td>${hogPoints}</td>
                     <td>${svsPoints}</td>
                     <td>${tsgPoints}</td>
+                    <td>${troop.power}</td>
                     <td>${powerPoints}</td>
                     <td>${troopsTrainable}</td>
                     <td>${totalPoints}</td>
@@ -258,21 +258,30 @@
                     const toTroop = troopData.find(t => t.level === toLevel);
 
                     const timeDiff = toTroop.time - fromTroop.time;
+
+                    const possiblePromotions = calculateTroopsTrainable(timeDiff, speedBoost, speedupMinutes);
+
                     const powerGain = toTroop.power - fromTroop.power;
                     const pointsPerPromotion = powerGain * pointsPerPower;
-                    const promotionTimeMinutes = timeDiff / 60 / speedBoost;
-                    const possiblePromotions = Math.floor(speedupMinutes / promotionTimeMinutes);
-                    const totalPoints = possiblePromotions * pointsPerPromotion;
+                    
+                    // Apply number of possible promotions to get total points
+                    const totalPowerPoints = possiblePromotions * powerGain * pointsPerPower;
+                    const totalHogPoints = possiblePromotions * (toTroop.hogPoints - fromTroop.hogPoints);
+                    const totalSvsPoints = possiblePromotions * (toTroop.svsPoints - fromTroop.svsPoints);
+                    const totalTsgPoints = possiblePromotions * (toTroop.tsgPoints - fromTroop.tsgPoints);
 
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${fromLevel}</td>
-                        <td>${toLevel}</td>
-                        <td>${timeDiff.toFixed(2)}</td>
+                        <td>${fromTroop.levelStr}</td>
+                        <td>${toTroop.levelStr}</td>
+                        <td>${timeDiff}</td>
+                        <td>${totalHogPoints}</td>
+                        <td>${totalSvsPoints}</td>
+                        <td>${totalTsgPoints}</td>
                         <td>${powerGain}</td>
                         <td>${pointsPerPromotion}</td>
                         <td>${possiblePromotions}</td>
-                        <td>${totalPoints}</td>
+                        <td>${totalPowerPoints}</td>
                     `;
                     promotionTbody.appendChild(row);
                 }
