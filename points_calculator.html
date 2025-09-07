@@ -248,7 +248,7 @@
         }
 
         function calculateTroopsTrainable(trainingTimeSeconds, speedBoost, speedupMinutes) {
-            const actualTrainingTimeMinutes = (trainingTimeSeconds / 60) / (1 + speedBoost);
+            const actualTrainingTimeMinutes = (trainingTimeSeconds / 60) / (speedBoost);
             return Math.ceil(speedupMinutes / actualTrainingTimeMinutes);
         }
 
@@ -289,7 +289,8 @@
 
             availableTroops.forEach(troop => {
                 const row = document.createElement('tr');
-
+                
+                console.log(troop.time, speedBoost, speedupMinutes);
                 const troopsTrainable = calculateTroopsTrainable(troop.time, speedBoost, speedupMinutes);
 
                 const power = troop.power * troopsTrainable;
