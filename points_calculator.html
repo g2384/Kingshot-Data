@@ -128,7 +128,7 @@
             </div>
 
             <div class="input-field">
-                <label for="speedupMinutes">Speedup Minutes to Compare</label>
+                <label for="speedupMinutes">Total Training Time or Speedup Minutes to Compare</label>
                 <input type="number" id="speedupMinutes" value="100" min="1" step="1">
                 <span class="hint">Rounds up training time - e.g., 5m59s counts as 5 minutes if you can wait for the
                     remaining seconds</span>
@@ -234,17 +234,17 @@
                     </tr>
                     <tr id="bestTrainingRow">
                         <td>Highest Points From Training</td>
-                        <td id="trainingHogPoints">-</td>
-                        <td id="trainingPowerPoints">-</td>
-                        <td id="trainingKvkPoints">-</td>
-                        <td id="trainingStgPoints">-</td>
+                        <td><span id="trainingHogPoints">-</span> (<span id="trainingHogLevel">-</span>)</td>
+                        <td><span id="trainingPowerPoints">-</span> (<span id="trainingPowerLevel">-</span>)</td>
+                        <td><span id="trainingKvkPoints">-</span> (<span id="trainingKvkLevel">-</span>)</td>
+                        <td><span id="trainingStgPoints">-</span> (<span id="trainingStgLevel">-</span>)</td>
                     </tr>
                     <tr id="bestPromotionRow">
                         <td>Highest Points From Promotion</td>
-                        <td id="promotionHogPoints">-</td>
-                        <td id="promotionPowerPoints">-</td>
-                        <td id="promotionKvkPoints">-</td>
-                        <td id="promotionStgPoints">-</td>
+                        <td><span id="promotionHogPoints">-</span> (<span id="promotionHogLevels">-</span>)</td>
+                        <td><span id="promotionPowerPoints">-</span> (<span id="promotionPowerLevels">-</span>)</td>
+                        <td><span id="promotionKvkPoints">-</span> (<span id="promotionKvkLevels">-</span>)</td>
+                        <td><span id="promotionStgPoints">-</span> (<span id="promotionStgLevels">-</span>)</td>
                     </tr>
                 </tbody>
             </table>
@@ -433,6 +433,10 @@
             let bestTrainingPowerPoints = 0;
             let bestTrainingKvkPoints = 0;
             let bestTrainingStgPoints = 0;
+            let bestHogLevel = '-';
+            let bestPowerLevel = '-';
+            let bestKvkLevel = '-';
+            let bestStgLevel = '-';
 
             troopData.filter(troop => troop.level <= maxLevel).forEach(troop => {
                 const troopsTrainable = calculateTroopsTrainable(troop.time, speedBoost, speedupMinutes);
@@ -443,9 +447,19 @@
 
                 if (hogPoints > bestTrainingHogPoints) {
                     bestTrainingHogPoints = hogPoints;
+                    bestHogLevel = troop.levelStr;
+                }
+                if (powerPoints > bestTrainingPowerPoints) {
                     bestTrainingPowerPoints = powerPoints;
+                    bestPowerLevel = troop.levelStr;
+                }
+                if (kvkPoints > bestTrainingKvkPoints) {
                     bestTrainingKvkPoints = kvkPoints;
+                    bestKvkLevel = troop.levelStr;
+                }
+                if (stgPoints > bestTrainingStgPoints) {
                     bestTrainingStgPoints = stgPoints;
+                    bestStgLevel = troop.levelStr;
                 }
             });
 
@@ -454,6 +468,10 @@
             let bestPromotionPowerPoints = 0;
             let bestPromotionKvkPoints = 0;
             let bestPromotionStgPoints = 0;
+            let bestHogPromotionLevels = '-';
+            let bestPowerPromotionLevels = '-';
+            let bestKvkPromotionLevels = '-';
+            let bestStgPromotionLevels = '-';
 
             for (let fromLevel = currentLevel; fromLevel < maxLevel; fromLevel++) {
                 for (let toLevel = fromLevel + 1; toLevel <= maxLevel; toLevel++) {
@@ -471,9 +489,19 @@
 
                     if (hogPoints > bestPromotionHogPoints) {
                         bestPromotionHogPoints = hogPoints;
+                        bestHogPromotionLevels = `${fromTroop.levelStr}→${toTroop.levelStr}`;
+                    }
+                    if (powerPoints > bestPromotionPowerPoints) {
                         bestPromotionPowerPoints = powerPoints;
+                        bestPowerPromotionLevels = `${fromTroop.levelStr}→${toTroop.levelStr}`;
+                    }
+                    if (kvkPoints > bestPromotionKvkPoints) {
                         bestPromotionKvkPoints = kvkPoints;
+                        bestKvkPromotionLevels = `${fromTroop.levelStr}→${toTroop.levelStr}`;
+                    }
+                    if (stgPoints > bestPromotionStgPoints) {
                         bestPromotionStgPoints = stgPoints;
+                        bestStgPromotionLevels = `${fromTroop.levelStr}→${toTroop.levelStr}`;
                     }
                 }
             }
@@ -484,10 +512,20 @@
             document.getElementById('trainingKvkPoints').textContent = Math.floor(bestTrainingKvkPoints);
             document.getElementById('trainingStgPoints').textContent = Math.floor(bestTrainingStgPoints);
 
+            document.getElementById('trainingHogLevel').textContent = bestHogLevel;
+            document.getElementById('trainingPowerLevel').textContent = bestPowerLevel;
+            document.getElementById('trainingKvkLevel').textContent = bestKvkLevel;
+            document.getElementById('trainingStgLevel').textContent = bestStgLevel;
+
             document.getElementById('promotionHogPoints').textContent = Math.floor(bestPromotionHogPoints);
             document.getElementById('promotionPowerPoints').textContent = Math.floor(bestPromotionPowerPoints);
             document.getElementById('promotionKvkPoints').textContent = Math.floor(bestPromotionKvkPoints);
             document.getElementById('promotionStgPoints').textContent = Math.floor(bestPromotionStgPoints);
+
+            document.getElementById('promotionHogLevels').textContent = bestHogPromotionLevels;
+            document.getElementById('promotionPowerLevels').textContent = bestPowerPromotionLevels;
+            document.getElementById('promotionKvkLevels').textContent = bestKvkPromotionLevels;
+            document.getElementById('promotionStgLevels').textContent = bestStgPromotionLevels;
         }
 
         function updateAll() {
