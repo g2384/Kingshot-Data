@@ -145,16 +145,9 @@
                 <select id="currentLevel"></select>
             </div>
 
-            <div class="input-field"
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                <div>
-                    <label for="speedupPoints">Points per Speedup Minute</label>
-                    <input type="number" id="speedupPoints" value="300" min="1" step="1">
-                </div>
-                <div>
-                    <label for="powerPoints">Points per Power</label>
-                    <input type="number" id="powerPoints" value="20" min="1" step="1">
-                </div>
+            <div class="input-field">
+                <label for="speedupPoints">Points per Speedup Minute</label>
+                <input type="number" id="speedupPoints" value="300" min="1" step="1">
             </div>
 
             <div class="input-field">
@@ -274,7 +267,7 @@
             const maxLevel = parseInt(document.getElementById('maxLevel').value);
             const currentLevel = parseInt(document.getElementById('currentLevel').value);
             const pointsPerMinute = parseFloat(document.getElementById('speedupPoints').value);
-            const pointsPerPower = parseFloat(document.getElementById('powerPoints').value);
+            const pointsPerPower = 20; // Fixed value for power points
             const showOnlyCurrentToMax = document.getElementById('showOnlyCurrentToMax').checked;
             const speedupPoints = speedupMinutes * pointsPerMinute;
 
@@ -397,7 +390,7 @@
             const maxLevel = parseInt(document.getElementById('maxLevel').value);
             const currentLevel = parseInt(document.getElementById('currentLevel').value);
             const pointsPerMinute = parseFloat(document.getElementById('speedupPoints').value);
-            const pointsPerPower = parseFloat(document.getElementById('powerPoints').value);
+            const pointsPerPower = 20; // Fixed value for power points
             const showOnlyCurrentToMax = true;
             const minutes = Array.from({ length: 60 }, (_, i) => i + 1); // X-axis values from 1 to 60 minutes
 
@@ -523,7 +516,6 @@
         document.getElementById('maxLevel').addEventListener('input', updateAll);
         document.getElementById('currentLevel').addEventListener('input', updateAll);
         document.getElementById('speedupPoints').addEventListener('input', updateAll);
-        document.getElementById('powerPoints').addEventListener('input', updateAll);
         document.getElementById('showOnlyCurrentToMax').addEventListener('change', updateAll);
 
         // Initial calculation and chart
