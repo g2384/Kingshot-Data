@@ -33,6 +33,10 @@
             padding: 12px;
             text-align: left;
         }
+        
+        td:nth-child(n+2):not(:nth-child(1)) {
+            text-align: right;
+        }
 
         th {
             background-color: #f8f9fa;
@@ -234,17 +238,17 @@
                     </tr>
                     <tr id="bestTrainingRow">
                         <td>Highest Points From Training</td>
-                        <td><span id="trainingHogPoints">-</span> (<span id="trainingHogLevel">-</span>)</td>
-                        <td><span id="trainingPowerPoints">-</span> (<span id="trainingPowerLevel">-</span>)</td>
-                        <td><span id="trainingKvkPoints">-</span> (<span id="trainingKvkLevel">-</span>)</td>
-                        <td><span id="trainingStgPoints">-</span> (<span id="trainingStgLevel">-</span>)</td>
+                        <td>(<span id="trainingHogLevel">-</span>) <span id="trainingHogPoints">-</span></td>
+                        <td>(<span id="trainingPowerLevel">-</span>) <span id="trainingPowerPoints">-</span></td>
+                        <td>(<span id="trainingKvkLevel">-</span>) <span id="trainingKvkPoints">-</span></td>
+                        <td>(<span id="trainingStgLevel">-</span>) <span id="trainingStgPoints">-</span></td>
                     </tr>
                     <tr id="bestPromotionRow">
                         <td>Highest Points From Promotion</td>
-                        <td><span id="promotionHogPoints">-</span> (<span id="promotionHogLevels">-</span>)</td>
-                        <td><span id="promotionPowerPoints">-</span> (<span id="promotionPowerLevels">-</span>)</td>
-                        <td><span id="promotionKvkPoints">-</span> (<span id="promotionKvkLevels">-</span>)</td>
-                        <td><span id="promotionStgPoints">-</span> (<span id="promotionStgLevels">-</span>)</td>
+                        <td>(<span id="promotionHogLevels">-</span>) <span id="promotionHogPoints">-</span></td>
+                        <td>(<span id="promotionPowerLevels">-</span>) <span id="promotionPowerPoints">-</span></td>
+                        <td>(<span id="promotionKvkLevels">-</span>) <span id="promotionKvkPoints">-</span></td>
+                        <td>(<span id="promotionStgLevels">-</span>) <span id="promotionStgPoints">-</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -278,6 +282,8 @@
             const actualTrainingTimeMinutes = (trainingTimeSeconds / 60) / (speedBoost);
             return Math.ceil(speedupMinutes / actualTrainingTimeMinutes);
         }
+
+        const formatNumber = (num) => num.toLocaleString();
 
         const troopData = [
             { level: 1, levelStr: '1', time: 12.00, power: 3, hogPoints: 90, kvkPoints: 3, stgPoints: 1 },
@@ -331,12 +337,12 @@
                 row.innerHTML = `
                     <td>${troop.levelStr}</td>
                     <td>${troop.time}</td>
-                    <td>${troopsTrainable}</td>
-                    <td>${power}</td>
-                    <td>${hogPoints}</td>
-                    <td>${powerPoints}</td>
-                    <td>${kvkPoints}</td>
-                    <td>${stgPoints}</td>
+                    <td>${formatNumber(troopsTrainable)}</td>
+                    <td>${formatNumber(power)}</td>
+                    <td>${formatNumber(hogPoints)}</td>
+                    <td>${formatNumber(powerPoints)}</td>
+                    <td>${formatNumber(kvkPoints)}</td>
+                    <td>${formatNumber(stgPoints)}</td>
                 `;
                 tbody.appendChild(row);
             });
@@ -375,12 +381,12 @@
                         <td>${fromTroop.levelStr}</td>
                         <td>${toTroop.levelStr}</td>
                         <td>${timeDiff}</td>
-                        <td>${possiblePromotions}</td>
-                        <td>${possiblePromotions * powerGain}</td>
-                        <td>${totalHogPoints}</td>
-                        <td>${totalPowerPoints}</td>
-                        <td>${totalKvkPoints}</td>
-                        <td>${totalStgPoints}</td>
+                        <td>${formatNumber(possiblePromotions)}</td>
+                        <td>${formatNumber(possiblePromotions * powerGain)}</td>
+                        <td>${formatNumber(totalHogPoints)}</td>
+                        <td>${formatNumber(totalPowerPoints)}</td>
+                        <td>${formatNumber(totalKvkPoints)}</td>
+                        <td>${formatNumber(totalStgPoints)}</td>
                     `;
                     promotionTbody.appendChild(row);
                 }
@@ -507,20 +513,20 @@
             }
 
             // Update summary table
-            document.getElementById('trainingHogPoints').textContent = Math.floor(bestTrainingHogPoints);
-            document.getElementById('trainingPowerPoints').textContent = Math.floor(bestTrainingPowerPoints);
-            document.getElementById('trainingKvkPoints').textContent = Math.floor(bestTrainingKvkPoints);
-            document.getElementById('trainingStgPoints').textContent = Math.floor(bestTrainingStgPoints);
+            document.getElementById('trainingHogPoints').textContent = formatNumber(Math.floor(bestTrainingHogPoints));
+            document.getElementById('trainingPowerPoints').textContent = formatNumber(Math.floor(bestTrainingPowerPoints));
+            document.getElementById('trainingKvkPoints').textContent = formatNumber(Math.floor(bestTrainingKvkPoints));
+            document.getElementById('trainingStgPoints').textContent = formatNumber(Math.floor(bestTrainingStgPoints));
 
             document.getElementById('trainingHogLevel').textContent = bestHogLevel;
             document.getElementById('trainingPowerLevel').textContent = bestPowerLevel;
             document.getElementById('trainingKvkLevel').textContent = bestKvkLevel;
             document.getElementById('trainingStgLevel').textContent = bestStgLevel;
 
-            document.getElementById('promotionHogPoints').textContent = Math.floor(bestPromotionHogPoints);
-            document.getElementById('promotionPowerPoints').textContent = Math.floor(bestPromotionPowerPoints);
-            document.getElementById('promotionKvkPoints').textContent = Math.floor(bestPromotionKvkPoints);
-            document.getElementById('promotionStgPoints').textContent = Math.floor(bestPromotionStgPoints);
+            document.getElementById('promotionHogPoints').textContent = formatNumber(Math.floor(bestPromotionHogPoints));
+            document.getElementById('promotionPowerPoints').textContent = formatNumber(Math.floor(bestPromotionPowerPoints));
+            document.getElementById('promotionKvkPoints').textContent = formatNumber(Math.floor(bestPromotionKvkPoints));
+            document.getElementById('promotionStgPoints').textContent = formatNumber(Math.floor(bestPromotionStgPoints));
 
             document.getElementById('promotionHogLevels').textContent = bestHogPromotionLevels;
             document.getElementById('promotionPowerLevels').textContent = bestPowerPromotionLevels;
