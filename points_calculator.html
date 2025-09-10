@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Points Calculator</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -212,10 +211,42 @@
             </table>
         </div>
 
-        <h2>Speedup vs Troop Training Comparison Analysis</h2>
-
-        <div class="chart-container" style="position: relative; height:600px; width:100%; margin-top: 20px;">
-            <canvas id="pointsChart"></canvas>
+        <h2>Total Points Summary</h2>
+        <div class="table-section">
+            <table id="summaryTable">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>HOG Points</th>
+                        <th>Power Points</th>
+                        <th>KVK Points</th>
+                        <th>STG Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="speedupRow">
+                        <td>Using Speedups</td>
+                        <td id="speedupHogPoints">-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr id="bestTrainingRow">
+                        <td>Highest Points From Training</td>
+                        <td id="trainingHogPoints">-</td>
+                        <td id="trainingPowerPoints">-</td>
+                        <td id="trainingKvkPoints">-</td>
+                        <td id="trainingStgPoints">-</td>
+                    </tr>
+                    <tr id="bestPromotionRow">
+                        <td>Highest Points From Promotion</td>
+                        <td id="promotionHogPoints">-</td>
+                        <td id="promotionPowerPoints">-</td>
+                        <td id="promotionKvkPoints">-</td>
+                        <td id="promotionStgPoints">-</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <div class="references-section" style="margin-top: 40px; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
@@ -382,132 +413,83 @@
         document.getElementById('speedBoost').addEventListener('input', calculatePoints);
         document.getElementById('speedupMinutes').addEventListener('input', calculatePoints);
 
-        // Chart configuration
-        let pointsChart;
-
-        function updateChart() {
+        function updateSummary() {
+            const speedupMinutes = parseFloat(document.getElementById('speedupMinutes').value);
+            const pointsPerMinute = parseFloat(document.getElementById('speedupPoints').value);
             const speedBoost = 1 + (parseFloat(document.getElementById('speedBoost').value) / 100);
             const maxLevel = parseInt(document.getElementById('maxLevel').value);
             const currentLevel = parseInt(document.getElementById('currentLevel').value);
-            const pointsPerMinute = parseFloat(document.getElementById('speedupPoints').value);
             const pointsPerPower = 20; // Fixed value for power points
-            const showOnlyCurrentToMax = true;
-            const minutes = Array.from({ length: 60 }, (_, i) => i + 1); // X-axis values from 1 to 60 minutes
 
-            // Calculate points for speedups
-            const speedupData = minutes.map(min => min * pointsPerMinute);
+            // Calculate speedup points
+            const speedupPoints = speedupMinutes * pointsPerMinute;
+            document.getElementById('speedupHogPoints').textContent = speedupPoints;
 
-            // Calculate points for each troop level
-            const availableTroops = troopData.filter(troop => troop.level <= maxLevel);
-            const troopDatasets = availableTroops.map(troop => {
-                const points = minutes.map(min => {
-                    const troopsTrainable = calculateTroopsTrainable(troop.time, speedBoost, min);
-                    // Calculate points for power boost
-                    return troopsTrainable * troop.power * pointsPerPower;
-                });
+            // Find best training option
+            let bestTrainingHogPoints = 0;
+            let bestTrainingPowerPoints = 0;
+            let bestTrainingKvkPoints = 0;
+            let bestTrainingStgPoints = 0;
 
-                return {
-                    label: `Level ${troop.levelStr} Troops`,
-                    data: points,
-                    borderWidth: 1,
-                    fill: false
-                };
+            troopData.filter(troop => troop.level <= maxLevel).forEach(troop => {
+                const troopsTrainable = calculateTroopsTrainable(troop.time, speedBoost, speedupMinutes);
+                const hogPoints = troopsTrainable * troop.hogPoints;
+                const powerPoints = troopsTrainable * troop.power * pointsPerPower;
+                const kvkPoints = troopsTrainable * troop.kvkPoints;
+                const stgPoints = troopsTrainable * troop.stgPoints;
+
+                if (hogPoints > bestTrainingHogPoints) {
+                    bestTrainingHogPoints = hogPoints;
+                    bestTrainingPowerPoints = powerPoints;
+                    bestTrainingKvkPoints = kvkPoints;
+                    bestTrainingStgPoints = stgPoints;
+                }
             });
 
-            // Calculate promotion datasets
-            const promotionDatasets = [];
-            for (let fromLevel = 1; fromLevel < maxLevel; fromLevel++) {
-                // Skip levels below current level if showOnlyCurrentToMax is checked
-                if (showOnlyCurrentToMax && fromLevel < currentLevel) continue;
+            // Find best promotion option
+            let bestPromotionHogPoints = 0;
+            let bestPromotionPowerPoints = 0;
+            let bestPromotionKvkPoints = 0;
+            let bestPromotionStgPoints = 0;
 
+            for (let fromLevel = currentLevel; fromLevel < maxLevel; fromLevel++) {
                 for (let toLevel = fromLevel + 1; toLevel <= maxLevel; toLevel++) {
-                    // When checkbox is checked, only show promotions TO max level
-                    if (showOnlyCurrentToMax && toLevel !== maxLevel) continue;
-
-                    // Skip TG promotions if from level is already TG
                     if (toLevel > 10 && fromLevel >= 10) continue;
 
                     const fromTroop = troopData.find(t => t.level === fromLevel);
                     const toTroop = troopData.find(t => t.level === toLevel);
-
                     const timeDiff = toTroop.time - fromTroop.time;
-                    const powerGain = toTroop.power - fromTroop.power;
+                    const possiblePromotions = calculateTroopsTrainable(timeDiff, speedBoost, speedupMinutes);
 
-                    const points = minutes.map(min => {
-                        const possiblePromotions = calculateTroopsTrainable(timeDiff, speedBoost, min);
-                        return possiblePromotions * powerGain * pointsPerPower;
-                    });
+                    const hogPoints = possiblePromotions * (toTroop.hogPoints - fromTroop.hogPoints);
+                    const powerPoints = possiblePromotions * (toTroop.power - fromTroop.power) * pointsPerPower;
+                    const kvkPoints = possiblePromotions * (toTroop.kvkPoints - fromTroop.kvkPoints);
+                    const stgPoints = possiblePromotions * (toTroop.stgPoints - fromTroop.stgPoints);
 
-                    promotionDatasets.push({
-                        label: `Promote ${fromLevel}→${toLevel}`,
-                        data: points,
-                        borderWidth: 1,
-                        fill: false,
-                        borderDash: [5, 5] // Make promotion lines dashed
-                    });
-                }
-            }
-
-            // Add speedup line and all datasets
-            const datasets = [
-                {
-                    label: 'Speedup Points',
-                    data: speedupData,
-                    borderColor: 'rgb(255, 99, 132)',
-                    borderWidth: 2,
-                    fill: false
-                },
-                ...troopDatasets,
-                ...promotionDatasets
-            ];
-
-            // Destroy existing chart if it exists
-            if (pointsChart) {
-                pointsChart.destroy();
-            }
-
-            // Create new chart
-            const ctx = document.getElementById('pointsChart').getContext('2d');
-            pointsChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: minutes,
-                    datasets: datasets
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Minutes'
-                            }
-                        },
-                        y: {
-                            title: {
-                                display: true,
-                                text: 'Points Earned'
-                            }
-                        }
-                    },
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Points Comparison: Speedups vs Troop Training'
-                        },
-                        legend: {
-                            position: 'right'
-                        }
+                    if (hogPoints > bestPromotionHogPoints) {
+                        bestPromotionHogPoints = hogPoints;
+                        bestPromotionPowerPoints = powerPoints;
+                        bestPromotionKvkPoints = kvkPoints;
+                        bestPromotionStgPoints = stgPoints;
                     }
                 }
-            });
+            }
+
+            // Update summary table
+            document.getElementById('trainingHogPoints').textContent = Math.floor(bestTrainingHogPoints);
+            document.getElementById('trainingPowerPoints').textContent = Math.floor(bestTrainingPowerPoints);
+            document.getElementById('trainingKvkPoints').textContent = Math.floor(bestTrainingKvkPoints);
+            document.getElementById('trainingStgPoints').textContent = Math.floor(bestTrainingStgPoints);
+
+            document.getElementById('promotionHogPoints').textContent = Math.floor(bestPromotionHogPoints);
+            document.getElementById('promotionPowerPoints').textContent = Math.floor(bestPromotionPowerPoints);
+            document.getElementById('promotionKvkPoints').textContent = Math.floor(bestPromotionKvkPoints);
+            document.getElementById('promotionStgPoints').textContent = Math.floor(bestPromotionStgPoints);
         }
 
-        // Update both calculations and chart when inputs change
         function updateAll() {
             calculatePoints();
-            updateChart();
+            updateSummary();
         }
 
         // Add event listeners
