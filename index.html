@@ -58,6 +58,30 @@
       font-size: 0.95em;
       margin-top: 1em;
     }
+
+    /* Data Tables Styling */
+    table {
+      border-collapse: collapse;
+      margin: 1em 0;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      text-align: left;
+    }
+
+    td.numeric, th.numeric {
+      text-align: right;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fafafa;
+    }
   </style>
 </head>
 
@@ -76,7 +100,7 @@
 
     <h3>General Tips</h3>
     <ul>
-      <li><strong>Alliance Token</strong> 
+      <li><strong>Alliance Token</strong>
         <ul>
           <li><strong>Tech Alliance contribution:</strong></li>
           <li>Get 1 attempt every 10 minutes, stores up to 25 attempts</li>
@@ -87,6 +111,13 @@
           <li>One help gives 20 tokens. Maximum 2000 tokens per day</li>
         </ul>
       </li>
+      <li><strong>Governor Stamina</strong></li>
+      <ul>
+        <li>Daily Gourmet Feast give 120 * 2 = 240 stamina</li>
+        <li>Passively restores 1 per 5 min, that is (24 * 60 / 5) = 288 stamina</li>
+        <li>Comforting Embrace (pet skill) gives 35/40/45/50/55/60 stamina per day, depending on levels</li>
+        <li>Total: 240 + 288 = 528 stamina per day</li>
+      </ul>
       <li><strong>Resource Protection:</strong> If under attack and can't shield, start construction to lock resources
         without canceling.</li>
       <li><strong>Decree Reminders:</strong> Customize red-dot notifications per decree/pet ability to reduce clutter.
@@ -95,7 +126,8 @@
       <li><strong>Hunting:</strong> Stack Diana and Fahd's march speed buffs for efficient beast hunts and intel
         missions</li>
       <li><strong>Hunting:</strong> Always use Diana for hunting and rally, to save some stamina</li>
-      <li><strong>Under Attack Defense:</strong> To prevent troop injuries during castle attacks, quickly deploy all troops to any map tile.</li>
+      <li><strong>Under Attack Defense:</strong> To prevent troop injuries during castle attacks, quickly deploy all
+        troops to any map tile.</li>
     </ul>
 
     <h4>Decrees</h4>
@@ -105,7 +137,7 @@
       <li><strong>Stack Buffs:</strong> Combine "Urgent Mobilization" with "Productivity Day" for maximum effect</li>
     </ul>
 
-    <h3>Free Resources</h3>
+    <h3>Free Resources & Shops</h3>
     <h4>Nomadic Merchant</h4>
     <ul>
       <li><strong>Resource Ratios:</strong> 100 Wood = 100 Food = 20 Stone = 5 Iron (equivalent to wild farm resources
@@ -120,12 +152,53 @@
     <h4>Mystery Shop</h4>
     <ul>
       <li>Refresh daily for potential free items, even without coins</li>
+      <li>Buy 50% Custom Hero Widget Chest, costs 250 tokens</li>
+    </ul>
+
+    <h4>Satin (Daily)</h4>
+    <table>
+      <tr>
+        <th>Terror Level</th>
+        <th class="numeric">Participant Reward</th>
+        <th>Initiator Reward</th>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td class="numeric">2 × 50 = 100</td>
+        <td>15 × n</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td class="numeric">4 × 50 = 200</td>
+        <td>20 × n</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td class="numeric">6 × 50 = 300</td>
+        <td>25 × n</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td class="numeric">8 × 50 = 400</td>
+        <td>30 × n</td>
+      </tr>
+    </table>
+
+    <h4>Alliance Championship Shop</h4>
+    <ul>
+      <li>Buy Gilded Threads, each costs 100 tokens</li>
+    </ul>
+
+    <h4>Swordland Shop</h4>
+    <ul>
+      <li>Buy Artisan's Vision, each costs 500 tokens</li>
     </ul>
 
     <h3>Farm Account Strategy</h3>
     <ul>
       <li>Keep storage unupgraded to maintain farmable resource overflow</li>
-      <li>Fixed in 2025/09/04 update<del> <strong>Resource Conversion:</strong> To make secured resources unsecure:</del>
+      <li>Fixed in 2025/09/04 update <del><strong>Resource Conversion:</strong> To make secured resources
+          unsecure:</del>
         <ol>
           <li><del>Start troop training or construction to use secured resources</del></li>
           <li><del>Cancel to convert them to unsecured ones</del></li>
