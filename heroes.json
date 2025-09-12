@@ -1,14 +1,6 @@
 {
   "Gen1": [
     {
-      "name": "Amadeus",
-      "image": "images/heroes/amadeus.png",
-      "class": "Infantry",
-      "rarity": "Legendary",
-      "details": "Not for F2P. Shards only from purchases or top 10 in first 3 Hall of Governors events.",
-      "expeditionSkills": ""
-    },
-    {
       "name": "Jabel",
       "image": "images/heroes/jabel.png",
       "class": "Cavalry",
@@ -19,6 +11,14 @@
         "50% Chance Damage Up: 10%/20%/30%/40$/50%",
         "Lethality Up: 5%/10%/15%/20%/25%"
       ]
+    },
+    {
+      "name": "Saul",
+      "image": "images/heroes/saul.png",
+      "class": "Archer",
+      "rarity": "Legendary",
+      "details": "Useful for construction boosts via passive Expedition abilities.",
+      "expeditionSkills": ""
     },
     {
       "name": "Helga",
@@ -33,36 +33,15 @@
       ]
     },
     {
-      "name": "Saul",
-      "image": "images/heroes/saul.png",
-      "class": "Archer",
+      "name": "Amadeus",
+      "image": "images/heroes/amadeus.png",
+      "class": "Infantry",
       "rarity": "Legendary",
-      "details": "Useful for construction boosts via passive Expedition abilities.",
+      "details": "Not for F2P. Shards only from purchases or top 10 in first 3 Hall of Governors events.",
       "expeditionSkills": ""
     }
   ],
   "Gen2": [
-    {
-      "name": "Eric",
-      "image": "images/heroes/eric.png",
-      "class": "Infantry",
-      "rarity": "Legendary",
-      "details": "Sturdy defender ideal for Exploration and sustainable in Expedition."
-    },
-    {
-      "name": "Jaeger",
-      "image": "images/heroes/jaeger.png",
-      "class": "Archer",
-      "rarity": "Legendary",
-      "details": "Stun and AoE effects work well in Exploration; decent Expedition support."
-    },
-    {
-      "name": "Petra",
-      "image": "images/heroes/petra.png",
-      "class": "Cavalry",
-      "rarity": "Legendary",
-      "details": "High potential kit hindered by heavy RNG scaling and proc dependency."
-    },
     {
       "name": "Zoe",
       "image": "images/heroes/zoe.png",
@@ -84,6 +63,29 @@
       "rarity": "Legendary",
       "details": "Healer with situational Expedition value and inconsistent proc chances.",
       "expeditionSkills": ""
+    }
+  ],
+  "Gen3": [
+    {
+      "name": "Petra",
+      "image": "images/heroes/petra.png",
+      "class": "Cavalry",
+      "rarity": "Legendary",
+      "details": "High potential kit hindered by heavy RNG scaling and proc dependency."
+    },
+    {
+      "name": "Eric",
+      "image": "images/heroes/eric.png",
+      "class": "Infantry",
+      "rarity": "Legendary",
+      "details": "Sturdy defender ideal for Exploration and sustainable in Expedition."
+    },
+    {
+      "name": "Jaeger",
+      "image": "images/heroes/jaeger.png",
+      "class": "Archer",
+      "rarity": "Legendary",
+      "details": "Stun and AoE effects work well in Exploration; decent Expedition support."
     }
   ],
   "Epic": [

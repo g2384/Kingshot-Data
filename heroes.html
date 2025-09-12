@@ -365,6 +365,21 @@
         </table>
     </div>
     <div class="table-container">
+        <h2 style="margin-top:0;font-size:1.5em;color:var(--text-primary);">Generation 3 Heroes</h2>
+        <table id="gen3Table">
+            <thead>
+                <tr>
+                    <th>Hero Image</th>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th>Details</th>
+                    <th>Expedition Skills</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div class="table-container">
         <h2 style="margin-top:0;font-size:1.5em;color:var(--text-primary);">Epic Heroes</h2>
         <table id="epicTable">
             <thead>
@@ -474,7 +489,7 @@
                             // Create a map of hero details for quick lookup
                             const heroMap = new Map();
                             // Combine all hero types into one map
-                            [...(heroesData.Gen1 || []), ...(heroesData.Gen2 || []), ...(heroesData.Epic || [])]
+                            [...(heroesData.Gen1 || []), ...(heroesData.Gen2 || []), ...(heroesData.Gen3 || []), ...(heroesData.Epic || [])]
                                 .forEach(hero => {
                                     heroMap.set(hero.name, {
                                         image: hero.image,
@@ -544,6 +559,14 @@
                     if (data.Gen2) {
                         data.Gen2.forEach(hero => {
                             gen2TableBody.appendChild(createHeroRow(hero));
+                        });
+                    }
+
+                    // Populate Gen3 Heroes table
+                    const gen3TableBody = document.querySelector("#gen3Table tbody");
+                    if (data.Gen3) {
+                        data.Gen3.forEach(hero => {
+                            gen3TableBody.appendChild(createHeroRow(hero));
                         });
                     }
 
