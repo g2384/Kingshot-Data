@@ -15,14 +15,24 @@
             --text-secondary: #a3aab8;
             --border-color: #363b44;
             --shadow-color: rgba(0, 0, 0, 0.2);
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
             background: var(--bg-main);
             color: var(--text-primary);
-            margin: 0;
-            padding: 0;
+            line-height: 1.5;
+            padding: var(--spacing-sm);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -30,43 +40,46 @@
         }
 
         h1 {
-            margin-top: 2rem;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-            letter-spacing: 1px;
+            margin: var(--spacing-lg) 0 var(--spacing-md);
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            letter-spacing: 0.5px;
             font-weight: 600;
+            text-align: center;
             color: var(--text-primary);
         }
 
         .table-container {
             background: var(--bg-card);
-            margin: 2rem 1.5rem;
+            margin: var(--spacing-md) auto;
+            padding: var(--spacing-sm);
             border-radius: 1rem;
-            box-shadow: 0 4px 24px var(--shadow-color);
-            margin-bottom: 2rem;
-            width: 100%;
-            max-width: 1900px;
+            box-shadow: 0 4px 16px var(--shadow-color);
+            width: min(100%, 1900px);
+            overflow-x: auto;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             background: var(--bg-card);
+            font-size: 0.95rem;
         }
 
-        th,
-        td {
-            padding: 0.75em 0.5em;
+        th, td {
+            padding: var(--spacing-sm);
             border-bottom: 1px solid var(--border-color);
             text-align: left;
             color: var(--text-primary);
+            vertical-align: middle;
         }
 
         th {
             background: var(--bg-hover);
             font-weight: 600;
-            font-size: 1em;
             color: var(--text-secondary);
+            position: sticky;
+            top: 0;
+            z-index: 1;
         }
 
         tr:last-child td {
@@ -75,13 +88,21 @@
 
         tr:hover {
             background: var(--bg-hover);
+            transition: background-color 0.2s ease;
         }
 
         img {
-            width: 70px;
-            border-radius: 0.5em;
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 0.5rem;
             box-shadow: 0 2px 8px var(--shadow-color);
-            padding: 5px;
+            padding: var(--spacing-xs);
+            transition: transform 0.2s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05);
         }
 
         .hero-rare img {
@@ -103,13 +124,13 @@
         }
 
         #lineupsTable td {
-            padding: 8px;
+            padding: var(--spacing-sm);
             text-align: center;
         }
 
         .lineup-index {
             text-align: center;
-            color: #666;
+            color: var(--text-secondary);
             font-size: 0.9em;
         }
 
@@ -117,13 +138,13 @@
             width: 48px;
             height: 48px;
             display: block;
-            margin: 0 auto 4px auto;
-            border-radius: 8px;
+            margin: 0 auto var(--spacing-xs);
+            border-radius: 0.5rem;
         }
 
         .hero-name {
             font-size: 0.9em;
-            margin-bottom: 2px;
+            margin-bottom: var(--spacing-xs);
         }
 
         .hero-class {
@@ -139,34 +160,43 @@
         /* Counter chart styles */
         .counter-chart {
             background: var(--bg-card);
-            padding: 1.2rem 1.5rem;
+            padding: var(--spacing-md);
             border-radius: 1rem;
-            box-shadow: 0 4px 24px var(--shadow-color);
-            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 16px var(--shadow-color);
+            margin: var(--spacing-md) auto;
             text-align: center;
+            max-width: 600px;
+            width: 100%;
         }
 
         .counter-title {
             color: var(--text-primary);
-            font-size: 1em;
-            margin-bottom: 0.8rem;
+            font-size: 1.1em;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 500;
         }
 
         .counter-row {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.8rem;
-            margin-bottom: 0.5rem;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-xs);
+            flex-wrap: wrap;
         }
 
         .counter-item {
             font-size: 1.5rem;
-            padding: 0.5rem;
+            padding: var(--spacing-xs);
             background: var(--bg-hover);
             border-radius: 0.5rem;
             min-width: 2.5rem;
             border: 1px solid var(--border-color);
+            transition: transform 0.2s ease;
+        }
+
+        .counter-item:hover {
+            transform: scale(1.1);
         }
 
         .counter-arrow {
@@ -176,55 +206,78 @@
 
         .counter-bonus {
             font-size: 0.9em;
-            color: #666;
+            color: var(--text-secondary);
+            margin-top: var(--spacing-xs);
         }
 
-        @media (max-width: 700px) {
-            .table-container {
-                padding: 1rem 0.2rem;
+        @media (max-width: 768px) {
+            :root {
+                --spacing-sm: 0.75rem;
+                --spacing-md: 1rem;
+                --spacing-lg: 1.5rem;
             }
 
-            table,
-            thead,
-            tbody,
-            th,
-            td,
-            tr {
+            body {
+                padding: var(--spacing-xs);
+            }
+
+            .table-container {
+                margin: var(--spacing-sm) auto;
+                padding: var(--spacing-xs);
+                border-radius: 0.75rem;
+            }
+
+            table, thead, tbody, th, td, tr {
                 display: block;
             }
 
-            thead {
-                display: none;
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
             }
 
             tr {
-                margin-bottom: 1.2em;
-                background: #fff;
-                border-radius: 0.7em;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-                padding: 0.7em 0.5em;
+                position: relative;
+                margin-bottom: var(--spacing-sm);
+                background: var(--bg-card);
+                border-radius: 0.75rem;
+                box-shadow: 0 2px 8px var(--shadow-color);
+                padding: var(--spacing-sm);
             }
 
             td {
                 border: none;
                 position: relative;
                 padding-left: 50%;
-                min-height: 2.2em;
+                min-height: 2.5em;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            td:last-child {
+                border-bottom: none;
             }
 
             td:before {
                 position: absolute;
-                left: 0.7em;
-                top: 0.7em;
-                width: 45%;
+                left: var(--spacing-sm);
+                top: 50%;
+                transform: translateY(-50%);
+                width: 40%;
                 white-space: nowrap;
-                font-weight: 600;
-                color: #888;
-                font-size: 0.98em;
+                font-weight: 500;
+                color: var(--text-secondary);
+                font-size: 0.9em;
+            }
+
+            td:nth-child(1) {
+                padding-left: 0;
+                display: flex;
+                justify-content: center;
             }
 
             td:nth-child(1):before {
-                content: "Hero Image";
+                content: none;
             }
 
             td:nth-child(2):before {
@@ -241,6 +294,14 @@
 
             td:nth-child(5):before {
                 content: "Expedition Skills";
+            }
+
+            .counter-row {
+                padding: 0 var(--spacing-xs);
+            }
+
+            .counter-item {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -289,7 +350,7 @@
         </table>
     </div>
     <div class="table-container">
-        <h2 style="margin-top:2rem;font-size:1.5em;color:var(--text-primary);">Generation 2 Heroes</h2>
+        <h2 style="margin-top:0;font-size:1.5em;color:var(--text-primary);">Generation 2 Heroes</h2>
         <table id="gen2Table">
             <thead>
                 <tr>
@@ -304,7 +365,7 @@
         </table>
     </div>
     <div class="table-container">
-        <h2 style="margin-top:2rem;font-size:1.5em;color:var(--text-primary);">Epic Heroes</h2>
+        <h2 style="margin-top:0;font-size:1.5em;color:var(--text-primary);">Epic Heroes</h2>
         <table id="epicTable">
             <thead>
                 <tr>
@@ -319,7 +380,7 @@
         </table>
     </div>
     <div class="table-container">
-        <h2 style="margin-top:2rem;font-size:1.5em;color:var(--text-primary);">Gatherers</h2>
+        <h2 style="margin-top:0;font-size:1.5em;color:var(--text-primary);">Gatherers</h2>
         <table id="gatherersTable">
             <thead>
                 <tr>

@@ -5,7 +5,7 @@
       "image": "images/heroes/amadeus.png",
       "class": "Infantry",
       "rarity": "Legendary",
-      "details": "VIP hero with strong longevity; expensive to level up without investment.",
+      "details": "Not for F2P. Shards only from purchases or top 10 in first 3 Hall of Governors events.",
       "expeditionSkills": ""
     },
     {
@@ -25,7 +25,7 @@
       "image": "images/heroes/helga.webp",
       "class": "Infantry",
       "rarity": "Legendary",
-      "details": "Early powerhouse; loses relevance in later generations.",
+      "details": "Not for F2P. Shards are only from purchases or first purchase.",
       "expeditionSkills": [
         "Chance To Reduce 50% Damage Taken: 8%/16%/24%/32%/40%",
         "Attack Up: 5%/10%/15%/20%/25%",
