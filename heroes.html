@@ -84,15 +84,15 @@
             padding: 5px;
         }
 
-        tr[data-rarity="rare"] img {
+        .hero-rare img {
             background-color: #66a2e8;
         }
 
-        tr[data-rarity="epic"] img {
+        .hero-epic img {
             background-color: #9d6ae0;
         }
 
-        tr[data-rarity="legendary"] img {
+        .hero-legendary img {
             background-color: #e6a449;
         }
 
@@ -236,14 +236,10 @@
             }
 
             td:nth-child(4):before {
-                content: "Rarity";
-            }
-
-            td:nth-child(5):before {
                 content: "Details";
             }
 
-            td:nth-child(6):before {
+            td:nth-child(5):before {
                 content: "Expedition Skills";
             }
         }
@@ -285,7 +281,6 @@
                     <th>Hero Image</th>
                     <th>Name</th>
                     <th>Class</th>
-                    <th>Rarity</th>
                     <th>Details</th>
                     <th>Expedition Skills</th>
                 </tr>
@@ -301,7 +296,6 @@
                     <th>Hero Image</th>
                     <th>Name</th>
                     <th>Class</th>
-                    <th>Rarity</th>
                     <th>Details</th>
                     <th>Expedition Skills</th>
                 </tr>
@@ -338,7 +332,7 @@
 
         function createHeroRow(hero) {
             const row = document.createElement("tr");
-            row.setAttribute('data-rarity', hero.rarity.toLowerCase());
+            row.classList.add('hero-' + hero.rarity.toLowerCase());
 
             const imgCell = document.createElement("td");
             const img = document.createElement("img");
@@ -354,10 +348,6 @@
             const attrCell = document.createElement("td");
             attrCell.textContent = getClassIcon(hero.class);
             row.appendChild(attrCell);
-
-            const genCell = document.createElement("td");
-            genCell.textContent = hero.rarity;
-            row.appendChild(genCell);
 
             const detailsCell = document.createElement("td");
             detailsCell.textContent = hero.details;
