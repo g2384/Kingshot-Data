@@ -170,13 +170,15 @@
         "Health Up: 5%/10%/15%/20%/25%",
         "Attack Up: 5%/10%/15%/20%/25%"
       ]
-    },
+    }
+  ],
+  "Gatherers": [
     {
       "name": "Olive",
       "image": "images/heroes/olive.webp",
       "class": "Archer",
       "rarity": "Rare",
-      "details": "Basic damage dealer with passive hunting income bonus.",
+      "details": "Gather bread in the wilderness.",
       "expeditionSkills": [
         "Bread: Increase the Town's Mill Output by 5%/10%/15%/20%/25%",
         "Bread: Increase her Resource Gathering Speed in the Wilderness by 5%/10%/15%/20%/25%"
@@ -187,7 +189,7 @@
       "image": "images/heroes/forrest.webp",
       "class": "Infantry",
       "rarity": "Rare",
-      "details": "Only notable for his passive Logging income boost.",
+      "details": "Gather wood in the wilderness.",
       "expeditionSkills": [
         "Wood: Increase the Town's Sawmill Output by 5%/10%/15%/20%/25%",
         "Wood: Increase his Wood Gathering Speed in the Wilderness by 5%/10%/15%/20%/25%"
@@ -198,7 +200,7 @@
       "image": "images/heroes/edwin.webp",
       "class": "Cavalry",
       "rarity": "Rare",
-      "details": "Early-game AoE and stun; long-term value in Stone Mine passive.",
+      "details": "Gather stone in the wilderness.",
       "expeditionSkills": [
         "Stone: Increase the Town's Quarry Output by 5%/10%/15%/20%/25%",
         "Stone: Increase his Stone Mining Speed in the Wilderness by 5%/10%/15%/20%/25%"
@@ -209,7 +211,7 @@
       "image": "images/heroes/seth.webp",
       "class": "Infantry",
       "rarity": "Rare",
-      "details": "Suppression tank with passive Iron Mine income buff.",
+      "details": "Gather iron in the wilderness.",
       "expeditionSkills": [
         "Iron: Increase the Town's Iron Output by 5%/10%/15%/20%/25%",
         "Iron: Increase his Iron Mining Speed in the Wilderness by 5%/10%/15%/20%/25%"

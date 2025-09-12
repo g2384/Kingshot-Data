@@ -278,7 +278,24 @@
         </table>
     </div>
     <div class="table-container">
+        <h2 style="margin-top:0;font-size:1.5em;color:var(--text-primary);">Heroes</h2>
         <table id="heroesTable">
+            <thead>
+                <tr>
+                    <th>Hero Image</th>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th>Rarity</th>
+                    <th>Details</th>
+                    <th>Expedition Skills</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div class="table-container">
+        <h2 style="margin-top:2rem;font-size:1.5em;color:var(--text-primary);">Gatherers</h2>
+        <table id="gatherersTable">
             <thead>
                 <tr>
                     <th>Hero Image</th>
@@ -299,7 +316,15 @@
             if (/bread/i.test(skill)) return "🥖";
             if (/stone/i.test(skill)) return "🪨";
             if (/wood/i.test(skill)) return "🪵";
-            return "⭐";
+            if (/Lethality/i.test(skill)) return "🗡️";
+            if (/Attack/i.test(skill)) return "⚔️";
+            if (/Health/i.test(skill)) return "❤️";
+            if (/Healing/i.test(skill)) return "💊";
+            if (/Damage/i.test(skill)) return "💥";
+            if (/Speed/i.test(skill)) return "⚡";
+            if (/Research/i.test(skill)) return "📚";
+            if (/Resource/i.test(skill)) return "💎";
+            return "🎯";
         }
 
         function getClassIcon(className) {
@@ -311,6 +336,48 @@
             }
         }
 
+        function createHeroRow(hero) {
+            const row = document.createElement("tr");
+            row.setAttribute('data-rarity', hero.rarity.toLowerCase());
+
+            const imgCell = document.createElement("td");
+            const img = document.createElement("img");
+            img.src = hero.image;
+            img.alt = hero.name;
+            imgCell.appendChild(img);
+            row.appendChild(imgCell);
+
+            const nameCell = document.createElement("td");
+            nameCell.textContent = hero.name;
+            row.appendChild(nameCell);
+
+            const attrCell = document.createElement("td");
+            attrCell.textContent = getClassIcon(hero.class);
+            row.appendChild(attrCell);
+
+            const genCell = document.createElement("td");
+            genCell.textContent = hero.rarity;
+            row.appendChild(genCell);
+
+            const detailsCell = document.createElement("td");
+            detailsCell.textContent = hero.details;
+            row.appendChild(detailsCell);
+
+            const expeditionCell = document.createElement("td");
+            let expeditionSkills = hero.expeditionSkills;
+            if (Array.isArray(expeditionSkills) && expeditionSkills.length > 0) {
+                expeditionCell.innerHTML = expeditionSkills
+                    .map(skill => `<div>${getSkillIcon(skill)} ${skill}</div>`)
+                    .join("");
+            } else if (typeof expeditionSkills === "string" && expeditionSkills.trim() !== "") {
+                expeditionCell.innerHTML = `<div>${getSkillIcon(expeditionSkills)} ${expeditionSkills}</div>`;
+            } else {
+                expeditionCell.textContent = "";
+            }
+            row.appendChild(expeditionCell);
+
+            return row;
+        }
 
         window.onload = function () {
             // Load and display lineups
@@ -377,54 +444,23 @@
                 })
                 .catch(error => console.error("Error loading lineups:", error));
 
-            // Load heroes table
+            // Load heroes and gatherers tables
             fetch('heroes.json')
                 .then(response => response.json())
                 .then(data => {
-                    const tableBody = document.querySelector("#heroesTable tbody");
-
+                    // Populate Heroes table
+                    const heroesTableBody = document.querySelector("#heroesTable tbody");
                     data.heroes.forEach(hero => {
-                        const row = document.createElement("tr");
-                        row.setAttribute('data-rarity', hero.rarity.toLowerCase());
-
-                        const imgCell = document.createElement("td");
-                        const img = document.createElement("img");
-                        img.src = hero.image;
-                        img.alt = hero.name;
-                        imgCell.appendChild(img);
-                        row.appendChild(imgCell);
-
-                        const nameCell = document.createElement("td");
-                        nameCell.textContent = hero.name;
-                        row.appendChild(nameCell);
-
-                        const attrCell = document.createElement("td");
-                        attrCell.textContent = getClassIcon(hero.class);
-                        row.appendChild(attrCell);
-
-                        const genCell = document.createElement("td");
-                        genCell.textContent = hero.rarity;
-                        row.appendChild(genCell);
-
-                        const detailsCell = document.createElement("td");
-                        detailsCell.textContent = hero.details;
-                        row.appendChild(detailsCell);
-
-                        const expeditionCell = document.createElement("td");
-                        let expeditionSkills = hero.expeditionSkills;
-                        if (Array.isArray(expeditionSkills) && expeditionSkills.length > 0) {
-                            expeditionCell.innerHTML = expeditionSkills
-                                .map(skill => `<div>${getSkillIcon(skill)} ${skill}</div>`)
-                                .join("");
-                        } else if (typeof expeditionSkills === "string" && expeditionSkills.trim() !== "") {
-                            expeditionCell.innerHTML = `<div>${getSkillIcon(expeditionSkills)} ${expeditionSkills}</div>`;
-                        } else {
-                            expeditionCell.textContent = "";
-                        }
-                        row.appendChild(expeditionCell);
-
-                        tableBody.appendChild(row);
+                        heroesTableBody.appendChild(createHeroRow(hero));
                     });
+
+                    // Populate Gatherers table
+                    const gatherersTableBody = document.querySelector("#gatherersTable tbody");
+                    if (data.Gatherers) {
+                        data.Gatherers.forEach(hero => {
+                            gatherersTableBody.appendChild(createHeroRow(hero));
+                        });
+                    }
                 })
                 .catch(error => console.error("Error loading JSON data:", error));
         };
