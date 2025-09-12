@@ -1,38 +1,47 @@
 {
-  "heroes": [
+  "Gen1": [
     {
-      "name": "Yaenwoo",
-      "image": "images/heroes/yaenwoo.png",
-      "class": "Archer",
-      "rarity": "Epic",
-      "details": "Great passive research speed buff, useful for F2P players or active use if you lack legendaries.",
-      "expeditionSkills": [
-        "Lethality Up: 5%/10%/15%/20%/25%",
-        "Research Speed Up: 3%/6%/9%/12%/15%"
-      ]
+      "name": "Amadeus",
+      "image": "images/heroes/amadeus.png",
+      "class": "Infantry",
+      "rarity": "Legendary",
+      "details": "VIP hero with strong longevity; expensive to level up without investment.",
+      "expeditionSkills": ""
     },
     {
-      "name": "Amane",
-      "image": "images/heroes/amane.png",
-      "class": "Archer",
-      "rarity": "Epic",
-      "details": "Excellent passive healing speed buff, ideal for lower-legendaries setups.",
-      "expeditionSkills": [
-        "Attack Up: 5%/10%/15%/20%/25%",
-        "Infirmary Healing Speed Up: 10%/20%/30%/40%/50%"
-      ]
-    },
-    {
-      "name": "Fahd",
-      "image": "images/heroes/fahd.png",
+      "name": "Jabel",
+      "image": "images/heroes/jabel.png",
       "class": "Cavalry",
-      "rarity": "Epic",
-      "details": "Solo hunting march speed buff, but limited overall utility.",
+      "rarity": "Legendary",
+      "details": "Starter hero with stuns and buffs; gradually replaced by newer units.",
       "expeditionSkills": [
-        "Enemy Damage Down: 4%/8%/12%/16%/20%",
-        "Solo Hunting March Speed Up: 20%/40%/60%/80%/100%"
+        "Chance To Reduce 50% Damage Taken: 8%/16%/24%/32%/40%",
+        "50% Chance Damage Up: 10%/20%/30%/40$/50%",
+        "Lethality Up: 5%/10%/15%/20%/25%"
       ]
     },
+    {
+      "name": "Helga",
+      "image": "images/heroes/helga.webp",
+      "class": "Infantry",
+      "rarity": "Legendary",
+      "details": "Early powerhouse; loses relevance in later generations.",
+      "expeditionSkills": [
+        "Chance To Reduce 50% Damage Taken: 8%/16%/24%/32%/40%",
+        "Attack Up: 5%/10%/15%/20%/25%",
+        "Lethality Up: 5%/10%/15%/20%/25%"
+      ]
+    },
+    {
+      "name": "Saul",
+      "image": "images/heroes/saul.png",
+      "class": "Archer",
+      "rarity": "Legendary",
+      "details": "Useful for construction boosts via passive Expedition abilities.",
+      "expeditionSkills": ""
+    }
+  ],
+  "Gen2": [
     {
       "name": "Eric",
       "image": "images/heroes/eric.png",
@@ -75,37 +84,40 @@
       "rarity": "Legendary",
       "details": "Healer with situational Expedition value and inconsistent proc chances.",
       "expeditionSkills": ""
-    },
+    }
+  ],
+  "Epic": [
     {
-      "name": "Amadeus",
-      "image": "images/heroes/amadeus.png",
-      "class": "Infantry",
-      "rarity": "Legendary",
-      "details": "VIP hero with strong longevity; expensive to level up without investment.",
-      "expeditionSkills": ""
-    },
-    {
-      "name": "Jabel",
-      "image": "images/heroes/jabel.png",
-      "class": "Cavalry",
-      "rarity": "Legendary",
-      "details": "Starter hero with stuns and buffs; gradually replaced by newer units.",
+      "name": "Yaenwoo",
+      "image": "images/heroes/yaenwoo.png",
+      "class": "Archer",
+      "rarity": "Epic",
+      "details": "Great passive research speed buff, useful for F2P players or active use if you lack legendaries.",
       "expeditionSkills": [
-        "Chance To Reduce 50% Damage Taken: 8%/16%/24%/32%/40%",
-        "50% Chance Damage Up: 10%/20%/30%/40$/50%",
-        "Lethality Up: 5%/10%/15%/20%/25%"
+        "Lethality Up: 5%/10%/15%/20%/25%",
+        "Research Speed Up: 3%/6%/9%/12%/15%"
       ]
     },
     {
-      "name": "Helga",
-      "image": "images/heroes/helga.webp",
-      "class": "Infantry",
-      "rarity": "Legendary",
-      "details": "Early powerhouse; loses relevance in later generations.",
+      "name": "Amane",
+      "image": "images/heroes/amane.png",
+      "class": "Archer",
+      "rarity": "Epic",
+      "details": "Excellent passive healing speed buff, ideal for lower-legendaries setups.",
       "expeditionSkills": [
-        "Chance To Reduce 50% Damage Taken: 8%/16%/24%/32%/40%",
         "Attack Up: 5%/10%/15%/20%/25%",
-        "Lethality Up: 5%/10%/15%/20%/25%"
+        "Infirmary Healing Speed Up: 10%/20%/30%/40%/50%"
+      ]
+    },
+    {
+      "name": "Fahd",
+      "image": "images/heroes/fahd.png",
+      "class": "Cavalry",
+      "rarity": "Epic",
+      "details": "Solo hunting march speed buff, but limited overall utility.",
+      "expeditionSkills": [
+        "Enemy Damage Down: 4%/8%/12%/16%/20%",
+        "Solo Hunting March Speed Up: 20%/40%/60%/80%/100%"
       ]
     },
     {
@@ -129,14 +141,6 @@
         "Damage Taken Down: 4%/8%/12%/16%/20%",
         "50% Chance Damage Up: 10%/20%/30%/40$/50%"
       ]
-    },
-    {
-      "name": "Saul",
-      "image": "images/heroes/saul.png",
-      "class": "Archer",
-      "rarity": "Legendary",
-      "details": "Useful for construction boosts via passive Expedition abilities.",
-      "expeditionSkills": ""
     },
     {
       "name": "Diana",

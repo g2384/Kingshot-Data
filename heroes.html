@@ -274,8 +274,38 @@
         </table>
     </div>
     <div class="table-container">
-        <h2 style="margin-top:0;font-size:1.5em;color:var(--text-primary);">Heroes</h2>
-        <table id="heroesTable">
+        <h2 style="margin-top:0;font-size:1.5em;color:var(--text-primary);">Generation 1 Heroes</h2>
+        <table id="gen1Table">
+            <thead>
+                <tr>
+                    <th>Hero Image</th>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th>Details</th>
+                    <th>Expedition Skills</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div class="table-container">
+        <h2 style="margin-top:2rem;font-size:1.5em;color:var(--text-primary);">Generation 2 Heroes</h2>
+        <table id="gen2Table">
+            <thead>
+                <tr>
+                    <th>Hero Image</th>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th>Details</th>
+                    <th>Expedition Skills</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div class="table-container">
+        <h2 style="margin-top:2rem;font-size:1.5em;color:var(--text-primary);">Epic Heroes</h2>
+        <table id="epicTable">
             <thead>
                 <tr>
                     <th>Hero Image</th>
@@ -382,12 +412,14 @@
                         .then(heroesData => {
                             // Create a map of hero details for quick lookup
                             const heroMap = new Map();
-                            heroesData.heroes.forEach(hero => {
-                                heroMap.set(hero.name, {
-                                    image: hero.image,
-                                    class: hero.class
+                            // Combine all hero types into one map
+                            [...(heroesData.Gen1 || []), ...(heroesData.Gen2 || []), ...(heroesData.Epic || [])]
+                                .forEach(hero => {
+                                    heroMap.set(hero.name, {
+                                        image: hero.image,
+                                        class: hero.class
+                                    });
                                 });
-                            });
 
                             // Now process lineups
                             data.lineupsGen1.forEach((lineup, index) => {
@@ -438,11 +470,29 @@
             fetch('heroes.json')
                 .then(response => response.json())
                 .then(data => {
-                    // Populate Heroes table
-                    const heroesTableBody = document.querySelector("#heroesTable tbody");
-                    data.heroes.forEach(hero => {
-                        heroesTableBody.appendChild(createHeroRow(hero));
-                    });
+                    // Populate Gen1 Heroes table
+                    const gen1TableBody = document.querySelector("#gen1Table tbody");
+                    if (data.Gen1) {
+                        data.Gen1.forEach(hero => {
+                            gen1TableBody.appendChild(createHeroRow(hero));
+                        });
+                    }
+
+                    // Populate Gen2 Heroes table
+                    const gen2TableBody = document.querySelector("#gen2Table tbody");
+                    if (data.Gen2) {
+                        data.Gen2.forEach(hero => {
+                            gen2TableBody.appendChild(createHeroRow(hero));
+                        });
+                    }
+
+                    // Populate Epic Heroes table
+                    const epicTableBody = document.querySelector("#epicTable tbody");
+                    if (data.Epic) {
+                        data.Epic.forEach(hero => {
+                            epicTableBody.appendChild(createHeroRow(hero));
+                        });
+                    }
 
                     // Populate Gatherers table
                     const gatherersTableBody = document.querySelector("#gatherersTable tbody");
