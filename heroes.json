@@ -161,14 +161,14 @@
       ]
     },
     {
-      "name": "Seth",
-      "image": "images/heroes/seth.webp",
-      "class": "Infantry",
-      "rarity": "Rare",
-      "details": "Suppression tank with passive Iron Mine income buff.",
+      "name": "Gordon",
+      "image": "images/heroes/gordon.webp",
+      "class": "Cavalry",
+      "rarity": "Epic",
+      "details": "Healing kit that's not strong enough when really needed.",
       "expeditionSkills": [
-        "Iron: Increase the Town's Iron Output by 5%/10%/15%/20%/25%",
-        "Iron: Increase his Iron Mining Speed in the Wilderness by 5%/10%/15%/20%/25%"
+        "Health Up: 5%/10%/15%/20%/25%",
+        "Attack Up: 5%/10%/15%/20%/25%"
       ]
     },
     {
@@ -183,14 +183,14 @@
       ]
     },
     {
-      "name": "Gordon",
-      "image": "images/heroes/gordon.webp",
-      "class": "Cavalry",
-      "rarity": "Epic",
-      "details": "Healing kit that's not strong enough when really needed.",
+      "name": "Forrest",
+      "image": "images/heroes/forrest.webp",
+      "class": "Infantry",
+      "rarity": "Rare",
+      "details": "Only notable for his passive Logging income boost.",
       "expeditionSkills": [
-        "Health Up: 5%/10%/15%/20%/25%",
-        "Attack Up: 5%/10%/15%/20%/25%"
+        "Wood: Increase the Town's Sawmill Output by 5%/10%/15%/20%/25%",
+        "Wood: Increase his Wood Gathering Speed in the Wilderness by 5%/10%/15%/20%/25%"
       ]
     },
     {
@@ -205,14 +205,14 @@
       ]
     },
     {
-      "name": "Forrest",
-      "image": "images/heroes/forrest.webp",
+      "name": "Seth",
+      "image": "images/heroes/seth.webp",
       "class": "Infantry",
       "rarity": "Rare",
-      "details": "Only notable for his passive Logging income boost.",
+      "details": "Suppression tank with passive Iron Mine income buff.",
       "expeditionSkills": [
-        "Wood: Increase the Town's Sawmill Output by 5%/10%/15%/20%/25%",
-        "Wood: Increase his Wood Gathering Speed in the Wilderness by 5%/10%/15%/20%/25%"
+        "Iron: Increase the Town's Iron Output by 5%/10%/15%/20%/25%",
+        "Iron: Increase his Iron Mining Speed in the Wilderness by 5%/10%/15%/20%/25%"
       ]
     }
   ]

@@ -81,6 +81,19 @@
             width: 70px;
             border-radius: 0.5em;
             box-shadow: 0 2px 8px var(--shadow-color);
+            padding: 5px;
+        }
+
+        tr[data-rarity="rare"] img {
+            background-color: #66a2e8;
+        }
+
+        tr[data-rarity="epic"] img {
+            background-color: #9d6ae0;
+        }
+
+        tr[data-rarity="legendary"] img {
+            background-color: #e6a449;
         }
 
         /* Lineup table styles */
@@ -372,6 +385,7 @@
 
                     data.heroes.forEach(hero => {
                         const row = document.createElement("tr");
+                        row.setAttribute('data-rarity', hero.rarity.toLowerCase());
 
                         const imgCell = document.createElement("td");
                         const img = document.createElement("img");
