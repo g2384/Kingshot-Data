@@ -124,6 +124,8 @@ Castle Battle (2nd Time)
 
 ### Working Overtime (2 Days, 2nd Time ??TBC)
 
+You earn 1 point by using 1m of speedups for construction or research.
+
 - Duration: 2 Days (Weekly, occurs few times)
 - Notable Rewards:
   - Gems: 2600
@@ -143,20 +145,20 @@ Castle Battle (2nd Time)
   - For F2P, avoid competing for the top 100 if the 100th position has over 1405 points.
 - ref: https://kingshotdata.com/events/working-overtime-event/
 
-Alliance Mobilization (6 Days)
+### Alliance Mobilization (6 Days)
 
-Swordland Showdown (7 Days)
+### Swordland Showdown (7 Days)
 
-Alliance Championship (7 Days)
+### Alliance Championship (7 Days)
 
-Day 72 (Tuesday)
+## Day 72 (Tuesday)
 
-Sanctuary Battle (4 Days)
+### Sanctuary Battle (4 Days)
 
-Day 73 (Wednesday)
+## Day 73 (Wednesday)
 
-Stand of Arms (2 Days)
+### Stand of Arms (2 Days)
 
-Desert Trial (3 Days)
+### Desert Trial (3 Days)
 
-Day 74
+## Day 74
