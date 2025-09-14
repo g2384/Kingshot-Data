@@ -1,6 +1,28 @@
+# Events Calendar
 
+Day 1
 
-- 20250914: New Game
+New game starts.
+
+Path of Growth (Whenever town upgrades to level 5)
+
+- 7 Days
+- Why important:
+  - 24h VIP Time * 5
+  - Chenko Shard * (22 + 70)
+  - Howard Shard * 16
+  - Epic General Hero Shards * 13
+  - Rare Expedition Skill Manual * 15
+  - Epic Expedition Skill Manual * 15
+  - Mythic Expedition Skill Manual * 10
+  - Epic Conquest Skill Book * 22
+  - Epic Expedition Skill Manual * 22
+  - Gem * (1700 + 500)
+- Save resources:
+  - For Day 4: Conquest Skill Book, Expedition Skill Manual
+  - For Day 5: 800m Speedup
+
+- 20250914: 
 - Upgrade Town Center to Level 5 to unlock Path of Growth
 - Upgrade Town Center Level 6 to unlock wilderness, world map, watchtower, events, event calendar
 - Upgrade Town Center to Level 7 to unlock Daily missions
