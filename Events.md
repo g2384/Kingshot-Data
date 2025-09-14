@@ -59,22 +59,26 @@ Day 3:
 
 ### Desert Trial
 
-- Duration: 3 Days (Recurring weekly)
+- Duration: 3 Days (Recurring weekly ?TBC)
 - Notable Rewards:
-  - Hero Shards from Dreadwolf hunting:
+  - Hero shards from Dreadwolf hunting:
     - Diana Shard * 30 minimum (10 from completing the challenge, 20 from defeating 10 Dreadwolves)
-  - Other Drops from beast hunting:
+  - Other drops from beast hunting:
     - Clawshard: earned via beast hunting or Intel Missions; used to locate Dreadwolves
     - Challenger Pouch: dropped during beast hunts; convertible into various resources
 - Strategy Tips:
   - Deploy Diana in rallies. Her expedition skills reduce stamina usage (from 25 to 20 at max level) and speed up marches (up to +100%)
   - Stockpile Clawshards by hunting beasts or completing Intel Missions during the event; they remain usable post-event
-  - After completing 10 Dreadwolf rallies, switch to beast hunting.
+  - Complete 10 Dreadwolf rallies, then switch to beast hunting for collecting more Clawshards.
 - ref: https://kingshotdata.com/events/desert-trial-event/
 
 Day 4:
 
 ### Sanctuary Battle
+
+- Duration: 4 Days (Recurring weekly ?TBC)
+- Not for F2P or weak alliance. Follow instructions from alliance leader.
+- Most servers have NAP (Non-Aggression Pact), Top 10 alliances will share all sanctuary buildings.
 
 ---
 
