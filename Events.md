@@ -40,7 +40,7 @@ Triggers upon reaching Town Center Level 5.
     - Training: 490m + 400m + 400m
 - Preparation (Save resources):
   - Day 4: Conquest Skill Books, Expedition Skill Manuals
-  - Day 5: 800 minutes of any Speedup (520m should be sufficient)
+  - Day 5: 800 minutes of any Speedup (520m should be sufficient, because you'll receive speedups from early stages)
 - ref: https://kingshotdata.com/events/path-of-growth-event/
 
 ### Burst of Life
@@ -114,15 +114,33 @@ All Out (2 Days, 2nd Time)
 
 ??
 
-Day 69 (Saturday)
+## Day 69 (Saturday)
 
 Castle Battle (2nd Time)
 
-Day 70 (20250914, Sunday)
+## Day 70 (20250914, Sunday)
 
-Day 71 (Monday)
+## Day 71 (Monday)
 
-Working Overtime (2 Days, 2nd Time)
+### Working Overtime (2 Days, 2nd Time ??TBC)
+
+- Duration: 2 Days (Weekly, occur few times)
+- Notable Rewards:
+  - Gems: 2600 (approximate total from milestone + leaderboard)
+  - Skill Resources:
+    - Epic Conquest Skill Book * 5
+    - Epic Expedition Skill Manual * 5
+  - Speedup:
+    - Construction: 150m
+    - Research: 150m
+    - Training: 150m
+- Preparation (Save resources):
+  - Save 1180m of speedups for construction or research (730m should be sufficient, because you'll receive speedups from early stages)
+- Ranked:
+  - Top 100 players receive 1000+ Gen, 75m+ construction speedup, 75m+ research speedup, 75m+ training speedup
+- Strategy Tips:
+  - For F2P, do not try to get top 100 if the 100th position achieved 1405 points
+- ref: https://kingshotdata.com/events/working-overtime-event/
 
 Alliance Mobilization (6 Days)
 
