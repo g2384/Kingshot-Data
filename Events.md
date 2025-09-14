@@ -11,11 +11,17 @@ Try to upgrade town center to level 8 or above. Unlocks:
 - Level 7: Unlocks Daily Missions.
 - Level 8: Unlocks Academy for research, Storehouse for stamina + online gifts + bank, left side shortcuts on the screen
 
+### 7 Daily Sign-in Gift
+
+- Duration: 7 Days (Day 1 is your game start day, not server start day, Single-occurrence)
+- Notable Rewards:
+  - Unlock Jabel and hear gear
+
 ### Path of Growth
 
 Triggers upon reaching Town Center Level 5.
 
-- Duration: 7 Days (custom start time, Single-occurrence)
+- Duration: 7 Days (Custom start time, Single-occurrence)
 - Notable Rewards:
   - Gems: 2200
   - VIP Time: 24h * 5
@@ -43,7 +49,7 @@ Boost your power and win limited skin reward
 
 Reach total power 4M
 
-- Duration: 7 Days (server start time, Single-occurrence)
+- Duration: 7 Days (Server start time, Single-occurrence)
 - Notable Rewards:
   - Gems: 9700
   - Action Emote: Go!
