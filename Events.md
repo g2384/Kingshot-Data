@@ -1,35 +1,66 @@
 # Events Calendar
 
-Day 1
+## Day 1 (20250914, Sunday)
 
 New game starts.
 
-Path of Growth (Whenever town upgrades to level 5)
+Try to upgrade town center to level 8 or above. Unlocks:
 
-- 7 Days
-- Why important:
-  - 24h VIP Time * 5
-  - Chenko Shard * (22 + 70)
-  - Howard Shard * 16
-  - Epic General Hero Shards * 13
-  - Rare Expedition Skill Manual * 15
-  - Epic Expedition Skill Manual * 15
-  - Mythic Expedition Skill Manual * 10
-  - Epic Conquest Skill Book * 22
-  - Epic Expedition Skill Manual * 22
-  - Gem * (1700 + 500)
-- Save resources:
-  - For Day 4: Conquest Skill Book, Expedition Skill Manual
-  - For Day 5: 800m Speedup
+- Level 5: Path of Growth
+- Level 6: Unlocks Wilderness, World Map, Watchtower, Events, and Event Calendar.
+- Level 7: Unlocks Daily Missions.
+- Level 8: Unlocks Academy for research, Storehouse for stamina + online gifts + bank, left side shortcuts on the screen
 
-- 20250914: 
-- Upgrade Town Center to Level 5 to unlock Path of Growth
-- Upgrade Town Center Level 6 to unlock wilderness, world map, watchtower, events, event calendar
-- Upgrade Town Center to Level 7 to unlock Daily missions
-- 20250914: Path of Growth (Whenever town upgrades to level 5)
-- 20250914: Burst of Life
-- 20250916: Desert Trial
-- 20250917: Sanctuary Battle
+### Path of Growth
+
+Triggers upon reaching Town Center Level 5.
+
+- Duration: 7 Days (custom start time, Single-occurrence)
+- Notable Rewards:
+  - Gems: 2200
+  - VIP Time: 24h * 5
+  - Hero Shards:
+    - Chenko Shard * 92
+    - Howard Shard * 16
+    - Epic General Shards * 13
+  - Skill Resources:
+    - Mythic Expedition Skill Manual * 10
+    - Epic Expedition Skill Manual * 37
+    - Rare Expedition Skill Manual * 15
+    - Epic Conquest Skill Book * 22
+  - Speedup:
+    - Construction: 250m + 270m + 200m
+    - Research: 260m + 460m
+    - Training: 490m + 400m + 400m
+- Preparation (Save resources):
+  - Day 4: Conquest Skill Books, Expedition Skill Manuals
+  - Day 5: 800 minutes of any Speedup (520m should be sufficient)
+
+### Burst of Life
+
+Boost your power and win limited skin reward
+
+Reach total power 4M
+
+- Duration: 7 Days (server start time, Single-occurrence)
+- Notable Rewards:
+  - Gems: 9700
+  - Action Emote: Go!
+  - Burst of life (Permanent) castle skin, resource gathering speed + 5%
+  - Speedup:
+    - Construction: 21h
+
+Day 2:
+
+No new events
+
+Day 3:
+
+### Desert Trial
+
+Day 4:
+
+### Sanctuary Battle
 
 ---
 
