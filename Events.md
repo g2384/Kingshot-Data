@@ -35,6 +35,7 @@ Triggers upon reaching Town Center Level 5.
 - Preparation (Save resources):
   - Day 4: Conquest Skill Books, Expedition Skill Manuals
   - Day 5: 800 minutes of any Speedup (520m should be sufficient)
+- ref: https://kingshotdata.com/events/path-of-growth-event/
 
 ### Burst of Life
 
@@ -57,6 +58,24 @@ No new events
 Day 3:
 
 ### Desert Trial
+
+- Duration: 3 Days (Repeated, every week?)
+- Notable Rewards:
+  - Hero Shards:
+    - Diana Shard * 30 (minimum, 10 from competing the challenge, 20 from killing 10 Dreadwolves)
+  - Other Drops:
+    - Clawshard: from beast hunting during event, used to track down Dreadwolves.
+    - Challenger Pouch: from beast hunting during event, used to convert into resources.
+- Skill Resources:
+  - Diana’s Expedition Skills:
+    - Skill 1: Reduces rally stamina cost (from 25 to 20 when maxed)
+    - Skill 2: Boosts March Speed (up to +100%)
+- Tips:
+  - Use Diana. She reduces stamina cost and boost march speed.
+  - Hunt beasts or complete Intel Missions before and during event to earn Clawshards, which can be used outside of the event.
+  - After you’ve done 10 rallies against Dreadwolves, it’s better to use your stamina on hunting beasts instead.
+
+- ref: https://kingshotdata.com/events/desert-trial-event/
 
 Day 4:
 
