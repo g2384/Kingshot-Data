@@ -155,6 +155,8 @@ You earn 1 point by using 1m of speedups for construction or research.
 
 ### Sanctuary Battle (4 Days)
 
+### Call of hte Sovereign
+
 ## Day 73 (Wednesday)
 
 ### Stand of Arms (2 Days)
