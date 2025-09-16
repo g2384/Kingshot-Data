@@ -4,12 +4,14 @@
 
 New game starts.
 
-Try to upgrade town center to level 8 or above. Unlocks:
+Day 1 try to upgrade town center to level 8 or above.
 
 - Level 5: Path of Growth
 - Level 6: Unlocks Wilderness, World Map, Watchtower, Events, and Event Calendar.
 - Level 7: Unlocks Daily Missions.
 - Level 8: Unlocks Academy for research, Storehouse for stamina + online gifts + bank, left side shortcuts on the screen
+- Level 11: Unlocks "Claim All" button on the Daily Mission page
+- Level 12: Unlocks Nomadic Merchant shop.
 
 ### 7 Daily Sign-in Gift
 
@@ -57,11 +59,11 @@ Reach total power 4M
   - Speedup:
     - Construction: 21h
 
-Day 2:
+## Day 2:
 
 No new events
 
-Day 3:
+## Day 3 (20250916, Tuesday):
 
 ### Desert Trial
 
@@ -78,7 +80,7 @@ Day 3:
   - Complete 10 Dreadwolf rallies, then switch to beast hunting for collecting more Clawshards.
 - ref: https://kingshotdata.com/events/desert-trial-event/
 
-Day 4:
+## Day 4:
 
 ### Sanctuary Battle
 
@@ -88,27 +90,33 @@ Day 4:
 
 ---
 
-Day 64 (20250918)
+## Day 64 (20250908, Monday)
 
 Alliance Championship (7 Days)
 
 Hall of Governors (7 Days)
 
-??
+### Age of Renewal
 
-Day 65
-
-??
-
-Day 66
+- Duration: 7 Days?
+- Notable Rewards:
+  - Truegold * 40 (for F2P)
 
 ??
 
-Day 67
+## Day 65 (Tuesday)
 
 ??
 
-Day 68
+## Day 66 (Wednesday)
+
+??
+
+## Day 67 (Thursday)
+
+??
+
+## Day 68 (Friday)
 
 All Out (2 Days, 2nd Time)
 
@@ -145,17 +153,26 @@ You earn 1 point by using 1m of speedups for construction or research.
   - For F2P, avoid competing for the top 100 if the 100th position has over 1405 points.
 - ref: https://kingshotdata.com/events/working-overtime-event/
 
+### Truegold Enabled
+
+- Daily Missions: 5 Truegold at 270 points, 5 Truegold at 325 points.
+
 ### Alliance Mobilization (6 Days)
 
 ### Swordland Showdown (7 Days)
 
 ### Alliance Championship (7 Days)
 
-## Day 72 (Tuesday)
+## Day 72 (20250916 Tuesday)
 
 ### Sanctuary Battle (4 Days)
 
 ### Call of hte Sovereign
+
+### Pets (Gen 2)
+
+- Upgrade Bison to Lv. 15 to capture Cheetah
+- Upgrade Cheetah to Lv. 15 to capture Moose
 
 ## Day 73 (Wednesday)
 
