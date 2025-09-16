@@ -128,6 +128,10 @@ Castle Battle (2nd Time)
 
 ## Day 70 (20250914, Sunday)
 
+### Truegold Enabled
+
+- Daily Missions: 5 Truegold at 270 points, 5 Truegold at 325 points.
+
 ## Day 71 (Monday)
 
 ### Working Overtime (2 Days, 2nd Time ??TBC)
@@ -153,11 +157,15 @@ You earn 1 point by using 1m of speedups for construction or research.
   - For F2P, avoid competing for the top 100 if the 100th position has over 1405 points.
 - ref: https://kingshotdata.com/events/working-overtime-event/
 
-### Truegold Enabled
-
-- Daily Missions: 5 Truegold at 270 points, 5 Truegold at 325 points.
-
 ### Alliance Mobilization (6 Days)
+
+- Total Truegold: 30
+  - 6K: * 2
+  - 8K: * 3
+  - 25K: * 6
+  - 56K: * 6
+  - 70K: * 5
+  - 80K: * 8
 
 ### Swordland Showdown (7 Days)
 
