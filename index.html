@@ -8,7 +8,7 @@
   <style>
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f7fafc;
+      background: #bbbbbb;
       color: #222;
       margin: 0;
       padding: 0;
@@ -24,7 +24,6 @@
       padding: 2rem 2.5rem;
       border-radius: 1rem;
       box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
-      text-align: center;
     }
 
     h1 {
@@ -97,7 +96,7 @@
     </nav>
     <div class="coming-soon">More pages coming soon.</div>
   </div>
-  <div>
+  <div class="container" style="margin-top:2em;max-width:1000px;">
     <h2>Tips</h2>
 
     <h3>General Tips</h3>
@@ -105,12 +104,16 @@
       <li><strong>Alliance Token</strong>
         <ul>
           <li><strong>Tech Alliance contribution:</strong></li>
-          <li>Get 1 attempt every 10 minutes, stores up to 25 attempts</li>
-          <li>Daily guaranteed tokens: (24h*60m)/10m*100 = 14400 tokens</li>
-          <li>Likely lower bound: (24h*60m)/10m*100 = 17280 tokens</li>
-          <li>>Contribute the final point to complete a technology research to receive 2000 bonus tokens</li>
+          <ul>
+            <li>Get 1 attempt every 10 minutes, stores up to 25 attempts</li>
+            <li>Daily guaranteed tokens: (24h*60m)/10m*100 = 14400 tokens</li>
+            <li>Likely lower bound: (24h*60m)/10m*100 = 17280 tokens</li>
+            <li>Contribute the final point to complete a technology research to receive 2000 bonus tokens</li>
+          </ul>
           <li><strong>Help:</strong></li>
-          <li>One help gives 20 tokens. Maximum 2000 tokens per day</li>
+          <ul>
+            <li>One help gives 20 tokens. Maximum 2000 tokens per day</li>
+          </ul>
         </ul>
       </li>
       <li><strong>Governor Stamina</strong></li>
@@ -119,6 +122,32 @@
         <li>Passively restores 1 per 5 min, that is (24 * 60 / 5) = 288 stamina</li>
         <li>Comforting Embrace (pet skill) gives 35/40/45/50/55/60 stamina per day, depending on levels</li>
         <li>Total: 240 + 288 = 528 stamina per day</li>
+      </ul>
+      <li><strong>Hero recruitment</strong></li>
+      <ul>
+        <li><strong>Public Opinion Rating</strong>: Achieve 100% → <span style="background-color:gold;">1 Gold Key</span></li>
+        <li><strong>Tower Defense (3 runs)</strong>:
+          <ul>
+            <li>Each run rewards: <span style="background-color:gold;">1 Gold Key</span> + <span style="background-color:#dbdbdb;">2 Platinum
+                Keys</span></li>
+            <li>Total: <span style="background-color:gold;">3 Gold Keys</span> + <span style="background-color:#dbdbdb;">6 Platinum Keys</span>
+            </li>
+          </ul>
+        </li>
+        <li><strong>Daily Mission</strong>:
+          <ul>
+            <li>215 points → <span style="background-color:#dbdbdb;">1 Platinum Key</span></li>
+            <li>325 points → <span style="background-color:gold;">1 Gold Key</span></li>
+          </ul>
+        </li>
+        <li><strong>Free Advanced Recruitment</strong>: <span style="background-color:#dbdbdb;">5 Platinum Keys</span></li>
+        <li><strong>Free Epic Recruitment</strong>: <span style="background-color:gold;">1 Gold Key</span>, every two days</li>
+        <li><strong>Total Daily Keys</strong>:
+          <ul>
+            <li><span style="background-color:gold;">5 Gold Keys</span>, or <span style="background-color:gold;">6 Gold Keys</span></li>
+            <li><span style="background-color:#dbdbdb;">12 Platinum Keys</span></li>
+          </ul>
+        </li>
       </ul>
       <li><strong>Resource Protection:</strong> If under attack and can't shield, start construction to lock resources
         without canceling.</li>
@@ -136,9 +165,10 @@
 
     <h4>Decrees</h4>
     <ul>
-      <li><strong>Resource Boost:</strong> Use "Productivity Day" before "Rush Job" (e.g., bread increases from 800k to
+      <li><strong>Resource Boost:</strong> Enable "Productivity Day", then "Rush Job" (e.g., bread increases from 800k
+        to
         1.1M)</li>
-      <li><strong>Stack Buffs:</strong> Combine "Urgent Mobilization" with "Productivity Day" for maximum effect</li>
+      <li><strong>Stack Buffs:</strong> Enable "Productivity Day", then "Urgent Mobilization"</li>
     </ul>
 
     <h3>Free Resources & Shops</h3>
