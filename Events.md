@@ -28,15 +28,15 @@ Triggers upon reaching Town Center Level 5.
   - Gems: 2200
   - VIP Time: 24h * 5
   - Hero Shards:
-    - Chenko Shard * 92
-    - Howard Shard * 16
+    - Chenko Shard * 92 (Hard, reach town center Lv. 17)
+    - Howard Shard * 16 (Hard, clear conquest stage 200)
     - Epic General Shards * 13
   - Skill Resources:
     - Mythic Expedition Skill Manual * 10
     - Epic Expedition Skill Manual * 37
     - Rare Expedition Skill Manual * 15
     - Epic Conquest Skill Book * 22
-  - Speedup:
+  - Speedup: ()
     - Construction: 250m + 270m + 200m
     - Research: 260m + 460m
     - Training: 490m + 400m + 400m
@@ -55,7 +55,7 @@ Reach total power 4M
 - Notable Rewards:
   - Gems: 9700
   - Action Emote: Go!
-  - Burst of life (Permanent) castle skin, resource gathering speed + 5%
+  - Burst of life (Permanent) castle skin, resource gathering speed + 5% (Hard, reach total power 4M)
   - Speedup:
     - Construction: 21h
 
@@ -142,8 +142,8 @@ You earn 1 point by using 1m of speedups for construction or research.
 - Notable Rewards:
   - Gems: 2600
   - Skill Resources:
-    - Epic Conquest Skill Book * 5
-    - Epic Expedition Skill Manual * 5
+    - Mythic Conquest Skill Book * 5
+    - Mythic Expedition Skill Manual * 5
   - Speedups:
     - Construction: 150m
     - Research: 150m
@@ -175,7 +175,24 @@ You earn 1 point by using 1m of speedups for construction or research.
 
 ### Sanctuary Battle (4 Days)
 
-### Call of hte Sovereign
+### Call of the Sovereign (3 Days)
+
+Collect 110 points to earn 3 War Chant Custom Chests.
+
+- Duration: 3 Days
+- Notable Rewards:
+  - Gems: 3200
+  - Skill Resources:
+    - Mythic Expedition Skill Manual * 6
+    - Mythic Conquest Skill Manual * 6
+    - Mythic General hero Shard * 3
+  - War Chant Custom Chest * 3 (not for F2P)
+- Strategy Tips:
+  - Event tasks reset daily at 00:00 UTC—be sure to complete them each day.
+  - Promoting second-highest tier troops yields more power for fewer speedups than training new ones.
+  - You can defeat 15 beasts and call 10 terror rallies without spending any stamina.
+  - Free-to-play players can earn up to 34 points per day, totaling 102 over 3 days. Just short of the 110 needed to unlock the final custom chest.
+- ref: https://kingshotdata.com/events/call-of-the-sovereign/
 
 ### Pets (Gen 2)
 
@@ -186,6 +203,76 @@ You earn 1 point by using 1m of speedups for construction or research.
 
 ### Stand of Arms (2 Days)
 
+Earn 16,000 points to unlock all rewards.
+
+- Raise Governor Gear Charm max score by 1 – 5 points
+- Use 1 Hero Gear Forgehammer – 800 points
+
+- Duration: 2 Days (1st time, maybe once?)
+- Notable Rewards:
+  - Gems: 4000
+  - Skill Resources:
+    - Mythic Conquest Skill Book * 5
+    - Mythic Expedition Skill Manual * 5
+  - Speedups:
+    - Construction: 200m
+    - Research: 200m
+    - Training: 200m
+  - Ranked (Top 1000):
+    - Gems: 300+
+    - Speedups: 60m+ each for Construction, Research, and Training
+- Preparation (Save resources):
+  - Save Hero Gear Forgehammer (requires 20)
+  - Save Charm Guide, Charm Design
+- Strategy Tips:
+  - For F2P, avoid competing for the top ranks. Save resources for the KVK events.
+- ref: https://kingshotdata.com/events/stand-of-arms-event/
+
+| Governor Charm Level | Level Up Score | Points | Comment |
+| -------------------- | -------------- | ------ | ------- |
+| 1                    | 625            | 3,125  | OK      |
+| 2                    | 1,250          | 6,250  | OK      |
+| 3                    | 3,125          | 15,625 | OK      |
+| 4                    | 8,750          | 43,750 | Avoid   |
+| 5                    | 11,250         | 56,250 | Avoid   |
+| 6                    | 12,500         | 62,500 | Avoid   |
+| 7                    | 12,500         | 62,500 | Avoid   |
+| 8                    | 13,000         | 65,000 | Avoid   |
+| 9                    | 14,000         | 70,000 | Avoid   |
+| 10                   | 15,000         | 75,000 | Avoid   |
+| 11                   | 16,000         | 80,000 | Avoid   |
+
 ### Desert Trial (3 Days)
 
 ## Day 74
+
+## Day 75 (Friday)
+
+### City Development (2 Days)
+
+Earn 16,000 points to unlock all rewards.
+
+- Raise Governor Gear max score by 1 – 3 points
+- Use 1m of Speedups for Construction – 1 point
+- Use 1m of Speedups for Research – 1 point
+- Use 1m of Speedups for Training or Promotion – 1 point
+
+- Duration: 2 Days
+- Notable Rewards:
+  - Gems: 4000
+  - Skill Resources:
+    - Mythic Conquest Skill Book * 5
+    - Mythic Expedition Skill Manual * 5
+  - Speedups:
+    - Construction: 200m
+    - Research: 200m
+    - Training: 200m
+  - Ranked (Top 100):
+    - Gems: 1000+
+    - Speedups: 25m+ each for Construction, Research, and Training
+- Preparation (Save resources):
+  - Save Stain and Gilded Threads
+  - Save Speedups
+- Strategy Tips:
+  - For F2P, avoid competing for the top ranks. Save resources for the KVK events.
+- ref: https://kingshotdata.com/events/city-development-event/
