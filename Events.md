@@ -88,6 +88,28 @@ No new events
 - Not for F2P or weak alliance. Follow instructions from alliance leader.
 - Most servers have NAP (Non-Aggression Pact), Top 10 alliances will share all sanctuary buildings.
 
+## Day 5:
+
+## Day 6 (Friday):
+
+### Hall of Governors (First Run):
+
+- Duration: 5 Days
+- Notable Rewards:
+  - Skill Resources:
+    - Mythic Conquest Skill Book * 3
+    - Mythic Expedition Skill Manual * 3
+- Strategy Tips:
+  - Total points top 10 players earn 20+ Amadeus shards — not achievable for F2P players.
+  - Ranking in the top 100 yields gems and speedups.
+- Preparation (Save resources):
+  - Day 1: finish construction and research with speedups (Do not construct or research before the event)
+  - Day 2: Use hero shards
+  - Day 3: Promoting troops with speedups
+  - Day 4: Use governor stamina (Terror gives more points)
+  - Day 5: Low rewards, better to use speedups on Day 1 or 3.
+- ref: https://kingshotdata.com/events/hall-of-governors/
+
 ---
 
 ## Day 64 (20250908, Monday)
