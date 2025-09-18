@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Beast &amp; Terror Data</title>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-hover: #2563eb;
+            --background: #f3f4f6;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --container-bg: #ffffff;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+            max-width: 1000px;
+        }
+
+        .container {
+            background: var(--container-bg);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            margin: 1rem;
+        }
+
+        h2 {
+            margin-block-start: 0em;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Beast &amp; Terror Data</h1>
+    <div class="container">
+        <h2>Beasts</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Level</th>
+                    <th>Beast</th>
+                    <th>Hero XP</th>
+                    <th>Bread</th>
+                    <th>Wood</th>
+                    <th>Stone</th>
+                    <th>Iron</th>
+                    <th>Resource Value</th>
+                    <th>Unlock</th>
+                </tr>
+            </thead>
+            <tbody id="beast-table-body"></tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <h2>Terror</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Level</th>
+                    <th>Terror</th>
+                    <th>Special Rewards</th>
+                    <th>Bread</th>
+                    <th>Wood</th>
+                    <th>Stone</th>
+                    <th>Iron</th>
+                    <th>Resource Value</th>
+                    <th>Healing Speedup</th>
+                    <th>Training Speedup</th>
+                    <th>Unlock</th>
+                </tr>
+            </thead>
+            <tbody id="terror-table-body"></tbody>
+        </table>
+    </div>
+
+    <script>
+        const breadValues = {
+            1: 4000, 2: 6000, 3: 8000, 4: 10000,
+            5: 14000, 6: 18000, 7: 22000, 8: 26000,
+            9: 30000, 10: 34000, 11: 38000, 12: 41500,
+            13: 45000
+        };
+
+        function getBeastName(level) {
+            if (level <= 4) return "Gray Wolf";
+            if (level <= 8) return "Lynx";
+            if (level <= 12) return "Bison";
+            return "Cheetah";
+        }
+
+        function getUnlockDay(level) {
+            if (level <= 4) return "Day 1";
+            if (level <= 10) return "Day 2";
+            if (level <= 12) return "Day 3";
+            return "Day 4";
+        }
+
+        const terrorData = {
+            1: {
+                terror: "Giant Rhino",
+                specialRewards: "Quinn Shard * 1 (50%)<br>10 Gem (50%)",
+                bread: 20000,
+                gem: 10,
+                healing: "5m",
+                training: "5m"
+            },
+            2: {
+                terror: "Mighty Bison",
+                specialRewards: "Quinn Shard * 1 (50%)<br>15 Gem (50%)",
+                bread: 40000,
+                gem: 15,
+                healing: "10m",
+                training: "5m"
+            }
+        };
+
+        function getUnlockText(level) {
+            return "Day 3 or 1st Dreadwolf Trial event";
+        }
+
+        function calculateResources(bread) {
+            return {
+                wood: bread,
+                stone: bread / 5,
+                iron: bread / 20,
+                value: bread * 4 // bread + wood + stone*5 + iron*20 = 4*bread
+            };
+        }
+
+        function calculateXP(level) {
+            return 200 + level * 10;
+        }
+
+        function formatK(value) {
+            return value >= 1000 ? `${(value / 1000).toFixed(1).replace(/\.0$/, "")}K` : value;
+        }
+
+        function renderTable() {
+            var table = document.getElementById("beast-table-body");
+            Object.entries(breadValues).forEach(([levelStr, bread]) => {
+                const level = parseInt(levelStr);
+                const beast = getBeastName(level);
+                const unlock = getUnlockDay(level);
+                const xp = calculateXP(level);
+                const res = calculateResources(bread);
+
+                const row = `<tr>
+                    <td>${level}</td>
+                    <td>${beast}</td>
+                    <td>${xp}</td>
+                    <td>${formatK(bread)}</td>
+                    <td>${formatK(res.wood)}</td>
+                    <td>${res.stone.toLocaleString()}</td>
+                    <td>${res.iron.toLocaleString()}</td>
+                    <td>${formatK(res.value)}</td>
+                    <td>${unlock}</td>
+                </tr>`;
+                table.innerHTML += row;
+            });
+
+            table = document.getElementById("terror-table-body");
+            Object.entries(terrorData).forEach(([levelStr, entry]) => {
+                const level = parseInt(levelStr);
+                const res = calculateTerrorResources(entry.bread);
+                const unlock = getUnlockText(level);
+
+                const row = `<tr>
+                    <td>${level}</td>
+                    <td>${entry.terror}</td>
+                    <td>${entry.specialRewards}</td>
+                    <td>${formatK(entry.bread)}</td>
+                    <td>${formatK(res.wood)}</td>
+                    <td>${formatK(res.stone)}</td>
+                    <td>${formatK(res.iron)}</td>
+                    <td>${formatK(res.value)}</td>
+                    <td>${entry.healing}</td>
+                    <td>${entry.training}</td>
+                    <td>${unlock}</td>
+                </tr>`;
+                table.innerHTML += row;
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", renderTable);
+
+        function calculateTerrorResources(bread) {
+            return {
+                wood: bread,
+                stone: bread / 10,
+                iron: bread / 10,
+                value: bread + bread + (bread / 10) * 5 + (bread / 10) * 20 // bread + wood + stone*5 + iron*20
+            };
+        }
+    </script>
+</body>
+
+</html>
