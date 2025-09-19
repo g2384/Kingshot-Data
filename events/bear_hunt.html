@@ -11,7 +11,7 @@
             --background: #f3f4f6;
             --text: #1f2937;
             --text-light: #6b7280;
-            --container-bg: #e6edef;
+            --container-bg: #e4ecee;
             --shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
         }
 
@@ -34,7 +34,7 @@
         .container::before {
             content: "";
             position: absolute;
-            top: -100px;
+            top: -150px;
             left: -50px;
             width: 600px;
             height: 600px;
@@ -44,8 +44,8 @@
             z-index: 0;
             opacity: 1;
             pointer-events: none;
-            mask-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0) 100%);
-            -webkit-mask-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0) 100%);
+            mask-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0) 70%);
+            -webkit-mask-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0) 70%)
         }
 
         .container {
@@ -138,41 +138,42 @@
 
         <section class="overview">
             <h2>Event Overview</h2>
-            <ul>
-                <li>Trap lasts 30 minutes</li>
-                <li>Scheduled and enabled by alliance leader and R4 members</li>
-                <li>No Governor Stamina used, no troop injuries, no troop loss, no resource cost</li>
-                <li>Rewards based on total damage</li>
-            </ul>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 0.5rem;">
+                <div><strong>Duration:</strong><br>30 minutes</div>
+                <div><strong>Cool down:</strong><br>2 days</div>
+                <div><strong>Host:</strong><br>Alliance Leader or R4</div>
+                <div><strong>No Cost:</strong><br>No stamina, injuries, losses, or resources</div>
+                <div><strong>Goal:</strong><br>Maximize total damage for better rewards</div>
+            </div>
         </section>
 
         <section>
             <h2>Preparation</h2>
-            <ul>
-                <li>Only allow top 10/15 players with highest power to start rally</li>
-                <li>Place rally initiators' castles close to the bear trap</li>
-                <li>Run event when most players are online</li>
-                <li>Save formations so that you can start or join rally very quickly</li>
-                <li>Troop formation:
-                    <p>The best splits for each march is 10% infantry, 10% cavalry and 80% archers.</p>
-                    <p>If you don't have enough archers, you can also do 25:25:50, 15:15:70</p>
-                </li>
-                <li>Educate all members about this strategy</li>
-            </ul>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 0.5rem;">
+                <div><strong>Rally Initiators:</strong><br>Top 10–15 strongest players only</div>
+                <div><strong>Castle Placement:</strong><br>Near the bear trap</div>
+                <div><strong>Timing:</strong><br>Run when most are online</div>
+                <div><strong>Quick Setup:</strong><br>Save troop formations</div>
+                <div><strong>Educate:</strong><br>Share strategy with all members</div>
+                <div><strong>Troop Split:</strong><br>Best: 10% Infantry🛡️, 10% Cavalry🐎, 80%
+                    Archers🏹<br>Alternative: 25:25:50
+                    or 15:15:70</div>
+            </div>
         </section>
 
         <section>
             <h2>Start Rally</h2>
-            <ul>
-                <li>Use 3 strongest heroes to start rally</li>
-                <li>Kick joiners who use wrong heroes</li>
-                <li>Advanced: ask each joiner only send N troops, so that you have 15 joiners, with 15 recommended heros
-                </li>
-            </ul>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.5rem;">
+                <div><strong>Heroes:</strong><br>Pick your top 3 heroes</div>
+                <div><strong>Monitor:</strong><br>Remove joiners with wrong heroes</div>
+                <div><strong>(Advanced):</strong><br>Limit troop count per joiner to fit 15 optimal heroes</div>
+            </div>
         </section>
         <section class="heroes">
             <h2>Join Rally</h2>
-            <p>Use only the following formations, with troop split 10% infantry, 10% cavalry and 80% archers.</p>
+            <p style="text-align: center; font-weight: 500;">Use only the following formations.<br>
+                <strong>Troop Split:</strong> 10% Infantry🛡️, 10% Cavalry🐎, 80% Archers🏹
+            </p>
             <div class="hero-grid">
                 <div class="hero">
                     <img src="../images/heroes/chenko.webp" alt="Chenko">
