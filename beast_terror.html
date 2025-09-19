@@ -105,21 +105,26 @@
             1: 4000, 2: 6000, 3: 8000, 4: 10000,
             5: 14000, 6: 18000, 7: 22000, 8: 26000,
             9: 30000, 10: 34000, 11: 38000, 12: 41500,
-            13: 45000
+            13: 45000, 14: 48500, 26: 119000
         };
 
         function getBeastName(level) {
             if (level <= 4) return "Gray Wolf";
             if (level <= 8) return "Lynx";
             if (level <= 12) return "Bison";
-            return "Cheetah";
+            if (level <= 14) return "Cheetah";
+            if (level <= 26) return "Grizzly Bear";
+            throw new Error("Invalid level");
         }
 
         function getUnlockDay(level) {
             if (level <= 4) return "Day 1";
             if (level <= 10) return "Day 2";
             if (level <= 12) return "Day 3";
-            return "Day 4";
+            if (level <= 13) return "Day 4";
+            if (level <= 14) return "Day 6";
+            if (level <= 26) return "Day 74";
+            throw new Error("Invalid level");
         }
 
         const terrorData = {
