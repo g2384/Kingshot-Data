@@ -337,3 +337,20 @@ Earn 16,000 points to unlock all rewards.
 | Red                  | 3     | 128,000 | 1,280          | 250              | 2,520,000 |                |        |
 | Red T1               | 0     | 154,000 | 1,540          | 300              | 2,580,000 |                |        |
 | Red T1               | 1     | 163,000 | 1,630          | 320              | 2,640,000 |                |        |
+
+### Mystic Divination
+
+Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Packs.
+
+- Duration: 2 Days (repeat every 4 weeks, 2nd time)
+- Notable Rewards (one of the following):
+  - Forgehammer: 12
+  - Speedups:
+    - Construction: 40h
+    - Research: 40h
+    - Training: 40h
+- Strategy Tips:
+  - Pick Forgehammers as rewards
+  - For F2P, you can get about 23 free Fortune Tokens per day. That is 22 from Daily Missions and 1 from the Fortune Token Pack section.
+  - Fortune Tokens stay in your backpack even after the event ends, so you don’t lose them. You can save them and use them in the next Mystic Divination event.
+- ref: https://kingshotdata.com/events/mystic-divination-event/
