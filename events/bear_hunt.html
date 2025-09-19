@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Bear Hunt Infographic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bear Hunt Guide</title>
     <style>
         :root {
             --primary-color: #3b82f6;
@@ -129,27 +130,81 @@
             background: var(--primary-color);
             border-radius: 2px;
         }
+
+        .grid {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .grid-wide {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+
+        .center-text {
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Responsive tweak for narrow screens */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+
+            .container::before {
+                content: "";
+                position: absolute;
+                top: -100px;
+                left: -50px;
+                width: 400px;
+                height: 400px;
+                background-image: url(../images/event_bear_hunt.jpg);
+                background-size: cover;
+                background-position: top left;
+                z-index: 0;
+                opacity: 1;
+                pointer-events: none;
+                mask-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0) 70%);
+                -webkit-mask-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0) 70%)
+            }
+
+            .grid-wide {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero {
+                width: 100%;
+                max-width: 100px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Bear Hunt: How to earn higher rewards</h1>
+        <h1>Bear Hunt: Max Damage, Max Rewards</h1>
 
         <section class="overview">
             <h2>Event Overview</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 0.5rem;">
-                <div><strong>Duration:</strong><br>30 minutes</div>
-                <div><strong>Cool down:</strong><br>2 days</div>
+            <div class="grid grid-wide">
+                <div><strong>Duration:</strong> 30 minutes</div>
+                <div><strong>Cool down:</strong> 2 days</div>
                 <div><strong>Host:</strong><br>Alliance Leader or R4</div>
                 <div><strong>No Cost:</strong><br>No stamina, injuries, losses, or resources</div>
                 <div><strong>Goal:</strong><br>Maximize total damage for better rewards</div>
+                <div><strong>Rewards:</strong><br>Resources, Lucky Hero Gear Chest, Forgehammer</div>
             </div>
         </section>
 
         <section>
             <h2>Preparation</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 0.5rem;">
+            <div class="grid grid-wide">
                 <div><strong>Rally Initiators:</strong><br>Top 10–15 strongest players only</div>
                 <div><strong>Castle Placement:</strong><br>Near the bear trap</div>
                 <div><strong>Timing:</strong><br>Run when most are online</div>
@@ -163,7 +218,7 @@
 
         <section>
             <h2>Start Rally</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.5rem;">
+            <div class="grid grid-wide">
                 <div><strong>Heroes:</strong><br>Pick your top 3 heroes</div>
                 <div><strong>Monitor:</strong><br>Remove joiners with wrong heroes</div>
                 <div><strong>(Advanced):</strong><br>Limit troop count per joiner to fit 15 optimal heroes</div>
