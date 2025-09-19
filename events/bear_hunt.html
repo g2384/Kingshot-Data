@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bear Hunt Infographic</title>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-hover: #2563eb;
+            --background: #f3f4f6;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --container-bg: #e6edef;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+            max-width: 1000px;
+        }
+
+        .container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            left: -50px;
+            width: 600px;
+            height: 600px;
+            background-image: url(./images/event_bear_hunt.jpg);
+            background-size: cover;
+            background-position: top left;
+            z-index: 0;
+            opacity: 1;
+            pointer-events: none;
+            mask-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0) 100%);
+            -webkit-mask-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .container {
+            background: var(--container-bg);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            margin: 1rem;
+        }
+
+        h1 {
+            margin: 0 0 1.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
+            letter-spacing: -0.5px;
+            color: var(--text);
+            text-align: center;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .hero-grid {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+            flex-wrap: wrap;
+            border: #ddd solid 1px;
+            margin: 10px;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            padding: 10px 0px;
+        }
+
+        .hero {
+            text-align: center;
+            width: 170px;
+        }
+
+        .hero img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            box-shadow: var(--shadow);
+        }
+
+        .hero .custom-img {
+            opacity: 0.7;
+        }
+
+        .hero p {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .hero span {
+            display: block;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Bear Hunt: How to earn higher rewards</h1>
+
+        <section class="overview">
+            <h2>Event Overview</h2>
+            <ul>
+                <li>Trap lasts 30 minutes</li>
+                <li>Scheduled and enabled by alliance leader and R4 members</li>
+                <li>No Governor Stamina used, no troop injuries, no troop loss, no resource cost</li>
+                <li>Rewards based on total damage</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Preparation</h2>
+            <ul>
+                <li>Only allow top 10/15 players with highest power to start rally</li>
+                <li>Place rally initiators' castles close to the bear trap</li>
+                <li>Run event when most players are online</li>
+                <li>Save formations so that you can start or join rally very quickly</li>
+                <li>Troop formation:
+                    <p>The best splits for each march is 10% infantry, 10% cavalry and 80% archers.</p>
+                    <p>If you don't have enough archers, you can also do 25:25:50, 15:15:70</p>
+                </li>
+                <li>Educate all members about this strategy</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Start Rally</h2>
+            <ul>
+                <li>Use 3 strongest heroes to start rally</li>
+                <li>Kick joiners who use wrong heroes</li>
+                <li>Advanced: ask each joiner only send N troops, so that you have 15 joiners, with 15 recommended heros
+                </li>
+            </ul>
+        </section>
+        <section class="heroes">
+            <h2>Join Rally</h2>
+            <p>Use only the following formations, with troop split 10% infantry, 10% cavalry and 80% archers.</p>
+            <div class="hero-grid">
+                <div class="hero">
+                    <img src="./images/heroes/chenko.webp" alt="Chenko">
+                    <p>Chenko<br><span>Lead for Lethality</span></p>
+                </div>
+                <div class="hero">
+                    <img src="./images/random_dice.png" class="custom-img" alt="Strong Hero">
+                    <p>Strong Hero/No Hero</p>
+                </div>
+                <div class="hero">
+                    <img src="./images/random_dice.png" class="custom-img" alt="Strong Hero">
+                    <p>Strong Hero/No Hero</p>
+                </div>
+            </div>
+            <div class="hero-grid">
+                <div class="hero">
+                    <img src="./images/heroes/yaenwoo.png" alt="Yeonwoo">
+                    <p>Yeonwoo<br><span>Lead for Lethality</span></p>
+                </div>
+                <div class="hero">
+                    <img src="./images/random_dice.png" class="custom-img" alt="Strong Hero">
+                    <p>Strong Hero/No Hero</p>
+                </div>
+                <div class="hero">
+                    <img src="./images/random_dice.png" class="custom-img" alt="Strong Hero">
+                    <p>Strong Hero/No Hero</p>
+                </div>
+            </div>
+            <div class="hero-grid">
+                <div class="hero">
+                    <img src="./images/heroes/amane.png" alt="Amane">
+                    <p>Amane<br><span>Lead for Lethality</span></p>
+                </div>
+                <div class="hero">
+                    <img src="./images/random_dice.png" class="custom-img" alt="Strong Hero">
+                    <p>Strong Hero/No Hero</p>
+                </div>
+                <div class="hero">
+                    <img src="./images/random_dice.png" class="custom-img" alt="Strong Hero">
+                    <p>Strong Hero/No Hero</p>
+                </div>
+            </div>
+            <div class="hero-grid">
+                <div class="hero">
+                    <img src="./images/heroes/amadeus.png" alt="Amadeus">
+                    <p>Amadeus<br><span>Lead for Lethality</span></p>
+                </div>
+                <div class="hero">
+                    <img src="./images/random_dice.png" class="custom-img" alt="Strong Hero">
+                    <p>Strong Hero/No Hero</p>
+                </div>
+                <div class="hero">
+                    <img src="./images/random_dice.png" class="custom-img" alt="Strong Hero">
+                    <p>Strong Hero/No Hero</p>
+                </div>
+            </div>
+            <div class="hero-grid">
+                <div class="hero">
+                    <img src="./images/plus.png" class="custom-img" alt="No Hero">
+                    <p>No Hero</p>
+                </div>
+                <div class="hero">
+                    <img src="./images/plus.png" class="custom-img" alt="Amadeus">
+                    <p>No Hero</p>
+                </div>
+                <div class="hero">
+                    <img src="./images/plus.png" class="custom-img" alt="Zoe">
+                    <p>No Hero</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
