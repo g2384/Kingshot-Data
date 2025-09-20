@@ -6,11 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kingshot Item Guide</title>
     <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-hover: #2563eb;
+            --background: #f3f4f6;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --container-bg: #fff;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            margin: 0;
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+            max-width: 1500px;
+        }
+
+        .container {
+            position: relative;
+            overflow: hidden;
+            background: var(--container-bg);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            margin: 1rem;
         }
 
         h1 {
@@ -18,33 +42,56 @@
             margin-bottom: 30px;
         }
 
-        #item-list {
+        .category-section {
+            margin-bottom: 50px;
+        }
+
+        .category-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+            text-transform: capitalize;
+        }
+
+        .category-items {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
             gap: 20px;
         }
 
         .item {
+            display: flex;
+            align-items: flex-start;
             background: white;
             border-radius: 8px;
             padding: 15px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            text-align: left;
+            flex-wrap: wrap;
         }
 
         .item img {
             max-width: 100px;
-            margin-bottom: 10px;
+            margin-right: 15px;
+            flex-shrink: 0;
         }
 
-        .item h2 {
+        .item-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .item-content h2 {
             font-size: 1.1em;
             margin: 10px 0 5px;
+            word-wrap: break-word;
         }
 
-        .item p {
+        .item-content p {
             font-size: 0.9em;
             margin: 5px 0;
+            word-wrap: break-word;
         }
 
         .save {
@@ -54,6 +101,55 @@
 
         .nosave {
             color: gray;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 700px) {
+            body {
+                max-width: 100%;
+                padding: 0 10px;
+            }
+
+            .container {
+                padding: 1rem;
+                margin: 0.5rem;
+                border-radius: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+
+            .category-title {
+                font-size: 1.2em;
+                margin-bottom: 15px;
+            }
+
+            .category-items {
+                display: block;
+            }
+
+            .item {
+                flex-direction: row;
+                padding: 10px;
+                margin-bottom: 15px;
+            }
+
+            .item img {
+                max-width: 60px;
+                margin-right: 10px;
+            }
+
+            .item-content h2 {
+                font-size: 1em;
+                margin: 5px 0;
+            }
+
+            .item-content p {
+                font-size: 0.85em;
+                margin: 3px 0;
+            }
         }
     </style>
 </head>
@@ -67,119 +163,219 @@
                 "name": "Artisan's Vision",
                 "image": "artisans_vision.png",
                 "purpose": "Used for upgrading high-tier gear.",
-                "saveForEvent": true
+                "saveForEvent": true,
+                "category": "Gear",
+                "source": "Gear Forge, Event Rewards",
+                "event": "Gear Enhancement Festival",
+                "eventDate": "2025-10-05"
             },
             {
                 "name": "Charm Design",
                 "image": "charm_design.png",
                 "purpose": "Required for crafting charm gear.",
-                "saveForEvent": false
+                "saveForEvent": false,
+                "category": "Gear",
+                "source": "Charm Workshop",
+                "event": "",
+                "eventDate": ""
             },
             {
                 "name": "Charm Guide",
                 "image": "charm_guide.png",
                 "purpose": "Boosts charm gear enhancement success.",
-                "saveForEvent": true
+                "saveForEvent": true,
+                "category": "Gear",
+                "source": "Charm Workshop, Events",
+                "event": "Charm Mastery Trials",
+                "eventDate": "2025-10-12"
             },
             {
                 "name": "Common Taming Mark",
                 "image": "common_taming_mark.png",
                 "purpose": "Used to tame basic beasts.",
-                "saveForEvent": false
+                "saveForEvent": false,
+                "category": "Resource",
+                "source": "Beast Hunts",
+                "event": "",
+                "eventDate": ""
             },
             {
                 "name": "Construction Speedup",
                 "image": "construction_speedup.png",
                 "purpose": "Reduces building time. Best used during build-focused events.",
-                "saveForEvent": true
+                "saveForEvent": true,
+                "category": "Speedup",
+                "source": "Daily Quests, Shop",
+                "event": "Build Blitz",
+                "eventDate": "2025-10-03"
             },
             {
                 "name": "Enhancement XP Part",
                 "image": "enhancement_xp_part.png",
                 "purpose": "Adds XP to gear enhancement.",
-                "saveForEvent": true
+                "saveForEvent": true,
+                "category": "Gear",
+                "source": "Gear Forge",
+                "event": "Gear Enhancement Festival",
+                "eventDate": "2025-10-05"
             },
             {
                 "name": "Epic Conquest Skill Book",
                 "image": "epic_conquest_skill_book.png",
                 "purpose": "Unlocks conquest skills for epic heroes.",
-                "saveForEvent": false
+                "saveForEvent": false,
+                "category": "Hero",
+                "source": "Hero Trials",
+                "event": "",
+                "eventDate": ""
             },
             {
                 "name": "Epic Expedition Skill Manual",
                 "image": "epic_expedition_skill_manual.png",
                 "purpose": "Boosts expedition skills for epic heroes.",
-                "saveForEvent": false
+                "saveForEvent": false,
+                "category": "Hero",
+                "source": "Expedition Rewards",
+                "event": "",
+                "eventDate": ""
             },
             {
                 "name": "Forgehammer",
                 "image": "forgehammer.png",
                 "purpose": "Essential for forging gear.",
-                "saveForEvent": true
+                "saveForEvent": true,
+                "category": "Gear",
+                "source": "Gear Forge",
+                "event": "Forge Frenzy",
+                "eventDate": "2025-10-08"
             },
             {
                 "name": "Gilded Threads",
                 "image": "gilded_threads.png",
                 "purpose": "Used in high-tier gear crafting.",
-                "saveForEvent": true
+                "saveForEvent": true,
+                "category": "Gear",
+                "source": "Elite Dungeons",
+                "event": "Crafting Carnival",
+                "eventDate": "2025-10-10"
             },
             {
                 "name": "Gold Key",
                 "image": "gold_key.png",
                 "purpose": "Opens premium chests. Save for hero shard events.",
-                "saveForEvent": true
+                "saveForEvent": true,
+                "category": "Hero",
+                "source": "Daily Login, Shop",
+                "event": "Hero Shard Rush",
+                "eventDate": "2025-10-06"
             },
             {
                 "name": "Governor Stamina",
                 "image": "governor_stamina.png",
                 "purpose": "Allows more actions per day. Use wisely during trials.",
-                "saveForEvent": true
+                "saveForEvent": true,
+                "category": "Resource",
+                "source": "Daily Quests",
+                "event": "Trial Surge",
+                "eventDate": "2025-10-04"
             },
             {
                 "name": "Hero XP",
                 "image": "hero_xp.png",
                 "purpose": "Levels up heroes. Best used during hero growth events.",
-                "saveForEvent": true
+                "saveForEvent": true,
+                "category": "Hero",
+                "source": "Hero Trials, Events",
+                "event": "Hero Growth Gala",
+                "eventDate": "2025-10-07"
             },
             {
                 "name": "Mythic General Hero Shard",
                 "image": "mythic_general_hero_shard.png",
                 "purpose": "Collect to unlock mythic heroes.",
-                "saveForEvent": true
+                "saveForEvent": true,
+                "category": "Hero",
+                "source": "Premium Chests",
+                "event": "Mythic Summon Day",
+                "eventDate": "2025-10-09"
             },
             {
                 "name": "Research Speedup",
                 "image": "research_speedup.png",
                 "purpose": "Speeds up tech research. Save for research events.",
-                "saveForEvent": true
+                "saveForEvent": true,
+                "category": "Speedup",
+                "source": "Shop, Quests",
+                "event": "Tech Surge",
+                "eventDate": "2025-10-11"
             },
             {
                 "name": "Satin",
                 "image": "satin.png",
                 "purpose": "Used in charm gear crafting.",
-                "saveForEvent": false
+                "saveForEvent": false,
+                "category": "Gear",
+                "source": "Charm Workshop",
+                "event": "",
+                "eventDate": ""
             },
             {
                 "name": "Training Speedup",
                 "image": "training_speedup.png",
                 "purpose": "Speeds up troop training. Use during troop growth events.",
-                "saveForEvent": true
+                "saveForEvent": true,
+                "category": "Speedup",
+                "source": "Quests, Shop",
+                "event": "Troop Surge",
+                "eventDate": "2025-10-02"
             }
         ];
 
         const container = document.getElementById('item-list');
+        const grouped = {};
+
         data.forEach(item => {
-            const div = document.createElement('div');
-            div.className = 'item';
-            div.innerHTML = `
-        <img src="./images/items/${item.image}" alt="${item.name}" />
-        <h2>${item.name}</h2>
-        <p>${item.purpose}</p>
-        <p class="${item.saveForEvent ? 'save' : 'nosave'}">
-          ${item.saveForEvent ? '✅ Save for Events' : '❌ Use Anytime'}
-        </p>
-      `;
-            container.appendChild(div);
+            if (!grouped[item.category]) {
+                grouped[item.category] = [];
+            }
+            grouped[item.category].push(item);
+        });
+
+        Object.keys(grouped).forEach(category => {
+            const section = document.createElement('div');
+            section.className = 'category-section container';
+
+            const title = document.createElement('h2');
+            title.className = 'category-title';
+            title.textContent = category;
+            section.appendChild(title);
+
+            // NEW: container for items
+            const itemsWrapper = document.createElement('div');
+            itemsWrapper.className = 'category-items';
+
+            grouped[category].forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'item';
+                div.innerHTML = `
+          <img src="./images/items/${item.image}" alt="${item.name}" />
+          <div class="item-content">
+            <h2>${item.name}</h2>
+            <p>${item.purpose}</p>
+            <p><strong>Source:</strong> ${item.source}</p>
+            ${item.event && item.eventDate ? `
+              <p><strong>Event:</strong> ${item.event} (${item.eventDate})</p>
+              <p class="save">✅ Save for Event</p>
+            ` : `
+              <p class="nosave">❌ Use Anytime</p>
+            `}
+          </div>
+        `;
+                itemsWrapper.appendChild(div);
+            });
+
+            section.appendChild(itemsWrapper);
+            container.appendChild(section);
         });
 
     </script>
