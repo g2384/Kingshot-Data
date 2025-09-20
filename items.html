@@ -74,6 +74,7 @@
         .item img {
             max-width: 100px;
             margin-right: 15px;
+            margin-top: 5px;
             flex-shrink: 0;
         }
 
@@ -84,7 +85,7 @@
 
         .item-content h2 {
             font-size: 1.1em;
-            margin: 10px 0 5px;
+            margin: 0px 0 5px;
             word-wrap: break-word;
         }
 
@@ -166,8 +167,7 @@
                 "saveForEvent": true,
                 "category": "Speedup",
                 "source": "Daily Quests, Shop",
-                "event": "Build Blitz",
-                "eventDate": "2025-10-03"
+                "event": "Hall of Governors, Plan Your City, Kingdom of Power"
             },
             {
                 "name": "Research Speedup",
@@ -176,8 +176,7 @@
                 "saveForEvent": true,
                 "category": "Speedup",
                 "source": "Shop, Quests",
-                "event": "Tech Surge",
-                "eventDate": "2025-10-11"
+                "event": "Tech Surge"
             },
             {
                 "name": "Training Speedup",
@@ -186,8 +185,7 @@
                 "saveForEvent": true,
                 "category": "Speedup",
                 "source": "Quests, Shop",
-                "event": "Troop Surge",
-                "eventDate": "2025-10-02"
+                "event": "Troop Surge"
             },
             {
                 "name": "Hero XP",
@@ -196,8 +194,7 @@
                 "saveForEvent": true,
                 "category": "Hero",
                 "source": "Hero Trials, Events",
-                "event": "Hero Growth Gala",
-                "eventDate": "2025-10-07"
+                "event": "Hero Growth Gala"
             },
             {
                 "name": "Epic Conquest Skill Book",
@@ -206,8 +203,7 @@
                 "saveForEvent": false,
                 "category": "Hero",
                 "source": "Hero Trials",
-                "event": "",
-                "eventDate": ""
+                "event": ""
             },
             {
                 "name": "Epic Expedition Skill Manual",
@@ -216,8 +212,7 @@
                 "saveForEvent": false,
                 "category": "Hero",
                 "source": "Expedition Rewards",
-                "event": "",
-                "eventDate": ""
+                "event": ""
             },
             {
                 "name": "Mythic General Hero Shard",
@@ -226,8 +221,7 @@
                 "saveForEvent": true,
                 "category": "Hero",
                 "source": "Premium Chests",
-                "event": "Mythic Summon Day",
-                "eventDate": "2025-10-09"
+                "event": "Mythic Summon Day"
             },
             {
                 "name": "Enhancement XP Part",
@@ -236,8 +230,7 @@
                 "saveForEvent": true,
                 "category": "Gear",
                 "source": "Gear Forge",
-                "event": "Gear Enhancement Festival",
-                "eventDate": "2025-10-05"
+                "event": "Gear Enhancement Festival"
             },
             {
                 "name": "Artisan's Vision",
@@ -246,8 +239,7 @@
                 "saveForEvent": true,
                 "category": "Gear",
                 "source": "Gear Forge, Event Rewards",
-                "event": "Gear Enhancement Festival",
-                "eventDate": "2025-10-05"
+                "event": "Gear Enhancement Festival"
             },
             {
                 "name": "Charm Design",
@@ -256,8 +248,7 @@
                 "saveForEvent": false,
                 "category": "Gear",
                 "source": "Charm Workshop",
-                "event": "",
-                "eventDate": ""
+                "event": ""
             },
             {
                 "name": "Charm Guide",
@@ -266,8 +257,7 @@
                 "saveForEvent": true,
                 "category": "Gear",
                 "source": "Charm Workshop, Events",
-                "event": "Charm Mastery Trials",
-                "eventDate": "2025-10-12"
+                "event": "Charm Mastery Trials"
             },
             {
                 "name": "Common Taming Mark",
@@ -276,8 +266,7 @@
                 "saveForEvent": false,
                 "category": "Resource",
                 "source": "Beast Hunts",
-                "event": "",
-                "eventDate": ""
+                "event": ""
             },
             {
                 "name": "Forgehammer",
@@ -286,8 +275,7 @@
                 "saveForEvent": true,
                 "category": "Gear",
                 "source": "Gear Forge",
-                "event": "Forge Frenzy",
-                "eventDate": "2025-10-08"
+                "event": "Forge Frenzy"
             },
             {
                 "name": "Gilded Threads",
@@ -296,8 +284,7 @@
                 "saveForEvent": true,
                 "category": "Gear",
                 "source": "Elite Dungeons",
-                "event": "Crafting Carnival",
-                "eventDate": "2025-10-10"
+                "event": "Crafting Carnival"
             },
             {
                 "name": "Gold Key",
@@ -306,8 +293,7 @@
                 "saveForEvent": true,
                 "category": "Hero",
                 "source": "Daily Login, Shop",
-                "event": "Hero Shard Rush",
-                "eventDate": "2025-10-06"
+                "event": "Hero Shard Rush"
             },
             {
                 "name": "Governor Stamina",
@@ -316,8 +302,7 @@
                 "saveForEvent": true,
                 "category": "Resource",
                 "source": "Daily Quests",
-                "event": "Trial Surge",
-                "eventDate": "2025-10-04"
+                "event": "Trial Surge"
             },
             {
                 "name": "Satin",
@@ -326,9 +311,7 @@
                 "saveForEvent": false,
                 "category": "Gear",
                 "source": "Charm Workshop",
-                "event": "",
-                "eventDate": ""
-            }
+                "event": "",            }
         ];
 
         const container = document.getElementById('item-list');
@@ -363,8 +346,8 @@
             <h2>${item.name}</h2>
             <p>${item.purpose}</p>
             <p><strong>Source:</strong> ${item.source}</p>
-            ${item.event && item.eventDate ? `
-              <p><strong>Event:</strong> ${item.event} (${item.eventDate})</p>
+            ${item.event ? `
+              <p><strong>Event:</strong> ${item.event}</p>
               <p class="save">✅ Save for Event</p>
             ` : `
               <p class="nosave">❌ Use Anytime</p>
