@@ -110,6 +110,33 @@ No new events
   - Day 5: Low rewards, better to use speedups on Day 1 or 3.
 - ref: https://kingshotdata.com/events/hall-of-governors/
 
+## Day 7:
+
+As of Day 7, F2P can get up to 46,093 gems
+
+### Hero Roulette (First Run):
+
+Hero Roulette is a three-day event that starts on the second day of big events like Hall of Governors, Strongest Governor, or Kingdom of Power
+
+- Duration: 3 Days
+- Notable Rewards:
+  - Saul Hero Shards:
+    - up to 181 (expected from 120 spins + spin rewards)
+  - Other Resources:
+    - 1h General Speedup × many
+    - 10K Hero XP × many
+    - Mystery Packs, Iron, Stone, Wood, Bread
+- Strategy Tips:
+  - Best value is stopping at 120 spins, costs 157,500 gems after free spins.
+  - Expected ~66 shards from spins + 115 from spin rewards.
+  - F2P players should avoid going beyond 120 spins due to diminishing returns.
+  - Each spin costs 1 Lucky Chip or 1,500 gems; 10 spins cost 13,500 gems.
+  - For this run, spin 32 times with gems, and get 3 free spins over 3 days. To unlock the 35-spin rewards. Unlocking Saul for his construction speed up skill.
+
+## Day 8 (Sunday):
+
+
+
 ---
 
 ## Day 64 (20250908, Monday)
@@ -338,7 +365,7 @@ Earn 16,000 points to unlock all rewards.
 | Red T1               | 0     | 154,000 | 1,540          | 300              | 2,580,000 |                |        |
 | Red T1               | 1     | 163,000 | 1,630          | 320              | 2,640,000 |                |        |
 
-### Mystic Divination
+### Mystic Divination (2nd Time)
 
 Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Packs.
 
@@ -354,3 +381,10 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
   - For F2P, you can get about 23 free Fortune Tokens per day. That is 22 from Daily Missions and 1 from the Fortune Token Pack section.
   - Fortune Tokens stay in your backpack even after the event ends, so you don’t lose them. You can save them and use them in the next Mystic Divination event.
 - ref: https://kingshotdata.com/events/mystic-divination-event/
+
+## Day 76 (Saturday)
+
+### Cesares Fury (3 Days)
+
+- TODO
+
