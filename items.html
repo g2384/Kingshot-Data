@@ -31,7 +31,7 @@
             position: relative;
             overflow: hidden;
             background: var(--container-bg);
-            padding: 2.5rem;
+            padding: 0.5rem 2.5rem 2.5rem 2.5rem;
             border-radius: 1rem;
             box-shadow: var(--shadow);
             margin: 1rem;
@@ -40,10 +40,6 @@
         h1 {
             text-align: center;
             margin-bottom: 30px;
-        }
-
-        .category-section {
-            margin-bottom: 50px;
         }
 
         .category-title {
@@ -157,71 +153,80 @@
 
 <body>
     <h1>Kingshot Item Guide</h1>
+    <div style="margin-left:3rem"><p>Note: "Sources" are recommended sources</p></div>
     <div id="item-list"></div>
     <script>
         const data = [
             {
                 "name": "Construction Speedup",
                 "image": "construction_speedup.png",
-                "purpose": "Reduces building time. Best used during build-focused events.",
+                "purpose": "Speeds up construction.",
                 "saveForEvent": true,
                 "category": "Speedup",
-                "source": "Daily Quests, Shop",
-                "event": "Hall of Governors, Plan Your City, Kingdom of Power"
+                "source": "Daily Missions, Terrors, Alliance Chests, Online Rewards, Events",
+                "event": "Hall of Governors, Plan Your City, Kingdom of Power (KVK), etc"
             },
             {
                 "name": "Research Speedup",
                 "image": "research_speedup.png",
-                "purpose": "Speeds up tech research. Save for research events.",
+                "purpose": "Speeds up research.",
                 "saveForEvent": true,
                 "category": "Speedup",
-                "source": "Shop, Quests",
-                "event": "Tech Surge"
+                "source": "Daily Missions, Terrors, Alliance Chests, Online Rewards, Events",
+                "event": "Hall of Governors, Plan Your City, Kingdom of Power (KVK), etc"
             },
             {
                 "name": "Training Speedup",
                 "image": "training_speedup.png",
-                "purpose": "Speeds up troop training. Use during troop growth events.",
+                "purpose": "Speeds up troop training.",
                 "saveForEvent": true,
                 "category": "Speedup",
-                "source": "Quests, Shop",
-                "event": "Troop Surge"
+                "source": "Daily Missions, Terrors, Alliance Chests, Online Rewards, Events",
+                "event": "Hall of Governors, Power Up, Kingdom of Power (KVK), etc"
             },
             {
                 "name": "Hero XP",
                 "image": "hero_xp.png",
                 "purpose": "Levels up heroes. Best used during hero growth events.",
-                "saveForEvent": true,
+                "saveForEvent": false,
                 "category": "Hero",
-                "source": "Hero Trials, Events",
-                "event": "Hero Growth Gala"
+                "source": "Beasts, Terrors, Daily Missions, Conquest, Events"
             },
             {
-                "name": "Epic Conquest Skill Book",
+                "name": "Conquest Skill Book",
                 "image": "epic_conquest_skill_book.png",
-                "purpose": "Unlocks conquest skills for epic heroes.",
+                "purpose": "Levels up conquest skills.",
                 "saveForEvent": false,
                 "category": "Hero",
-                "source": "Hero Trials",
-                "event": ""
+                "source": "Terrors, Daily Missions, Watchtower Intels, Conquest, VIP Daily",
+                "saveForEventComment": "But save for Day 4, Path of Growth"
             },
             {
-                "name": "Epic Expedition Skill Manual",
+                "name": "Expedition Skill Manual",
                 "image": "epic_expedition_skill_manual.png",
-                "purpose": "Boosts expedition skills for epic heroes.",
+                "purpose": "Levels up expedition skills.",
                 "saveForEvent": false,
                 "category": "Hero",
-                "source": "Expedition Rewards",
-                "event": ""
+                "source": "Terrors, Daily Missions, Watchtower Intels, Conquest, VIP Daily",
+                "saveForEventComment": "But save for Day 4, Path of Growth"
             },
             {
-                "name": "Mythic General Hero Shard",
+                "name": "Hero Shard",
                 "image": "mythic_general_hero_shard.png",
-                "purpose": "Collect to unlock mythic heroes.",
+                "purpose": "Collect to ascend heroes.",
                 "saveForEvent": true,
                 "category": "Hero",
-                "source": "Premium Chests",
-                "event": "Mythic Summon Day"
+                "source": "Terrors, Daily Missions, Watchtower Intels, Conquest, VIP Daily",
+                "event": "Hall of Governors, Grow Your Heroes, Kingdom of Power (KVK), etc"
+            },
+            {
+                "name": "Gold Key",
+                "image": "gold_key.png",
+                "purpose": "Opens premium chests. Save for hero shard events.",
+                "saveForEvent": true,
+                "category": "Hero",
+                "source": "Daily Login, Shop",
+                "event": "Hero Shard Rush"
             },
             {
                 "name": "Enhancement XP Part",
@@ -287,15 +292,6 @@
                 "event": "Crafting Carnival"
             },
             {
-                "name": "Gold Key",
-                "image": "gold_key.png",
-                "purpose": "Opens premium chests. Save for hero shard events.",
-                "saveForEvent": true,
-                "category": "Hero",
-                "source": "Daily Login, Shop",
-                "event": "Hero Shard Rush"
-            },
-            {
                 "name": "Governor Stamina",
                 "image": "governor_stamina.png",
                 "purpose": "Allows more actions per day. Use wisely during trials.",
@@ -338,6 +334,7 @@
             itemsWrapper.className = 'category-items';
 
             grouped[category].forEach(item => {
+                saveForEventComment = item.saveForEventComment ? ` (${item.saveForEventComment})` : '';
                 const div = document.createElement('div');
                 div.className = 'item';
                 div.innerHTML = `
@@ -348,9 +345,9 @@
             <p><strong>Source:</strong> ${item.source}</p>
             ${item.event ? `
               <p><strong>Event:</strong> ${item.event}</p>
-              <p class="save">✅ Save for Event</p>
+              <p class="save">✅ Save for Event${saveForEventComment}</p>
             ` : `
-              <p class="nosave">❌ Use Anytime</p>
+              <p class="nosave">🔘 Use Anytime${saveForEventComment}</p>
             `}
           </div>
         `;
