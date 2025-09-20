@@ -190,7 +190,8 @@
                 "purpose": "Levels up heroes. Best used during hero growth events.",
                 "saveForEvent": false,
                 "category": "Hero",
-                "source": "Beasts, Terrors, Daily Missions, Conquest, Events"
+                "source": "Beasts, Terrors, Daily Missions, Conquest, Events",
+                "event": ""
             },
             {
                 "name": "Conquest Skill Book",
@@ -199,7 +200,8 @@
                 "saveForEvent": false,
                 "category": "Hero",
                 "source": "Terrors, Daily Missions, Watchtower Intels, Conquest, VIP Daily",
-                "saveForEventComment": "But save for Day 4, Path of Growth"
+                "saveForEventComment": "After Day 4",
+                "event": "Day 4, Path of Growth"
             },
             {
                 "name": "Expedition Skill Manual",
@@ -208,7 +210,8 @@
                 "saveForEvent": false,
                 "category": "Hero",
                 "source": "Terrors, Daily Missions, Watchtower Intels, Conquest, VIP Daily",
-                "saveForEventComment": "But save for Day 4, Path of Growth"
+                "saveForEventComment": "After Day 4",
+                "event": "Day 4, Path of Growth"
             },
             {
                 "name": "Hero Shard",
@@ -220,22 +223,23 @@
                 "event": "Hall of Governors, Grow Your Heroes, Kingdom of Power (KVK), etc"
             },
             {
-                "name": "Gold Key",
+                "name": "Key",
                 "image": "gold_key.png",
-                "purpose": "Opens premium chests. Save for hero shard events.",
+                "purpose": "Hero Recruitment.",
                 "saveForEvent": true,
                 "category": "Hero",
-                "source": "Daily Login, Shop",
-                "event": "Hero Shard Rush"
+                "source": "Daily Missions, Free 5 Silver Key Daily, Free 1 Gold Key every 2 Days, Events",
+                "event": "Call of the Sovereign (Unlocks Gen 3 Heroes). Note you don't need to save for Beast Whisperer (Day 55-60) as you get enough free keys over 7 days period."
             },
             {
                 "name": "Enhancement XP Part",
                 "image": "enhancement_xp_part.png",
                 "purpose": "Adds XP to gear enhancement.",
-                "saveForEvent": true,
+                "saveForEvent": false,
                 "category": "Gear",
-                "source": "Gear Forge",
-                "event": "Gear Enhancement Festival"
+                "source": "Various sources",
+                "saveForEventComment": "After Day 27",
+                "event": "Hall of Governors (2nd, Day 20-27), Steel Edge (Day 10)"
             },
             {
                 "name": "Artisan's Vision",
@@ -347,6 +351,7 @@
               <p><strong>Event:</strong> ${item.event}</p>
               <p class="save">✅ Save for Event${saveForEventComment}</p>
             ` : `
+              <p><strong>Event:</strong> ${item.event}</p>
               <p class="nosave">🔘 Use Anytime${saveForEventComment}</p>
             `}
           </div>
