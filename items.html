@@ -159,7 +159,26 @@
     <script>
         const data = [
             {
-                "name": "Construction Speedup",
+                "name": "Governor Stamina (Item)",
+                "image": "governor_stamina.png",
+                "purpose": "Restores 10 Governor Stamina.",
+                "saveForEvent": true,
+                "category": "Resource",
+                "source": "Events",
+                "event": "Cesares Fury"
+            },
+            {
+                "name": "Governor Stamina (Passive)",
+                "image": "governor_stamina_resource.png",
+                "purpose": "For attacking beasts, terrors.",
+                "saveForEvent": false,
+                "category": "Resource",
+                "source": "Restores 1 every 5 minutes, stops passive growing when stamina reaches 200 or higher. Recover another 120 every 12 hours.",
+                "event": "Daily Missions, Watchtower Intels, Desert Trial",
+                "useAfter": "between some events"
+            },
+            {
+                "name": "Construction Speedup (Any)",
                 "image": "construction_speedup.png",
                 "purpose": "Speeds up construction.",
                 "saveForEvent": true,
@@ -168,7 +187,7 @@
                 "event": "Hall of Governors, Plan Your City, Kingdom of Power (KVK), etc"
             },
             {
-                "name": "Research Speedup",
+                "name": "Research Speedup (Any)",
                 "image": "research_speedup.png",
                 "purpose": "Speeds up research.",
                 "saveForEvent": true,
@@ -177,7 +196,7 @@
                 "event": "Hall of Governors, Plan Your City, Kingdom of Power (KVK), etc"
             },
             {
-                "name": "Training Speedup",
+                "name": "Training Speedup (Any)",
                 "image": "training_speedup.png",
                 "purpose": "Speeds up troop training.",
                 "saveForEvent": true,
@@ -186,7 +205,7 @@
                 "event": "Hall of Governors, Power Up, Kingdom of Power (KVK), etc"
             },
             {
-                "name": "Hero XP",
+                "name": "Hero XP (Any)",
                 "image": "hero_xp.png",
                 "purpose": "Levels up heroes. Best used during hero growth events.",
                 "saveForEvent": false,
@@ -195,43 +214,43 @@
                 "event": "-"
             },
             {
-                "name": "Conquest Skill Book",
+                "name": "Conquest Skill Book (Any)",
                 "image": "epic_conquest_skill_book.png",
                 "purpose": "Levels up conquest skills.",
                 "saveForEvent": false,
                 "category": "Hero",
                 "source": "Terrors, Daily Missions, Watchtower Intels, Conquest, VIP Daily",
-                "useAfter": "After Day 4",
+                "useAfter": "after Day 4",
                 "event": "Day 4, Path of Growth"
             },
             {
-                "name": "Expedition Skill Manual",
+                "name": "Expedition Skill Manual (Any)",
                 "image": "epic_expedition_skill_manual.png",
                 "purpose": "Levels up expedition skills.",
                 "saveForEvent": false,
                 "category": "Hero",
                 "source": "Terrors, Daily Missions, Watchtower Intels, Conquest, VIP Daily",
-                "useAfter": "After Day 4",
+                "useAfter": "after Day 4",
                 "event": "Day 4, Path of Growth"
             },
             {
-                "name": "Hero Shard",
+                "name": "Hero Shard (Any)",
                 "image": "mythic_general_hero_shard.png",
-                "purpose": "Collect to ascend heroes.",
+                "purpose": "For ascending heroes.",
                 "saveForEvent": true,
                 "category": "Hero",
                 "source": "Terrors, Daily Missions, Watchtower Intels, Conquest, VIP Daily",
                 "event": "Hall of Governors, Grow Your Heroes, Kingdom of Power (KVK), etc"
             },
             {
-                "name": "Key",
+                "name": "Key (Any)",
                 "image": "gold_key.png",
                 "purpose": "Hero Recruitment.",
                 "saveForEvent": true,
                 "category": "Hero",
                 "source": "Daily Missions, Free 5 Silver Key Daily, Free 1 Gold Key every 2 Days, Events",
                 "event": "Call of the Sovereign (Unlocks Gen 3 Heroes). Note you don't need to save for Beast Whisperer (Day 55-60) as you get enough free keys over 7 days period.",
-                "useAfter": "Between Events"
+                "useAfter": "between some events"
             },
             {
                 "name": "Enhancement XP Part",
@@ -240,13 +259,13 @@
                 "saveForEvent": false,
                 "category": "Gear",
                 "source": "Various sources",
-                "useAfter": "After Day 27",
+                "useAfter": "after Day 27",
                 "event": "2nd Hall of Governors (Day 20-27), Steel Edge (Day 10)"
             },
             {
                 "name": "Artisan's Vision",
                 "image": "artisans_vision.png",
-                "purpose": "Upgrades Governor Gear",
+                "purpose": "For Governor Gear upgrade.",
                 "saveForEvent": true,
                 "category": "Gear",
                 "source": "Events, Swordland, War Chant Custom Chest, Alliance Championship Shop (may not be available at lower levels)",
@@ -255,7 +274,7 @@
             {
                 "name": "Charm Design",
                 "image": "charm_design.png",
-                "purpose": "For Charm Upgrades.",
+                "purpose": "For Governor Gear Charm upgrade.",
                 "saveForEvent": true,
                 "category": "Gear",
                 "source": "Events",
@@ -264,56 +283,65 @@
             {
                 "name": "Charm Guide",
                 "image": "charm_guide.png",
-                "purpose": "For Charm Upgrades.",
+                "purpose": "For Governor Gear Charm upgrade.",
                 "saveForEvent": true,
                 "category": "Gear",
                 "source": "Events",
                 "event": "Hall of Governors, Strongest Governor, Kingdom of Power (KVK)"
             },
             {
-                "name": "Common Taming Mark",
+                "name": "Taming Mark (Any)",
                 "image": "common_taming_mark.png",
                 "purpose": "Used to tame basic beasts.",
-                "saveForEvent": false,
-                "category": "Resource",
+                "saveForEvent": true,
+                "category": "Pet",
                 "source": "Beast Hunts",
-                "event": ""
+                "event": "Strongest Governor, Alliance Brawl, Kingdom of Power (KvK)"
             },
             {
                 "name": "Forgehammer",
                 "image": "forgehammer.png",
-                "purpose": "Essential for forging gear.",
+                "purpose": "Levels up Mythic Hero Gear Mastery.",
                 "saveForEvent": true,
                 "category": "Gear",
-                "source": "Gear Forge",
-                "event": "Forge Frenzy"
+                "source": "Events, Bear Hunt",
+                "event": "Hall of Governors, Stand of Arms, Kingdom of Power (KVK)"
             },
             {
                 "name": "Gilded Threads",
                 "image": "gilded_threads.png",
-                "purpose": "Used in high-tier gear crafting.",
+                "purpose": "For Governor Gear upgrade.",
                 "saveForEvent": true,
                 "category": "Gear",
-                "source": "Elite Dungeons",
-                "event": "Crafting Carnival"
-            },
-            {
-                "name": "Governor Stamina",
-                "image": "governor_stamina.png",
-                "purpose": "Allows more actions per day. Use wisely during trials.",
-                "saveForEvent": true,
-                "category": "Resource",
-                "source": "Daily Quests",
-                "event": "Trial Surge"
+                "source": "Viking King, Alliance Championship Shop",
+                "event": "Hall of Governors, Alliance Brawl, Kingdom of Power (KVK)"
             },
             {
                 "name": "Satin",
                 "image": "satin.png",
-                "purpose": "Used in charm gear crafting.",
-                "saveForEvent": false,
+                "purpose": "For Governor Gear upgrade.",
+                "saveForEvent": true,
                 "category": "Gear",
-                "source": "Charm Workshop",
-                "event": "",
+                "source": "Terror, Beast, Viking King",
+                "event": "Hall of Governors, Alliance Brawl, Kingdom of Power (KVK)"
+            },
+            {
+                "name": "Nutrient Potion",
+                "image": "nutrient_potion.png",
+                "purpose": "For pet advancement.",
+                "saveForEvent": true,
+                "category": "Pet",
+                "source": "Beast Hunts",
+                "event": "Strongest Governor, Alliance Brawl, Kingdom of Power (KvK)"
+            },
+            {
+                "name": "Growth Manual",
+                "image": "growth_manual.png",
+                "purpose": "For pet advancement.",
+                "saveForEvent": true,
+                "category": "Pet",
+                "source": "Beast Hunts",
+                "event": "Strongest Governor, Alliance Brawl, Kingdom of Power (KvK)"
             }
         ];
 
@@ -342,7 +370,7 @@
 
             grouped[category].forEach(item => {
                 useAfter = '';
-                var saveForEvent = `<p class="save">🔴 Save for Event</p>`
+                var saveForEvent = `<p class="save">🔴 Save for events</p>`
                 if (item.useAfter) {
                     saveForEvent = `<p class="nosave">🟡 Use ${item.useAfter}</p>`;
                 }
@@ -358,7 +386,7 @@
             <h2>${item.name}</h2>
             <p>${item.purpose}</p>
             <p><strong>Source:</strong> ${item.source}</p>
-            <p><strong>Event:</strong> ${item.event}</p>
+            <p><strong>Save for:</strong> ${item.event}</p>
             ${saveForEvent}
           </div>
         `;
