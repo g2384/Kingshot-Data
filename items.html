@@ -45,6 +45,7 @@
         .category-title {
             font-size: 1.5em;
             margin-bottom: 20px;
+            margin-top: 10px;
             border-bottom: 2px solid #ccc;
             padding-bottom: 5px;
             text-transform: capitalize;
@@ -153,7 +154,7 @@
 <body>
     <h1>Kingshot Item Guide</h1>
     <div style="margin-left:3rem">
-        <p>Note: "Sources" are recommended sources</p>
+        <p>Note: "Source" means recommended source of obtaining the items</p>
     </div>
     <div id="item-list"></div>
     <script>
@@ -173,9 +174,27 @@
                 "purpose": "For attacking beasts, terrors.",
                 "saveForEvent": false,
                 "category": "Resource",
-                "source": "Restores 1 every 5 minutes, stops passive growing when stamina reaches 200 or higher. Recover another 120 every 12 hours.",
+                "source": "Regenerates 1 stamina every 5 minutes, up to a cap of 200. Additional 120 stamina recovered every 12 hours.",
                 "event": "Daily Missions, Watchtower Intels, Desert Trial",
                 "useAfter": "between some events"
+            },
+            {
+                "name": "Gem",
+                "image": "gem.png",
+                "purpose": "In-game currency.",
+                "saveForEvent": true,
+                "category": "Resource",
+                "source": "Various sources",
+                "event": "VIP Activation, Hero Roulette",
+            },
+            {
+                "name": "True Gold",
+                "image": "true_gold.png",
+                "purpose": "For upgrading buildings beyond Lv. 30.",
+                "saveForEvent": true,
+                "category": "Resource",
+                "source": "Daily Missions, Events, Watchtower Intels (Town Center Lv. 30), etc.",
+                "event": "Alliance Brawl, Strongest Governor, Kingdom of Power (KvK), etc"
             },
             {
                 "name": "Construction Speedup (Any)",
@@ -249,7 +268,7 @@
                 "saveForEvent": true,
                 "category": "Hero",
                 "source": "Daily Missions, Free 5 Silver Key Daily, Free 1 Gold Key every 2 Days, Events",
-                "event": "Call of the Sovereign (Unlocks Gen 3 Heroes). Note you don't need to save for Beast Whisperer (Day 55-60) as you get enough free keys over 7 days period.",
+                "event": "Call of the Sovereign (Unlocks Gen 3 Heroes). No need to save for Beast Whisperer (Day 55–60); free keys are sufficient over 7 days.",
                 "useAfter": "between some events"
             },
             {
@@ -290,15 +309,6 @@
                 "event": "Hall of Governors, Strongest Governor, Kingdom of Power (KVK)"
             },
             {
-                "name": "Taming Mark (Any)",
-                "image": "common_taming_mark.png",
-                "purpose": "Used to tame basic beasts.",
-                "saveForEvent": true,
-                "category": "Pet",
-                "source": "Beast Hunts",
-                "event": "Strongest Governor, Alliance Brawl, Kingdom of Power (KvK)"
-            },
-            {
                 "name": "Forgehammer",
                 "image": "forgehammer.png",
                 "purpose": "Levels up Mythic Hero Gear Mastery.",
@@ -326,12 +336,30 @@
                 "event": "Hall of Governors, Alliance Brawl, Kingdom of Power (KVK)"
             },
             {
+                "name": "Pet Food",
+                "image": "pet_food.png",
+                "purpose": "For leveling up pet.",
+                "saveForEvent": false,
+                "category": "Pet",
+                "source": "Pet Adventure, Events, Cheeta's Skill",
+                "event": "-"
+            },
+            {
+                "name": "Taming Mark (Any)",
+                "image": "common_taming_mark.png",
+                "purpose": "Used to tame basic beasts.",
+                "saveForEvent": true,
+                "category": "Pet",
+                "source": "Pet Adventure",
+                "event": "Strongest Governor, Alliance Brawl, Kingdom of Power (KvK)"
+            },
+            {
                 "name": "Nutrient Potion",
                 "image": "nutrient_potion.png",
                 "purpose": "For pet advancement.",
                 "saveForEvent": true,
                 "category": "Pet",
-                "source": "Beast Hunts",
+                "source": "Pet Adventure",
                 "event": "Strongest Governor, Alliance Brawl, Kingdom of Power (KvK)"
             },
             {
@@ -340,7 +368,7 @@
                 "purpose": "For pet advancement.",
                 "saveForEvent": true,
                 "category": "Pet",
-                "source": "Beast Hunts",
+                "source": "Pet Adventure",
                 "event": "Strongest Governor, Alliance Brawl, Kingdom of Power (KvK)"
             }
         ];
