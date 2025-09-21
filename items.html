@@ -100,6 +100,13 @@
             color: green;
         }
 
+        label,
+        select {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
         /* Mobile styles */
         @media (max-width: 700px) {
             body {
@@ -155,6 +162,12 @@
     <h1>Kingshot Item Guide</h1>
     <div style="margin-left:3rem">
         <p>Note: "Source" means recommended source of obtaining the items</p>
+        <label for="filter">Filter by “Save for”:</label>
+        <select id="filter">
+            <option value="all">All</option>
+            <option value="Kingdom of Power (KvK)">Kingdom of Power (KvK)</option>
+            <!-- Add more options as needed -->
+        </select>
     </div>
     <div id="item-list"></div>
     <script>
@@ -203,7 +216,7 @@
                 "saveForEvent": true,
                 "category": "Speedup",
                 "source": "Daily Missions, Terrors, Alliance Chests, Online Rewards, Events",
-                "event": "Hall of Governors, Plan Your City, Kingdom of Power (KVK), etc"
+                "event": "Hall of Governors, Plan Your City, Kingdom of Power (KvK), etc"
             },
             {
                 "name": "Research Speedup (Any)",
@@ -212,7 +225,7 @@
                 "saveForEvent": true,
                 "category": "Speedup",
                 "source": "Daily Missions, Terrors, Alliance Chests, Online Rewards, Events",
-                "event": "Hall of Governors, Plan Your City, Kingdom of Power (KVK), etc"
+                "event": "Hall of Governors, Plan Your City, Kingdom of Power (KvK), etc"
             },
             {
                 "name": "Training Speedup (Any)",
@@ -221,7 +234,7 @@
                 "saveForEvent": true,
                 "category": "Speedup",
                 "source": "Daily Missions, Terrors, Alliance Chests, Online Rewards, Events",
-                "event": "Hall of Governors, Power Up, Kingdom of Power (KVK), etc"
+                "event": "Hall of Governors, Power Up, Kingdom of Power (KvK), etc"
             },
             {
                 "name": "Healing Speedup (Any)",
@@ -268,7 +281,7 @@
                 "saveForEvent": true,
                 "category": "Hero",
                 "source": "Terrors, Daily Missions, Watchtower Intels, Conquest, VIP Daily",
-                "event": "Hall of Governors, Grow Your Heroes, Kingdom of Power (KVK), etc"
+                "event": "Hall of Governors, Grow Your Heroes, Kingdom of Power (KvK), etc"
             },
             {
                 "name": "Key (Any)",
@@ -297,7 +310,7 @@
                 "saveForEvent": true,
                 "category": "Gear",
                 "source": "Events, Swordland, War Chant Custom Chest, Alliance Championship Shop (may not be available at lower levels)",
-                "event": "Hall of Governors, Kingdom of Power (KVK)"
+                "event": "Hall of Governors, Kingdom of Power (KvK)"
             },
             {
                 "name": "Charm Design",
@@ -306,7 +319,7 @@
                 "saveForEvent": true,
                 "category": "Gear",
                 "source": "Events",
-                "event": "Hall of Governors, Strongest Governor, Kingdom of Power (KVK)"
+                "event": "Hall of Governors, Strongest Governor, Kingdom of Power (KvK)"
             },
             {
                 "name": "Charm Guide",
@@ -315,7 +328,7 @@
                 "saveForEvent": true,
                 "category": "Gear",
                 "source": "Events",
-                "event": "Hall of Governors, Strongest Governor, Kingdom of Power (KVK)"
+                "event": "Hall of Governors, Strongest Governor, Kingdom of Power (KvK)"
             },
             {
                 "name": "Forgehammer",
@@ -324,7 +337,7 @@
                 "saveForEvent": true,
                 "category": "Gear",
                 "source": "Events, Bear Hunt",
-                "event": "Hall of Governors, Stand of Arms, Kingdom of Power (KVK)"
+                "event": "Hall of Governors, Stand of Arms, Kingdom of Power (KvK)"
             },
             {
                 "name": "Gilded Threads",
@@ -333,7 +346,7 @@
                 "saveForEvent": true,
                 "category": "Gear",
                 "source": "Viking King, Alliance Championship Shop",
-                "event": "Hall of Governors, Alliance Brawl, Kingdom of Power (KVK)"
+                "event": "Hall of Governors, Alliance Brawl, Kingdom of Power (KvK)"
             },
             {
                 "name": "Satin",
@@ -342,7 +355,7 @@
                 "saveForEvent": true,
                 "category": "Gear",
                 "source": "Terror, Beast, Viking King",
-                "event": "Hall of Governors, Alliance Brawl, Kingdom of Power (KVK)"
+                "event": "Hall of Governors, Alliance Brawl, Kingdom of Power (KvK)"
             },
             {
                 "name": "Pet Food",
@@ -432,6 +445,22 @@
 
             section.appendChild(itemsWrapper);
             container.appendChild(section);
+        });
+
+        const filterSelect = document.getElementById('filter');
+
+        filterSelect.addEventListener('change', () => {
+            const itemList = document.getElementById('item-list');
+            const items = itemList.querySelectorAll('.item');
+            const selected = filterSelect.value;
+            console.log(selected);
+            items.forEach(item => {
+                if (selected === 'all' || item.innerHTML.includes(selected)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         });
 
     </script>
