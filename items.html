@@ -92,12 +92,11 @@
         }
 
         .save {
-            color: green;
-            font-weight: bold;
+            color: red;
         }
 
         .nosave {
-            color: gray;
+            color: green;
         }
 
         /* Mobile styles */
@@ -153,7 +152,9 @@
 
 <body>
     <h1>Kingshot Item Guide</h1>
-    <div style="margin-left:3rem"><p>Note: "Sources" are recommended sources</p></div>
+    <div style="margin-left:3rem">
+        <p>Note: "Sources" are recommended sources</p>
+    </div>
     <div id="item-list"></div>
     <script>
         const data = [
@@ -191,7 +192,7 @@
                 "saveForEvent": false,
                 "category": "Hero",
                 "source": "Beasts, Terrors, Daily Missions, Conquest, Events",
-                "event": ""
+                "event": "-"
             },
             {
                 "name": "Conquest Skill Book",
@@ -200,7 +201,7 @@
                 "saveForEvent": false,
                 "category": "Hero",
                 "source": "Terrors, Daily Missions, Watchtower Intels, Conquest, VIP Daily",
-                "saveForEventComment": "After Day 4",
+                "useAfter": "After Day 4",
                 "event": "Day 4, Path of Growth"
             },
             {
@@ -210,7 +211,7 @@
                 "saveForEvent": false,
                 "category": "Hero",
                 "source": "Terrors, Daily Missions, Watchtower Intels, Conquest, VIP Daily",
-                "saveForEventComment": "After Day 4",
+                "useAfter": "After Day 4",
                 "event": "Day 4, Path of Growth"
             },
             {
@@ -229,7 +230,8 @@
                 "saveForEvent": true,
                 "category": "Hero",
                 "source": "Daily Missions, Free 5 Silver Key Daily, Free 1 Gold Key every 2 Days, Events",
-                "event": "Call of the Sovereign (Unlocks Gen 3 Heroes). Note you don't need to save for Beast Whisperer (Day 55-60) as you get enough free keys over 7 days period."
+                "event": "Call of the Sovereign (Unlocks Gen 3 Heroes). Note you don't need to save for Beast Whisperer (Day 55-60) as you get enough free keys over 7 days period.",
+                "useAfter": "Between Events"
             },
             {
                 "name": "Enhancement XP Part",
@@ -238,35 +240,35 @@
                 "saveForEvent": false,
                 "category": "Gear",
                 "source": "Various sources",
-                "saveForEventComment": "After Day 27",
-                "event": "Hall of Governors (2nd, Day 20-27), Steel Edge (Day 10)"
+                "useAfter": "After Day 27",
+                "event": "2nd Hall of Governors (Day 20-27), Steel Edge (Day 10)"
             },
             {
                 "name": "Artisan's Vision",
                 "image": "artisans_vision.png",
-                "purpose": "Used for upgrading high-tier gear.",
+                "purpose": "Upgrades Governor Gear",
                 "saveForEvent": true,
                 "category": "Gear",
-                "source": "Gear Forge, Event Rewards",
-                "event": "Gear Enhancement Festival"
+                "source": "Events, Swordland, War Chant Custom Chest, Alliance Championship Shop (may not be available at lower levels)",
+                "event": "Hall of Governors, Kingdom of Power (KVK)"
             },
             {
                 "name": "Charm Design",
                 "image": "charm_design.png",
-                "purpose": "Required for crafting charm gear.",
-                "saveForEvent": false,
+                "purpose": "For Charm Upgrades.",
+                "saveForEvent": true,
                 "category": "Gear",
-                "source": "Charm Workshop",
-                "event": ""
+                "source": "Events",
+                "event": "Hall of Governors, Strongest Governor, Kingdom of Power (KVK)"
             },
             {
                 "name": "Charm Guide",
                 "image": "charm_guide.png",
-                "purpose": "Boosts charm gear enhancement success.",
+                "purpose": "For Charm Upgrades.",
                 "saveForEvent": true,
                 "category": "Gear",
-                "source": "Charm Workshop, Events",
-                "event": "Charm Mastery Trials"
+                "source": "Events",
+                "event": "Hall of Governors, Strongest Governor, Kingdom of Power (KVK)"
             },
             {
                 "name": "Common Taming Mark",
@@ -311,7 +313,8 @@
                 "saveForEvent": false,
                 "category": "Gear",
                 "source": "Charm Workshop",
-                "event": "",            }
+                "event": "",
+            }
         ];
 
         const container = document.getElementById('item-list');
@@ -338,7 +341,15 @@
             itemsWrapper.className = 'category-items';
 
             grouped[category].forEach(item => {
-                saveForEventComment = item.saveForEventComment ? ` (${item.saveForEventComment})` : '';
+                useAfter = '';
+                var saveForEvent = `<p class="save">🔴 Save for Event</p>`
+                if (item.useAfter) {
+                    saveForEvent = `<p class="nosave">🟡 Use ${item.useAfter}</p>`;
+                }
+                else if (!item.saveForEvent) {
+                    var saveForEvent = `<p class="nosave">🟢 Use Anytime</p>`;
+                }
+
                 const div = document.createElement('div');
                 div.className = 'item';
                 div.innerHTML = `
@@ -347,13 +358,8 @@
             <h2>${item.name}</h2>
             <p>${item.purpose}</p>
             <p><strong>Source:</strong> ${item.source}</p>
-            ${item.event ? `
-              <p><strong>Event:</strong> ${item.event}</p>
-              <p class="save">✅ Save for Event${saveForEventComment}</p>
-            ` : `
-              <p><strong>Event:</strong> ${item.event}</p>
-              <p class="nosave">🔘 Use Anytime${saveForEventComment}</p>
-            `}
+            <p><strong>Event:</strong> ${item.event}</p>
+            ${saveForEvent}
           </div>
         `;
                 itemsWrapper.appendChild(div);
