@@ -25,7 +25,25 @@
             flex-direction: column;
             line-height: 1.5;
             max-width: 1500px;
+            position: relative;
         }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: -75px;
+            left: -275px;
+            width: 700px;
+            height: 367px;
+            background-image: url(./images/item_background_kingshot.jpg);
+            background-size: cover;
+            background-position: top left;
+            z-index: -1;
+            pointer-events: none;
+            mask-image: radial-gradient(circle at top left, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0) 70%);
+            -webkit-mask-image: radial-gradient(circle at top left, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0) 70%);
+        }
+
 
         .container {
             position: relative;
@@ -134,6 +152,23 @@
             body {
                 max-width: 100%;
                 padding: 0 10px;
+            }
+
+            body::before {
+                content: "";
+                position: absolute;
+                top: -25px;
+                left: -125px;
+                width: 350px;
+                height: 182px;
+                background-image: url(./images/item_background_kingshot.jpg);
+                background-size: cover;
+                background-position: top left;
+                z-index: 0;
+                opacity: 1;
+                pointer-events: none;
+                mask-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0) 70%);
+                -webkit-mask-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0) 70%)
             }
 
             .container {
