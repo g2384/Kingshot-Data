@@ -100,11 +100,33 @@
             color: green;
         }
 
-        label,
+        label {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            color: #333;
+            letter-spacing: 0.03em;
+        }
+
         select {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            display: block;
+            appearance: none;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            font-size: 0.95rem;
+            font-family: inherit;
+            color: #333;
+            width: 100%;
+            max-width: 300px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            transition: border-color 0.2s ease;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #888;
         }
 
         /* Mobile styles */
@@ -160,7 +182,7 @@
 
 <body>
     <h1>Kingshot Item Guide</h1>
-    <div style="margin-left:3rem">
+    <div style="margin-left:1.5rem">
         <p>Note: "Source" means recommended source of obtaining the items</p>
         <label for="filter">Filter by “Save for”:</label>
         <select id="filter">
