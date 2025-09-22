@@ -157,6 +157,10 @@ None
 
 ### Cesares Fury
 
+## Day 12:
+
+### Plan Your City
+
 ---
 
 ## Day 64 (20250908, Monday)
