@@ -135,7 +135,27 @@ Hero Roulette is a three-day event that starts on the second day of big events l
 
 ## Day 8 (Sunday):
 
+None
 
+## Day 9 (Monday):
+
+### Sanctuary Battle
+
+### Alliance Mobilization
+
+### Fishing Tournament
+
+## Day 10:
+
+### Viking Vengeance
+
+## Day 11 (Wednesday):
+
+### Steel Edge
+
+### Desert Trial
+
+### Cesares Fury
 
 ---
 
@@ -387,4 +407,26 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 ### Cesares Fury (3 Days)
 
 - TODO
+
+## Day 77
+
+### Grow Your Heroes
+
+- TODO
+
+### Hall of Heroes
+
+- 3 Days
+- Not worth the gem to buy Marlin Shard, 1500 Gem per shard;
+- Jabel Shard, 1350 gem per shard;
+- Saul Shard, 1350 gem per shard;
+- Custom Hero Widget Chest, 2700 gem;
+- Epic General Hero Shard, 450 gem, cheaper than VIP shop (500gem), but still not worthwhile;
+- 10K Hero P, 150 gem, cheaper than VIP shop (90Gem = 5K), but still not worthwhile;;
+
+## Day 78 (Monday)
+
+### Alliance Championship
+
+### Strongest Governor (1st time)
 
