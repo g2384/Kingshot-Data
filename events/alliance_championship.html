@@ -21,7 +21,7 @@
             background: var(--bg);
             color: var(--text);
             margin: 0;
-            padding: 1rem;
+            padding: 2rem;
             display: flex;
             justify-content: center;
         }
@@ -40,13 +40,13 @@
         .container::before {
             content: "";
             position: absolute;
-            top: -120px;
-            left: -60px;
+            top: -50px;
+            left: -100px;
             width: 500px;
             height: 500px;
             background: url(../images/event_alliance_championship.webp) top left / cover no-repeat;
             mask-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.1) 60%, transparent 70%);
-            -webkit-mask-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.1) 60%, transparent 70%);
+            -webkit-mask-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.1) 50%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
@@ -78,52 +78,79 @@
             border-radius: 2px;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
+        .section {
             margin-bottom: 2rem;
         }
 
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 2rem;
+        .troop-ratio {
+            margin-top: 1rem;
+            padding-left: 1rem;
         }
 
-        ul li {
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .troop-icons {
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+            display: inline-block;
         }
 
-        ul li img {
+        .troop-icons img {
             height: 20px;
+            margin-right: 0.5rem;
+        }
+
+        .troop-icons img {
+            height: 20px;
+            margin-left: 1rem;
+            margin-right: 0rem;
             vertical-align: middle;
         }
 
         .banned-heroes {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 0.1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+            padding-left: 1rem;
+        }
+
+        .banned-heroes div {
+            background: #ffffff;
+            border: 1px solid #ffe3e3;
+            border-radius: 8px;
+            padding: 0.5rem;
+            position: relative;
+        }
+
+        .banned-heroes div::before {
+            content: "🚫";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1.2rem;
+        }
+
+        .banned-heroes span {
+            font-size: 0.85rem;
+            color: #b91c1c;
+            font-weight: bold;
         }
 
         .banned-heroes img {
             height: 40px;
             border-radius: 4px;
+            display: block;
+            margin: 0 auto 0.25rem;
+        }
+
+        .info-block {
+            margin: 0.75rem 0;
+            padding-left: 1rem;
         }
 
         @media (max-width: 600px) {
             .container {
                 padding: 1rem;
-            }
-
-            .container::before {
-                width: 300px;
-                height: 300px;
-                top: -80px;
             }
         }
     </style>
@@ -136,38 +163,55 @@
         </header>
 
         <article>
-            <section>
+            <section class="section">
                 <h2>Player Checklist</h2>
-                <ul>
-                    <li>🛡️ <strong>Troop Ratio:</strong>
-                        <img src="../images/icons/infantry.webp" /> 50%
-                        <img src="../images/icons/cavalry.webp" /> 20%
-                        <img src="../images/icons/archer.webp" /> 30%
-                    </li>
-                    <li>⚔️ <strong>Hero Selection:</strong> Use your strongest heroes with strong Expedition Skills</li>
-                    <li>🚫 <strong>Banned Heroes:</strong></li>
-                </ul>
-                <div class="banned-heroes">
-                    <img src="../images/heroes/diana.webp" alt="Diana" title="Diana" />
-                    <img src="../images/heroes/olive.webp" alt="Olive" title="Olive" />
-                    <img src="../images/heroes/forrest.webp" alt="Forrest" title="Forrest" />
-                    <img src="../images/heroes/edwin.webp" alt="Edwin" title="Edwin" />
-                    <img src="../images/heroes/seth.webp" alt="Seth" title="Seth" />
+
+                <div class="troop-ratio">
+                    <strong>Troop Ratio:</strong>
+                    <div class="troop-icons">
+                        <span><img src="../images/icons/infantry.webp" alt="Infantry" /> 50%</span>
+                        <span><img src="../images/icons/cavalry.webp" alt="Cavalry" /> 20%</span>
+                        <span><img src="../images/icons/archer.webp" alt="Archer" /> 30%</span>
+                    </div>
                 </div>
-                <ul>
-                    <li>💡 <strong>Buffs:</strong> Activate Pet Skill (Moose, Horror Stare), Castle Commander or Marshal
-                    </li>
-                    <li>🎯 <strong>Lane Focus:</strong> Deploy troops in middle lane; R4/R5 will reassign later</li>
-                    <li>🔄 <strong>Adjust Strategy:</strong> R4/R5 may reassign lanes during prep phase</li>
-                </ul>
+
+                <div class="info-block"><strong>Hero Selection:</strong> Use your strongest heroes with strong
+                    Expedition Skills</div>
+
+                <div class="info-block"><strong>Banned Heroes:</strong></div>
+                <div class="banned-heroes">
+                    <div>
+                        <img src="../images/heroes/diana.webp" alt="Diana" title="Diana" />
+                        <span>Diana</span>
+                    </div>
+                    <div>
+                        <img src="../images/heroes/olive.webp" alt="Olive" title="Olive" />
+                        <span>Olive</span>
+                    </div>
+                    <div>
+                        <img src="../images/heroes/forrest.webp" alt="Forrest" title="Forrest" />
+                        <span>Forrest</span>
+                    </div>
+                    <div>
+                        <img src="../images/heroes/edwin.webp" alt="Edwin" title="Edwin" />
+                        <span>Edwin</span>
+                    </div>
+                    <div>
+                        <img src="../images/heroes/seth.webp" alt="Seth" title="Seth" />
+                        <span>Seth</span>
+                    </div>
+                </div>
+
+                <div class="info-block"><strong>Buffs:</strong> Activate Pet Skill (Moose, Horror Stare), Castle
+                    Commander or Marshal</div>
+                <div class="info-block"><strong>Lane Focus:</strong> Deploy troops in middle lane; R4/R5 will reassign
+                    later</div>
             </section>
 
-            <section>
+            <section class="section">
                 <h2>Why Participate</h2>
-                <ul>
-                    <li>Passive rewards—no need to stay online</li>
-                    <li>Use Badges to buy Gilded Threads, Stain, Promotion Medallion</li>
-                </ul>
+                <div class="info-block">Passive rewards—no need to stay online</div>
+                <div class="info-block">Use Badges to buy Gilded Threads, Stain, Promotion Medallion</div>
             </section>
         </article>
     </div>
