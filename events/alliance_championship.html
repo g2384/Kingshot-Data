@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alliance Championship Guide</title>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --hover: #2563eb;
+            --bg: #f3f4f6;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --card-bg: #e4ecee;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            max-width: 960px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -120px;
+            left: -60px;
+            width: 500px;
+            height: 500px;
+            background: url(../images/event_bear_hunt.jpg) top left / cover no-repeat;
+            mask-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.1) 60%, transparent 70%);
+            -webkit-mask-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.1) 60%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
+        }
+
+        h2 {
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem;
+        }
+
+        ul li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        ul li img {
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        .banned-heroes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .banned-heroes img {
+            height: 40px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .container::before {
+                width: 300px;
+                height: 300px;
+                top: -80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Alliance Championship Guide for F2P</h1>
+        </header>
+
+        <article>
+            <section>
+                <h2>Player Checklist</h2>
+                <ul>
+                    <li>🛡️ <strong>Troop Ratio:</strong>
+                        <img src="../images/icons/infantry.webp" /> 50%
+                        <img src="../images/icons/cavalry.webp" /> 20%
+                        <img src="../images/icons/archer.webp" /> 30%
+                    </li>
+                    <li>⚔️ <strong>Hero Selection:</strong> Use your strongest heroes with strong Expedition Skills</li>
+                    <li>🚫 <strong>Banned Heroes:</strong></li>
+                </ul>
+                <div class="banned-heroes">
+                    <img src="../images/heroes/diana.webp" alt="Diana" title="Diana" />
+                    <img src="../images/heroes/olive.webp" alt="Olive" title="Olive" />
+                    <img src="../images/heroes/forrest.webp" alt="Forrest" title="Forrest" />
+                    <img src="../images/heroes/edwin.webp" alt="Edwin" title="Edwin" />
+                    <img src="../images/heroes/seth.webp" alt="Seth" title="Seth" />
+                </div>
+                <ul>
+                    <li>💡 <strong>Buffs:</strong> Activate Pet Skill (Moose, Horror Stare), Castle Commander or Marshal
+                    </li>
+                    <li>🎯 <strong>Lane Focus:</strong> Deploy troops in middle lane; R4/R5 will reassign later</li>
+                    <li>🔄 <strong>Adjust Strategy:</strong> R4/R5 may reassign lanes during prep phase</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Why Participate</h2>
+                <ul>
+                    <li>Passive rewards—no need to stay online</li>
+                    <li>Use Badges to buy Gilded Threads, Stain, Promotion Medallion</li>
+                </ul>
+            </section>
+        </article>
+    </div>
+</body>
+
+</html>
