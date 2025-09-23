@@ -133,9 +133,11 @@ Hero Roulette is a three-day event that starts on the second day of big events l
   - Each spin costs 1 Lucky Chip or 1,500 gems; 10 spins cost 13,500 gems.
   - For this run, spin 32 times with gems, and get 3 free spins over 3 days. To unlock the 35-spin rewards. Unlocking Saul for his construction speed up skill.
 
-## Day 8 (Sunday):
+## Day 8 (0921, Sunday):
 
 None
+
+Bear hunt, 946K damage
 
 ## Day 9 (Monday):
 
