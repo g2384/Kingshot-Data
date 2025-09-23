@@ -155,6 +155,25 @@
             padding-left: 1rem;
         }
 
+        .buff-checklist {
+            list-style: none;
+            padding-left: 2rem;
+            margin: 0.5rem 0 0;
+        }
+
+        .buff-checklist li {
+            margin-bottom: 0.4rem;
+            padding-left: 0.5rem;
+            position: relative;
+        }
+
+        .buff-checklist li::before {
+            content: "✅";
+            position: absolute;
+            left: -1rem;
+            color: var(--primary);
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 1rem;
@@ -209,10 +228,16 @@
                     </div>
                 </div>
 
-                <div class="info-block"><strong>Buffs:</strong> Activate Pet Skill (Moose, Horror Stare), Castle
-                    Commander or Marshal</div>
-                <div class="info-block"><strong>Lane Focus:</strong> Deploy troops in middle lane; R4/R5 will reassign
+                <div class="info-block"><strong>Middle Lane:</strong> Deploy troops in middle lane; R4/R5 will reassign
                     later</div>
+
+                <div class="info-block">
+                    <strong>Buffs (May not all be unlocked):</strong>
+                    <ul class="buff-checklist">
+                        <li>Activate Pet Skill: <em>Moose Horror Stare</em></li>
+                        <li>Castle Battle Appointment: <em>Field Commander</em> or <em>Marshal</em></li>
+                    </ul>
+                </div>
             </section>
 
             <section class="section">

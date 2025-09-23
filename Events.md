@@ -145,6 +145,9 @@ Bear hunt, 946K damage
 
 ### Alliance Mobilization
 
+- Senior Tier unlocks Guardian 
+- Elite Tier unlocks Pioneer
+
 ### Fishing Tournament
 
 ## Day 10:
@@ -436,3 +439,26 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 
 ### Strongest Governor (1st time)
 
+## Day 79 (Tuesday)
+
+### Sanctuary Battle
+
+### Viking Vengeance (Lv. 9)
+
+### Eternity's Reach
+
+### Defeat nearby beasts
+
+### Hero Roulette (Zoe)
+
+## Day 79
+
+## Day 80
+
+## Day 81 (Friday)
+
+### All Out
+
+## Day 82 (Saturday)
+
+### Castle Battle
