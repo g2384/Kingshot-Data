@@ -71,6 +71,7 @@
                     <th>Stone</th>
                     <th>Iron</th>
                     <th>Resource Value</th>
+                    <th>recommended Power</th>
                     <th>Unlock</th>
                 </tr>
             </thead>
@@ -105,15 +106,22 @@
             1: 4000, 2: 6000, 3: 8000, 4: 10000,
             5: 14000, 6: 18000, 7: 22000, 8: 26000,
             9: 30000, 10: 34000, 11: 38000, 12: 41500,
-            13: 45000, 14: 48500, 26: 119000
+            13: 45000, 14: 48500, 15: 56000, 16: 56000, 26: 119000, 27: 133500
         };
+
+        const recommendedPower = {
+            1: 108, 2: 396, 3: 630, 4: 960,
+            5: 1320, 6: 2400, 7: 3840, 8: 6200,
+            9: 9000, 10: 14130, 11: 20670, 12: 34380,
+            13: 48200, 14: 64530, 15: 100157, 16: 177168, 26: 29366064, 27: 40787929
+        }
 
         function getBeastName(level) {
             if (level <= 4) return "Gray Wolf";
             if (level <= 8) return "Lynx";
             if (level <= 12) return "Bison";
-            if (level <= 14) return "Cheetah";
-            if (level <= 26) return "Grizzly Bear";
+            if (level <= 16) return "Cheetah";
+            if (level <= 27) return "Grizzly Bear";
             throw new Error("Invalid level");
         }
 
@@ -123,7 +131,10 @@
             if (level <= 12) return "Day 3";
             if (level <= 13) return "Day 4";
             if (level <= 14) return "Day 6";
+            if (level <= 15) return "Day 8";
+            if (level <= 16) return "Day 10";
             if (level <= 26) return "Day 74";
+            if (level <= 27) return "Day 79";
             throw new Error("Invalid level");
         }
 
@@ -151,12 +162,18 @@
         }
 
         function calculateResources(bread) {
-            return {
-                wood: bread,
-                stone: bread / 5,
-                iron: bread / 20,
-                value: bread * 4 // bread + wood + stone*5 + iron*20 = 4*bread
+            // Real iron values for known bread amounts
+            const ironLookup = {
+                133500: 6650
             };
+
+            const wood = bread;
+            const stone = bread / 5;
+            const iron = ironLookup[bread] ?? bread / 20;
+
+            const value = bread + wood + stone * 5 + iron * 20;
+
+            return { wood, stone, iron, value };
         }
 
         function calculateXP(level) {
@@ -175,6 +192,7 @@
                 const unlock = getUnlockDay(level);
                 const xp = calculateXP(level);
                 const res = calculateResources(bread);
+                const recommended = recommendedPower[level] || "N/A";
 
                 const row = `<tr>
                     <td>${level}</td>
@@ -185,6 +203,7 @@
                     <td>${res.stone.toLocaleString()}</td>
                     <td>${res.iron.toLocaleString()}</td>
                     <td>${formatK(res.value)}</td>
+                    <td>${recommended.toLocaleString()}</td>
                     <td>${unlock}</td>
                 </tr>`;
                 table.innerHTML += row;
