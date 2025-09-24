@@ -154,7 +154,7 @@ Bear hunt, 946K damage
 
 ### Viking Vengeance
 
-## Day 11 (Wednesday):
+## Day 11 (0924, Wednesday):
 
 ### Steel Edge
 
@@ -164,7 +164,19 @@ Bear hunt, 946K damage
 
 ## Day 12:
 
+## Day 13:
+
 ### Plan Your City
+
+## Day 14:
+
+## Day 15 (0928, Sunday):
+
+### Power UP
+
+### Sanctuary Battle
+
+
 
 ---
 
@@ -451,7 +463,7 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 
 ### Hero Roulette (Zoe)
 
-## Day 79
+## Day 79 (0924 Wednesday)
 
 ## Day 80
 
