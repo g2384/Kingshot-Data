@@ -219,11 +219,23 @@
                 pointer-events: none;
                 z-index: 0;
             }
+
+            .buff-checklist .troop-icons span {
+                display: inline-block;
+            }
+
+            .info-block .troop-icons span {
+                display: inline-block;
+            }
         }
 
         @media (max-width: 600px) {
+            body {
+                padding: 0.5rem;
+            }
+
             .container {
-                padding: 1rem;
+                padding: 0.5rem;
             }
 
             .container::before {
@@ -238,6 +250,18 @@
                 -webkit-mask-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.1) 50%, transparent 70%);
                 pointer-events: none;
                 z-index: 0;
+            }
+
+            .buff-checklist .troop-icons span {
+                display: block;
+            }
+
+            .info-block .troop-icons {
+                display: block;
+            }
+
+            .info-block .troop-icons span {
+                display: block;
             }
         }
     </style>
@@ -313,7 +337,7 @@
                                 <span>
                                     <img src="../images/pets/giant-rhino-wild-charge.png" alt="Wild Charge"
                                         title="Wild Charge" />Wild Charge</span>
-                            </div>.
+                            </div>
                         </li>
                         <li>Castle Battle Appointment: <em>Field Commander</em> or <em>Marshal</em></li>
                         <li>City Bonus - Wars: (Requires gem) <em>Deployment Capacity</em>, <em>Lethality</em>,
@@ -342,7 +366,7 @@
                             <img src="../images/items/promotion_medallion.png" alt="Promotion Medallion"
                                 title="Promotion Medallion" />
                             Promotion Medallion</span>
-                    </div>.
+                    </div>
                 </div>
                 <div class="info-block"><strong>Boost Resource Gathering: </strong> Winning Prestige buildings provides
                     a gathering speed boost for all members.</div>
