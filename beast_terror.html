@@ -94,6 +94,7 @@
                     <th>Resource Value</th>
                     <th>Healing Speedup</th>
                     <th>Training Speedup</th>
+                    <th>Satin</th>
                     <th>Unlock</th>
                 </tr>
             </thead>
@@ -154,11 +155,21 @@
                 gem: 15,
                 healing: "10m",
                 training: "5m"
-            }
+            },
+            3: {
+                terror: "Great Moose",
+                specialRewards: "Quinn Shard * 1 (50%)<br>20 Gem (50%)",
+                bread: 60000,
+                gem: 20,
+                healing: "15m",
+                training: "10m",
+                satin: 15
+            },
         };
 
         function getUnlockText(level) {
-            return "Day 3 or 1st Dreadwolf Trial event";
+            if (level <= 2) return "Day 3 or 1st Dreadwolf Trial event";
+            if (level <= 3) return "Day 12";
         }
 
         function calculateResources(bread) {
@@ -214,6 +225,7 @@
                 const level = parseInt(levelStr);
                 const res = calculateTerrorResources(entry.bread);
                 const unlock = getUnlockText(level);
+                const satin = entry.satin || "-";
 
                 const row = `<tr>
                     <td>${level}</td>
@@ -226,6 +238,7 @@
                     <td>${formatK(res.value)}</td>
                     <td>${entry.healing}</td>
                     <td>${entry.training}</td>
+                    <td>${satin}</td>
                     <td>${unlock}</td>
                 </tr>`;
                 table.innerHTML += row;
