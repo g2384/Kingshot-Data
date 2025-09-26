@@ -319,27 +319,27 @@ body {
     border-left-color: rgb(234, 102, 205);
 }
 
-.event-category-meeting {
+.event-category-solo {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(102, 126, 234, 0.7));
     border-left-color: rgba(102, 126, 234, 1);
 }
 
-.event-category-social {
+.event-category-alliance {
     background: linear-gradient(135deg, rgba(240, 147, 251, 0.9), rgba(240, 147, 251, 0.7));
     border-left-color: rgba(240, 147, 251, 1);
 }
 
-.event-category-review {
+.event-category-hog {
     background: linear-gradient(135deg, rgba(79, 172, 254, 0.9), rgba(79, 172, 254, 0.7));
     border-left-color: rgba(79, 172, 254, 1);
 }
 
-.event-category-development {
+.event-category-online {
     background: linear-gradient(135deg, rgba(67, 233, 123, 0.9), rgba(67, 233, 123, 0.7));
     border-left-color: rgba(67, 233, 123, 1);
 }
 
-.event-category-training {
+.event-category-power-up {
     background: linear-gradient(135deg, rgba(250, 112, 154, 0.9), rgba(250, 112, 154, 0.7));
     border-left-color: rgba(250, 112, 154, 1);
 }
@@ -397,15 +397,12 @@ body {
     font-size: 10px;
     font-weight: bold;
     position: absolute;
-    top: 1px;
-    left: 2px;
+    top: -5px;
+    left: -10px;
 }
 
 .stage-day-note {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.95);
     line-height: 1.1;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Scroll indicators */
