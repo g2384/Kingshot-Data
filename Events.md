@@ -176,7 +176,13 @@ Bear hunt, 946K damage
 
 ### Sanctuary Battle
 
+## Day 16 (0929. Monday):
 
+### Hall of Governors
+
+### Alliance Championship
+
+### Swordland Showdown
 
 ---
 
@@ -455,13 +461,13 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 
 ### Sanctuary Battle
 
-### Viking Vengeance (Lv. 9)
+### Viking Vengeance (Lv. 9 + Lv. 10) (3 days)
 
 ### Eternity's Reach
 
 ### Defeat nearby beasts
 
-### Hero Roulette (Zoe)
+### Hero Roulette (Zoe) (3 days)
 
 ## Day 79 (0924 Wednesday)
 
@@ -474,3 +480,17 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 ## Day 82 (Saturday)
 
 ### Castle Battle
+
+## Day 83
+
+## Day 84 (0929, Monday)
+
+### Champagne Fair
+
+### Armament Competition
+
+### Alliance Mobilization
+
+### Alliance Championship
+
+### Swordland Showdown
