@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline - Infinite Scroll</title>
+    <link rel="stylesheet" href="timeline.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Left Control Panel -->
+        <div class="control-panel">
+            <h2>Timeline Controls</h2>
+
+            <div class="control-group">
+                <label>Day 1 Configuration</label>
+                <select class="config-dropdown" id="day1-weekday" onchange="updateDay1Weekday(this.value)">
+                    <option value="1">Monday</option>
+                    <option value="2">Tuesday</option>
+                    <option value="3">Wednesday</option>
+                    <option value="4">Thursday</option>
+                    <option value="5">Friday</option>
+                    <option value="6">Saturday</option>
+                    <option value="0">Sunday</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label>View Options</label>
+                <button class="control-btn" id="view-all" onclick="filterEvents('all')">Show All Events</button>
+                <button class="control-btn" id="view-repeating" onclick="filterEvents('repeating')">Repeating
+                    Only</button>
+                <button class="control-btn" id="view-oneoff" onclick="filterEvents('oneoff')">One-off Only</button>
+            </div>
+
+            <div class="control-group">
+                <label>Search Events</label>
+                <input type="text" class="filter-input" id="search-input" placeholder="Search events..."
+                    oninput="searchEvents(this.value)">
+            </div>
+
+            <div class="control-group">
+                <label>Auto Scroll</label>
+                <button class="control-btn" id="auto-scroll-btn" onclick="toggleAutoScroll()">Enable Auto
+                    Scroll</button>
+            </div>
+
+            <div class="control-group">
+                <label>Visibility Debug</label>
+                <div id="visibility-debug" style="font-size: 12px; color: #666; padding: 10px; background: rgba(102, 126, 234, 0.1); border-radius: 8px;">
+                    Visible Days: Loading...
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Timeline Section -->
+        <div class="timeline-container">
+            <div class="timeline-wrapper" id="timeline-wrapper">
+                <div class="timeline-content" id="timeline-content">
+                    <div class="day-axis" id="day-axis"></div>
+                    <div class="events-container" id="events-container"></div>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <div class="scroll-progress" id="scroll-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading" id="loading">Loading timeline...</div>
+
+    <script>
+        // Global variables
+        let eventsData = [];
+        let filteredEvents = [];
+        let currentFilter = 'all';
+        let autoScrollInterval = null;
+        let isAutoScrolling = false;
+        let day1Weekday = 1; // Monday by default (1 = Monday, 0 = Sunday)
+        
+        // Infinite scroll and memory management variables
+        let visibleDayStart = 1;
+        let visibleDayEnd = 50;
+        let bufferDays = 3; // Extra days to render outside visible area
+        let dayHeight = 80; // Height of each day row
+        let renderedElements = new Map(); // Cache for rendered elements
+
+        // Sample JSON data structure
+        const sampleEventsData = {
+            "events": [
+                {
+                    "id": 1,
+                    "title": "Project Kickoff Meeting",
+                    "duration": 2,
+                    "isRepeating": false,
+                    "occurrenceInterval": 0,
+                    "firstOccurrenceDay": 1,
+                    "firstOccurrenceWeekday": "Monday",
+                    "category": "meeting",
+                    "requirements": ["Team Lead", "Project Manager", "Stakeholders"]
+                },
+                {
+                    "id": 2,
+                    "title": "Team Introduction Session",
+                    "duration": 7,
+                    "isRepeating": false,
+                    "occurrenceInterval": 0,
+                    "firstOccurrenceDay": 1,
+                    "firstOccurrenceWeekday": "Monday",
+                    "category": "social",
+                    "hasStages": true,
+                    "stages": [
+                        {"day": 1, "note": "Department introductions and overview"},
+                        {"day": 2, "note": "Individual team member presentations"},
+                        {"day": 3, "note": "Skills assessment and role clarification"},
+                        {"day": 4, "note": "Team building activities"},
+                        {"day": 5, "note": "Project assignment and goal setting"},
+                        {"day": 6, "note": "Workspace setup and tool training"},
+                        {"day": 7, "note": "Final Q&A and integration review"}
+                    ],
+                    "requirements": ["All Team Members", "HR Representative"]
+                },
+                {
+                    "id": 3,
+                    "title": "Daily Standup",
+                    "duration": 1,
+                    "isRepeating": true,
+                    "occurrenceInterval": 1,
+                    "firstOccurrenceDay": 2,
+                    "firstOccurrenceWeekday": "Tuesday",
+                    "category": "meeting",
+                    "requirements": ["Development Team", "Scrum Master"]
+                },
+                {
+                    "id": 4,
+                    "title": "Morning Coffee Break",
+                    "duration": 1,
+                    "isRepeating": true,
+                    "occurrenceInterval": 1,
+                    "firstOccurrenceDay": 2,
+                    "firstOccurrenceWeekday": "Tuesday",
+                    "category": "social",
+                    "requirements": ["All Staff"]
+                },
+                {
+                    "id": 5,
+                    "title": "Weekly Review",
+                    "duration": 2,
+                    "isRepeating": true,
+                    "occurrenceInterval": 7,
+                    "firstOccurrenceDay": 5,
+                    "firstOccurrenceWeekday": "Friday",
+                    "category": "review",
+                    "requirements": ["Team Lead", "QA Team", "Product Owner"]
+                },
+                {
+                    "id": 6,
+                    "title": "Friday Team Lunch",
+                    "duration": 1,
+                    "isRepeating": true,
+                    "occurrenceInterval": 7,
+                    "firstOccurrenceDay": 5,
+                    "firstOccurrenceWeekday": "Friday",
+                    "category": "social",
+                    "requirements": ["All Team Members"]
+                },
+                {
+                    "id": 7,
+                    "title": "Code Review Session",
+                    "duration": 3,
+                    "isRepeating": true,
+                    "occurrenceInterval": 3,
+                    "firstOccurrenceDay": 8,
+                    "firstOccurrenceWeekday": "Monday",
+                    "category": "development",
+                    "requirements": ["Senior Developer", "Code Reviewers"]
+                },
+                {
+                    "id": 8,
+                    "title": "Sprint Planning",
+                    "duration": 4,
+                    "isRepeating": true,
+                    "occurrenceInterval": 14,
+                    "firstOccurrenceDay": 8,
+                    "firstOccurrenceWeekday": "Monday",
+                    "category": "planning",
+                    "hasStages": true,
+                    "stages": [
+                        {"day": 1, "note": "Sprint backlog review and prioritization"},
+                        {"day": 2, "note": "Story estimation and capacity planning"},
+                        {"day": 3, "note": "Task breakdown and assignment"},
+                        {"day": 4, "note": "Sprint goal finalization and kickoff"}
+                    ],
+                    "requirements": ["Product Owner", "Scrum Master", "Dev Team"]
+                },
+                {
+                    "id": 9,
+                    "title": "Monthly Planning",
+                    "duration": 4,
+                    "isRepeating": true,
+                    "occurrenceInterval": 30,
+                    "firstOccurrenceDay": 15,
+                    "firstOccurrenceWeekday": "Wednesday",
+                    "category": "planning",
+                    "requirements": ["Management Team", "Department Heads", "Budget Analyst"]
+                },
+                {
+                    "id": 10,
+                    "title": "Client Presentation",
+                    "duration": 2,
+                    "isRepeating": false,
+                    "occurrenceInterval": 0,
+                    "firstOccurrenceDay": 25,
+                    "firstOccurrenceWeekday": "Saturday",
+                    "category": "presentation",
+                    "requirements": ["Sales Team", "Technical Lead", "Client"]
+                },
+                {
+                    "id": 11,
+                    "title": "Security Audit",
+                    "duration": 5,
+                    "isRepeating": true,
+                    "occurrenceInterval": 14,
+                    "firstOccurrenceDay": 10,
+                    "firstOccurrenceWeekday": "Thursday",
+                    "category": "security",
+                    "hasStages": true,
+                    "stages": [
+                        {"day": 1, "note": "Initial security scan and assessment"},
+                        {"day": 2, "note": "Vulnerability analysis and documentation"},
+                        {"day": 3, "note": "Penetration testing and risk evaluation"},
+                        {"day": 4, "note": "Compliance review and gap analysis"},
+                        {"day": 5, "note": "Final report and remediation planning"}
+                    ],
+                    "requirements": ["Security Team", "IT Administrator", "Compliance Officer"]
+                },
+                {
+                    "id": 12,
+                    "title": "Training Workshop",
+                    "duration": 3,
+                    "isRepeating": true,
+                    "occurrenceInterval": 21,
+                    "firstOccurrenceDay": 12,
+                    "firstOccurrenceWeekday": "Saturday",
+                    "category": "training",
+                    "hasStages": true,
+                    "stages": [
+                        {"day": 1, "note": "Theory and concepts introduction"},
+                        {"day": 2, "note": "Hands-on practice and exercises"},
+                        {"day": 3, "note": "Assessment and certification"}
+                    ],
+                    "requirements": ["Trainer", "HR Representative", "Participants"]
+                }
+            ]
+        };
+
+        // Initialize timeline
+        function init() {
+            eventsData = sampleEventsData.events;
+            filteredEvents = [...eventsData];
+
+            setupDayAxis();
+            renderEvents();
+            setupInfiniteScroll();
+            updateScrollProgress();
+
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('view-all').classList.add('active');
+        }
+
+        // Setup day axis with weekdays - now handled in renderEvents for infinite scrolling
+        function setupDayAxis() {
+            // Day axis is now rendered dynamically in renderEvents()
+            // to support infinite scrolling and memory management
+        }
+
+        // Calculate which days are currently visible
+        function updateVisibleRange() {
+            const timelineWrapper = document.getElementById('timeline-wrapper');
+            const scrollTop = timelineWrapper.scrollTop;
+            const viewportHeight = timelineWrapper.clientHeight;
+            
+            // Calculate visible day range based on scroll position
+            const firstVisibleDay = Math.floor(scrollTop / dayHeight) + 1 - 1;
+            const lastVisibleDay = Math.ceil((scrollTop + viewportHeight) / dayHeight);
+            
+            // Add buffer days to ensure smooth scrolling
+            // But also track the true visible range for out-of-sight detection
+            const trueVisibleStart = firstVisibleDay;
+            const trueVisibleEnd = lastVisibleDay;
+            
+            // Set buffered visible range for rendering
+            visibleDayStart = Math.max(1, firstVisibleDay - bufferDays);
+            visibleDayEnd = lastVisibleDay + bufferDays;
+            
+            // Store true visible range for precise out-of-sight detection
+            window.trueVisibleStart = trueVisibleStart;
+            window.trueVisibleEnd = trueVisibleEnd;
+            
+            // Update debug display
+            updateVisibilityDebug();
+        }
+
+        // Update visibility debug information
+        function updateVisibilityDebug() {
+            const debugElement = document.getElementById('visibility-debug');
+            if (debugElement && window.trueVisibleStart && window.trueVisibleEnd) {
+                debugElement.innerHTML = `
+                    <strong>True Visible:</strong> ${window.trueVisibleStart} - ${window.trueVisibleEnd}<br>
+                    <strong>Render Range:</strong> ${visibleDayStart} - ${visibleDayEnd}<br>
+                    <small>Events outside true range will be cleared</small>
+                `;
+            }
+        }
+
+        // Render events on timeline with infinite scrolling and memory management
+        function renderEvents() {
+            updateVisibleRange();
+            
+            const eventsContainer = document.getElementById('events-container');
+            const dayAxis = document.getElementById('day-axis');
+            
+            // Clear current content
+            eventsContainer.innerHTML = '';
+            dayAxis.innerHTML = '';
+
+            const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            // Create the layout grid - calculate all event occurrences in visible range
+            const eventOccurrences = [];
+            const dayEventColumns = {}; // Track which column each event should be in
+
+            filteredEvents.forEach((event, eventIndex) => {
+                // Helper function to find next occurrence of specified weekday after a given day
+                function findNextWeekdayAfterDay(startDay, targetWeekday) {
+                    let day = startDay;
+                    while (getWeekdayForDay(day) !== targetWeekday) {
+                        day++;
+                    }
+                    return day;
+                }
+                
+                if (event.isRepeating) {
+                    let currentDay;
+                    
+                    // Determine the actual first occurrence day
+                    if (event.firstOccurrenceWeekday) {
+                        const requiredWeekday = getWeekdayNumber(event.firstOccurrenceWeekday);
+                        // Find the next specified weekday after firstOccurrenceDay
+                        currentDay = findNextWeekdayAfterDay(event.firstOccurrenceDay, requiredWeekday);
+                    } else {
+                        // No weekday requirement, use firstOccurrenceDay directly
+                        currentDay = event.firstOccurrenceDay;
+                    }
+                    
+                    // Find first occurrence in or before visible range
+                    while (currentDay < visibleDayStart && currentDay + event.duration <= visibleDayStart) {
+                        currentDay += event.occurrenceInterval;
+                    }
+                    
+                    // Add all occurrences that intersect with visible range
+                    while (currentDay <= visibleDayEnd) {
+                        const endDay = currentDay + event.duration - 1;
+                        
+                        // Enhanced out-of-sight detection:
+                        // Skip event if it's completely out of sight
+                        if (endDay < visibleDayStart) {
+                            // Event finish date is before the first visible day - clear it
+                            currentDay += event.occurrenceInterval;
+                            continue;
+                        }
+                        if (currentDay > visibleDayEnd) {
+                            // Event start date is after the last visible day - clear it and break
+                            break;
+                        }
+                        
+                        // For repeating events with weekday requirement, validate weekday
+                        let shouldInclude = true;
+                        if (event.firstOccurrenceWeekday) {
+                            const requiredWeekday = getWeekdayNumber(event.firstOccurrenceWeekday);
+                            const currentWeekday = getWeekdayForDay(currentDay);
+                            shouldInclude = (currentWeekday === requiredWeekday);
+                        }
+                        
+                        if (shouldInclude && endDay >= visibleDayStart && currentDay <= visibleDayEnd) {
+                            eventOccurrences.push({
+                                ...event,
+                                startDay: currentDay,
+                                endDay: endDay,
+                                eventIndex: eventIndex
+                            });
+                        }
+                        currentDay += event.occurrenceInterval;
+                        // Break if we're way past the visible range
+                        if (currentDay > visibleDayEnd + event.occurrenceInterval * 10) break;
+                    }
+                } else {
+                    // One-time events
+                    let actualStartDay;
+                    
+                    if (event.firstOccurrenceWeekday) {
+                        const requiredWeekday = getWeekdayNumber(event.firstOccurrenceWeekday);
+                        // Find the next specified weekday after firstOccurrenceDay
+                        actualStartDay = findNextWeekdayAfterDay(event.firstOccurrenceDay, requiredWeekday);
+                    } else {
+                        // No weekday requirement, use firstOccurrenceDay directly
+                        actualStartDay = event.firstOccurrenceDay;
+                    }
+                    
+                    const endDay = actualStartDay + event.duration - 1;
+                    
+                    // Enhanced out-of-sight detection for one-time events:
+                    // Clear event if finish date is before first visible day
+                    if (endDay < visibleDayStart) {
+                        return; // Skip this event completely
+                    }
+                    // Clear event if start date is after last visible day  
+                    if (actualStartDay > visibleDayEnd) {
+                        return; // Skip this event completely
+                    }
+                    
+                    // Include one-time event if it intersects with visible range
+                    if (endDay >= visibleDayStart && actualStartDay <= visibleDayEnd) {
+                        eventOccurrences.push({
+                            ...event,
+                            startDay: actualStartDay,
+                            endDay: endDay,
+                            eventIndex: eventIndex
+                        });
+                    }
+                }
+            });
+
+            // Sort events by start day, then by duration (longer events first)
+            eventOccurrences.sort((a, b) => {
+                if (a.startDay !== b.startDay) return a.startDay - b.startDay;
+                return (b.endDay - b.startDay) - (a.endDay - a.startDay);
+            });
+
+            // Assign columns to prevent overlaps
+            eventOccurrences.forEach(event => {
+                let column = 0;
+                // Find the first available column for this event
+                while (true) {
+                    let canUseColumn = true;
+                    // Check if this column is free for all days this event spans
+                    for (let day = Math.max(event.startDay, visibleDayStart); day <= Math.min(event.endDay, visibleDayEnd); day++) {
+                        if (!dayEventColumns[day]) dayEventColumns[day] = [];
+                        if (dayEventColumns[day][column]) {
+                            canUseColumn = false;
+                            break;
+                        }
+                    }
+                    if (canUseColumn) {
+                        // Reserve this column for all days this event spans
+                        for (let day = Math.max(event.startDay, visibleDayStart); day <= Math.min(event.endDay, visibleDayEnd); day++) {
+                            if (!dayEventColumns[day]) dayEventColumns[day] = [];
+                            dayEventColumns[day][column] = event;
+                        }
+                        event.column = column;
+                        break;
+                    }
+                    column++;
+                }
+            });
+
+            // Set the total height of the timeline based on a theoretical infinite timeline
+            const totalTimelineHeight = Math.max(visibleDayEnd * dayHeight, 100000); // At least 100k pixels
+            document.getElementById('timeline-content').style.minHeight = `${totalTimelineHeight}px`;
+
+            // Create spacer for days before visible range
+            if (visibleDayStart > 1) {
+                const topSpacer = document.createElement('div');
+                topSpacer.style.height = `${(visibleDayStart - 1) * dayHeight}px`;
+                dayAxis.appendChild(topSpacer);
+                
+                const topEventsSpacer = document.createElement('div');
+                topEventsSpacer.style.height = `${(visibleDayStart - 1) * dayHeight}px`;
+                eventsContainer.appendChild(topEventsSpacer);
+            }
+
+            // Render each visible day with its day marker and events container
+            for (let day = visibleDayStart; day <= visibleDayEnd; day++) {
+                // Create day marker in axis
+                const dayMarker = document.createElement('div');
+                dayMarker.className = 'day-marker';
+
+                const dayNumber = document.createElement('div');
+                dayNumber.className = 'day-number';
+                dayNumber.textContent = `Day ${day}`;
+
+                const weekdayElement = document.createElement('div');
+                weekdayElement.className = 'weekday';
+                const weekdayIndex = (day - 1 + day1Weekday) % 7;
+                weekdayElement.textContent = weekdays[weekdayIndex];
+
+                dayMarker.appendChild(dayNumber);
+                dayMarker.appendChild(weekdayElement);
+                dayAxis.appendChild(dayMarker);
+
+                // Create events group for this day
+                const dayEventsGroup = document.createElement('div');
+                dayEventsGroup.className = 'day-events-group';
+                dayEventsGroup.style.position = 'relative';
+
+                // Add events that start on this day
+                const dayEvents = eventOccurrences.filter(event => event.startDay === day);
+                dayEvents.forEach(event => {
+                    const eventElement = createEventElement(event, day);
+                    dayEventsGroup.appendChild(eventElement);
+                });
+
+                eventsContainer.appendChild(dayEventsGroup);
+            }
+        }
+
+        // Create event DOM element
+        function createEventElement(event, currentDay) {
+            const eventElement = document.createElement('div');
+            const isMultiDay = event.duration > 1;
+            
+            // Determine event classes based on position in multi-day span and category
+            let eventClasses = `event-item ${event.isRepeating ? 'event-repeating' : 'event-one-off'}`;
+            
+            // Add category class for color coding
+            if (event.category) {
+                eventClasses += ` event-category-${event.category}`;
+            }
+            
+            if (isMultiDay) {
+                eventClasses += ' multi-day';
+                if (currentDay === event.startDay) {
+                    eventClasses += ' event-start';
+                } else if (currentDay === event.endDay) {
+                    eventClasses += ' event-end';
+                } else {
+                    eventClasses += ' event-middle';
+                }
+            }
+            
+            eventElement.className = eventClasses;
+            
+            // Store event day information as data attributes for out-of-sight detection
+            eventElement.setAttribute('data-start-day', event.startDay);
+            eventElement.setAttribute('data-end-day', event.endDay);
+            eventElement.setAttribute('data-duration', event.duration);
+            eventElement.setAttribute('data-event-id', event.id);
+
+            // Position the event in its assigned column
+            const columnWidth = 220; // Width for each event column
+            const columnGap = 10;
+            eventElement.style.left = `${event.column * (columnWidth + columnGap)}px`;
+            eventElement.style.width = `${columnWidth}px`;
+            
+            // Calculate height for multi-day events
+            const rowHeight = 80; // Height of each day row
+            const eventHeight = event.duration * rowHeight - 10; // -10 for padding
+            eventElement.style.height = `${eventHeight}px`;
+            eventElement.style.top = '5px';
+
+            // If event has stages, create internal divisions
+            if (event.hasStages && event.stages && event.duration > 1) {
+                // Add event header for multi-stage events
+                const eventHeader = document.createElement('div');
+                eventHeader.className = 'event-header';
+                eventHeader.style.cssText = `
+                    padding: 8px 12px;
+                    background: rgba(255, 255, 255, 0.9);
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                    margin-bottom: 5px;
+                    border-radius: 4px 4px 0 0;
+                `;
+                
+                const title = document.createElement('div');
+                title.className = 'event-title';
+                title.style.cssText = 'font-weight: bold; font-size: 14px; margin-bottom: 4px;';
+                title.textContent = event.title;
+                
+                const meta = document.createElement('div');
+                meta.className = 'event-meta';
+                meta.style.cssText = 'font-size: 11px; color: #666;';
+                
+                const durationMeta = document.createElement('span');
+                durationMeta.className = 'event-meta-item';
+                durationMeta.textContent = `${event.duration} day${event.duration > 1 ? 's' : ''}`;
+                meta.appendChild(durationMeta);
+                
+                const typeMeta = document.createElement('span');
+                typeMeta.className = 'event-meta-item';
+                typeMeta.textContent = event.isRepeating ? `Every ${event.occurrenceInterval}d` : 'One-time';
+                meta.appendChild(typeMeta);
+                
+                // Add category meta
+                if (event.category) {
+                    const categoryMeta = document.createElement('span');
+                    categoryMeta.className = 'event-meta-item';
+                    categoryMeta.textContent = event.category.charAt(0).toUpperCase() + event.category.slice(1);
+                    meta.appendChild(categoryMeta);
+                }
+                
+                eventHeader.appendChild(title);
+                eventHeader.appendChild(meta);
+                eventElement.appendChild(eventHeader);
+                
+                const stageDivisions = document.createElement('div');
+                stageDivisions.className = 'stage-divisions';
+                
+                // Create a division for each day of the event
+                for (let dayOffset = 0; dayOffset < event.duration; dayOffset++) {
+                    const stageDay = document.createElement('div');
+                    stageDay.className = 'stage-day';
+                    
+                    const stageDayNumber = document.createElement('div');
+                    stageDayNumber.className = 'stage-day-number';
+                    stageDayNumber.textContent = `D${dayOffset + 1}`;
+                    
+                    const stageDayNote = document.createElement('div');
+                    stageDayNote.className = 'stage-day-note';
+                    
+                    // Find the corresponding stage for this day
+                    const stageForDay = event.stages.find(stage => stage.day === dayOffset + 1);
+                    if (stageForDay) {
+                        stageDayNote.textContent = stageForDay.note;
+                    } else {
+                        stageDayNote.textContent = 'Stage activity continues...';
+                    }
+                    
+                    stageDay.appendChild(stageDayNumber);
+                    stageDay.appendChild(stageDayNote);
+                    stageDivisions.appendChild(stageDay);
+                }
+                
+                eventElement.appendChild(stageDivisions);
+            } else {
+                // Regular event content (no stages)
+                const title = document.createElement('div');
+                title.className = 'event-title';
+                title.textContent = event.title;
+
+                const meta = document.createElement('div');
+                meta.className = 'event-meta';
+
+                const durationMeta = document.createElement('span');
+                durationMeta.className = 'event-meta-item';
+                durationMeta.textContent = `${event.duration} day${event.duration > 1 ? 's' : ''}`;
+                meta.appendChild(durationMeta);
+
+                const typeMeta = document.createElement('span');
+                typeMeta.className = 'event-meta-item';
+                typeMeta.textContent = event.isRepeating ? `Every ${event.occurrenceInterval}d` : 'One-time';
+                meta.appendChild(typeMeta);
+
+                // Add category meta
+                if (event.category) {
+                    const categoryMeta = document.createElement('span');
+                    categoryMeta.className = 'event-meta-item';
+                    categoryMeta.textContent = event.category.charAt(0).toUpperCase() + event.category.slice(1);
+                    meta.appendChild(categoryMeta);
+                }
+
+                const requirements = document.createElement('div');
+                requirements.className = 'event-requirements';
+
+                // Show fewer requirements for multi-day events to save space
+                const maxRequirements = isMultiDay && event.duration > 2 ? 2 : event.requirements.length;
+                event.requirements.slice(0, maxRequirements).forEach(req => {
+                    const tag = document.createElement('span');
+                    tag.className = 'requirement-tag';
+                    tag.textContent = req;
+                    requirements.appendChild(tag);
+                });
+
+                if (event.requirements.length > maxRequirements) {
+                    const moreTag = document.createElement('span');
+                    moreTag.className = 'requirement-tag';
+                    moreTag.textContent = `+${event.requirements.length - maxRequirements}`;
+                    moreTag.style.opacity = '0.7';
+                    requirements.appendChild(moreTag);
+                }
+
+                eventElement.appendChild(title);
+                eventElement.appendChild(meta);
+                if (event.requirements.length > 0) {
+                    eventElement.appendChild(requirements);
+                }
+            }
+
+            return eventElement;
+        }
+
+        // Setup infinite scroll with memory management
+        function setupInfiniteScroll() {
+            const timelineWrapper = document.getElementById('timeline-wrapper');
+            let scrollTimeout;
+
+            timelineWrapper.addEventListener('scroll', () => {
+                updateScrollProgress();
+
+                // Debounce the re-render to avoid too many updates during scrolling
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    const oldStart = visibleDayStart;
+                    const oldEnd = visibleDayEnd;
+                    
+                    updateVisibleRange();
+                    
+                    // Clear out-of-sight events before checking if re-render is needed
+                    clearOutOfSightEvents();
+                    
+                    // Only re-render if the visible range has changed significantly
+                    if (Math.abs(visibleDayStart - oldStart) > bufferDays / 2 || 
+                        Math.abs(visibleDayEnd - oldEnd) > bufferDays / 2) {
+                        renderEvents();
+                    }
+                }, 100); // 100ms debounce
+            });
+        }
+
+        // Clear events that are completely out of sight to optimize memory
+        function clearOutOfSightEvents() {
+            if (!window.trueVisibleStart || !window.trueVisibleEnd) {
+                return; // No visible range established yet
+            }
+
+            const eventsContainer = document.getElementById('events-container');
+            const allEventElements = eventsContainer.querySelectorAll('.event-item');
+            
+            allEventElements.forEach(eventElement => {
+                // Get event day information from data attributes
+                const eventStartDay = parseInt(eventElement.getAttribute('data-start-day'));
+                const eventEndDay = parseInt(eventElement.getAttribute('data-end-day'));
+                
+                if (isNaN(eventStartDay) || isNaN(eventEndDay)) {
+                    return; // Skip if data attributes are not set properly
+                }
+                
+                let shouldClear = false;
+                
+                // Clear event if finish date is smaller than the first visible day count
+                if (eventEndDay < window.trueVisibleStart) {
+                    shouldClear = true;
+                }
+                // Clear event if start date is larger than the last visible day count  
+                if (eventStartDay > window.trueVisibleEnd) {
+                    shouldClear = true;
+                }
+                
+                if (shouldClear) {
+                    // Hide and mark for removal
+                    eventElement.style.opacity = '0';
+                    eventElement.style.transform = 'scale(0.8)';
+                    eventElement.classList.add('out-of-sight');
+                    
+                    // Remove after animation
+                    setTimeout(() => {
+                        if (eventElement.parentNode) {
+                            eventElement.remove();
+                        }
+                    }, 200);
+                }
+            });
+        }
+
+        // Extend timeline for infinite scroll - now handled by memory management
+        function extendTimeline() {
+            // Timeline is now truly infinite, no need to manually extend
+            // The renderEvents function handles infinite scrolling automatically
+        }
+
+        // Update scroll progress indicator
+        function updateScrollProgress() {
+            const timelineWrapper = document.getElementById('timeline-wrapper');
+            const scrollTop = timelineWrapper.scrollTop;
+            
+            // For infinite scroll, calculate progress based on a reasonable range
+            // e.g., first 1000 days as 100% for progress indicator
+            const maxProgressDays = 1000;
+            const currentDay = Math.floor(scrollTop / dayHeight) + 1;
+            const scrollPercent = Math.min((currentDay / maxProgressDays) * 100, 100);
+
+            document.getElementById('scroll-progress').style.height = `${scrollPercent}%`;
+        }
+
+        // Control functions
+        function filterEvents(type) {
+            // Remove active class from all buttons
+            document.querySelectorAll('.control-btn').forEach(btn => btn.classList.remove('active'));
+
+            currentFilter = type;
+
+            if (type === 'all') {
+                filteredEvents = [...eventsData];
+                document.getElementById('view-all').classList.add('active');
+            } else if (type === 'repeating') {
+                filteredEvents = eventsData.filter(event => event.isRepeating);
+                document.getElementById('view-repeating').classList.add('active');
+            } else if (type === 'oneoff') {
+                filteredEvents = eventsData.filter(event => !event.isRepeating);
+                document.getElementById('view-oneoff').classList.add('active');
+            }
+
+            renderEvents();
+        }
+
+        // Helper function to convert weekday name to number
+        function getWeekdayNumber(weekdayName) {
+            const weekdayMap = {
+                'Sunday': 0, 'Monday': 1, 'Tuesday': 2, 'Wednesday': 3, 
+                'Thursday': 4, 'Friday': 5, 'Saturday': 6
+            };
+            return weekdayMap[weekdayName];
+        }
+        
+        // Helper function to calculate what weekday a given day falls on
+        function getWeekdayForDay(day) {
+            return (day - 1 + day1Weekday) % 7;
+        }
+
+        // Update Day 1 weekday configuration
+        function updateDay1Weekday(weekdayValue) {
+            day1Weekday = parseInt(weekdayValue);
+            renderEvents(); // Re-render to update weekdays and recalculate event positions
+        }
+
+        // Search events
+        function searchEvents(query) {
+            if (!query.trim()) {
+                filterEvents(currentFilter);
+                return;
+            }
+
+            const searchTerm = query.toLowerCase();
+            filteredEvents = eventsData.filter(event =>
+                event.title.toLowerCase().includes(searchTerm) ||
+                event.requirements.some(req => req.toLowerCase().includes(searchTerm))
+            );
+
+            renderEvents();
+        }
+
+        // Toggle auto scroll
+        function toggleAutoScroll() {
+            const btn = document.getElementById('auto-scroll-btn');
+
+            if (isAutoScrolling) {
+                clearInterval(autoScrollInterval);
+                isAutoScrolling = false;
+                btn.textContent = 'Enable Auto Scroll';
+                btn.classList.remove('active');
+            } else {
+                autoScrollInterval = setInterval(() => {
+                    const timelineWrapper = document.getElementById('timeline-wrapper');
+                    timelineWrapper.scrollTop += 1;
+                }, 50);
+                isAutoScrolling = true;
+                btn.textContent = 'Disable Auto Scroll';
+                btn.classList.add('active');
+            }
+        }
+
+        // Initialize when page loads
+        window.addEventListener('load', init);
+    </script>
+</body>
+
+</html>
