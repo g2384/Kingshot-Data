@@ -184,6 +184,14 @@ Bear hunt, 946K damage
 
 ### Swordland Showdown
 
+## Day 17:
+
+### Eternity's Reach
+
+### Defeat nearby beasts
+
+### Hero Roulette
+
 ---
 
 ## Day 64 (20250908, Monday)
