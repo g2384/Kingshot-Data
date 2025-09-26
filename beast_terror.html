@@ -107,14 +107,16 @@
             1: 4000, 2: 6000, 3: 8000, 4: 10000,
             5: 14000, 6: 18000, 7: 22000, 8: 26000,
             9: 30000, 10: 34000, 11: 38000, 12: 41500,
-            13: 45000, 14: 48500, 15: 56000, 16: 56000, 26: 119000, 27: 133500
+            13: 45000, 14: 48500, 15: 56000, 16: 56000,
+            17: 62500, 26: 119000, 27: 133500
         };
 
         const recommendedPower = {
             1: 108, 2: 396, 3: 630, 4: 960,
             5: 1320, 6: 2400, 7: 3840, 8: 6200,
             9: 9000, 10: 14130, 11: 20670, 12: 34380,
-            13: 48200, 14: 64530, 15: 100157, 16: 177168, 26: 29366064, 27: 40787929
+            13: 48200, 14: 64530, 15: 100157, 16: 177168,
+            17: 295832, 26: 29366064, 27: 40787929
         }
 
         function getBeastName(level) {
@@ -122,6 +124,7 @@
             if (level <= 8) return "Lynx";
             if (level <= 12) return "Bison";
             if (level <= 16) return "Cheetah";
+            if (level <= 17) return "Moose";
             if (level <= 27) return "Grizzly Bear";
             throw new Error("Invalid level");
         }
@@ -134,6 +137,7 @@
             if (level <= 14) return "Day 6";
             if (level <= 15) return "Day 8";
             if (level <= 16) return "Day 10";
+            if (level <= 17) return "Day 13";
             if (level <= 26) return "Day 74";
             if (level <= 27) return "Day 79";
             throw new Error("Invalid level");

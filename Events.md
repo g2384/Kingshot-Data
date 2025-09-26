@@ -502,3 +502,9 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 ### Alliance Championship
 
 ### Swordland Showdown
+
+## Day 85 (Tuesday)
+
+### Fishing Tournament
+
+### Sanctuary Battle
