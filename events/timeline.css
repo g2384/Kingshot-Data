@@ -314,6 +314,11 @@ body {
 }
 
 /* Event category colors */
+.event-category-one-off {
+    background: #ff93e2;
+    border-left-color: rgb(234, 102, 205);
+}
+
 .event-category-meeting {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(102, 126, 234, 0.7));
     border-left-color: rgba(102, 126, 234, 1);
@@ -389,9 +394,8 @@ body {
 }
 
 .stage-day-number {
-    font-size: 8px;
+    font-size: 10px;
     font-weight: bold;
-    color: rgba(255, 255, 255, 0.8);
     position: absolute;
     top: 1px;
     left: 2px;
