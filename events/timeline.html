@@ -252,25 +252,44 @@
                     "occurrenceInterval": 14,
                     "firstOccurrenceDay": 11,
                     "category": "power-up",
+                    "maxOccurrences": 3,
+                    "note": "Use Forgehammer, Gear Enhancement, Exclusive Gear Widget, Gather Resources",
                     "requirements": []
                 },
                 {
-                    "id": 12,
-                    "title": "Training Workshop",
+                    "id": 16,
+                    "title": "Cesares Fury",
                     "duration": 3,
                     "isRepeating": true,
                     "occurrenceInterval": 21,
-                    "firstOccurrenceDay": 12,
-                    "firstOccurrenceWeekday": "Saturday",
-                    "category": "training",
-                    "hasStages": true,
-                    "stages": [
-                        {"day": 1, "note": "Theory and concepts introduction"},
-                        {"day": 2, "note": "Hands-on practice and exercises"},
-                        {"day": 3, "note": "Assessment and certification"}
-                    ],
-                    "requirements": ["Trainer", "HR Representative", "Participants"]
-                }
+                    "firstOccurrenceDay": 11,
+                    "category": "solo",
+                    "requirements": []
+                },
+                {
+                    "id": 17,
+                    "title": "Plan Your City",
+                    "duration": 2,
+                    "isRepeating": true,
+                    "occurrenceInterval": 14,
+                    "firstOccurrenceDay": 13,
+                    "category": "power-up",
+                    "maxOccurrences": 3,
+                    "note": "Raise power through construction, raise power through research",
+                    "requirements": []
+                },
+                {
+                    "id": 17,
+                    "title": "Power Up",
+                    "duration": 2,
+                    "isRepeating": true,
+                    "occurrenceInterval": 14,
+                    "firstOccurrenceDay": 15,
+                    "category": "power-up",
+                    "maxOccurrences": 3,
+                    "note": "Raise power through construction, raise power through research, promote troops",
+                    "requirements": []
+                },
             ]
         };
 
@@ -378,15 +397,24 @@
                         currentDay += event.occurrenceInterval;
                     }
                     
+                    // Track occurrences for maxOccurrences limit
+                    let occurrenceCount = 0;
+                    
                     // Add all occurrences that intersect with visible range
                     while (currentDay <= visibleDayEnd) {
                         const endDay = currentDay + event.duration - 1;
+                        
+                        // Check if we've reached the maximum occurrences
+                        if (event.maxOccurrences && occurrenceCount >= event.maxOccurrences) {
+                            break;
+                        }
                         
                         // Enhanced out-of-sight detection:
                         // Skip event if it's completely out of sight
                         if (endDay < visibleDayStart) {
                             // Event finish date is before the first visible day - clear it
                             currentDay += event.occurrenceInterval;
+                            occurrenceCount++;
                             continue;
                         }
                         if (currentDay > visibleDayEnd) {
@@ -407,10 +435,12 @@
                                 ...event,
                                 startDay: currentDay,
                                 endDay: endDay,
-                                eventIndex: eventIndex
+                                eventIndex: eventIndex,
+                                occurrenceNumber: occurrenceCount + 1
                             });
                         }
                         currentDay += event.occurrenceInterval;
+                        occurrenceCount++;
                         // Break if we're way past the visible range
                         if (currentDay > visibleDayEnd + event.occurrenceInterval * 10) break;
                     }
@@ -695,6 +725,16 @@
 
                 eventElement.appendChild(title);
                 eventElement.appendChild(meta);
+                
+                // Add note section if present
+                if (event.note) {
+                    const noteElement = document.createElement('div');
+                    noteElement.className = 'event-note';
+                    noteElement.style.cssText = 'font-size: 12px; color: #666; margin-top: 4px; font-style: italic;';
+                    noteElement.textContent = event.note;
+                    eventElement.appendChild(noteElement);
+                }
+                
                 if (event.requirements.length > 0) {
                     eventElement.appendChild(requirements);
                 }
