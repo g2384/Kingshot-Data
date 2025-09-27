@@ -133,6 +133,8 @@
                     "occurrenceInterval": 0,
                     "firstOccurrenceDay": 3,
                     "category": "solo",
+                    "isFixed": true,
+                    "fixedColumn": 3,
                     "requirements": []
                 },
                 {
@@ -142,6 +144,8 @@
                     "isRepeating": false,
                     "occurrenceInterval": 0,
                     "firstOccurrenceDay": 4,
+                    "isFixed": true,
+                    "fixedColumn": 2,
                     "category": "alliance",
                     "requirements": []
                 },
@@ -176,7 +180,7 @@
                     "firstOccurrenceDay": 7,
                     "category": "hog",
                     "isFixed": true,
-                    "fixedColumn": 0,
+                    "fixedColumn": 1,
                     "requirements": []
                 },
                 {
@@ -188,7 +192,7 @@
                     "firstOccurrenceDay": 9,
                     "category": "alliance",
                     "isFixed": true,
-                    "fixedColumn": 1,
+                    "fixedColumn": 2,
                     "requirements": []
                 },
                 {
@@ -200,7 +204,7 @@
                     "firstOccurrenceDay": 15,
                     "category": "alliance",
                     "isFixed": true,
-                    "fixedColumn": 1,
+                    "fixedColumn": 2,
                     "requirements": []
                 },
                 {
@@ -213,7 +217,7 @@
                     "firstOccurrenceWeekday": "Wednesday",
                     "category": "solo",
                     "isFixed": true,
-                    "fixedColumn": 1,
+                    "fixedColumn": 3,
                     "requirements": []
                 },
                 {
@@ -258,7 +262,7 @@
                     "category": "power-up",
                     "maxOccurrences": 3,
                     "isFixed": true,
-                    "fixedColumn": 0,
+                    "fixedColumn": 1,
                     "note": "Use Forgehammer, Gear Enhancement, Exclusive Gear Widget, Gather Resources",
                     "requirements": []
                 },
@@ -282,7 +286,7 @@
                     "category": "power-up",
                     "maxOccurrences": 3,
                     "isFixed": true,
-                    "fixedColumn": 0,
+                    "fixedColumn": 1,
                     "note": "Raise power through construction, raise power through research",
                     "requirements": []
                 },
@@ -296,7 +300,7 @@
                     "category": "power-up",
                     "maxOccurrences": 3,
                     "isFixed": true,
-                    "fixedColumn": 0,
+                    "fixedColumn": 1,
                     "note": "Raise power through construction, raise power through research, promote troops",
                     "requirements": []
                 },
@@ -497,13 +501,24 @@
                 return (b.endDay - b.startDay) - (a.endDay - a.startDay);
             });
 
-            // Assign columns to prevent overlaps
+            // Determine the maximum fixed column to know how many columns to reserve
+            let maxFixedColumn = -1;
             eventOccurrences.forEach(event => {
-                let column = 0;
-                // Find the first available column for this event
-                while (true) {
+                if (event.isFixed && typeof event.fixedColumn === 'number') {
+                    maxFixedColumn = Math.max(maxFixedColumn, event.fixedColumn);
+                }
+            });
+            
+            const firstDynamicColumn = maxFixedColumn + 1; // Start dynamic column assignment after fixed columns
+
+            // Assign columns to prevent overlaps
+            // First pass: Assign fixed columns to events that have fixedColumn property
+            eventOccurrences.forEach(event => {
+                if (event.isFixed && typeof event.fixedColumn === 'number') {
+                    const column = event.fixedColumn;
                     let canUseColumn = true;
-                    // Check if this column is free for all days this event spans
+                    
+                    // Check if this fixed column is available for all days this event spans
                     for (let day = Math.max(event.startDay, visibleDayStart); day <= Math.min(event.endDay, visibleDayEnd); day++) {
                         if (!dayEventColumns[day]) dayEventColumns[day] = [];
                         if (dayEventColumns[day][column]) {
@@ -511,6 +526,7 @@
                             break;
                         }
                     }
+                    
                     if (canUseColumn) {
                         // Reserve this column for all days this event spans
                         for (let day = Math.max(event.startDay, visibleDayStart); day <= Math.min(event.endDay, visibleDayEnd); day++) {
@@ -518,9 +534,41 @@
                             dayEventColumns[day][column] = event;
                         }
                         event.column = column;
-                        break;
+                    } else {
+                        // If fixed column is occupied, we have a conflict - log warning and fall back to dynamic assignment
+                        console.warn(`Fixed column ${column} conflict for event "${event.title}" on days ${event.startDay}-${event.endDay}`);
+                        event.column = null; // Mark for dynamic assignment
                     }
-                    column++;
+                }
+            });
+
+            // Second pass: Assign dynamic columns to events without fixed columns or those with conflicts
+            eventOccurrences.forEach(event => {
+                if (!event.isFixed || event.column === null) {
+                    let column = firstDynamicColumn; // Start from the first column after fixed ones
+                    
+                    // Find the first available column for this event
+                    while (true) {
+                        let canUseColumn = true;
+                        // Check if this column is free for all days this event spans
+                        for (let day = Math.max(event.startDay, visibleDayStart); day <= Math.min(event.endDay, visibleDayEnd); day++) {
+                            if (!dayEventColumns[day]) dayEventColumns[day] = [];
+                            if (dayEventColumns[day][column]) {
+                                canUseColumn = false;
+                                break;
+                            }
+                        }
+                        if (canUseColumn) {
+                            // Reserve this column for all days this event spans
+                            for (let day = Math.max(event.startDay, visibleDayStart); day <= Math.min(event.endDay, visibleDayEnd); day++) {
+                                if (!dayEventColumns[day]) dayEventColumns[day] = [];
+                                dayEventColumns[day][column] = event;
+                            }
+                            event.column = column;
+                            break;
+                        }
+                        column++;
+                    }
                 }
             });
 
