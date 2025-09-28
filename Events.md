@@ -170,6 +170,8 @@ Bear hunt, 946K damage
 
 ## Day 14:
 
+Fog 1 erased
+
 ## Day 15 (0928, Sunday):
 
 ### Power UP
@@ -465,6 +467,22 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 
 ### Strongest Governor (1st time)
 
+- Stage 7,
+- Raise Pet Advancement Score by 1 – 50 points
+
+| Lv.               | Score |
+| ----------------- | ----- |
+| Advance at Lv. 10 | 500   |
+| 20                | 1000  |
+| 30                | 2000  |
+| 40                | 3000  |
+| 50                | 4500  |
+| 60                | 6750  |
+| 70                | 10000 |
+| 80                | 12000 |
+| 90                | 14500 |
+| 100               | 17500 |
+
 ## Day 79 (Tuesday)
 
 ### Sanctuary Battle
@@ -508,3 +526,9 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 ### Fishing Tournament
 
 ### Sanctuary Battle
+
+## Day 86 (Wednesday, 1001)
+
+### Officer Project
+
+### Desert Trial
