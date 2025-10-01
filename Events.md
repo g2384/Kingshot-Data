@@ -186,13 +186,21 @@ Fog 1 erased
 
 ### Swordland Showdown
 
-## Day 17:
+## Day 17 (0930):
 
 ### Eternity's Reach
 
 ### Defeat nearby beasts
 
 ### Hero Roulette
+
+## Day 18 (1001)
+
+## Day 19 (1002)
+
+## Day 20 (1003)
+
+### All out
 
 ---
 
@@ -515,6 +523,8 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 
 ### Armament Competition
 
+- Reward artisan's vision
+
 ### Alliance Mobilization
 
 ### Alliance Championship
@@ -532,3 +542,7 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 ### Officer Project
 
 ### Desert Trial
+
+## Day 87
+
+### Armanent Competition (Truegold)
