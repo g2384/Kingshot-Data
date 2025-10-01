@@ -1,0 +1,181 @@
+<script>
+    const data = {
+        "title": "Moonlit Celebration",
+        "events": [{
+            "title": "Flames of Hope",
+            "duration": "8 days",
+            "hasRanking": true,
+            "description": "Get Lantern Parts from Glow Seeker, Melody of Reunion, Governor of the Moon. Exchange them to redeem rewards.",
+            "hasToken": true,
+            "tokenExpire": true,
+            "exchangeItems": [
+                "General Speedups",
+                "Gem",
+                "Lucky Hero Gear Chest",
+                "Lantern Festival (3-Day) skin, squads' attack + 2.0%). Stocked and use anytime.",
+                "10% chance of receiving 10 Governor Stamina from chests after all the rewards have been claimed."
+            ],
+            "rankedRewards": [
+                "Top 500: Gem",
+                "Top 500: Speedups",
+                "Top 10: Lantern Festival (Permanent) skin, squads' attack + 2.0%)"
+            ]
+        },
+        {
+            "title": "Governor of the Moon",
+            "duration": "7 days",
+            "hasRanking": true,
+            "hasStage": true,
+            "description": "Earn points and rank higher.",
+            "hasToken": false,
+            "stages": [
+                {
+                    "title": "Power Boost",
+                    "points": [
+                        { "name": "Raise 1 Power through Construction", "points": 1 },
+                        { "name": "Raise 1 Power through Research", "points": 1 },
+                        { "name": "Raise 1 Power by training/promoting troops", "points": 1 },
+                        { "name": "Use Epic Recruitment 1 time(s)", "points": 11000 },
+                        { "name": "Use Advanced Recruitment 1 time(s)", "points": 3300 },
+                        { "name": "Use 1 Rare Hero Shard(s) to ascend Heroes", "points": 500 },
+                        { "name": "Use 1 Epic Hero Shard(s) to ascend Heroes", "points": 2200 },
+                        { "name": "Use 1 Mythic Hero Shard(s) to ascend Heroes", "points": 6000 }
+                    ],
+                    "rankedRewards": [
+                        "Top 500: Gem",
+                        "Top 500: Speedups"
+                    ],
+                    "pointRewards": [
+                        "274000 points: various resources"
+                    ]
+                },
+                {
+                    "title": "Beast Slay",
+                    "points": [
+                        { "name": "Call rally and hunt down 1 Terror(s)", "points": 30000 },
+                        { "name": "Kill a Lv.1-30 Beast", "points": 9900 }
+                    ],
+                    "rankedRewards": [
+                        "Top 500: Gem",
+                        "Top 500: Speedups"
+                    ]
+                },
+                {
+                    "title": "Hero Development",
+                    "points": [
+                        { "name": "Use Epic Recruitment 1 time(s)", "points": 11000 },
+                        { "name": "Use Advanced Recruitment 1 time(s)", "points": 3300 },
+                        { "name": "Use 1 Rare Hero Shard(s) to promote Heroes", "points": 500 },
+                        { "name": "Use 1 Epic Hero Shard(s) to ascend Heroes", "points": 2200 },
+                        { "name": "Use 1 Mythic Hero Shard(s) to ascend Heroes", "points": 6000 },
+                        { "name": "Use 1m of Speedups for Construction", "points": 60 },
+                        { "name": "Use 1m of Speedups for Research", "points": 60 },
+                        { "name": "Use 1m of Speedups for Training (Training, Promotion)", "points": 60 }
+                    ],
+                },
+                {
+                    "title": "Train Troops",
+                    "points": [
+                        { "name": "Train 1 Lv. 1 Troop(s)", "points": 5 },
+                        { "name": "Train 1 Lv. 2 Troop(s)", "points": 7 },
+                        { "name": "Train 1 Lv. 3 Troop(s)", "points": 10 },
+                        { "name": "Train 1 Lv. 4 Troop(s)", "points": 16 },
+                        { "name": "Train 1 Lv. 5 Troop(s)", "points": 23 },
+                        { "name": "Train 1 Lv. 6 Troop(s)", "points": 36 },
+                        { "name": "Train 1 Lv. 7 Troop(s)", "points": 50 },
+                        { "name": "Train 1 Lv. 8 Troop(s)", "points": 68 },
+                        { "name": "Train 1 Lv. 9 Troop(s)", "points": 98 },
+                        { "name": "Train 1 Lv.10 Troop(s)", "points": 118 }
+                    ]
+                },
+                {
+                    "title": "Hero Gear",
+                    "points": [
+                        { "name": "Use 1 hero Gear Forgehammer(s)", "points": 25000 },
+                        { "name": "Use 1 Widget(s) of any Hero Exclusive Gear", "points": 50000 },
+                        { "name": "Use 1 Gem(s)", "points": 10 }
+                    ]
+                },
+                {
+                    "title": "Gather Resources",
+                    "points": [
+                        { "name": "Gather 1000 Bread in the Wilderness", "points": 10 },
+                        { "name": "Gather 1000 Wood in the Wilderness", "points": 10 },
+                        { "name": "Gather 200 Stone in the Wilderness", "points": 10 },
+                        { "name": "Gather 50 Iron in the Wilderness", "points": 10 },
+                        { "name": "Raise 1 Power through Construction", "points": 1 },
+                        { "name": "Raise 1 Power through Research", "points": 1 },
+                        { "name": "Raise 1 Power by training/promoting troops", "points": 1 },
+                    ]
+                },
+                {
+                    "title": "Governor Gear",
+                    "points": [
+                        { "name": "Raise Governor Gear max score by 1", "points": 50 },
+                        { "name": "Use 1m of Speedups for Construction", "points": 60 },
+                        { "name": "Use 1m of Speedups for Research", "points": 60 },
+                        { "name": "Use 1m of Speedups for Training (Training, Promotion)", "points": 60 }
+                    ]
+                }
+            ],
+            "rewards": [
+                "Top 500: Gem",
+                "Top 500: Speedups",
+                "Top 500: Mythic General Hero Shard"
+            ]
+        }
+            , {
+            "title": "Melody of Reunion",
+            "duration": "7 days",
+            "hasRanking": false,
+            "description": "Complete all missions in a row or a column to claim Stage Chests.",
+            "hasToken": false,
+            "tasks": [
+                "Fight in 20 Arena Challenges(s)",
+                "Raise 300000 Power through Soldier Training",
+                "Make 60 Alliance Contribution(s)",
+                "Recruit 30 Hero(es)",
+                "Login for 1 Day(s)",
+                "Claim 60 Alliance Gift(s)",
+                "Spend 1000 Governor Stamina",
+                "Raise 8000 Power through Construction",
+                "Claim 15 Online Reward(s)",
+                "Carry out 15 Intel Mission(s)",
+                "Gather 10,000,000 resources",
+                "Use 2,000m of Any Speedup",
+                "Provide [Alliance Help] 140 Time(s)",
+                "Call rally and hunt down 5 Terror(s)",
+                "Purchase 1 pack(s) with price not lower than £4.99"
+            ],
+            "rewards": [
+                "Lantern Part",
+                "Mythic General Hero Shard",
+                "General Speedups (before the Truegold phase)",
+                "Skin Token",
+                "Truegold (after the Truegold phase)"
+            ]
+        },
+        {
+            "title": "Top-up Benefits",
+            "duration": "7 days",
+            "hasRanking": false,
+            "description": "Earn 30,000 points to redeem Lunar Hopper (Permanent) skin, Solo Hunting March Speed + 5.0%.",
+        },
+        {
+            "Title": "Glow Seeker",
+            "duration": "7 days",
+            "hasRanking": false,
+            "description": "Hunt for sparks of hope hidden far and wide.",
+            "hasToken": false,
+            "rewards": [
+                "Spend Gems for a chance to obtain Lantern Part",
+                "Use any Speedup Items for a chance to obtain Lantern Part",
+                "Gather resources in the Wilderness for a chance to obtain Lantern Part (limit 300)",
+                "Defeat Beasts for a chance to obtain Lantern Part (limit 700)"
+            ]
+        }
+        ]
+    };
+
+
+</script>
