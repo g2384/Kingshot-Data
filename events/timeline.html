@@ -12,21 +12,6 @@
             box-sizing: border-box;
         }
 
-        .stage-note,
-        .event-note {
-            font-size: 14px;
-            padding: 2px 0;
-            cursor: help;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2px;
-        }
-
-        .stage-note:hover,
-        .event-note:hover {
-            opacity: 0.8;
-        }
-
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
@@ -386,51 +371,6 @@
             min-height: 50px;
         }
 
-        .stage-note,
-        .event-note {
-            font-size: 14px;
-            padding: 2px 0;
-            cursor: help;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2px;
-        }
-
-        .stage-note:hover,
-        .event-note:hover {
-            opacity: 0.8;
-        }
-
-        .stage-note,
-        .event-note {
-            font-size: 14px;
-            padding: 2px 0;
-            cursor: help;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2px;
-        }
-
-        .stage-note:hover,
-        .event-note:hover {
-            opacity: 0.8;
-        }
-
-        .stage-note,
-        .event-note {
-            font-size: 14px;
-            padding: 2px 0;
-            cursor: help;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2px;
-        }
-
-        .stage-note:hover,
-        .event-note:hover {
-            opacity: 0.8;
-        }
-
         .event-title {
             font-weight: bold;
             font-size: 12px;
@@ -439,64 +379,25 @@
 
         .event-info {
             font-size: 12px;
-        }
-
-        .stage-note,
-        .event-note {
-            font-size: 14px;
-            padding: 2px 0;
-            cursor: help;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2px;
-        }
-
-        .stage-note:hover,
-        .event-note:hover {
-            opacity: 0.8;
-        }
-
-        .stage-note,
-        .event-note {
-            font-size: 14px;
-            padding: 2px 0;
-            cursor: help;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2px;
-        }
-
-        .stage-note:hover,
-        .event-note:hover {
-            opacity: 0.8;
-        }
-
-        .stage-note,
-        .event-note {
-            font-size: 14px;
-            padding: 2px 0;
-            cursor: help;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2px;
-        }
-
-        .stage-note:hover,
-        .event-note:hover {
-            opacity: 0.8;
-        }
-
-        color: #000;
-        margin-bottom: 2px;
-        }
-
-        .stage-note,
-        .event-note {
-            font-size: 9px;
-            color: #444;
+            color: #000;
             margin-bottom: 2px;
-            font-style: italic;
         }
+
+        .stage-note,
+        .event-note {
+            font-size: 14px;
+            padding: 2px 0;
+            cursor: help;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+        }
+
+        .stage-note:hover,
+        .event-note:hover {
+            opacity: 0.8;
+        }
+
 
         .requirements {
             font-size: 10px;
@@ -1136,7 +1037,6 @@
                             Duration: ${event.duration} days
                             ${event.isRepeating ? ` • Repeats every ${event.occurrenceInterval} days` : ''}
                             ${event.requirements.length > 0 ? `<br>${event.requirements.join(', ')}` : ''}
-                            ${event.note ? `<br>${event.note}` : ''}
                         </div>
                     </div>
                 `;
@@ -1502,7 +1402,8 @@
                         if (event.hasStages && event.stages && event.stages[dayInEvent - 1]) {
                             const stage = event.stages[dayInEvent - 1];
                             if (stage.note) {
-                                eventCell.innerHTML += `<div class="stage-note">${stage.note}</div>`;
+                                var emoji = noteToEmoji(stage.note);
+                                eventCell.innerHTML += `<div class="stage-note">${emoji}</div>`;
                             }
                         }
 
