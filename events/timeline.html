@@ -85,12 +85,40 @@
             border-radius: 3px;
         }
 
-        .one-off { background-color: #ff6b6b; }
-        .solo { background-color: #4ecdc4; }
-        .alliance { background-color: #45b7d1; }
-        .hog { background-color: #96ceb4; }
-        .online { background-color: #feca57; }
-        .power-up { background-color: #ff9ff3; }
+        /* One-off events - Red theme variations */
+        .event-7-daily-sign-in-gift { background-color: hsl(0, 82%, 70%); } /* #ff6b6b - base red */
+        .event-path-of-growth { background-color: hsl(350, 82%, 70%); } /* slightly more pink */
+        .event-burst-of-life { background-color: hsl(10, 82%, 70%); } /* slightly more orange */
+
+        /* Solo events - Teal theme variations */
+        .event-desert-trial { background-color: hsl(174, 56%, 57%); } /* #4ecdc4 - base teal */
+        .event-defeat-nearby-beasts { background-color: hsl(168, 56%, 57%); } /* slightly more green */
+        .event-fishing-tournament { background-color: hsl(180, 56%, 57%); } /* slightly more cyan */
+        .event-cesares-fury { background-color: hsl(184, 56%, 57%); } /* slightly more blue */
+
+        /* Alliance events - Blue theme variations */
+        .event-sanctuary-battle { background-color: hsl(202, 59%, 58%); } /* #45b7d1 - base blue */
+        .event-alliance-mobilization { background-color: hsl(195, 59%, 58%); } /* slightly more cyan */
+
+        /* HOG events - Green theme variations */
+        .event-hall-of-governors-1st { background-color: hsl(152, 39%, 70%); } /* #96ceb4 - base green */
+        .event-hero-roulette-1st-saul { background-color: hsl(145, 39%, 70%); } /* slightly more yellow-green */
+
+        /* Online events - Yellow theme */
+        .event-viking-vengeance { background-color: hsl(44, 97%, 67%); } /* #feca57 - base yellow */
+
+        /* Power-up events - Pink theme variations */
+        .event-steel-edge { background-color: hsl(306, 93%, 81%); } /* #ff9ff3 - base pink */
+        .event-plan-your-city { background-color: hsl(315, 93%, 81%); } /* slightly more purple */
+        .event-power-up { background-color: hsl(297, 93%, 81%); } /* slightly more magenta */
+
+        /* Legacy category classes for backwards compatibility */
+        .one-off { background-color: hsl(0, 82%, 70%); }
+        .solo { background-color: hsl(174, 56%, 57%); }
+        .alliance { background-color: hsl(202, 59%, 58%); }
+        .hog { background-color: hsl(152, 39%, 70%); }
+        .online { background-color: hsl(44, 97%, 67%); }
+        .power-up { background-color: hsl(306, 93%, 81%); }
 
         .event-item {
             padding: 10px;
@@ -841,10 +869,15 @@
         // Function to sanitize event titles for use as identifiers
         function sanitizeTitle(title) {
             return title.toLowerCase()
-                .replace(/[^a-z0-9\s]/g, '') // Remove special characters
+                .replace(/[^a-z0-9\-\s]/g, '') // Remove special characters
                 .replace(/\s+/g, '-') // Replace spaces with hyphens
                 .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
                 .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+        }
+
+        // Function to get CSS class name for an event
+        function getEventCssClass(event) {
+            return 'event-' + sanitizeTitle(event.title);
         }
 
         // Initialize timeline when page loads
@@ -1128,7 +1161,7 @@
                         const event = occurrence.event;
                         const dayInEvent = day - occurrence.startDay + 1;
                         
-                        eventCell.className += ` ${event.category}`;
+                        eventCell.className += ` ${getEventCssClass(event)}`;
                         
                         // Add event title on first day
                         if (day === occurrence.startDay) {
@@ -1238,7 +1271,7 @@
                         const event = occurrence.event;
                         const dayInEvent = day - occurrence.startDay + 1;
                         
-                        eventCell.className += ` ${event.category}`;
+                        eventCell.className += ` ${getEventCssClass(event)}`;
                         
                         // Add event title on first day
                         if (day === occurrence.startDay) {
