@@ -186,13 +186,15 @@ Fog 1 erased
 
 ### Swordland Showdown
 
+- Duration: 7 Days
+
 ## Day 17 (0930):
 
 ### Eternity's Reach
 
 ### Defeat nearby beasts
 
-### Hero Roulette
+### Hero Roulette (2nd, Saul)
 
 ## Day 18 (1001)
 
@@ -210,6 +212,9 @@ Fog 1 erased
 
 ### Sanctuary Battle
 
+## Day 23 (1006)
+
+### Alliance Mobilization
 
 ---
 
