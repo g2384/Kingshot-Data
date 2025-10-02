@@ -573,3 +573,10 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 
 ### Officer Project (Charm Design)
 
+## Day 91 (Monday)
+
+### Golden Glaives
+
+- Duration: 2 Days
+
+### Alliance Championship
