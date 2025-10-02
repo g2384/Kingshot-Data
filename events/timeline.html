@@ -12,6 +12,21 @@
             box-sizing: border-box;
         }
 
+        .stage-note,
+        .event-note {
+            font-size: 14px;
+            padding: 2px 0;
+            cursor: help;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+        }
+
+        .stage-note:hover,
+        .event-note:hover {
+            opacity: 0.8;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
@@ -45,7 +60,9 @@
             font-weight: bold;
         }
 
-        .control-group input, .control-group select, .control-group button {
+        .control-group input,
+        .control-group select,
+        .control-group button {
             width: 100%;
             padding: 8px;
             border: 1px solid #ddd;
@@ -63,11 +80,13 @@
             background-color: #005a87;
         }
 
-        .legend, .event-list {
+        .legend,
+        .event-list {
             margin-top: 20px;
         }
 
-        .legend h3, .event-list h3 {
+        .legend h3,
+        .event-list h3 {
             margin-bottom: 10px;
             color: #333;
         }
@@ -86,39 +105,116 @@
         }
 
         /* One-off events - Red theme variations */
-        .event-7-daily-sign-in-gift { background-color: hsl(0, 82%, 70%); } /* #ff6b6b - base red */
-        .event-path-of-growth { background-color: hsl(350, 82%, 70%); } /* slightly more pink */
-        .event-burst-of-life { background-color: hsl(10, 82%, 70%); } /* slightly more orange */
+        .event-7-daily-sign-in-gift {
+            background-color: hsl(0, 82%, 70%);
+        }
+
+        /* #ff6b6b - base red */
+        .event-path-of-growth {
+            background-color: hsl(350, 82%, 70%);
+        }
+
+        /* slightly more pink */
+        .event-burst-of-life {
+            background-color: hsl(10, 82%, 70%);
+        }
+
+        /* slightly more orange */
 
         /* Solo events - Teal theme variations */
-        .event-desert-trial { background-color: hsl(174, 56%, 57%); } /* #4ecdc4 - base teal */
-        .event-defeat-nearby-beasts { background-color: hsl(168, 56%, 57%); } /* slightly more green */
-        .event-fishing-tournament { background-color: hsl(180, 56%, 57%); } /* slightly more cyan */
-        .event-cesares-fury { background-color: hsl(184, 56%, 57%); } /* slightly more blue */
+        .event-desert-trial {
+            background-color: hsl(174, 56%, 57%);
+        }
+
+        /* #4ecdc4 - base teal */
+        .event-defeat-nearby-beasts {
+            background-color: hsl(168, 56%, 57%);
+        }
+
+        /* slightly more green */
+        .event-fishing-tournament {
+            background-color: hsl(180, 56%, 57%);
+        }
+
+        /* slightly more cyan */
+        .event-cesares-fury {
+            background-color: hsl(184, 56%, 57%);
+        }
+
+        /* slightly more blue */
 
         /* Alliance events - Blue theme variations */
-        .event-sanctuary-battle { background-color: hsl(202, 59%, 58%); } /* #45b7d1 - base blue */
-        .event-alliance-mobilization { background-color: hsl(195, 59%, 58%); } /* slightly more cyan */
+        .event-sanctuary-battle {
+            background-color: hsl(202, 59%, 58%);
+        }
+
+        /* #45b7d1 - base blue */
+        .event-alliance-mobilization {
+            background-color: hsl(195, 59%, 58%);
+        }
+
+        /* slightly more cyan */
 
         /* HOG events - Green theme variations */
-        .event-hall-of-governors { background-color: hsl(152, 39%, 70%); } /* #96ceb4 - base green */
-        .event-hero-roulette { background-color: hsl(145, 39%, 70%); } /* slightly more yellow-green */
+        .event-hall-of-governors {
+            background-color: hsl(152, 39%, 70%);
+        }
+
+        /* #96ceb4 - base green */
+        .event-hero-roulette {
+            background-color: hsl(145, 39%, 70%);
+        }
+
+        /* slightly more yellow-green */
 
         /* Online events - Yellow theme */
-        .event-viking-vengeance { background-color: hsl(44, 97%, 67%); } /* #feca57 - base yellow */
+        .event-viking-vengeance {
+            background-color: hsl(44, 97%, 67%);
+        }
+
+        /* #feca57 - base yellow */
 
         /* Power-up events - Pink theme variations */
-        .event-steel-edge { background-color: hsl(306, 93%, 81%); } /* #ff9ff3 - base pink */
-        .event-plan-your-city { background-color: hsl(315, 93%, 81%); } /* slightly more purple */
-        .event-power-up { background-color: hsl(297, 93%, 81%); } /* slightly more magenta */
+        .event-steel-edge {
+            background-color: hsl(306, 93%, 81%);
+        }
+
+        /* #ff9ff3 - base pink */
+        .event-plan-your-city {
+            background-color: hsl(315, 93%, 81%);
+        }
+
+        /* slightly more purple */
+        .event-power-up {
+            background-color: hsl(297, 93%, 81%);
+        }
+
+        /* slightly more magenta */
 
         /* Legacy category classes for backwards compatibility */
-        .one-off { background-color: hsl(0, 82%, 70%); }
-        .solo { background-color: hsl(174, 56%, 57%); }
-        .alliance { background-color: hsl(202, 59%, 58%); }
-        .hog { background-color: hsl(152, 39%, 70%); }
-        .online { background-color: hsl(44, 97%, 67%); }
-        .power-up { background-color: hsl(306, 93%, 81%); }
+        .one-off {
+            background-color: hsl(0, 82%, 70%);
+        }
+
+        .solo {
+            background-color: hsl(174, 56%, 57%);
+        }
+
+        .alliance {
+            background-color: hsl(202, 59%, 58%);
+        }
+
+        .hog {
+            background-color: hsl(152, 39%, 70%);
+        }
+
+        .online {
+            background-color: hsl(44, 97%, 67%);
+        }
+
+        .power-up {
+            background-color: hsl(306, 93%, 81%);
+        }
 
         .event-item {
             padding: 10px;
@@ -137,12 +233,12 @@
             transition: all 0.3s ease;
             border: 2px solid transparent;
             position: relative;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
         }
 
         .event-toggle:hover {
             transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .event-toggle.disabled {
@@ -174,7 +270,7 @@
             top: 2px;
             left: 2px;
             transition: transform 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .toggle-switch.active .toggle-slider {
@@ -290,6 +386,51 @@
             min-height: 50px;
         }
 
+        .stage-note,
+        .event-note {
+            font-size: 14px;
+            padding: 2px 0;
+            cursor: help;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+        }
+
+        .stage-note:hover,
+        .event-note:hover {
+            opacity: 0.8;
+        }
+
+        .stage-note,
+        .event-note {
+            font-size: 14px;
+            padding: 2px 0;
+            cursor: help;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+        }
+
+        .stage-note:hover,
+        .event-note:hover {
+            opacity: 0.8;
+        }
+
+        .stage-note,
+        .event-note {
+            font-size: 14px;
+            padding: 2px 0;
+            cursor: help;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+        }
+
+        .stage-note:hover,
+        .event-note:hover {
+            opacity: 0.8;
+        }
+
         .event-title {
             font-weight: bold;
             font-size: 12px;
@@ -298,11 +439,59 @@
 
         .event-info {
             font-size: 12px;
-            color: #000;
-            margin-bottom: 2px;
         }
 
-        .stage-note, .event-note {
+        .stage-note,
+        .event-note {
+            font-size: 14px;
+            padding: 2px 0;
+            cursor: help;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+        }
+
+        .stage-note:hover,
+        .event-note:hover {
+            opacity: 0.8;
+        }
+
+        .stage-note,
+        .event-note {
+            font-size: 14px;
+            padding: 2px 0;
+            cursor: help;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+        }
+
+        .stage-note:hover,
+        .event-note:hover {
+            opacity: 0.8;
+        }
+
+        .stage-note,
+        .event-note {
+            font-size: 14px;
+            padding: 2px 0;
+            cursor: help;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+        }
+
+        .stage-note:hover,
+        .event-note:hover {
+            opacity: 0.8;
+        }
+
+        color: #000;
+        margin-bottom: 2px;
+        }
+
+        .stage-note,
+        .event-note {
             font-size: 9px;
             color: #444;
             margin-bottom: 2px;
@@ -310,8 +499,8 @@
         }
 
         .requirements {
-            font-size: 8px;
-            color: #888;
+            font-size: 10px;
+            color: #242424;
         }
 
         /* Modal Popup Styles */
@@ -474,7 +663,7 @@
         <!-- Left Control Panel -->
         <div class="control-panel">
             <h2>Timeline Controls</h2>
-            
+
             <div class="control-group">
                 <label for="startWeekday">Start Day Weekday:</label>
                 <select id="startWeekday">
@@ -566,21 +755,25 @@
             </div>
             <div class="modal-body">
                 <h3>Why Some Events Are Not Displayed</h3>
-                <p>This timeline focuses on regular, predictable events that players can plan for. Some events are excluded for the following reasons:</p>
-                
+                <p>This timeline focuses on regular, predictable events that players can plan for. Some events are
+                    excluded for the following reasons:</p>
+
                 <div class="excluded-event">
                     <div class="excluded-event-title">🏛️ Sanctuary Battle</div>
                     <div class="excluded-event-reason">
                         Sanctuary Battle is a weekly event with a consistent recurrence.
-                        However, its exact weekday trigger varies by server and cannot be reliably predicted for new servers due to limited data.
-                        For instance, if both servers are launched on Sunday, one might see the event on Tuesday, while the other may encounter it on Sunday.
+                        However, its exact weekday trigger varies by server and cannot be reliably predicted for new
+                        servers due to limited data.
+                        For instance, if both servers are launched on Sunday, one might see the event on Tuesday, while
+                        the other may encounter it on Sunday.
                     </div>
                 </div>
 
                 <div class="excluded-event">
                     <div class="excluded-event-title">🎯 Special Limited Events</div>
                     <div class="excluded-event-reason">
-                        Holiday events, anniversary celebrations, and other limited-time events are announced separately and don't follow regular patterns. 
+                        Holiday events, anniversary celebrations, and other limited-time events are announced separately
+                        and don't follow regular patterns.
                         These are typically communicated through official game announcements or suddenly appears.
                     </div>
                 </div>
@@ -849,15 +1042,67 @@
             return 'event-' + sanitizeTitle(event.title);
         }
 
+        const emojiMap = {
+            'construction': '🏗️',
+            'research': '📚',
+            'roulette': '🎲',
+            'shard': '💎',
+            'hero': '🦸',
+            'bread': '🍞',
+            'wood': '🪵',
+            'stone': '🪨',
+            'iron': '⛏️',
+            'troops': '⚔️',
+            'training': '⚔️',
+            'promoting': '⬆️',
+            'stamina': '⚡',
+            'speedup': '⏱️',
+            'gear': '🛡️',
+            'forgehammer': '🔨',
+            'enhancement': '⬆️',
+            'widget': '🔧',
+            'resources': '📦',
+            'skill': '📖',
+            'manual': '📗'
+        };
+        const emojiMapKeys = Object.keys(emojiMap); // Cache the keys once
+
+        // Function to convert note text to appropriate emojis
+        function noteToEmoji(note) {
+            if (!note) return '';
+
+            var notes = note.split(/,\s*/);
+            let emojis = '';
+            // Convert text to lowercase for matching
+            const lowerNote = note.toLowerCase();
+
+            for (let i = 0; i < notes.length; i++) {
+                const originalNote = notes[i];
+                const lowerNote = originalNote.toLowerCase();
+
+                for (let j = 0; j < emojiMapKeys.length; j++) {
+                    const key = emojiMapKeys[j];
+                    if (lowerNote.includes(key)) {
+                        emojis += `<span title="${originalNote}" alt="${originalNote}">${emojiMap[key]}</span>`;
+                        break;
+                    }
+                }
+            }
+
+
+            // If no specific emoji found, use a generic info emoji
+            return emojis || 'ℹ️';
+        }
+
         // Initialize timeline when page loads
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initializeControls();
             generateTimeline();
         });
 
         function initializeControls() {
             // Start weekday selector
-            document.getElementById('startWeekday').addEventListener('change', function() {
+            document.getElementById('startWeekday').addEventListener('change', function () {
                 startWeekday = parseInt(this.value);
                 generateTimeline();
             });
@@ -866,8 +1111,6 @@
             sampleEventsData.events.forEach(event => {
                 eventVisibility[sanitizeTitle(event.title)] = true;
             });
-
-
 
             // Generate event list
             generateEventList();
@@ -882,7 +1125,7 @@
                 const eventToggle = document.createElement('div');
                 eventToggle.className = `event-toggle ${event.category} ${eventVisibility[sanitizedTitle] ? '' : 'disabled'}`;
                 eventToggle.onclick = () => toggleEvent(sanitizedTitle);
-                
+
                 eventToggle.innerHTML = `
                     <div class="toggle-switch ${eventVisibility[sanitizedTitle] ? 'active' : ''}">
                         <div class="toggle-slider"></div>
@@ -892,7 +1135,7 @@
                         <div class="event-toggle-info">
                             Duration: ${event.duration} days
                             ${event.isRepeating ? ` • Repeats every ${event.occurrenceInterval} days` : ''}
-                            ${event.requirements.length > 0 ? `<br>Req: ${event.requirements.join(', ')}` : ''}
+                            ${event.requirements.length > 0 ? `<br>${event.requirements.join(', ')}` : ''}
                             ${event.note ? `<br>${event.note}` : ''}
                         </div>
                     </div>
@@ -907,16 +1150,16 @@
 
         function calculateEventOccurrences(event, maxDay) {
             const occurrences = [];
-            
+
             if (!event.isRepeating) {
                 // Single occurrence event
                 let startDay = event.firstOccurrenceDay;
-                
+
                 // If event has a specific weekday requirement, adjust the start day
                 if (event.firstOccurrenceWeekday) {
                     startDay = adjustForWeekday(startDay, event.firstOccurrenceWeekday);
                 }
-                
+
                 if (startDay <= maxDay) {
                     occurrences.push({
                         startDay: startDay,
@@ -928,60 +1171,60 @@
                 // Repeating event
                 let occurrenceCount = 0;
                 let currentStartDay = event.firstOccurrenceDay;
-                
+
                 // If event has a specific weekday requirement, adjust the start day
                 if (event.firstOccurrenceWeekday) {
                     currentStartDay = adjustForWeekday(currentStartDay, event.firstOccurrenceWeekday);
                 }
-                
+
                 while (currentStartDay <= maxDay && (!event.maxOccurrences || occurrenceCount < event.maxOccurrences)) {
                     occurrences.push({
                         startDay: currentStartDay,
                         endDay: currentStartDay + event.duration - 1,
                         event: event
                     });
-                    
+
                     currentStartDay += event.occurrenceInterval;
                     occurrenceCount++;
                 }
             }
-            
+
             return occurrences;
         }
-        
+
         function adjustForWeekday(baseDay, targetWeekdayName) {
             // Convert weekday name to number
             const weekdayMap = {
                 'Sunday': 0, 'Monday': 1, 'Tuesday': 2, 'Wednesday': 3,
                 'Thursday': 4, 'Friday': 5, 'Saturday': 6
             };
-            
+
             const targetWeekday = weekdayMap[targetWeekdayName];
             if (targetWeekday === undefined) {
                 return baseDay; // Return original if weekday name is invalid
             }
-            
+
             // Calculate what weekday the baseDay falls on
             const baseDayWeekday = (startWeekday + baseDay - 1) % 7;
-            
+
             // Calculate how many days to adjust to reach the target weekday
             let adjustment = targetWeekday - baseDayWeekday;
             if (adjustment < 0) {
                 adjustment += 7; // Move to next week if target day has passed
             }
-            
+
             return baseDay + adjustment;
         }
 
         function preCalculateAllOccurrences() {
             // Pre-calculate all event occurrences up to maxPreCalculatedDay
             const allOccurrences = [];
-            
+
             sampleEventsData.events.forEach(event => {
                 const occurrences = calculateEventOccurrences(event, maxPreCalculatedDay);
                 allOccurrences.push(...occurrences);
             });
-            
+
             // Sort by start day, then by event priority (fixed events first)
             allOccurrences.sort((a, b) => {
                 if (a.startDay !== b.startDay) return a.startDay - b.startDay;
@@ -990,7 +1233,7 @@
                 if (!a.event.isFixed && b.event.isFixed) return 1;
                 return 0;
             });
-            
+
             return allOccurrences;
         }
 
@@ -999,7 +1242,7 @@
             if (preCalculatedOccurrences.length === 0) {
                 preCalculatedOccurrences = preCalculateAllOccurrences();
             }
-            
+
             // Determine which columns are reserved for fixed events (from all events, not just current occurrences)
             const reservedColumns = new Set();
             sampleEventsData.events.forEach(event => {
@@ -1007,16 +1250,16 @@
                     reservedColumns.add(event.fixedColumn);
                 }
             });
-            
+
             // Determine the maximum number of fixed columns needed
             let maxFixedColumn = Math.max(...Array.from(reservedColumns), -1);
-            
+
             // Initialize columns array with enough space for fixed columns
             const columns = [];
             for (let i = 0; i <= maxFixedColumn; i++) {
                 columns[i] = [];
             }
-            
+
             // First pass: assign fixed events to their designated columns
             preCalculatedOccurrences.forEach(occurrence => {
                 if (occurrence.event.isFixed && occurrence.event.fixedColumn !== undefined) {
@@ -1025,12 +1268,12 @@
                     occurrence.assignedColumn = colIndex; // Track assignment
                 }
             });
-            
+
             // Second pass: efficiently pack non-fixed events into available spaces (skip reserved columns)
             preCalculatedOccurrences.forEach(occurrence => {
                 if (!occurrence.event.isFixed || occurrence.event.fixedColumn === undefined) {
                     let assignedColumn = -1;
-                    
+
                     // Try to find the first available column that can accommodate this event
                     // Skip columns that are reserved for fixed events
                     for (let colIndex = 0; colIndex < columns.length; colIndex++) {
@@ -1041,7 +1284,7 @@
                             break;
                         }
                     }
-                    
+
                     // If no existing column can fit this event, create a new one
                     if (assignedColumn === -1) {
                         columns.push([occurrence]);
@@ -1049,14 +1292,14 @@
                     }
                 }
             });
-            
+
             // Ensure all reserved columns exist (even if empty)
             reservedColumns.forEach(colIndex => {
                 if (!columns[colIndex]) {
                     columns[colIndex] = [];
                 }
             });
-            
+
             // Fill any gaps in the columns array to maintain proper indexing
             const maxColumnIndex = Math.max(columns.length - 1, maxFixedColumn);
             for (let i = 0; i <= maxColumnIndex; i++) {
@@ -1064,13 +1307,13 @@
                     columns[i] = [];
                 }
             }
-            
+
             return columns;
         }
-        
+
         function canFitInColumn(newOccurrence, columnOccurrences) {
             // Check if the new occurrence overlaps with any existing occurrence in the column
-            return !columnOccurrences.some(existing => 
+            return !columnOccurrences.some(existing =>
                 !(newOccurrence.endDay < existing.startDay || newOccurrence.startDay > existing.endDay)
             );
         }
@@ -1079,21 +1322,21 @@
             const table = document.getElementById('timelineTable');
             const header = document.getElementById('timelineHeader');
             const body = document.getElementById('timelineBody');
-            
+
             // Clear existing content
             header.innerHTML = '';
             body.innerHTML = '';
-            
+
             // Reset pre-calculated occurrences when timeline parameters change
             preCalculatedOccurrences = [];
-            
+
             // Calculate event columns (this will trigger pre-calculation)
             eventColumns = determineEventColumns();
-            
+
             // Create header row
             const headerRow = document.createElement('tr');
             headerRow.innerHTML = '<th class="day-header">Day</th>';
-            
+
             // Add event column headers
             for (let i = 0; i < eventColumns.length; i++) {
                 const th = document.createElement('th');
@@ -1101,37 +1344,37 @@
                 th.textContent = `Events ${i + 1}`;
                 headerRow.appendChild(th);
             }
-            
+
             header.appendChild(headerRow);
-            
+
             // Generate timeline rows
             for (let day = currentStartDay; day < currentStartDay + visibleDays; day++) {
                 const row = document.createElement('tr');
                 row.className = 'timeline-row';
-                
+
                 // Day number cell (combined with weekday)
                 const dayCell = document.createElement('td');
                 dayCell.className = 'day-cell';
                 dayCell.innerHTML = `<div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
                 row.appendChild(dayCell);
-                
+
                 // Event cells
                 for (let colIndex = 0; colIndex < eventColumns.length; colIndex++) {
                     const eventCell = document.createElement('td');
                     eventCell.className = 'event-cell';
-                    
+
                     // Check if any visible event in this column occurs on this day
-                    const eventsOnThisDay = eventColumns[colIndex].filter(occurrence => 
+                    const eventsOnThisDay = eventColumns[colIndex].filter(occurrence =>
                         day >= occurrence.startDay && day <= occurrence.endDay && eventVisibility[sanitizeTitle(occurrence.event.title)]
                     );
-                    
+
                     if (eventsOnThisDay.length > 0) {
                         const occurrence = eventsOnThisDay[0];
                         const event = occurrence.event;
                         const dayInEvent = day - occurrence.startDay + 1;
-                        
+
                         eventCell.className += ` ${getEventCssClass(event)}`;
-                        
+
                         // Add event title on first day
                         if (day === occurrence.startDay) {
                             eventCell.innerHTML = `
@@ -1143,40 +1386,41 @@
                                 <div class="event-info">Day ${dayInEvent}</div>
                             `;
                         }
-                        
+
                         // Add stage information if available
                         if (event.hasStages && event.stages && event.stages[dayInEvent - 1]) {
                             const stage = event.stages[dayInEvent - 1];
                             if (stage.note) {
-                                eventCell.innerHTML += `<div class="stage-note">${stage.note}</div>`;
+                                var emoji = noteToEmoji(stage.note);
+                                eventCell.innerHTML += `<div class="stage-note">${emoji}</div>`;
                             }
                         }
-                        
+
                         // Add general note if it's the first day
                         if (day === occurrence.startDay && event.note) {
                             eventCell.innerHTML += `<div class="event-note">${event.note}</div>`;
                         }
-                        
+
                         // Add requirements on first day
                         if (day === occurrence.startDay && event.requirements.length > 0) {
-                            eventCell.innerHTML += `<div class="requirements">Req: ${event.requirements.join(', ')}</div>`;
+                            eventCell.innerHTML += `<div class="requirements">${event.requirements.join(', ')}</div>`;
                         }
                     }
-                    
+
                     row.appendChild(eventCell);
                 }
-                
+
                 body.appendChild(row);
             }
-            
+
             // Add infinite scroll
             addInfiniteScroll();
         }
 
         function addInfiniteScroll() {
             const container = document.getElementById('timelineContainer');
-            
-            container.addEventListener('scroll', function() {
+
+            container.addEventListener('scroll', function () {
                 if (container.scrollTop + container.clientHeight >= container.scrollHeight - 100) {
                     // Load more days
                     loadMoreDays();
@@ -1201,11 +1445,11 @@
         function toggleByCategory(category) {
             const eventsInCategory = sampleEventsData.events.filter(event => event.category === category);
             const allVisible = eventsInCategory.every(event => eventVisibility[sanitizeTitle(event.title)]);
-            
+
             eventsInCategory.forEach(event => {
                 eventVisibility[sanitizeTitle(event.title)] = !allVisible;
             });
-            
+
             generateEventList();
             generateTimeline();
         }
@@ -1214,34 +1458,34 @@
             const body = document.getElementById('timelineBody');
             const additionalDays = 20;
             const startDay = currentStartDay + visibleDays;
-            
+
             for (let day = startDay; day < startDay + additionalDays; day++) {
                 const row = document.createElement('tr');
                 row.className = 'timeline-row';
-                
+
                 // Day number cell (combined with weekday)
                 const dayCell = document.createElement('td');
                 dayCell.className = 'day-cell';
                 dayCell.innerHTML = `<div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
                 row.appendChild(dayCell);
-                
+
                 // Event cells - use the pre-calculated column assignments
                 for (let colIndex = 0; colIndex < eventColumns.length; colIndex++) {
                     const eventCell = document.createElement('td');
                     eventCell.className = 'event-cell';
-                    
+
                     // Find visible events that occur on this day in this column
-                    const eventsOnThisDay = eventColumns[colIndex].filter(occurrence => 
+                    const eventsOnThisDay = eventColumns[colIndex].filter(occurrence =>
                         day >= occurrence.startDay && day <= occurrence.endDay && eventVisibility[sanitizeTitle(occurrence.event.title)]
                     );
-                    
+
                     if (eventsOnThisDay.length > 0) {
                         const occurrence = eventsOnThisDay[0];
                         const event = occurrence.event;
                         const dayInEvent = day - occurrence.startDay + 1;
-                        
+
                         eventCell.className += ` ${getEventCssClass(event)}`;
-                        
+
                         // Add event title on first day
                         if (day === occurrence.startDay) {
                             eventCell.innerHTML = `
@@ -1253,7 +1497,7 @@
                                 <div class="event-info">Day ${dayInEvent}/${event.duration}</div>
                             `;
                         }
-                        
+
                         // Add stage information if available
                         if (event.hasStages && event.stages && event.stages[dayInEvent - 1]) {
                             const stage = event.stages[dayInEvent - 1];
@@ -1261,24 +1505,24 @@
                                 eventCell.innerHTML += `<div class="stage-note">${stage.note}</div>`;
                             }
                         }
-                        
+
                         // Add general note if it's the first day
                         if (day === occurrence.startDay && event.note) {
                             eventCell.innerHTML += `<div class="event-note">${event.note}</div>`;
                         }
-                        
+
                         // Add requirements on first day
                         if (day === occurrence.startDay && event.requirements.length > 0) {
-                            eventCell.innerHTML += `<div class="requirements">Req: ${event.requirements.join(', ')}</div>`;
+                            eventCell.innerHTML += `<div class="requirements">${event.requirements.join(', ')}</div>`;
                         }
                     }
-                    
+
                     row.appendChild(eventCell);
                 }
-                
+
                 body.appendChild(row);
             }
-            
+
             visibleDays += additionalDays;
         }
 
@@ -1296,14 +1540,14 @@
         }
 
         // Close modal when clicking outside of it
-        document.getElementById('eventInfoModal').addEventListener('click', function(e) {
+        document.getElementById('eventInfoModal').addEventListener('click', function (e) {
             if (e.target === this) {
                 closeEventInfoModal();
             }
         });
 
         // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 const modal = document.getElementById('eventInfoModal');
                 if (modal.classList.contains('show')) {
