@@ -202,6 +202,15 @@ Fog 1 erased
 
 ### All out
 
+## Day 21 (1004)
+
+## Day 22 (1005)
+
+### Working Overtime
+
+### Sanctuary Battle
+
+
 ---
 
 ## Day 64 (20250908, Monday)
@@ -539,10 +548,23 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 
 ## Day 86 (Wednesday, 1001)
 
-### Officer Project
+### Officer Project (Forgehammers)
 
 ### Desert Trial
 
-## Day 87
+## Day 87 (Thursday)
+
+## Day 88 (Friday)
 
 ### Armanent Competition (Truegold)
+
+## Day 89 (Saturday)
+
+### [Kingdom of Power] Matchmaking Phase
+
+- Duration: 2 Days
+
+## Day 90 (Sunday)
+
+### Officer Project (Charm Design)
+
