@@ -297,8 +297,8 @@
         }
 
         .event-info {
-            font-size: 10px;
-            color: #666;
+            font-size: 12px;
+            color: #000;
             margin-bottom: 2px;
         }
 
@@ -442,7 +442,7 @@
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            background: #78c589;
             color: white;
             border: none;
             border-radius: 8px;
@@ -457,7 +457,7 @@
         }
 
         .info-button:hover {
-            background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+            background: #17a2b8;
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
         }
@@ -571,8 +571,9 @@
                 <div class="excluded-event">
                     <div class="excluded-event-title">🏛️ Sanctuary Battle</div>
                     <div class="excluded-event-reason">
-                        Sanctuary Battle is a special server-wide event that occurs irregularly based on server population and activity levels. 
-                        It cannot be predicted or planned for in advance, as it's triggered by specific conditions rather than following a fixed schedule.
+                        Sanctuary Battle is a weekly event with a consistent recurrence.
+                        However, its exact weekday trigger varies by server and cannot be reliably predicted for new servers due to limited data.
+                        For instance, if both servers are launched on Sunday, one might see the event on Tuesday, while the other may encounter it on Sunday.
                     </div>
                 </div>
 
@@ -580,27 +581,9 @@
                     <div class="excluded-event-title">🎯 Special Limited Events</div>
                     <div class="excluded-event-reason">
                         Holiday events, anniversary celebrations, and other limited-time events are announced separately and don't follow regular patterns. 
-                        These are typically communicated through official game announcements.
+                        These are typically communicated through official game announcements or suddenly appears.
                     </div>
                 </div>
-
-                <div class="excluded-event">
-                    <div class="excluded-event-title">⚔️ Cross-Server Events</div>
-                    <div class="excluded-event-reason">
-                        Events that depend on cross-server matching or specific server conditions are excluded as they don't follow predictable schedules 
-                        and vary significantly between different server groups and regions.
-                    </div>
-                </div>
-
-                <h3>What This Timeline Includes</h3>
-                <p>This timeline shows:</p>
-                <ul>
-                    <li><strong>Regular Solo Events:</strong> Events you can participate in individually</li>
-                    <li><strong>Alliance Events:</strong> Predictable alliance-based activities</li>
-                    <li><strong>Power-up Events:</strong> Scheduled enhancement and building events</li>
-                    <li><strong>Hall of Governors:</strong> Regular governance events</li>
-                    <li><strong>Online Events:</strong> Time-based participation events</li>
-                </ul>
 
                 <h3>Planning Your Activities</h3>
                 <p>Use this timeline to:</p>
@@ -671,18 +654,6 @@
                     "requirements": []
                 },
                 {
-                    "id": 5,
-                    "title": "Sanctuary Battle",
-                    "duration": 4,
-                    "isRepeating": false,
-                    "occurrenceInterval": 0,
-                    "firstOccurrenceDay": 4,
-                    "isFixed": true,
-                    "fixedColumn": 2,
-                    "category": "alliance",
-                    "requirements": []
-                },
-                {
                     "id": 6,
                     "title": "Hall of Governors (1st)",
                     "duration": 5,
@@ -714,30 +685,6 @@
                     "category": "hog",
                     "isFixed": true,
                     "fixedColumn": 1,
-                    "requirements": []
-                },
-                {
-                    "id": 8,
-                    "title": "Sanctuary Battle",
-                    "duration": 4,
-                    "isRepeating": false,
-                    "occurrenceInterval": 0,
-                    "firstOccurrenceDay": 9,
-                    "category": "alliance",
-                    "isFixed": true,
-                    "fixedColumn": 2,
-                    "requirements": []
-                },
-                {
-                    "id": 10,
-                    "title": "Sanctuary Battle",
-                    "duration": 4,
-                    "isRepeating": true,
-                    "occurrenceInterval": 7,
-                    "firstOccurrenceDay": 15,
-                    "category": "alliance",
-                    "isFixed": true,
-                    "fixedColumn": 2,
                     "requirements": []
                 },
                 {
@@ -1167,11 +1114,11 @@
                         if (day === occurrence.startDay) {
                             eventCell.innerHTML = `
                                 <div class="event-title">${event.title}</div>
-                                <div class="event-info">Day ${dayInEvent}/${event.duration}</div>
+                                <div class="event-info">Day ${dayInEvent}</div>
                             `;
                         } else {
                             eventCell.innerHTML = `
-                                <div class="event-info">Day ${dayInEvent}/${event.duration}</div>
+                                <div class="event-info">Day ${dayInEvent}</div>
                             `;
                         }
                         
