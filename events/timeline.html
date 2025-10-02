@@ -101,8 +101,8 @@
         .event-alliance-mobilization { background-color: hsl(195, 59%, 58%); } /* slightly more cyan */
 
         /* HOG events - Green theme variations */
-        .event-hall-of-governors-1st { background-color: hsl(152, 39%, 70%); } /* #96ceb4 - base green */
-        .event-hero-roulette-1st-saul { background-color: hsl(145, 39%, 70%); } /* slightly more yellow-green */
+        .event-hall-of-governors { background-color: hsl(152, 39%, 70%); } /* #96ceb4 - base green */
+        .event-hero-roulette { background-color: hsl(145, 39%, 70%); } /* slightly more yellow-green */
 
         /* Online events - Yellow theme */
         .event-viking-vengeance { background-color: hsl(44, 97%, 67%); } /* #feca57 - base yellow */
@@ -478,8 +478,8 @@
             <div class="control-group">
                 <label for="startWeekday">Start Day Weekday:</label>
                 <select id="startWeekday">
-                    <option value="0">Sunday</option>
-                    <option value="1" selected>Monday</option>
+                    <option value="0" selected>Sunday</option>
+                    <option value="1">Monday</option>
                     <option value="2">Tuesday</option>
                     <option value="3">Wednesday</option>
                     <option value="4">Thursday</option>
@@ -655,7 +655,7 @@
                 },
                 {
                     "id": 6,
-                    "title": "Hall of Governors (1st)",
+                    "title": "Hall of Governors",
                     "duration": 5,
                     "isRepeating": false,
                     "occurrenceInterval": 0,
@@ -673,11 +673,11 @@
                     ],
                     "isFixed": true,
                     "fixedColumn": 0,
-                    "requirements": ["All Team Members"]
+                    "requirements": ["1st"]
                 },
                 {
                     "id": 7,
-                    "title": "Hero Roulette (1st, Saul)",
+                    "title": "Hero Roulette",
                     "duration": 3,
                     "isRepeating": false,
                     "occurrenceInterval": 0,
@@ -685,7 +685,7 @@
                     "category": "hog",
                     "isFixed": true,
                     "fixedColumn": 1,
-                    "requirements": []
+                    "requirements": ["1st, Saul"]
                 },
                 {
                     "id": 11,
@@ -797,13 +797,36 @@
                     "note": "Raise power through construction, raise power through research, promote troops",
                     "requirements": []
                 },
+                {
+                    "id": 19,
+                    "title": "Hall of Governors",
+                    "duration": 7,
+                    "isRepeating": false,
+                    "occurrenceInterval": 0,
+                    "firstOccurrenceDay": 15,
+                    "firstOccurrenceWeekday": "Monday",
+                    "category": "hog",
+                    "hasStages": true,
+                    "stages": [
+                        { "day": 1, "note": "Raise power through construction, raise power through research" },
+                        { "day": 2, "note": "Hero shards" },
+                        { "day": 3, "note": "Promote troops" },
+                        { "day": 4, "note": "Stamina" },
+                        { "day": 5, "note": "Raise power through construction, raise power through research, promote troops" },
+                        { "day": 6, "note": "" },
+                        { "day": 7, "note": "" }
+                    ],
+                    "isFixed": true,
+                    "fixedColumn": 0,
+                    "requirements": ["2nd"]
+                },
             ]
         };
 
         // Timeline state
         let currentStartDay = 1;
         let visibleDays = 50;
-        let startWeekday = 1; // Monday
+        let startWeekday = 0; // Sunday
         let timelineData = [];
         let eventColumns = [];
         let preCalculatedOccurrences = [];
