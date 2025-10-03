@@ -216,6 +216,12 @@ Fog 1 erased
 
 ### Alliance Mobilization
 
+## Day 24 (1007)
+
+### Develop new tech
+
+### Viking Vengeance
+
 ---
 
 ## Day 64 (20250908, Monday)
@@ -517,21 +523,21 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 
 ### Hero Roulette (Zoe) (3 days)
 
-## Day 79 (0924 Wednesday)
+## Day 80 (0924 Wednesday)
 
-## Day 80
+## Day 81
 
-## Day 81 (Friday)
+## Day 82 (Friday)
 
 ### All Out
 
-## Day 82 (Saturday)
+## Day 83 (Saturday)
 
 ### Castle Battle
 
-## Day 83
+## Day 84
 
-## Day 84 (0929, Monday)
+## Day 85 (0929, Monday)
 
 ### Champagne Fair
 
@@ -545,38 +551,50 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 
 ### Swordland Showdown
 
-## Day 85 (Tuesday)
+## Day 86 (Tuesday)
 
 ### Fishing Tournament
 
 ### Sanctuary Battle
 
-## Day 86 (Wednesday, 1001)
+## Day 87 (Wednesday, 1001)
 
 ### Officer Project (Forgehammers)
 
 ### Desert Trial
 
-## Day 87 (Thursday)
+## Day 88 (Thursday)
 
-## Day 88 (Friday)
+## Day 89 (Friday)
 
 ### Armanent Competition (Truegold)
 
-## Day 89 (Saturday)
+## Day 90 (Saturday)
 
 ### [Kingdom of Power] Matchmaking Phase
 
 - Duration: 2 Days
 
-## Day 90 (Sunday)
+## Day 91 (Sunday)
 
 ### Officer Project (Charm Design)
 
-## Day 91 (Monday)
+## Day 92 (1006, Monday)
 
 ### Golden Glaives
 
 - Duration: 2 Days
 
 ### Alliance Championship
+
+## Day 93 (Tuesday)
+
+### Eternity's Reach
+
+### Defeat nearby beasts
+
+### Viking Vengeance
+
+### Hero Roulette (Zoe)
+
+### Sanctuary Battle

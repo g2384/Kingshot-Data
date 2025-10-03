@@ -318,7 +318,7 @@ body {
 
 .weekday {
     color: #7f8c8d;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
     margin-top: 2px;
 }
@@ -378,18 +378,19 @@ body {
 }
 
 .event-info {
-    font-size: 11px;
+    font-size: 12px;
     opacity: 0.9;
     margin-bottom: 2px;
     font-weight: 500;
 }
 
 .stage-note {
-    font-size: 10px;
+    font-size: 14px;
     opacity: 0.8;
     margin-top: 2px;
     line-height: 1.2;
     font-style: italic;
+    cursor: help;
 }
 
 .event-note {
