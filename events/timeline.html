@@ -304,7 +304,7 @@
                     "isRepeating": true,
                     "occurrenceInterval": 14,
                     "firstOccurrenceDay": 11,
-                    "firstOccurrenceWeekday": "Wednesday",
+                    "occurrenceWeekday": "Wednesday",
                     "category": "solo",
                     "isFixed": true,
                     "fixedColumn": 3,
@@ -317,7 +317,7 @@
                     "isRepeating": true,
                     "occurrenceInterval": 14,
                     "firstOccurrenceDay": 15,
-                    "firstOccurrenceWeekday": "Tuesday",
+                    "occurrenceWeekday": "Tuesday",
                     "category": "solo",
                     "isFixed": true,
                     "fixedColumn": 3,
@@ -329,8 +329,8 @@
                     "duration": 7,
                     "isRepeating": true,
                     "occurrenceInterval": 14,
-                    "firstOccurrenceDay": 7,
-                    "firstOccurrenceWeekday": "Monday",
+                    "firstOccurrenceWeek": 3,
+                    "occurrenceWeekday": "Monday",
                     "category": "alliance",
                     "isFixed": true,
                     "fixedColumn": 2,
@@ -353,7 +353,7 @@
                     "isRepeating": true,
                     "occurrenceInterval": 14,
                     "firstOccurrenceDay": 7,
-                    "firstOccurrenceWeekday": "Tuesday",
+                    "occurrenceWeekday": "Tuesday",
                     "category": "online",
                     "requirements": []
                 },
@@ -416,7 +416,7 @@
                     "isRepeating": false,
                     "occurrenceInterval": 0,
                     "firstOccurrenceDay": 15,
-                    "firstOccurrenceWeekday": "Monday",
+                    "occurrenceWeekday": "Monday",
                     "category": "hog",
                     "hasStages": true,
                     "stages": [
@@ -439,7 +439,7 @@
                     "occurrenceInterval": 14,
                     "firstOccurrenceDay": 15,
                     "category": "online",
-                    "firstOccurrenceWeekday": "Monday",
+                    "occurrenceWeekday": "Monday",
                     "isFixed": false,
                     "note": "",
                     "requirements": []
@@ -452,7 +452,7 @@
                     "occurrenceInterval": 14,
                     "firstOccurrenceDay": 15,
                     "category": "hog",
-                    "firstOccurrenceWeekday": "Tuesday",
+                    "occurrenceWeekday": "Tuesday",
                     "isFixed": true,
                     "fixedColumn": 1,
                     "requirements": ["2nd, Saul"]
@@ -465,7 +465,7 @@
                     "occurrenceInterval": 28,
                     "firstOccurrenceDay": 15,
                     "category": "hog",
-                    "firstOccurrenceWeekday": "Friday",
+                    "occurrenceWeekday": "Friday",
                     "isFixed": false,
                     "requirements": []
                 },
@@ -678,11 +678,18 @@
 
             if (!event.isRepeating) {
                 // Single occurrence event
-                let startDay = event.firstOccurrenceDay;
+                let startDay;
 
-                // If event has a specific weekday requirement, adjust the start day
-                if (event.firstOccurrenceWeekday) {
-                    startDay = adjustForWeekday(startDay, event.firstOccurrenceWeekday);
+                // Check if event has a specific week requirement
+                if (event.firstOccurrenceWeek && event.occurrenceWeekday) {
+                    startDay = getDayForWeekAndWeekday(event.firstOccurrenceWeek, event.occurrenceWeekday);
+                } else {
+                    startDay = event.firstOccurrenceDay;
+                    
+                    // If event has a specific weekday requirement, adjust the start day
+                    if (event.occurrenceWeekday) {
+                        startDay = adjustForWeekday(startDay, event.occurrenceWeekday);
+                    }
                 }
 
                 if (startDay <= maxDay) {
@@ -695,11 +702,18 @@
             } else {
                 // Repeating event
                 let occurrenceCount = 0;
-                let currentStartDay = event.firstOccurrenceDay;
+                let currentStartDay;
 
-                // If event has a specific weekday requirement, adjust the start day
-                if (event.firstOccurrenceWeekday) {
-                    currentStartDay = adjustForWeekday(currentStartDay, event.firstOccurrenceWeekday);
+                // Check if event has a specific week requirement for first occurrence
+                if (event.firstOccurrenceWeek && event.occurrenceWeekday) {
+                    currentStartDay = getDayForWeekAndWeekday(event.firstOccurrenceWeek, event.occurrenceWeekday);
+                } else {
+                    currentStartDay = event.firstOccurrenceDay;
+                    
+                    // If event has a specific weekday requirement, adjust the start day
+                    if (event.occurrenceWeekday) {
+                        currentStartDay = adjustForWeekday(currentStartDay, event.occurrenceWeekday);
+                    }
                 }
 
                 while (currentStartDay <= maxDay && (!event.maxOccurrences || occurrenceCount < event.maxOccurrences)) {
@@ -743,6 +757,62 @@
             }
 
             return baseDay + adjustment;
+        }
+
+        function getDayForWeekAndWeekday(weekNumber, weekdayName) {
+            // Convert weekday name to number
+            const weekdayMap = {
+                'Sunday': 0, 'Monday': 1, 'Tuesday': 2, 'Wednesday': 3,
+                'Thursday': 4, 'Friday': 5, 'Saturday': 6
+            };
+
+            const targetWeekday = weekdayMap[weekdayName];
+            if (targetWeekday === undefined) {
+                return 1; // Return day 1 if weekday name is invalid
+            }
+
+            // Find the first Monday on or after day 1
+            let firstMondayDay = 1;
+            while (!isMonday(firstMondayDay)) {
+                firstMondayDay++;
+            }
+
+            // Calculate the start of the requested week
+            let weekStartDay;
+            if (weekNumber === 1) {
+                // Week 1 starts from day 1
+                weekStartDay = 1;
+            } else {
+                // Week 2 starts from the first Monday, subsequent weeks follow
+                const baseWeek = firstMondayDay > 1 ? 2 : 1;
+                if (weekNumber < baseWeek) {
+                    weekStartDay = 1;
+                } else {
+                    weekStartDay = firstMondayDay + ((weekNumber - baseWeek) * 7);
+                }
+            }
+
+            // Find the Monday of the target week
+            let mondayOfWeek = weekStartDay;
+            if (weekNumber > 1 || firstMondayDay === 1) {
+                // For week 2+ or if first Monday is day 1, find the Monday of this week
+                while (!isMonday(mondayOfWeek) && mondayOfWeek <= weekStartDay + 6) {
+                    mondayOfWeek++;
+                }
+                // If no Monday found in the week range, use the calculated Monday
+                if (!isMonday(mondayOfWeek)) {
+                    mondayOfWeek = firstMondayDay + ((weekNumber - (firstMondayDay > 1 ? 2 : 1)) * 7);
+                }
+            }
+
+            // Calculate the target day based on the Monday of the week
+            const mondayWeekday = 1; // Monday is index 1
+            let dayOffset = targetWeekday - mondayWeekday;
+            if (dayOffset < 0) {
+                dayOffset += 7; // Handle Sunday (0) by going to previous week's Sunday
+            }
+
+            return mondayOfWeek + dayOffset;
         }
 
         function preCalculateAllOccurrences() {
