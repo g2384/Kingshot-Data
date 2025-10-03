@@ -222,8 +222,33 @@ Fog 1 erased
 
 ### Viking Vengeance
 
+### Fishing Tournament
+
 ---
 
+## Day 54 (0829 Friday, Week 9)
+
+### Castle Battle (1st)
+
+## Day 55
+
+## Day 56
+
+## Day 57 (0901 Mon)
+
+## Day 58
+
+## Day 59
+
+## Day 60
+
+## Day 61
+
+## Day 62
+
+## Day 63 (0907)
+
+---- start ---
 ## Day 64 (20250908, Monday)
 
 Alliance Championship (7 Days)

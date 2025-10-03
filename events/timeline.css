@@ -157,6 +157,7 @@ body {
 .event-defeat-nearby-beasts { background-color: hsl(168, 56%, 57%); }
 .event-fishing-tournament { background-color: hsl(180, 56%, 57%); }
 .event-cesares-fury { background-color: hsl(184, 56%, 57%); }
+.event-all-out { background-color: hsl(160, 56%, 57%); }
 
 /* Alliance events - Blue theme variations */
 .event-sanctuary-battle { background-color: hsl(202, 59%, 58%); }
@@ -168,11 +169,14 @@ body {
 
 /* Online events - Yellow theme */
 .event-viking-vengeance { background-color: hsl(44, 97%, 67%); }
+.event-swordland-showdown { background-color: hsl(50, 97%, 67%); }
 
 /* Power-up events - Pink theme variations */
 .event-steel-edge { background-color: hsl(306, 93%, 81%); }
 .event-plan-your-city { background-color: hsl(315, 93%, 81%); }
 .event-power-up { background-color: hsl(297, 93%, 81%); }
+.event-develop-new-tech { background-color: hsl(288, 93%, 81%); }
+.event-working-overtime { background-color: hsl(279, 93%, 81%); }
 
 /* Event list */
 .event-list {
