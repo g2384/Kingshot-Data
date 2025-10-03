@@ -6,6 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Events Timeline</title>
     <link rel="stylesheet" href="timeline.css">
+    <style>
+        /* Monday indicator styling */
+        .day-cell.monday-start {
+            border-left: 3px solid #007acc;
+            position: relative;
+        }
+        
+        .day-cell.monday-start::before {
+            content: '';
+            position: absolute;
+            left: -3px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #007acc 0%, #005b96 100%);
+            box-shadow: 1px 0 2px rgba(0, 122, 204, 0.3);
+        }
+        
+        .week-indicator {
+            font-size: 10px;
+            font-weight: bold;
+            color: #007acc;
+            text-align: center;
+            margin-bottom: 2px;
+            padding: 1px 2px;
+            background: rgba(0, 122, 204, 0.1);
+            border-radius: 3px;
+            border: 1px solid rgba(0, 122, 204, 0.2);
+        }
+        
+        /* Enhance day cell styling for better visual hierarchy */
+        .day-cell {
+            position: relative;
+            padding: 8px 4px;
+        }
+        
+        .day-number {
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .weekday {
+            font-size: 11px;
+            text-align: center;
+            color: #666;
+        }
+        
+        /* Make Monday weekday text more prominent */
+        .day-cell.monday-start .weekday {
+            color: #007acc;
+            font-weight: 600;
+        }
+        
+        .day-cell.monday-start .day-number {
+            color: #007acc;
+        }
+    </style>
 </head>
 
 <body>
@@ -559,6 +616,27 @@
             return weekdays[(startWeekday + day - 1) % 7];
         }
 
+        function isMonday(day) {
+            // Monday is index 1 in weekdays array
+            return (startWeekday + day - 1) % 7 === 1;
+        }
+
+        function getWeekNumber(day) {
+            // Find the first Monday on or after day 1
+            let firstMondayDay = 1;
+            while (!isMonday(firstMondayDay)) {
+                firstMondayDay++;
+            }
+            
+            // If the day is before the first Monday, it's considered week 1
+            if (day < firstMondayDay) {
+                return 1;
+            }
+            
+            // Calculate week number based on days since first Monday
+            return Math.floor((day - firstMondayDay) / 7) + 1;
+        }
+
         function calculateEventOccurrences(event, maxDay) {
             const occurrences = [];
 
@@ -766,7 +844,16 @@
                 // Day number cell (combined with weekday)
                 const dayCell = document.createElement('td');
                 dayCell.className = 'day-cell';
-                dayCell.innerHTML = `<div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
+                
+                // Add Monday class and week number if it's Monday
+                if (isMonday(day)) {
+                    dayCell.className += ' monday-start';
+                    const weekNum = getWeekNumber(day);
+                    dayCell.innerHTML = `<div class="week-indicator">Week ${weekNum}</div><div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
+                } else {
+                    dayCell.innerHTML = `<div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
+                }
+                
                 row.appendChild(dayCell);
 
                 // Event cells
@@ -877,7 +964,16 @@
                 // Day number cell (combined with weekday)
                 const dayCell = document.createElement('td');
                 dayCell.className = 'day-cell';
-                dayCell.innerHTML = `<div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
+                
+                // Add Monday class and week number if it's Monday
+                if (isMonday(day)) {
+                    dayCell.className += ' monday-start';
+                    const weekNum = getWeekNumber(day);
+                    dayCell.innerHTML = `<div class="week-indicator">Week ${weekNum}</div><div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
+                } else {
+                    dayCell.innerHTML = `<div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
+                }
+                
                 row.appendChild(dayCell);
 
                 // Event cells - use the pre-calculated column assignments
