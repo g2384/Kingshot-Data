@@ -72,7 +72,9 @@
             <h2>Timeline Controls</h2>
 
             <div class="control-group">
-                <label for="startWeekday">Start Day Weekday:</label>
+                <label for="alignmentDay">Alignment Day:</label>
+                <input type="number" id="alignmentDay" min="1" value="1" style="width: 60px; display: inline-block;">
+                <label for="startWeekday" id="dayWeekdayLabel" style="margin-left: 10px;">Day 1 Weekday:</label>
                 <select id="startWeekday">
                     <option value="0" selected>Sunday</option>
                     <option value="1">Monday</option>
@@ -488,6 +490,7 @@
         let currentStartDay = 1;
         let visibleDays = 50;
         let startWeekday = 0; // Sunday
+        let alignmentDay = 1; // The day that should align with the selected weekday
         let timelineData = [];
         let eventColumns = [];
         let preCalculatedOccurrences = [];
@@ -570,9 +573,17 @@
         });
 
         function initializeControls() {
+            // Alignment day input
+            document.getElementById('alignmentDay').addEventListener('input', function () {
+                alignmentDay = parseInt(this.value) || 1;
+                updateDayWeekdayLabel();
+                generateTimeline();
+            });
+
             // Start weekday selector
             document.getElementById('startWeekday').addEventListener('change', function () {
                 startWeekday = parseInt(this.value);
+                updateDayWeekdayLabel();
                 generateTimeline();
             });
 
@@ -580,6 +591,9 @@
             sampleEventsData.events.forEach(event => {
                 eventVisibility[sanitizeTitle(event.title)] = true;
             });
+
+            // Update the initial label
+            updateDayWeekdayLabel();
 
             // Generate event list
             generateEventList();
@@ -613,12 +627,25 @@
         }
 
         function getWeekdayForDay(day) {
-            return weekdays[(startWeekday + day - 1) % 7];
+            // Calculate weekday based on alignment day and selected weekday
+            // If alignmentDay should be startWeekday, then calculate offset from there
+            const offsetFromAlignment = day - alignmentDay;
+            // Handle negative offsets properly by adding 7 until positive
+            let weekdayIndex = (startWeekday + offsetFromAlignment) % 7;
+            if (weekdayIndex < 0) {
+                weekdayIndex += 7;
+            }
+            return weekdays[weekdayIndex];
         }
 
         function isMonday(day) {
             // Monday is index 1 in weekdays array
-            return (startWeekday + day - 1) % 7 === 1;
+            const offsetFromAlignment = day - alignmentDay;
+            let weekdayIndex = (startWeekday + offsetFromAlignment) % 7;
+            if (weekdayIndex < 0) {
+                weekdayIndex += 7;
+            }
+            return weekdayIndex === 1;
         }
 
         function getWeekNumber(day) {
@@ -635,6 +662,13 @@
             
             // Calculate week number based on days since first Monday
             return Math.floor((day - firstMondayDay) / 7) + 1;
+        }
+
+        function updateDayWeekdayLabel() {
+            const labelElement = document.getElementById('dayWeekdayLabel');
+            if (labelElement) {
+                labelElement.textContent = `Day ${alignmentDay} Weekday:`;
+            }
         }
 
         function calculateEventOccurrences(event, maxDay) {
@@ -693,8 +727,12 @@
                 return baseDay; // Return original if weekday name is invalid
             }
 
-            // Calculate what weekday the baseDay falls on
-            const baseDayWeekday = (startWeekday + baseDay - 1) % 7;
+            // Calculate what weekday the baseDay falls on using alignment-based calculation
+            const offsetFromAlignment = baseDay - alignmentDay;
+            let baseDayWeekday = (startWeekday + offsetFromAlignment) % 7;
+            if (baseDayWeekday < 0) {
+                baseDayWeekday += 7;
+            }
 
             // Calculate how many days to adjust to reach the target weekday
             let adjustment = targetWeekday - baseDayWeekday;
@@ -811,6 +849,9 @@
             const table = document.getElementById('timelineTable');
             const header = document.getElementById('timelineHeader');
             const body = document.getElementById('timelineBody');
+
+            // Update the day weekday label
+            updateDayWeekdayLabel();
 
             // Clear existing content
             header.innerHTML = '';
