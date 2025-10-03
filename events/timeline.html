@@ -661,7 +661,9 @@
             }
             
             // Calculate week number based on days since first Monday
-            return Math.floor((day - firstMondayDay) / 7) + 1;
+            // The first Monday starts week 2 if there were partial days before it
+            const baseWeek = firstMondayDay > 1 ? 2 : 1;
+            return Math.floor((day - firstMondayDay) / 7) + baseWeek;
         }
 
         function updateDayWeekdayLabel() {
