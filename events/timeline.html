@@ -500,19 +500,199 @@
             ]
         };
 
-        // Timeline state
+        // ========== CONSTANTS AND CONFIGURATION ==========
+        const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        const WEEKDAY_MAP = {
+            'Sunday': 0, 'Monday': 1, 'Tuesday': 2, 'Wednesday': 3,
+            'Thursday': 4, 'Friday': 5, 'Saturday': 6
+        };
+        const MONDAY_INDEX = 1;
+        const MAX_PRECALCULATED_DAY = 1000;
+        const ADDITIONAL_DAYS_ON_SCROLL = 20;
+        const DEFAULT_VISIBLE_DAYS = 50;
+
+        // ========== UTILITY FUNCTIONS ==========
+        
+        // Calculate weekday index based on alignment system
+        function calculateWeekdayIndex(day) {
+            const offsetFromAlignment = day - alignmentDay;
+            let weekdayIndex = (startWeekday + offsetFromAlignment) % 7;
+            if (weekdayIndex < 0) {
+                weekdayIndex += 7;
+            }
+            return weekdayIndex;
+        }
+
+        // Check if a specific day is Monday
+        function isDayMonday(day) {
+            return calculateWeekdayIndex(day) === MONDAY_INDEX;
+        }
+
+        // Get weekday name for a specific day
+        function getWeekdayName(day) {
+            return WEEKDAYS[calculateWeekdayIndex(day)];
+        }
+
+        // Convert weekday name to index with validation
+        function getWeekdayIndex(weekdayName) {
+            const index = WEEKDAY_MAP[weekdayName];
+            return index !== undefined ? index : null;
+        }
+
+        // Create day cell with proper styling and content
+        function createDayCell(day) {
+            const dayCell = document.createElement('td');
+            dayCell.className = 'day-cell';
+
+            if (isMonday(day)) {
+                dayCell.className += ' monday-start';
+                const weekNum = getWeekNumber(day);
+                dayCell.innerHTML = `<div class="week-indicator">Week ${weekNum}</div><div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
+            } else {
+                dayCell.innerHTML = `<div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
+            }
+
+            return dayCell;
+        }
+
+        // Create and populate event cell for a specific day and column
+        function createEventCell(day, colIndex) {
+            const eventCell = document.createElement('td');
+            eventCell.className = 'event-cell';
+
+            // Find visible events that occur on this day in this column
+            const eventsOnThisDay = eventColumns[colIndex].filter(occurrence =>
+                day >= occurrence.startDay && day <= occurrence.endDay && eventVisibility[sanitizeTitle(occurrence.event.title)]
+            );
+
+            if (eventsOnThisDay.length > 0) {
+                const occurrence = eventsOnThisDay[0];
+                const event = occurrence.event;
+                const dayInEvent = day - occurrence.startDay + 1;
+
+                eventCell.className += ` ${getEventCssClass(event)}`;
+
+                // Add event title on first day
+                if (day === occurrence.startDay) {
+                    eventCell.innerHTML = `
+                        <div class="event-title">${event.title}</div>
+                        <div class="event-info">Day ${dayInEvent}${visibleDays > DEFAULT_VISIBLE_DAYS ? `/${event.duration}` : ''}</div>
+                    `;
+                } else {
+                    eventCell.innerHTML = `
+                        <div class="event-info">Day ${dayInEvent}${visibleDays > DEFAULT_VISIBLE_DAYS ? `/${event.duration}` : ''}</div>
+                    `;
+                }
+
+                // Add stage information if available
+                if (event.hasStages && event.stages && event.stages[dayInEvent - 1]) {
+                    const stage = event.stages[dayInEvent - 1];
+                    if (stage.note) {
+                        var emoji = noteToEmoji(stage.note);
+                        eventCell.innerHTML += `<div class="stage-note">${emoji}</div>`;
+                    }
+                }
+
+                // Add general note if it's the first day
+                if (day === occurrence.startDay && event.note) {
+                    eventCell.innerHTML += `<div class="event-note">${event.note}</div>`;
+                }
+
+                // Add requirements on first day
+                if (day === occurrence.startDay && event.requirements.length > 0) {
+                    eventCell.innerHTML += `<div class="requirements">${event.requirements.join(', ')}</div>`;
+                }
+            }
+
+            return eventCell;
+        }
+
+        // Create a complete timeline row for a given day
+        function createTimelineRow(day) {
+            const row = document.createElement('tr');
+            row.className = 'timeline-row';
+
+            // Add day cell
+            row.appendChild(createDayCell(day));
+
+            // Add event cells
+            for (let colIndex = 0; colIndex < eventColumns.length; colIndex++) {
+                row.appendChild(createEventCell(day, colIndex));
+            }
+
+            return row;
+        }
+
+        // Update UI after visibility changes
+        function refreshUI() {
+            generateEventList();
+            generateTimeline();
+        }
+
+        // Update visibility for multiple events
+        function updateEventVisibility(eventTitles, visible) {
+            eventTitles.forEach(title => {
+                const sanitizedTitle = typeof title === 'string' ? sanitizeTitle(title) : title;
+                eventVisibility[sanitizedTitle] = visible;
+            });
+        }
+
+        // Handle event dependencies by finding the latest end day
+        function resolveEventDependencies(event, resolvedDependencies) {
+            if (!event.appearAfter || event.appearAfter.length === 0) {
+                return null;
+            }
+            
+            let latestDependencyEnd = 0;
+            for (const dependencyId of event.appearAfter) {
+                if (resolvedDependencies[dependencyId]) {
+                    const dependencyOccurrences = resolvedDependencies[dependencyId];
+                    const lastOccurrence = dependencyOccurrences[dependencyOccurrences.length - 1];
+                    if (lastOccurrence) {
+                        latestDependencyEnd = Math.max(latestDependencyEnd, lastOccurrence.endDay);
+                    }
+                }
+            }
+            
+            return latestDependencyEnd + 1; // Start the day after the latest dependency ends
+        }
+
+        // Modal utility functions
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Calculate event start day based on week/weekday or direct day specification
+        function calculateEventStartDay(event) {
+            if (event.firstOccurrenceWeek && event.occurrenceWeekday) {
+                return getDayForWeekAndWeekday(event.firstOccurrenceWeek, event.occurrenceWeekday);
+            } else {
+                let startDay = event.firstOccurrenceDay;
+                // If event has a specific weekday requirement, adjust the start day
+                if (event.occurrenceWeekday) {
+                    startDay = adjustForWeekday(startDay, event.occurrenceWeekday);
+                }
+                return startDay;
+            }
+        }
+
+        // ========== TIMELINE STATE ==========
         let currentStartDay = 1;
-        let visibleDays = 50;
+        let visibleDays = DEFAULT_VISIBLE_DAYS;
         let startWeekday = 0; // Sunday
         let alignmentDay = 1; // The day that should align with the selected weekday
         let timelineData = [];
         let eventColumns = [];
         let preCalculatedOccurrences = [];
-        let maxPreCalculatedDay = 1000; // Pre-calculate events up to day 1000
         let eventVisibility = {}; // Track visibility state of events
-
-        // Weekday names
-        const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
         // Function to sanitize event titles for use as identifiers
         function sanitizeTitle(title) {
@@ -641,25 +821,11 @@
         }
 
         function getWeekdayForDay(day) {
-            // Calculate weekday based on alignment day and selected weekday
-            // If alignmentDay should be startWeekday, then calculate offset from there
-            const offsetFromAlignment = day - alignmentDay;
-            // Handle negative offsets properly by adding 7 until positive
-            let weekdayIndex = (startWeekday + offsetFromAlignment) % 7;
-            if (weekdayIndex < 0) {
-                weekdayIndex += 7;
-            }
-            return weekdays[weekdayIndex];
+            return getWeekdayName(day);
         }
 
         function isMonday(day) {
-            // Monday is index 1 in weekdays array
-            const offsetFromAlignment = day - alignmentDay;
-            let weekdayIndex = (startWeekday + offsetFromAlignment) % 7;
-            if (weekdayIndex < 0) {
-                weekdayIndex += 7;
-            }
-            return weekdayIndex === 1;
+            return isDayMonday(day);
         }
 
         function getWeekNumber(day) {
@@ -695,33 +861,11 @@
                 let startDay;
 
                 // Handle appearAfter dependencies
-                if (event.appearAfter && event.appearAfter.length > 0) {
-                    let latestDependencyEnd = 0;
-
-                    for (const dependencyId of event.appearAfter) {
-                        if (resolvedDependencies[dependencyId]) {
-                            const dependencyOccurrences = resolvedDependencies[dependencyId];
-                            const lastOccurrence = dependencyOccurrences[dependencyOccurrences.length - 1];
-                            if (lastOccurrence) {
-                                latestDependencyEnd = Math.max(latestDependencyEnd, lastOccurrence.endDay);
-                            }
-                        }
-                    }
-
-                    // Start the day after the latest dependency ends
-                    startDay = latestDependencyEnd + 1;
+                const dependencyStartDay = resolveEventDependencies(event, resolvedDependencies);
+                if (dependencyStartDay !== null) {
+                    startDay = dependencyStartDay;
                 } else {
-                    // Check if event has a specific week requirement
-                    if (event.firstOccurrenceWeek && event.occurrenceWeekday) {
-                        startDay = getDayForWeekAndWeekday(event.firstOccurrenceWeek, event.occurrenceWeekday);
-                    } else {
-                        startDay = event.firstOccurrenceDay;
-
-                        // If event has a specific weekday requirement, adjust the start day
-                        if (event.occurrenceWeekday) {
-                            startDay = adjustForWeekday(startDay, event.occurrenceWeekday);
-                        }
-                    }
+                    startDay = calculateEventStartDay(event);
                 }
 
                 if (startDay <= maxDay) {
@@ -737,33 +881,11 @@
                 let currentStartDay;
 
                 // Handle appearAfter dependencies for repeating events
-                if (event.appearAfter && event.appearAfter.length > 0) {
-                    let latestDependencyEnd = 0;
-
-                    for (const dependencyId of event.appearAfter) {
-                        if (resolvedDependencies[dependencyId]) {
-                            const dependencyOccurrences = resolvedDependencies[dependencyId];
-                            const lastOccurrence = dependencyOccurrences[dependencyOccurrences.length - 1];
-                            if (lastOccurrence) {
-                                latestDependencyEnd = Math.max(latestDependencyEnd, lastOccurrence.endDay);
-                            }
-                        }
-                    }
-
-                    // Start the day after the latest dependency ends
-                    currentStartDay = latestDependencyEnd + 1;
+                const dependencyStartDay = resolveEventDependencies(event, resolvedDependencies);
+                if (dependencyStartDay !== null) {
+                    currentStartDay = dependencyStartDay;
                 } else {
-                    // Check if event has a specific week requirement for first occurrence
-                    if (event.firstOccurrenceWeek && event.occurrenceWeekday) {
-                        currentStartDay = getDayForWeekAndWeekday(event.firstOccurrenceWeek, event.occurrenceWeekday);
-                    } else {
-                        currentStartDay = event.firstOccurrenceDay;
-
-                        // If event has a specific weekday requirement, adjust the start day
-                        if (event.occurrenceWeekday) {
-                            currentStartDay = adjustForWeekday(currentStartDay, event.occurrenceWeekday);
-                        }
-                    }
+                    currentStartDay = calculateEventStartDay(event);
                 }
 
                 while (currentStartDay <= maxDay && (!event.maxOccurrences || occurrenceCount < event.maxOccurrences)) {
@@ -782,23 +904,12 @@
         }
 
         function adjustForWeekday(baseDay, targetWeekdayName) {
-            // Convert weekday name to number
-            const weekdayMap = {
-                'Sunday': 0, 'Monday': 1, 'Tuesday': 2, 'Wednesday': 3,
-                'Thursday': 4, 'Friday': 5, 'Saturday': 6
-            };
-
-            const targetWeekday = weekdayMap[targetWeekdayName];
-            if (targetWeekday === undefined) {
+            const targetWeekday = getWeekdayIndex(targetWeekdayName);
+            if (targetWeekday === null) {
                 return baseDay; // Return original if weekday name is invalid
             }
 
-            // Calculate what weekday the baseDay falls on using alignment-based calculation
-            const offsetFromAlignment = baseDay - alignmentDay;
-            let baseDayWeekday = (startWeekday + offsetFromAlignment) % 7;
-            if (baseDayWeekday < 0) {
-                baseDayWeekday += 7;
-            }
+            const baseDayWeekday = calculateWeekdayIndex(baseDay);
 
             // Calculate how many days to adjust to reach the target weekday
             let adjustment = targetWeekday - baseDayWeekday;
@@ -810,14 +921,8 @@
         }
 
         function getDayForWeekAndWeekday(weekNumber, weekdayName) {
-            // Convert weekday name to number
-            const weekdayMap = {
-                'Sunday': 0, 'Monday': 1, 'Tuesday': 2, 'Wednesday': 3,
-                'Thursday': 4, 'Friday': 5, 'Saturday': 6
-            };
-
-            const targetWeekday = weekdayMap[weekdayName];
-            if (targetWeekday === undefined) {
+            const targetWeekday = getWeekdayIndex(weekdayName);
+            if (targetWeekday === null) {
                 return 1; // Return day 1 if weekday name is invalid
             }
 
@@ -856,8 +961,7 @@
             }
 
             // Calculate the target day based on the Monday of the week
-            const mondayWeekday = 1; // Monday is index 1
-            let dayOffset = targetWeekday - mondayWeekday;
+            let dayOffset = targetWeekday - MONDAY_INDEX;
             if (dayOffset < 0) {
                 dayOffset += 7; // Handle Sunday (0) by going to previous week's Sunday
             }
@@ -866,7 +970,7 @@
         }
 
         function preCalculateAllOccurrences() {
-            // Pre-calculate all event occurrences up to maxPreCalculatedDay
+            // Pre-calculate all event occurrences up to MAX_PRECALCULATED_DAY
             const allOccurrences = [];
             const resolvedDependencies = {};
 
@@ -894,7 +998,7 @@
                 }
 
                 // Calculate occurrences for this event
-                const occurrences = calculateEventOccurrences(event, maxPreCalculatedDay, resolvedDependencies);
+                const occurrences = calculateEventOccurrences(event, MAX_PRECALCULATED_DAY, resolvedDependencies);
                 allOccurrences.push(...occurrences);
 
                 // Store resolved dependencies for future events
@@ -1034,77 +1138,7 @@
 
             // Generate timeline rows
             for (let day = currentStartDay; day < currentStartDay + visibleDays; day++) {
-                const row = document.createElement('tr');
-                row.className = 'timeline-row';
-
-                // Day number cell (combined with weekday)
-                const dayCell = document.createElement('td');
-                dayCell.className = 'day-cell';
-
-                // Add Monday class and week number if it's Monday
-                if (isMonday(day)) {
-                    dayCell.className += ' monday-start';
-                    const weekNum = getWeekNumber(day);
-                    dayCell.innerHTML = `<div class="week-indicator">Week ${weekNum}</div><div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
-                } else {
-                    dayCell.innerHTML = `<div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
-                }
-
-                row.appendChild(dayCell);
-
-                // Event cells
-                for (let colIndex = 0; colIndex < eventColumns.length; colIndex++) {
-                    const eventCell = document.createElement('td');
-                    eventCell.className = 'event-cell';
-
-                    // Check if any visible event in this column occurs on this day
-                    const eventsOnThisDay = eventColumns[colIndex].filter(occurrence =>
-                        day >= occurrence.startDay && day <= occurrence.endDay && eventVisibility[sanitizeTitle(occurrence.event.title)]
-                    );
-
-                    if (eventsOnThisDay.length > 0) {
-                        const occurrence = eventsOnThisDay[0];
-                        const event = occurrence.event;
-                        const dayInEvent = day - occurrence.startDay + 1;
-
-                        eventCell.className += ` ${getEventCssClass(event)}`;
-
-                        // Add event title on first day
-                        if (day === occurrence.startDay) {
-                            eventCell.innerHTML = `
-                                <div class="event-title">${event.title}</div>
-                                <div class="event-info">Day ${dayInEvent}</div>
-                            `;
-                        } else {
-                            eventCell.innerHTML = `
-                                <div class="event-info">Day ${dayInEvent}</div>
-                            `;
-                        }
-
-                        // Add stage information if available
-                        if (event.hasStages && event.stages && event.stages[dayInEvent - 1]) {
-                            const stage = event.stages[dayInEvent - 1];
-                            if (stage.note) {
-                                var emoji = noteToEmoji(stage.note);
-                                eventCell.innerHTML += `<div class="stage-note">${emoji}</div>`;
-                            }
-                        }
-
-                        // Add general note if it's the first day
-                        if (day === occurrence.startDay && event.note) {
-                            eventCell.innerHTML += `<div class="event-note">${event.note}</div>`;
-                        }
-
-                        // Add requirements on first day
-                        if (day === occurrence.startDay && event.requirements.length > 0) {
-                            eventCell.innerHTML += `<div class="requirements">${event.requirements.join(', ')}</div>`;
-                        }
-                    }
-
-                    row.appendChild(eventCell);
-                }
-
-                body.appendChild(row);
+                body.appendChild(createTimelineRow(day));
             }
 
             // Add infinite scroll
@@ -1124,123 +1158,42 @@
 
         function toggleEvent(sanitizedTitle) {
             eventVisibility[sanitizedTitle] = !eventVisibility[sanitizedTitle];
-            generateEventList();
-            generateTimeline();
+            refreshUI();
         }
 
         function toggleAllEvents(show) {
-            sampleEventsData.events.forEach(event => {
-                eventVisibility[sanitizeTitle(event.title)] = show;
-            });
-            generateEventList();
-            generateTimeline();
+            const eventTitles = sampleEventsData.events.map(event => sanitizeTitle(event.title));
+            updateEventVisibility(eventTitles, show);
+            refreshUI();
         }
 
         function toggleByCategory(category) {
             const eventsInCategory = sampleEventsData.events.filter(event => event.category === category);
             const allVisible = eventsInCategory.every(event => eventVisibility[sanitizeTitle(event.title)]);
-
-            eventsInCategory.forEach(event => {
-                eventVisibility[sanitizeTitle(event.title)] = !allVisible;
-            });
-
-            generateEventList();
-            generateTimeline();
+            const eventTitles = eventsInCategory.map(event => sanitizeTitle(event.title));
+            
+            updateEventVisibility(eventTitles, !allVisible);
+            refreshUI();
         }
 
         function loadMoreDays() {
             const body = document.getElementById('timelineBody');
-            const additionalDays = 20;
             const startDay = currentStartDay + visibleDays;
 
-            for (let day = startDay; day < startDay + additionalDays; day++) {
-                const row = document.createElement('tr');
-                row.className = 'timeline-row';
-
-                // Day number cell (combined with weekday)
-                const dayCell = document.createElement('td');
-                dayCell.className = 'day-cell';
-
-                // Add Monday class and week number if it's Monday
-                if (isMonday(day)) {
-                    dayCell.className += ' monday-start';
-                    const weekNum = getWeekNumber(day);
-                    dayCell.innerHTML = `<div class="week-indicator">Week ${weekNum}</div><div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
-                } else {
-                    dayCell.innerHTML = `<div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
-                }
-
-                row.appendChild(dayCell);
-
-                // Event cells - use the pre-calculated column assignments
-                for (let colIndex = 0; colIndex < eventColumns.length; colIndex++) {
-                    const eventCell = document.createElement('td');
-                    eventCell.className = 'event-cell';
-
-                    // Find visible events that occur on this day in this column
-                    const eventsOnThisDay = eventColumns[colIndex].filter(occurrence =>
-                        day >= occurrence.startDay && day <= occurrence.endDay && eventVisibility[sanitizeTitle(occurrence.event.title)]
-                    );
-
-                    if (eventsOnThisDay.length > 0) {
-                        const occurrence = eventsOnThisDay[0];
-                        const event = occurrence.event;
-                        const dayInEvent = day - occurrence.startDay + 1;
-
-                        eventCell.className += ` ${getEventCssClass(event)}`;
-
-                        // Add event title on first day
-                        if (day === occurrence.startDay) {
-                            eventCell.innerHTML = `
-                                <div class="event-title">${event.title}</div>
-                                <div class="event-info">Day ${dayInEvent}/${event.duration}</div>
-                            `;
-                        } else {
-                            eventCell.innerHTML = `
-                                <div class="event-info">Day ${dayInEvent}/${event.duration}</div>
-                            `;
-                        }
-
-                        // Add stage information if available
-                        if (event.hasStages && event.stages && event.stages[dayInEvent - 1]) {
-                            const stage = event.stages[dayInEvent - 1];
-                            if (stage.note) {
-                                var emoji = noteToEmoji(stage.note);
-                                eventCell.innerHTML += `<div class="stage-note">${emoji}</div>`;
-                            }
-                        }
-
-                        // Add general note if it's the first day
-                        if (day === occurrence.startDay && event.note) {
-                            eventCell.innerHTML += `<div class="event-note">${event.note}</div>`;
-                        }
-
-                        // Add requirements on first day
-                        if (day === occurrence.startDay && event.requirements.length > 0) {
-                            eventCell.innerHTML += `<div class="requirements">${event.requirements.join(', ')}</div>`;
-                        }
-                    }
-
-                    row.appendChild(eventCell);
-                }
-
-                body.appendChild(row);
+            for (let day = startDay; day < startDay + ADDITIONAL_DAYS_ON_SCROLL; day++) {
+                body.appendChild(createTimelineRow(day));
             }
 
-            visibleDays += additionalDays;
+            visibleDays += ADDITIONAL_DAYS_ON_SCROLL;
         }
 
         // Modal functions
         function openEventInfoModal() {
-            const modal = document.getElementById('eventInfoModal');
-            modal.classList.add('show');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            showModal('eventInfoModal');
         }
 
         function closeEventInfoModal() {
-            const modal = document.getElementById('eventInfoModal');
-            modal.classList.remove('show');
-            document.body.style.overflow = 'auto'; // Restore scrolling
+            hideModal('eventInfoModal');
         }
 
         // Close modal when clicking outside of it
