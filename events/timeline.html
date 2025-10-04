@@ -214,11 +214,21 @@
     </div>
 
     <script>
-        const fixedColumns = 
+        const fixedColumns =
         {
-            0: ["hog-1", "hog-2"],
-            1: ["hero-roulette-G1-1", "steel-edge", "plan-your-city", "power-up", "hero-roulette-G1-2", "working-overtime", "develop-new-tech"],
-            2: ["alliance-mobilization"],
+            0: ["hog-1", "hog-2", "hog-4", "hog-sg-1"],
+            1: ["hero-roulette-G1-1",
+                "steel-edge",
+                "plan-your-city",
+                "power-up",
+                "hero-roulette-G1-2",
+                "working-overtime",
+                "develop-new-tech",
+                "working-overtime-3",
+                "stand-of-arms-1",
+                "city-development-1",
+                "grow-your-heroes"],
+            2: ["alliance-mobilization", "alliance-mobilization-post"],
             3: ["desert-trial-1", "desert-trial", "defeat-nearby-beasts"]
         };
         const eventsData = {
@@ -332,6 +342,7 @@
                     "isRepeating": true,
                     "occurrenceInterval": 14,
                     "firstOccurrenceWeek": 3,
+                    "maxOccurrences": 3,
                     "occurrenceWeekday": "Monday",
                     "category": "alliance",
                     "requirements": ["Alliance Rank 20+"]
@@ -343,6 +354,7 @@
                     "isRepeating": true,
                     "occurrenceInterval": 14,
                     "firstOccurrenceWeek": 3,
+                    "maxOccurrences": 2,
                     "occurrenceWeekday": "Tuesday",
                     "category": "solo",
                     "requirements": []
@@ -374,6 +386,7 @@
                     "isRepeating": true,
                     "occurrenceInterval": 21,
                     "firstOccurrenceDay": 11,
+                    "maxOccurrences": 2,
                     "category": "solo",
                     "requirements": []
                 },
@@ -422,6 +435,7 @@
                     "isRepeating": true,
                     "occurrenceInterval": 14,
                     "firstOccurrenceWeek": 4,
+                    "maxOccurrences": 2,
                     "category": "online",
                     "occurrenceWeekday": "Monday",
                     "note": "",
@@ -444,6 +458,7 @@
                     "isRepeating": true,
                     "occurrenceInterval": 28,
                     "firstOccurrenceDay": 15,
+                    "maxOccurrences": 2,
                     "category": "solo",
                     "occurrenceWeekday": "Friday",
                     "requirements": []
@@ -454,7 +469,6 @@
                     "duration": 2,
                     "appearAfter": ["hog-2"],
                     "category": "power-up",
-                    "maxOccurrences": 2,
                     "note": "Raise 1 Power through Construction, Raise 1 Power through Research, promote troops",
                     "requirements": []
                 },
@@ -464,10 +478,190 @@
                     "duration": 2,
                     "appearAfter": ["working-overtime"],
                     "category": "power-up",
-                    "maxOccurrences": 2,
                     "note": "Raise 1 Power through Research",
                     "requirements": []
                 },
+                // week 8 or 9
+                {
+                    "id": "castle-battle-1",
+                    "title": "Castle Battle",
+                    "duration": 1,
+                    "firstOccurrenceDay": 54,
+                    "category": "online",
+                    "requirements": []
+                },
+                {
+                    "id": "alliance-mobilization-post",
+                    "title": "Alliance Mobilization",
+                    "duration": 7,
+                    "isRepeating": true,
+                    "occurrenceInterval": 14,
+                    "firstOccurrenceWeek": 9,
+                    "occurrenceWeekday": "Monday",
+                    "category": "alliance",
+                    "requirements": []
+                },
+                {
+                    "id": "age-of-renewal",
+                    "title": "Age of Renewal",
+                    "duration": 7,
+                    "isRepeating": false,
+                    "firstOccurrenceWeek": 10,
+                    "occurrenceWeekday": "Monday",
+                    "category": "solo",
+                    "requirements": []
+                },
+                {
+                    "id": "hog-4",
+                    "title": "Hall of Governors",
+                    "duration": 7,
+                    "firstOccurrenceWeek": 10,
+                    "occurrenceWeekday": "Monday",
+                    "category": "hog",
+                    "requirements": ["4th"],
+                    "hasStages": true,
+                    "stages": [
+                        { "day": 1, "note": "??" },
+                        { "day": 2, "note": "??" },
+                        { "day": 3, "note": "??" },
+                        { "day": 4, "note": "??" },
+                        { "day": 5, "note": "??" },
+                        { "day": 6, "note": "??" },
+                        { "day": 7, "note": "??" }
+                    ]
+                },
+                {
+                    "id": "all-out-2",
+                    "title": "All Out",
+                    "duration": 2,
+                    "isRepeating": true,
+                    "occurrenceInterval": 14,
+                    "firstOccurrenceWeek": 10,
+                    "occurrenceWeekday": "Friday",
+                    "category": "solo",
+                    "requirements": []
+                },
+                {
+                    "id": "castle-battle-2",
+                    "title": "Castle Battle",
+                    "duration": 1,
+                    "isRepeating": true,
+                    "occurrenceInterval": 14,
+                    "firstOccurrenceWeek": 10,
+                    "occurrenceWeekday": "Saturday",
+                    "category": "online",
+                    "requirements": []
+                },
+                {
+                    "id": "event-5",
+                    "title": "Milestone",
+                    "duration": 1,
+                    "firstOccurrenceWeek": 10,
+                    "occurrenceWeekday": "Sunday",
+                    "category": "one-off",
+                    "requirements": ["Truegold available in Daily Missions"]
+                },
+                {
+                    "id": "event-6",
+                    "title": "Milestone",
+                    "duration": 1,
+                    "firstOccurrenceWeek": 11,
+                    "occurrenceWeekday": "Tuesday",
+                    "category": "one-off",
+                    "requirements": ["Pet Gen 2 available"]
+                },
+                {
+                    "id": "working-overtime-3",
+                    "title": "Working Overtime",
+                    "duration": 2,
+                    "appearAfter": ["hog-4"],
+                    "category": "power-up",
+                    "requirements": []
+                },
+                {
+                    "id": "stand-of-arms-1",
+                    "title": "Stand of Arms",
+                    "duration": 2,
+                    "appearAfter": ["working-overtime-3"],
+                    "category": "power-up",
+                    "requirements": []
+                },
+                {
+                    "id": "city-development-1",
+                    "title": "City Development",
+                    "duration": 2,
+                    "appearAfter": ["stand-of-arms-1"],
+                    "category": "power-up",
+                    "requirements": []
+                },
+                {
+                    "id": "call-of-the-sovereign",
+                    "title": "Call of the Sovereign",
+                    "duration": 3,
+                    "firstOccurrenceWeek": 11,
+                    "occurrenceWeekday": "Tuesday",
+                    "category": "one-of",
+                    "requirements": []
+                },
+                {
+                    "id": "mystic-divination",
+                    "title": "Mystic Divination",
+                    "duration": 2,
+                    "firstOccurrenceWeek": 11,
+                    "occurrenceInterval": 28,
+                    "occurrenceWeekday": "Friday",
+                    "category": "shop",
+                    "requirements": []
+                },
+                {
+                    "id": "cesares-fury-post",
+                    "title": "Cesares Fury",
+                    "duration": 3,
+                    "isRepeating": true,
+                    "occurrenceInterval": 21,
+                    "firstOccurrenceDay": 11,
+                    "category": "solo",
+                    "occurrenceWeekday": "Saturday",
+                    "requirements": []
+                },
+                {
+                    "id": "grow-your-heroes",
+                    "title": "Grow Your Heroes",
+                    "duration": 2,
+                    "appearAfter": ["city-development-1"],
+                    "category": "power-up",
+                    "requirements": []
+                },
+                {
+                    "id": "hog-sg-1",
+                    "title": "Strongest Governor",
+                    "duration": 7,
+                    "firstOccurrenceWeek": 12,
+                    "occurrenceWeekday": "Monday",
+                    "category": "hog",
+                    "requirements": ["1st"],
+                    "hasStages": true,
+                    "stages": [
+                        { "day": 1, "note": "??" },
+                        { "day": 2, "note": "??" },
+                        { "day": 3, "note": "??" },
+                        { "day": 4, "note": "??" },
+                        { "day": 5, "note": "??" },
+                        { "day": 6, "note": "??" },
+                        { "day": 7, "note": "??" }
+                    ]
+                },
+                {
+                    "id": "eternity-reach-post",
+                    "title": "Eternity's Reach",
+                    "duration": 1,
+                    "isRepeating": true,
+                    "occurrenceInterval": 14,
+                    "firstOccurrenceWeek": 12,
+                    "occurrenceWeekday": "Tuesday",
+                    "category": "online",
+                    "requirements": []
+                }
             ]
         };
 
@@ -483,7 +677,7 @@
         const DEFAULT_VISIBLE_DAYS = 50;
 
         // ========== UTILITY FUNCTIONS ==========
-        
+
         // Calculate weekday index based on alignment system
         function calculateWeekdayIndex(day) {
             const offsetFromAlignment = day - alignmentDay;
@@ -637,7 +831,7 @@
             if (!event.appearAfter || event.appearAfter.length === 0) {
                 return null;
             }
-            
+
             let latestDependencyEnd = 0;
             for (const dependencyId of event.appearAfter) {
                 if (resolvedDependencies[dependencyId]) {
@@ -648,7 +842,7 @@
                     }
                 }
             }
-            
+
             return latestDependencyEnd + 1; // Start the day after the latest dependency ends
         }
 
@@ -1059,7 +1253,7 @@
             preCalculatedOccurrences.forEach(occurrence => {
                 const eventKey = occurrence.event.id || occurrence.event.title;
                 const fixedColumn = getFixedColumnForEvent(eventKey);
-                
+
                 if (fixedColumn !== null) {
                     columns[fixedColumn].push(occurrence);
                     occurrence.assignedColumn = fixedColumn; // Track assignment
@@ -1069,12 +1263,12 @@
             // Second pass: efficiently pack non-fixed events into available spaces (skip reserved columns)
             preCalculatedOccurrences.forEach(occurrence => {
                 const eventKey = occurrence.event.id || occurrence.event.title;
-                
+
                 // Skip if already assigned as a fixed event
                 if (isEventInFixedColumn(eventKey)) {
                     return;
                 }
-                
+
                 let assignedColumn = -1;
 
                 // Try to find the first available column that can accommodate this event
@@ -1187,7 +1381,7 @@
             const eventsInCategory = eventsData.events.filter(event => event.category === category);
             const allVisible = eventsInCategory.every(event => eventVisibility[sanitizeTitle(event.title)]);
             const eventTitles = eventsInCategory.map(event => sanitizeTitle(event.title));
-            
+
             updateEventVisibility(eventTitles, !allVisible);
             refreshUI();
         }

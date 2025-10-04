@@ -151,6 +151,7 @@ body {
 .event-7-daily-sign-in-gift { background-color: hsl(0, 82%, 70%); }
 .event-path-of-growth { background-color: hsl(350, 82%, 70%); }
 .event-burst-of-life { background-color: hsl(10, 82%, 70%); }
+.event-call-of-the-sovereign { background-color: hsl(5, 82%, 70%); }
 
 /* Solo events - Teal theme variations */
 .event-desert-trial { background-color: hsl(174, 56%, 57%); }
@@ -164,19 +165,24 @@ body {
 .event-alliance-mobilization { background-color: hsl(195, 59%, 58%); }
 
 /* HOG events - Green theme variations */
-.event-hall-of-governors { background-color: hsl(152, 39%, 70%); }
+.event-hall-of-governors, .event-strongest-governor { background-color: hsl(152, 39%, 70%); }
 .event-hero-roulette { background-color: hsl(145, 39%, 70%); }
 
 /* Online events - Yellow theme */
 .event-viking-vengeance { background-color: hsl(44, 97%, 67%); }
 .event-swordland-showdown { background-color: hsl(50, 97%, 67%); }
+.event-castle-battle { background-color: hsl(38, 97%, 67%); }
+.event-eternitys-reach { background-color: hsl(55, 97%, 67%); }
 
 /* Power-up events - Pink theme variations */
-.event-steel-edge { background-color: hsl(306, 93%, 81%); }
-.event-plan-your-city { background-color: hsl(315, 93%, 81%); }
-.event-power-up { background-color: hsl(297, 93%, 81%); }
-.event-develop-new-tech { background-color: hsl(288, 93%, 81%); }
-.event-working-overtime { background-color: hsl(279, 93%, 81%); }
+.event-steel-edge, .event-working-overtime { background-color: hsl(306, 93%, 81%); }
+.event-plan-your-city, .event-stand-of-arms { background-color: hsl(315, 93%, 81%); }
+.event-power-up, .event-city-development, .event-develop-new-tech { background-color: hsl(297, 93%, 81%); }
+.event-grow-your-heroes { background-color: hsl(288, 93%, 81%); }
+
+.event-mystic-divination { background-color:hsl(290, 33%, 44%); }
+
+.event-milestone {background-color:hsl(0, 03%, 77%);}
 
 /* Event list */
 .event-list {

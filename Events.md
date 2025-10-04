@@ -226,7 +226,7 @@ Fog 1 erased
 
 ---
 
-## Day 54 (0829 Friday, Week 9)
+## Day 54 (0829 Friday, Week 8)
 
 ### Castle Battle (1st)
 
