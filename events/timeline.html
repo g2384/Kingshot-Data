@@ -214,8 +214,14 @@
     </div>
 
     <script>
-        // Sample JSON data structure
-        const sampleEventsData = {
+        const fixedColumns = 
+        {
+            0: ["hog-1", "hog-2"],
+            1: ["hero-roulette-G1-1", "steel-edge", "plan-your-city", "power-up", "hero-roulette-G1-2", "working-overtime", "develop-new-tech"],
+            2: ["alliance-mobilization"],
+            3: ["desert-trial-1", "desert-trial", "defeat-nearby-beasts"]
+        };
+        const eventsData = {
             "events": [
                 {
                     "id": 1,
@@ -258,15 +264,13 @@
                     "requirements": []
                 },
                 {
-                    "id": 4,
+                    "id": "desert-trial-1",
                     "title": "Desert Trial",
                     "duration": 3,
                     "isRepeating": false,
                     "occurrenceInterval": 0,
                     "firstOccurrenceDay": 3,
                     "category": "solo",
-                    "isFixed": true,
-                    "fixedColumn": 3,
                     "requirements": []
                 },
                 {
@@ -287,24 +291,20 @@
                         { "day": 6, "note": "" },
                         { "day": 7, "note": "" }
                     ],
-                    "isFixed": true,
-                    "fixedColumn": 0,
                     "requirements": ["1st"]
                 },
                 {
-                    "id": 7,
+                    "id": "hero-roulette-G1-1",
                     "title": "Hero Roulette",
                     "duration": 3,
                     "isRepeating": false,
                     "occurrenceInterval": 0,
                     "firstOccurrenceDay": 7,
                     "category": "hog",
-                    "isFixed": true,
-                    "fixedColumn": 1,
                     "requirements": ["1st, Saul"]
                 },
                 {
-                    "id": 11,
+                    "id": "desert-trial",
                     "title": "Desert Trial",
                     "duration": 3,
                     "isRepeating": true,
@@ -312,12 +312,10 @@
                     "firstOccurrenceWeek": 3,
                     "occurrenceWeekday": "Wednesday",
                     "category": "solo",
-                    "isFixed": true,
-                    "fixedColumn": 3,
                     "requirements": []
                 },
                 {
-                    "id": 12,
+                    "id": "defeat-nearby-beasts",
                     "title": "Defeat Nearby Beasts",
                     "duration": 3,
                     "isRepeating": true,
@@ -325,8 +323,6 @@
                     "firstOccurrenceWeek": 4,
                     "occurrenceWeekday": "Tuesday",
                     "category": "solo",
-                    "isFixed": true,
-                    "fixedColumn": 3,
                     "requirements": []
                 },
                 {
@@ -338,8 +334,6 @@
                     "firstOccurrenceWeek": 3,
                     "occurrenceWeekday": "Monday",
                     "category": "alliance",
-                    "isFixed": true,
-                    "fixedColumn": 2,
                     "requirements": ["Alliance Rank 20+"]
                 },
                 {
@@ -370,8 +364,6 @@
                     "duration": 2,
                     "appearAfter": ["hog-1"],
                     "category": "power-up",
-                    "isFixed": true,
-                    "fixedColumn": 1,
                     "note": "Use Forgehammer, Gear Enhancement, Exclusive Gear Widget, Gather Resources",
                     "requirements": []
                 },
@@ -392,25 +384,21 @@
                     "appearAfter": ["steel-edge"],
                     "category": "power-up",
                     "maxOccurrences": 1,
-                    "isFixed": true,
-                    "fixedColumn": 1,
                     "note": "Raise 1 Power through Construction, Raise 1 Power through Research",
                     "requirements": []
                 },
                 {
-                    "id": 18,
+                    "id": "power-up",
                     "title": "Power Up",
                     "duration": 2,
                     "appearAfter": ["plan-your-city"],
                     "category": "power-up",
                     "maxOccurrences": 1,
-                    "isFixed": true,
-                    "fixedColumn": 1,
                     "note": "Raise 1 Power through Construction, Raise 1 Power through Research, promote troops",
                     "requirements": []
                 },
                 {
-                    "id": 19,
+                    "id": "hog-2",
                     "title": "Hall of Governors",
                     "duration": 6,
                     "isRepeating": false,
@@ -427,8 +415,6 @@
                         { "day": 5, "note": "Use 1 Hero Gear Forgehammer(s), Use 100 Hero Gear Enhancement XP, Use 1 Widget for Hero Exclusive Gear, Raise 1 Power through Construction, Raise 1 Power through Research, Raise 1 Power by training/promoting troops" },
                         { "day": 6, "note": "Raise Governor Gear max score by 1, Raise 1 Power through Construction, Raise 1 Power through Research, Raise 1 Power by training/promoting troops" }
                     ],
-                    "isFixed": true,
-                    "fixedColumn": 0,
                     "requirements": ["2nd"]
                 },
                 {
@@ -440,12 +426,11 @@
                     "firstOccurrenceDay": 15,
                     "category": "online",
                     "occurrenceWeekday": "Monday",
-                    "isFixed": false,
                     "note": "",
                     "requirements": []
                 },
                 {
-                    "id": 22,
+                    "id": "hero-roulette-G1-2",
                     "title": "Hero Roulette",
                     "duration": 3,
                     "isRepeating": true,
@@ -453,8 +438,6 @@
                     "firstOccurrenceDay": 15,
                     "category": "hog",
                     "occurrenceWeekday": "Tuesday",
-                    "isFixed": true,
-                    "fixedColumn": 1,
                     "requirements": ["2nd, Saul"]
                 },
                 {
@@ -466,11 +449,10 @@
                     "firstOccurrenceDay": 15,
                     "category": "solo",
                     "occurrenceWeekday": "Friday",
-                    "isFixed": false,
                     "requirements": []
                 },
                 {
-                    "id": 24,
+                    "id": "working-overtime",
                     "title": "Working Overtime",
                     "duration": 2,
                     "isRepeating": true,
@@ -478,13 +460,11 @@
                     "firstOccurrenceDay": 22,
                     "category": "power-up",
                     "maxOccurrences": 2,
-                    "isFixed": true,
-                    "fixedColumn": 1,
                     "note": "Raise 1 Power through Construction, Raise 1 Power through Research, promote troops",
                     "requirements": []
                 },
                 {
-                    "id": 25,
+                    "id": "develop-new-tech",
                     "title": "Develop New Tech",
                     "duration": 2,
                     "isRepeating": true,
@@ -492,8 +472,6 @@
                     "firstOccurrenceDay": 24,
                     "category": "power-up",
                     "maxOccurrences": 2,
-                    "isFixed": true,
-                    "fixedColumn": 1,
                     "note": "Raise 1 Power through Research",
                     "requirements": []
                 },
@@ -782,7 +760,7 @@
             });
 
             // Initialize event visibility (all events visible by default)
-            sampleEventsData.events.forEach(event => {
+            eventsData.events.forEach(event => {
                 eventVisibility[sanitizeTitle(event.title)] = true;
             });
 
@@ -797,7 +775,7 @@
             const container = document.getElementById('eventListContainer');
             container.innerHTML = '';
 
-            sampleEventsData.events.forEach(event => {
+            eventsData.events.forEach(event => {
                 const sanitizedTitle = sanitizeTitle(event.title);
                 const eventToggle = document.createElement('div');
                 eventToggle.className = `event-toggle ${event.category} ${eventVisibility[sanitizedTitle] ? '' : 'disabled'}`;
@@ -920,6 +898,21 @@
             return baseDay + adjustment;
         }
 
+        // Helper function to get the fixed column for an event ID, or null if not fixed
+        function getFixedColumnForEvent(eventId) {
+            for (const [colIndex, eventIds] of Object.entries(fixedColumns)) {
+                if (eventIds.includes(eventId)) {
+                    return parseInt(colIndex);
+                }
+            }
+            return null;
+        }
+
+        // Helper function to check if an event is assigned to a fixed column
+        function isEventInFixedColumn(eventId) {
+            return getFixedColumnForEvent(eventId) !== null;
+        }
+
         function getDayForWeekAndWeekday(weekNumber, weekdayName) {
             const targetWeekday = getWeekdayIndex(weekdayName);
             if (targetWeekday === null) {
@@ -988,7 +981,7 @@
                 // Process dependencies first
                 if (event.appearAfter && event.appearAfter.length > 0) {
                     for (const dependencyId of event.appearAfter) {
-                        const dependencyEvent = sampleEventsData.events.find(e =>
+                        const dependencyEvent = eventsData.events.find(e =>
                             (e.id === dependencyId) || (e.title === dependencyId)
                         );
                         if (dependencyEvent && !processedEvents.has(dependencyId)) {
@@ -1007,7 +1000,7 @@
             }
 
             // Process all events
-            sampleEventsData.events.forEach(event => {
+            eventsData.events.forEach(event => {
                 processEvent(event);
             });
 
@@ -1015,8 +1008,12 @@
             allOccurrences.sort((a, b) => {
                 if (a.startDay !== b.startDay) return a.startDay - b.startDay;
                 // Fixed events get priority
-                if (a.event.isFixed && !b.event.isFixed) return -1;
-                if (!a.event.isFixed && b.event.isFixed) return 1;
+                const aEventKey = a.event.id || a.event.title;
+                const bEventKey = b.event.id || b.event.title;
+                const aIsFixed = isEventInFixedColumn(aEventKey);
+                const bIsFixed = isEventInFixedColumn(bEventKey);
+                if (aIsFixed && !bIsFixed) return -1;
+                if (!aIsFixed && bIsFixed) return 1;
                 return 0;
             });
 
@@ -1029,13 +1026,8 @@
                 preCalculatedOccurrences = preCalculateAllOccurrences();
             }
 
-            // Determine which columns are reserved for fixed events (from all events, not just current occurrences)
-            const reservedColumns = new Set();
-            sampleEventsData.events.forEach(event => {
-                if (event.isFixed && event.fixedColumn !== undefined) {
-                    reservedColumns.add(event.fixedColumn);
-                }
-            });
+            // Determine which columns are reserved based on fixedColumns dictionary
+            const reservedColumns = new Set(Object.keys(fixedColumns).map(k => parseInt(k)));
 
             // Determine the maximum number of fixed columns needed
             let maxFixedColumn = Math.max(...Array.from(reservedColumns), -1);
@@ -1048,34 +1040,41 @@
 
             // First pass: assign fixed events to their designated columns
             preCalculatedOccurrences.forEach(occurrence => {
-                if (occurrence.event.isFixed && occurrence.event.fixedColumn !== undefined) {
-                    const colIndex = occurrence.event.fixedColumn;
-                    columns[colIndex].push(occurrence);
-                    occurrence.assignedColumn = colIndex; // Track assignment
+                const eventKey = occurrence.event.id || occurrence.event.title;
+                const fixedColumn = getFixedColumnForEvent(eventKey);
+                
+                if (fixedColumn !== null) {
+                    columns[fixedColumn].push(occurrence);
+                    occurrence.assignedColumn = fixedColumn; // Track assignment
                 }
             });
 
             // Second pass: efficiently pack non-fixed events into available spaces (skip reserved columns)
             preCalculatedOccurrences.forEach(occurrence => {
-                if (!occurrence.event.isFixed || occurrence.event.fixedColumn === undefined) {
-                    let assignedColumn = -1;
+                const eventKey = occurrence.event.id || occurrence.event.title;
+                
+                // Skip if already assigned as a fixed event
+                if (isEventInFixedColumn(eventKey)) {
+                    return;
+                }
+                
+                let assignedColumn = -1;
 
-                    // Try to find the first available column that can accommodate this event
-                    // Skip columns that are reserved for fixed events
-                    for (let colIndex = 0; colIndex < columns.length; colIndex++) {
-                        if (!reservedColumns.has(colIndex) && canFitInColumn(occurrence, columns[colIndex])) {
-                            columns[colIndex].push(occurrence);
-                            occurrence.assignedColumn = colIndex;
-                            assignedColumn = colIndex;
-                            break;
-                        }
+                // Try to find the first available column that can accommodate this event
+                // Skip columns that are reserved for fixed events
+                for (let colIndex = 0; colIndex < columns.length; colIndex++) {
+                    if (!reservedColumns.has(colIndex) && canFitInColumn(occurrence, columns[colIndex])) {
+                        columns[colIndex].push(occurrence);
+                        occurrence.assignedColumn = colIndex;
+                        assignedColumn = colIndex;
+                        break;
                     }
+                }
 
-                    // If no existing column can fit this event, create a new one
-                    if (assignedColumn === -1) {
-                        columns.push([occurrence]);
-                        occurrence.assignedColumn = columns.length - 1;
-                    }
+                // If no existing column can fit this event, create a new one
+                if (assignedColumn === -1) {
+                    columns.push([occurrence]);
+                    occurrence.assignedColumn = columns.length - 1;
                 }
             });
 
@@ -1162,13 +1161,13 @@
         }
 
         function toggleAllEvents(show) {
-            const eventTitles = sampleEventsData.events.map(event => sanitizeTitle(event.title));
+            const eventTitles = eventsData.events.map(event => sanitizeTitle(event.title));
             updateEventVisibility(eventTitles, show);
             refreshUI();
         }
 
         function toggleByCategory(category) {
-            const eventsInCategory = sampleEventsData.events.filter(event => event.category === category);
+            const eventsInCategory = eventsData.events.filter(event => event.category === category);
             const allVisible = eventsInCategory.every(event => eventVisibility[sanitizeTitle(event.title)]);
             const eventTitles = eventsInCategory.map(event => sanitizeTitle(event.title));
             
