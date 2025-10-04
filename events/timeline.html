@@ -528,9 +528,6 @@
 
         // Create and populate event cell for a specific day and column
         function createEventCell(day, colIndex) {
-            const eventCell = document.createElement('td');
-            eventCell.className = 'event-cell';
-
             // Find visible events that occur on this day in this column
             const eventsOnThisDay = eventColumns[colIndex].filter(occurrence =>
                 day >= occurrence.startDay && day <= occurrence.endDay && eventVisibility[sanitizeTitle(occurrence.event.title)]
@@ -541,17 +538,35 @@
                 const event = occurrence.event;
                 const dayInEvent = day - occurrence.startDay + 1;
 
+                // For events without stages spanning multiple days, skip rendering cells after the first day
+                if (!event.hasStages && event.duration > 1 && day !== occurrence.startDay) {
+                    return null; // Signal to skip this cell
+                }
+
+                const eventCell = document.createElement('td');
+                eventCell.className = 'event-cell';
                 eventCell.className += ` ${getEventCssClass(event)}`;
+
+                // For events without stages spanning multiple days, merge cells with rowspan
+                if (!event.hasStages && event.duration > 1 && day === occurrence.startDay) {
+                    eventCell.setAttribute('rowspan', event.duration);
+                }
 
                 // Add event title on first day
                 if (day === occurrence.startDay) {
-                    eventCell.innerHTML = `
-                        <div class="event-title">${event.title}</div>
-                        <div class="event-info">Day ${dayInEvent}${visibleDays > DEFAULT_VISIBLE_DAYS ? `/${event.duration}` : ''}</div>
-                    `;
+                    // For events without stages, don't show day info
+                    if (!event.hasStages && event.duration > 1) {
+                        eventCell.innerHTML = `<div class="event-title">${event.title}</div>`;
+                    } else {
+                        eventCell.innerHTML = `
+                            <div class="event-title">${event.title}</div>
+                            <div class="event-info">Day ${dayInEvent}</div>
+                        `;
+                    }
                 } else {
+                    // This only applies to events with stages
                     eventCell.innerHTML = `
-                        <div class="event-info">Day ${dayInEvent}${visibleDays > DEFAULT_VISIBLE_DAYS ? `/${event.duration}` : ''}</div>
+                        <div class="event-info">Day ${dayInEvent}</div>
                     `;
                 }
 
@@ -573,8 +588,13 @@
                 if (day === occurrence.startDay && event.requirements.length > 0) {
                     eventCell.innerHTML += `<div class="requirements">${event.requirements.join(', ')}</div>`;
                 }
+
+                return eventCell;
             }
 
+            // No event on this day, return empty cell
+            const eventCell = document.createElement('td');
+            eventCell.className = 'event-cell';
             return eventCell;
         }
 
@@ -588,7 +608,11 @@
 
             // Add event cells
             for (let colIndex = 0; colIndex < eventColumns.length; colIndex++) {
-                row.appendChild(createEventCell(day, colIndex));
+                const cell = createEventCell(day, colIndex);
+                // Only append if cell is not null (null means it's part of a merged cell)
+                if (cell !== null) {
+                    row.appendChild(cell);
+                }
             }
 
             return row;
