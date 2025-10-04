@@ -12,7 +12,7 @@
             border-left: 3px solid #007acc;
             position: relative;
         }
-        
+
         .day-cell.monday-start::before {
             content: '';
             position: absolute;
@@ -23,7 +23,7 @@
             background: linear-gradient(to bottom, #007acc 0%, #005b96 100%);
             box-shadow: 1px 0 2px rgba(0, 122, 204, 0.3);
         }
-        
+
         .week-indicator {
             font-size: 10px;
             font-weight: bold;
@@ -35,30 +35,30 @@
             border-radius: 3px;
             border: 1px solid rgba(0, 122, 204, 0.2);
         }
-        
+
         /* Enhance day cell styling for better visual hierarchy */
         .day-cell {
             position: relative;
             padding: 8px 4px;
         }
-        
+
         .day-number {
             font-weight: bold;
             text-align: center;
         }
-        
+
         .weekday {
             font-size: 11px;
             text-align: center;
             color: #666;
         }
-        
+
         /* Make Monday weekday text more prominent */
         .day-cell.monday-start .weekday {
             color: #007acc;
             font-weight: 600;
         }
-        
+
         .day-cell.monday-start .day-number {
             color: #007acc;
         }
@@ -270,7 +270,7 @@
                     "requirements": []
                 },
                 {
-                    "id": 6,
+                    "id": "hog-1",
                     "title": "Hall of Governors",
                     "duration": 5,
                     "isRepeating": false,
@@ -365,14 +365,11 @@
                     "requirements": []
                 },
                 { // all events above are accurate
-                    "id": 15,
+                    "id": "steel-edge",
                     "title": "Steel Edge",
                     "duration": 2,
-                    "isRepeating": true,
-                    "occurrenceInterval": 14,
-                    "firstOccurrenceDay": 11,
+                    "appearAfter": ["hog-1"],
                     "category": "power-up",
-                    "maxOccurrences": 1,
                     "isFixed": true,
                     "fixedColumn": 1,
                     "note": "Use Forgehammer, Gear Enhancement, Exclusive Gear Widget, Gather Resources",
@@ -389,12 +386,10 @@
                     "requirements": []
                 },
                 {
-                    "id": 17,
+                    "id": "plan-your-city",
                     "title": "Plan Your City",
                     "duration": 2,
-                    "isRepeating": true,
-                    "occurrenceInterval": 14,
-                    "firstOccurrenceDay": 13,
+                    "appearAfter": ["steel-edge"],
                     "category": "power-up",
                     "maxOccurrences": 1,
                     "isFixed": true,
@@ -406,9 +401,7 @@
                     "id": 18,
                     "title": "Power Up",
                     "duration": 2,
-                    "isRepeating": true,
-                    "occurrenceInterval": 14,
-                    "firstOccurrenceDay": 15,
+                    "appearAfter": ["plan-your-city"],
                     "category": "power-up",
                     "maxOccurrences": 1,
                     "isFixed": true,
@@ -675,12 +668,12 @@
             while (!isMonday(firstMondayDay)) {
                 firstMondayDay++;
             }
-            
+
             // If the day is before the first Monday, it's considered week 1
             if (day < firstMondayDay) {
                 return 1;
             }
-            
+
             // Calculate week number based on days since first Monday
             // The first Monday starts week 2 if there were partial days before it
             const baseWeek = firstMondayDay > 1 ? 2 : 1;
@@ -694,22 +687,40 @@
             }
         }
 
-        function calculateEventOccurrences(event, maxDay) {
+        function calculateEventOccurrences(event, maxDay, resolvedDependencies = {}) {
             const occurrences = [];
 
             if (!event.isRepeating) {
                 // Single occurrence event
                 let startDay;
 
-                // Check if event has a specific week requirement
-                if (event.firstOccurrenceWeek && event.occurrenceWeekday) {
-                    startDay = getDayForWeekAndWeekday(event.firstOccurrenceWeek, event.occurrenceWeekday);
+                // Handle appearAfter dependencies
+                if (event.appearAfter && event.appearAfter.length > 0) {
+                    let latestDependencyEnd = 0;
+
+                    for (const dependencyId of event.appearAfter) {
+                        if (resolvedDependencies[dependencyId]) {
+                            const dependencyOccurrences = resolvedDependencies[dependencyId];
+                            const lastOccurrence = dependencyOccurrences[dependencyOccurrences.length - 1];
+                            if (lastOccurrence) {
+                                latestDependencyEnd = Math.max(latestDependencyEnd, lastOccurrence.endDay);
+                            }
+                        }
+                    }
+
+                    // Start the day after the latest dependency ends
+                    startDay = latestDependencyEnd + 1;
                 } else {
-                    startDay = event.firstOccurrenceDay;
-                    
-                    // If event has a specific weekday requirement, adjust the start day
-                    if (event.occurrenceWeekday) {
-                        startDay = adjustForWeekday(startDay, event.occurrenceWeekday);
+                    // Check if event has a specific week requirement
+                    if (event.firstOccurrenceWeek && event.occurrenceWeekday) {
+                        startDay = getDayForWeekAndWeekday(event.firstOccurrenceWeek, event.occurrenceWeekday);
+                    } else {
+                        startDay = event.firstOccurrenceDay;
+
+                        // If event has a specific weekday requirement, adjust the start day
+                        if (event.occurrenceWeekday) {
+                            startDay = adjustForWeekday(startDay, event.occurrenceWeekday);
+                        }
                     }
                 }
 
@@ -725,15 +736,33 @@
                 let occurrenceCount = 0;
                 let currentStartDay;
 
-                // Check if event has a specific week requirement for first occurrence
-                if (event.firstOccurrenceWeek && event.occurrenceWeekday) {
-                    currentStartDay = getDayForWeekAndWeekday(event.firstOccurrenceWeek, event.occurrenceWeekday);
+                // Handle appearAfter dependencies for repeating events
+                if (event.appearAfter && event.appearAfter.length > 0) {
+                    let latestDependencyEnd = 0;
+
+                    for (const dependencyId of event.appearAfter) {
+                        if (resolvedDependencies[dependencyId]) {
+                            const dependencyOccurrences = resolvedDependencies[dependencyId];
+                            const lastOccurrence = dependencyOccurrences[dependencyOccurrences.length - 1];
+                            if (lastOccurrence) {
+                                latestDependencyEnd = Math.max(latestDependencyEnd, lastOccurrence.endDay);
+                            }
+                        }
+                    }
+
+                    // Start the day after the latest dependency ends
+                    currentStartDay = latestDependencyEnd + 1;
                 } else {
-                    currentStartDay = event.firstOccurrenceDay;
-                    
-                    // If event has a specific weekday requirement, adjust the start day
-                    if (event.occurrenceWeekday) {
-                        currentStartDay = adjustForWeekday(currentStartDay, event.occurrenceWeekday);
+                    // Check if event has a specific week requirement for first occurrence
+                    if (event.firstOccurrenceWeek && event.occurrenceWeekday) {
+                        currentStartDay = getDayForWeekAndWeekday(event.firstOccurrenceWeek, event.occurrenceWeekday);
+                    } else {
+                        currentStartDay = event.firstOccurrenceDay;
+
+                        // If event has a specific weekday requirement, adjust the start day
+                        if (event.occurrenceWeekday) {
+                            currentStartDay = adjustForWeekday(currentStartDay, event.occurrenceWeekday);
+                        }
                     }
                 }
 
@@ -839,10 +868,43 @@
         function preCalculateAllOccurrences() {
             // Pre-calculate all event occurrences up to maxPreCalculatedDay
             const allOccurrences = [];
+            const resolvedDependencies = {};
 
-            sampleEventsData.events.forEach(event => {
-                const occurrences = calculateEventOccurrences(event, maxPreCalculatedDay);
+            // Create a set to track which events have been processed
+            const processedEvents = new Set();
+
+            // Function to process events in dependency order
+            function processEvent(event) {
+                // Skip if already processed
+                const eventKey = event.id || event.title;
+                if (processedEvents.has(eventKey)) {
+                    return;
+                }
+
+                // Process dependencies first
+                if (event.appearAfter && event.appearAfter.length > 0) {
+                    for (const dependencyId of event.appearAfter) {
+                        const dependencyEvent = sampleEventsData.events.find(e =>
+                            (e.id === dependencyId) || (e.title === dependencyId)
+                        );
+                        if (dependencyEvent && !processedEvents.has(dependencyId)) {
+                            processEvent(dependencyEvent);
+                        }
+                    }
+                }
+
+                // Calculate occurrences for this event
+                const occurrences = calculateEventOccurrences(event, maxPreCalculatedDay, resolvedDependencies);
                 allOccurrences.push(...occurrences);
+
+                // Store resolved dependencies for future events
+                resolvedDependencies[eventKey] = occurrences;
+                processedEvents.add(eventKey);
+            }
+
+            // Process all events
+            sampleEventsData.events.forEach(event => {
+                processEvent(event);
             });
 
             // Sort by start day, then by event priority (fixed events first)
@@ -978,7 +1040,7 @@
                 // Day number cell (combined with weekday)
                 const dayCell = document.createElement('td');
                 dayCell.className = 'day-cell';
-                
+
                 // Add Monday class and week number if it's Monday
                 if (isMonday(day)) {
                     dayCell.className += ' monday-start';
@@ -987,7 +1049,7 @@
                 } else {
                     dayCell.innerHTML = `<div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
                 }
-                
+
                 row.appendChild(dayCell);
 
                 // Event cells
@@ -1098,7 +1160,7 @@
                 // Day number cell (combined with weekday)
                 const dayCell = document.createElement('td');
                 dayCell.className = 'day-cell';
-                
+
                 // Add Monday class and week number if it's Monday
                 if (isMonday(day)) {
                     dayCell.className += ' monday-start';
@@ -1107,7 +1169,7 @@
                 } else {
                     dayCell.innerHTML = `<div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
                 }
-                
+
                 row.appendChild(dayCell);
 
                 // Event cells - use the pre-calculated column assignments
