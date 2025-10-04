@@ -200,9 +200,11 @@ Fog 1 erased
 
 ## Day 19 (1002)
 
-## Day 20 (1003)
+## Day 20 (1003, Friday)
 
 ### All out
+
+### Lvl 4 Terror unlocked
 
 ## Day 21 (1004)
 
@@ -223,6 +225,10 @@ Fog 1 erased
 ### Viking Vengeance
 
 ### Fishing Tournament
+
+## Day 25 (1008)
+
+### Desert Trial
 
 ---
 
@@ -623,3 +629,25 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 ### Hero Roulette (Zoe)
 
 ### Sanctuary Battle
+
+## Day 94 (Wednesday)
+
+### Buccaneer Bounty
+
+- Duration: 7 Days
+
+### Harbor Drill
+
+- Duration: 7 Days
+
+### Emporium of Enigma
+
+- Duration: 8 Days
+
+----
+
+## Special Events
+
+### Kingdom Feast (Mid August - Late August)
+
+### Moonlit Celebration (Late Sept ~ Early Oct)
