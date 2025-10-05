@@ -697,17 +697,37 @@
             return index !== undefined ? index : null;
         }
 
+        // Get the actual calendar date for a given day number
+        function getCalendarDate(day) {
+            const now = new Date();
+            const serverAge = parseInt(document.getElementById('serverAge').value) || 1;
+            // Calculate the date for day 1
+            const day1Date = new Date(now);
+            day1Date.setUTCDate(day1Date.getUTCDate() - (serverAge - 1));
+            
+            // Calculate the date for the requested day
+            const targetDate = new Date(day1Date);
+            targetDate.setUTCDate(day1Date.getUTCDate() + (day - 1));
+            
+            const month = String(targetDate.getUTCMonth() + 1).padStart(2, '0');
+            const dayNum = String(targetDate.getUTCDate()).padStart(2, '0');
+            
+            return `${month}/${dayNum}`;
+        }
+
         // Create day cell with proper styling and content
         function createDayCell(day) {
             const dayCell = document.createElement('td');
             dayCell.className = 'day-cell';
+            
+            const dateStr = getCalendarDate(day);
 
             if (isMonday(day)) {
                 dayCell.className += ' monday-start';
                 const weekNum = getWeekNumber(day);
-                dayCell.innerHTML = `<div class="week-indicator">Week ${weekNum}</div><div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
+                dayCell.innerHTML = `<div class="week-indicator">Week ${weekNum}</div><div class="day-number" style="font-size: 14px; font-weight: 700;">${dateStr}</div><div class="weekday" style="font-size: 10px;">Day ${day} • ${getWeekdayForDay(day)}</div>`;
             } else {
-                dayCell.innerHTML = `<div class="day-number">${day}</div><div class="weekday">${getWeekdayForDay(day)}</div>`;
+                dayCell.innerHTML = `<div class="day-number" style="font-size: 14px; font-weight: 700;">${dateStr}</div><div class="weekday" style="font-size: 10px;">Day ${day} • ${getWeekdayForDay(day)}</div>`;
             }
 
             return dayCell;
