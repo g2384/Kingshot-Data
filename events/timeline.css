@@ -126,6 +126,31 @@ body {
     font-size: 12px;
 }
 
+.legend-item.clickable {
+    cursor: pointer;
+    padding: 8px;
+    border: 2px solid transparent;
+}
+
+.legend-item.clickable:hover {
+    background-color: #e8f4f8;
+    border-color: #3498db;
+}
+
+.legend-item.clickable.active {
+    background-color: #f8f9fa;
+    border-color: #28a745;
+}
+
+.legend-item.clickable:not(.active) {
+    opacity: 0.5;
+    background-color: #f0f0f0;
+}
+
+.legend-item.clickable:not(.active) .color-box {
+    opacity: 0.4;
+}
+
 .legend-item:hover {
     background-color: #f8f9fa;
 }
