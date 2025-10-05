@@ -374,7 +374,6 @@ body {
     border-radius: 4px;
     margin-right: 8px;
     flex-shrink: 0;
-    background: rgba(255, 255, 255, 0.2);
     padding: 2px;
     float: left;
 }

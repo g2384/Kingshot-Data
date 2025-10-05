@@ -218,39 +218,39 @@
         
         // Event Icons Mapping - maps event titles to icon image paths
         const eventIcons = {
-            "7 Daily Sign-in Gift": "https://via.placeholder.com/32x32/FF6B6B/FFFFFF?text=7D",
-            "Path of Growth": "https://via.placeholder.com/32x32/4ECDC4/FFFFFF?text=PG",
-            "Burst of Life": "https://via.placeholder.com/32x32/FF6B6B/FFFFFF?text=BL",
-            "Desert Trial": "https://via.placeholder.com/32x32/45B7D1/FFFFFF?text=DT",
-            "Hall of Governors": "https://via.placeholder.com/32x32/96CEB4/FFFFFF?text=HG",
-            "Hero Roulette": "https://via.placeholder.com/32x32/96CEB4/FFFFFF?text=HR",
-            "Defeat Nearby Beasts": "https://via.placeholder.com/32x32/45B7D1/FFFFFF?text=DB",
-            "Alliance Mobilization": "https://via.placeholder.com/32x32/5DADE2/FFFFFF?text=AM",
-            "Fishing Tournament": "https://via.placeholder.com/32x32/45B7D1/FFFFFF?text=FT",
-            "Viking Vengeance": "https://via.placeholder.com/32x32/F7DC6F/333333?text=VV",
-            "Steel Edge": "https://via.placeholder.com/32x32/EC87C0/FFFFFF?text=SE",
-            "Cesares Fury": "https://via.placeholder.com/32x32/45B7D1/FFFFFF?text=CF",
-            "Plan Your City": "https://via.placeholder.com/32x32/EC87C0/FFFFFF?text=PC",
-            "Power Up": "https://via.placeholder.com/32x32/EC87C0/FFFFFF?text=PU",
-            "Swordland Showdown": "https://via.placeholder.com/32x32/F7DC6F/333333?text=SS",
-            "All Out": "https://via.placeholder.com/32x32/45B7D1/FFFFFF?text=AO",
-            "Working Overtime": "https://via.placeholder.com/32x32/EC87C0/FFFFFF?text=WO",
-            "Develop New Tech": "https://via.placeholder.com/32x32/EC87C0/FFFFFF?text=DT",
-            "Castle Battle": "https://via.placeholder.com/32x32/F7DC6F/333333?text=CB",
-            "Age of Renewal": "https://via.placeholder.com/32x32/45B7D1/FFFFFF?text=AR",
-            "Milestone": "https://via.placeholder.com/32x32/CCCCCC/333333?text=MS",
-            "Stand of Arms": "https://via.placeholder.com/32x32/EC87C0/FFFFFF?text=SA",
-            "City Development": "https://via.placeholder.com/32x32/EC87C0/FFFFFF?text=CD",
-            "Call of the Sovereign": "https://via.placeholder.com/32x32/FF6B6B/FFFFFF?text=CS",
-            "Mystic Divination": "https://via.placeholder.com/32x32/7D3C98/FFFFFF?text=MD",
-            "Grow Your Heroes": "https://via.placeholder.com/32x32/EC87C0/FFFFFF?text=GH",
-            "Strongest Governor": "https://via.placeholder.com/32x32/96CEB4/FFFFFF?text=SG",
-            "Eternity's Reach": "https://via.placeholder.com/32x32/F7DC6F/333333?text=ER"
+            "7 Daily Sign-in Gift": "event-default.webp",
+            "Path of Growth": "event-path-of-growth.webp",
+            "Burst of Life": "event-default.webp",
+            "Desert Trial": "event-desert-trial.webp",
+            "Hall of Governors": "event-hall-of-governors.webp",
+            "Hero Roulette": "event-hero-roulette.webp",
+            "Defeat Nearby Beasts": "event-defeat-nearby-beasts.webp",
+            "Alliance Mobilization": "event-default.webp",
+            "Fishing Tournament": "event-default.webp",
+            "Viking Vengeance": "event-default.webp",
+            "Steel Edge": "event-steel-edge.webp",
+            "Cesares Fury": "event-cesares-fury.webp",
+            "Plan Your City": "event-working-overtime.webp",
+            "Power Up": "event-power-up.webp",
+            "Swordland Showdown": "event-default.webp",
+            "All Out": "event-all-out.webp",
+            "Working Overtime": "event-working-overtime.webp",
+            "Develop New Tech": "event-develop-new-tech.webp",
+            "Castle Battle": "event-default.webp",
+            "Age of Renewal": "event-default.webp",
+            "Milestone": "event-default.webp",
+            "Stand of Arms": "event-stand-of-arms.webp",
+            "City Development": "event-city-development.webp",
+            "Call of the Sovereign": "event-call-of-the-sovereign.webp",
+            "Mystic Divination": "event-default.webp",
+            "Grow Your Heroes": "event-default.webp",
+            "Strongest Governor": "event-strongest-governor.webp",
+            "Eternity's Reach": "event-default.webp"
         };
         
         // Function to get icon path for an event
         function getEventIcon(eventTitle) {
-            return eventIcons[eventTitle] || "https://via.placeholder.com/32x32/999999/FFFFFF?text=?";
+            return `../images/icons/${eventIcons[eventTitle]}` || "event-default.webp";
         }
         
         const eventsData = {
