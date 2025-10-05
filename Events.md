@@ -230,6 +230,8 @@ Fog 1 erased
 
 ### Desert Trial
 
+## Day 26 (1009)
+
 ---
 
 ## Day 54 (0829 Friday, Week 8)
@@ -643,6 +645,10 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 ### Emporium of Enigma
 
 - Duration: 8 Days
+
+## Day 95 (Thursday)
+
+### 
 
 ----
 
