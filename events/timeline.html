@@ -72,18 +72,11 @@
             <h2>Timeline Controls</h2>
 
             <div class="control-group">
-                <label for="alignmentDay">Alignment Day:</label>
-                <input type="number" id="alignmentDay" min="1" value="1" style="width: 60px; display: inline-block;">
-                <label for="startWeekday" id="dayWeekdayLabel" style="margin-left: 10px;">Day 1 Weekday:</label>
-                <select id="startWeekday">
-                    <option value="0" selected>Sunday</option>
-                    <option value="1">Monday</option>
-                    <option value="2">Tuesday</option>
-                    <option value="3">Wednesday</option>
-                    <option value="4">Thursday</option>
-                    <option value="5">Friday</option>
-                    <option value="6">Saturday</option>
-                </select>
+                <label for="serverAge">Server Age (days):</label>
+                <input type="number" id="serverAge" min="1" value="1" style="width: 60px; display: inline-block;">
+                <div style="margin-top: 8px; font-size: 12px; color: #666;">
+                    <strong>Current UTC:</strong> <span id="currentUtcDate"></span> (<span id="currentUtcWeekday"></span>)
+                </div>
             </div>
 
             <!-- Info Button -->
@@ -956,17 +949,14 @@
         });
 
         function initializeControls() {
-            // Alignment day input
-            document.getElementById('alignmentDay').addEventListener('input', function () {
-                alignmentDay = parseInt(this.value) || 1;
-                updateDayWeekdayLabel();
-                generateTimeline();
-            });
-
-            // Start weekday selector
-            document.getElementById('startWeekday').addEventListener('change', function () {
-                startWeekday = parseInt(this.value);
-                updateDayWeekdayLabel();
+            // Display current UTC date and weekday
+            updateCurrentUtcDisplay();
+            
+            // Server age input
+            document.getElementById('serverAge').addEventListener('input', function () {
+                const serverAge = parseInt(this.value) || 1;
+                // Update alignment day to match server age
+                alignmentDay = serverAge;
                 generateTimeline();
             });
 
@@ -975,11 +965,22 @@
                 eventVisibility[sanitizeTitle(event.title)] = true;
             });
 
-            // Update the initial label
-            updateDayWeekdayLabel();
-
             // Generate event list
             generateEventList();
+        }
+        
+        function updateCurrentUtcDisplay() {
+            const now = new Date();
+            const year = now.getUTCFullYear();
+            const month = String(now.getUTCMonth() + 1).padStart(2, '0');
+            const day = String(now.getUTCDate()).padStart(2, '0');
+            const dateStr = `${year}-${month}-${day}`;
+            
+            const weekdayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const weekdayStr = weekdayNames[now.getUTCDay()];
+            
+            document.getElementById('currentUtcDate').textContent = dateStr;
+            document.getElementById('currentUtcWeekday').textContent = weekdayStr;
         }
 
         function generateEventList() {
@@ -1033,13 +1034,6 @@
             // The first Monday starts week 2 if there were partial days before it
             const baseWeek = firstMondayDay > 1 ? 2 : 1;
             return Math.floor((day - firstMondayDay) / 7) + baseWeek;
-        }
-
-        function updateDayWeekdayLabel() {
-            const labelElement = document.getElementById('dayWeekdayLabel');
-            if (labelElement) {
-                labelElement.textContent = `Day ${alignmentDay} Weekday:`;
-            }
         }
 
         function calculateEventOccurrences(event, maxDay, resolvedDependencies = {}) {
@@ -1318,9 +1312,6 @@
             const table = document.getElementById('timelineTable');
             const header = document.getElementById('timelineHeader');
             const body = document.getElementById('timelineBody');
-
-            // Update the day weekday label
-            updateDayWeekdayLabel();
 
             // Clear existing content
             header.innerHTML = '';
