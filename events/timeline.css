@@ -366,6 +366,47 @@ body {
     border-top: 1px solid transparent;
 }
 
+/* Event icon styling */
+.event-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 4px;
+    margin-right: 8px;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px;
+    float: left;
+}
+
+/* Event text content container */
+.event-text-content {
+    display: block;
+    width: 100%;
+}
+
+/* Event title with icon support */
+.event-title-wrapper {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 4px;
+}
+
+/* Day indicator positioning - absolute top-right corner */
+.event-info.day-indicator {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    opacity: 0.85;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin: 0;
+    line-height: 1;
+}
+
 /* Event cell content */
 .event-cell.one-off {
     background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
