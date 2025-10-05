@@ -84,46 +84,37 @@
                 Event Information & Exclusions
             </button>
 
-            <!-- Event Legend -->
+            <!-- Event Legend with Filtering -->
             <div class="legend">
-                <h3>Event Categories</h3>
-                <div class="legend-item">
+                <h3>Event Categories (Click to Filter)</h3>
+                <div style="margin-bottom: 10px;">
+                    <button class="filter-button active" onclick="toggleAllEvents(true)" style="margin-right: 5px;">Show All</button>
+                    <button class="filter-button" onclick="toggleAllEvents(false)">Hide All</button>
+                </div>
+                <div class="legend-item clickable active" data-category="one-off" onclick="toggleByCategory('one-off')">
                     <div class="color-box one-off"></div>
                     <span>One-off Events</span>
                 </div>
-                <div class="legend-item">
+                <div class="legend-item clickable active" data-category="solo" onclick="toggleByCategory('solo')">
                     <div class="color-box solo"></div>
                     <span>Solo Events</span>
                 </div>
-                <div class="legend-item">
+                <div class="legend-item clickable active" data-category="alliance" onclick="toggleByCategory('alliance')">
                     <div class="color-box alliance"></div>
                     <span>Alliance Events</span>
                 </div>
-                <div class="legend-item">
+                <div class="legend-item clickable active" data-category="hog" onclick="toggleByCategory('hog')">
                     <div class="color-box hog"></div>
                     <span>Hall of Governors</span>
                 </div>
-                <div class="legend-item">
+                <div class="legend-item clickable active" data-category="online" onclick="toggleByCategory('online')">
                     <div class="color-box online"></div>
                     <span>Online Events</span>
                 </div>
-                <div class="legend-item">
+                <div class="legend-item clickable active" data-category="power-up" onclick="toggleByCategory('power-up')">
                     <div class="color-box power-up"></div>
                     <span>Power-up Events</span>
                 </div>
-            </div>
-
-            <!-- Filter Controls -->
-            <div class="filter-controls">
-                <h3>Quick Filters</h3>
-                <button class="filter-button active" onclick="toggleAllEvents(true)">Show All</button>
-                <button class="filter-button" onclick="toggleAllEvents(false)">Hide All</button>
-                <button class="filter-button" onclick="toggleByCategory('one-off')">One-off</button>
-                <button class="filter-button" onclick="toggleByCategory('solo')">Solo</button>
-                <button class="filter-button" onclick="toggleByCategory('alliance')">Alliance</button>
-                <button class="filter-button" onclick="toggleByCategory('hog')">HoG</button>
-                <button class="filter-button" onclick="toggleByCategory('online')">Online</button>
-                <button class="filter-button" onclick="toggleByCategory('power-up')">Power-up</button>
             </div>
 
             <!-- Event List -->
@@ -896,6 +887,42 @@
         let preCalculatedOccurrences = [];
         let eventVisibility = {}; // Track visibility state of events
 
+        // ========== LOCAL STORAGE FUNCTIONS ==========
+        const STORAGE_KEYS = {
+            SERVER_AGE: 'timeline_server_age',
+            EVENT_VISIBILITY: 'timeline_event_visibility',
+            SAVED_UTC_DATE: 'timeline_saved_utc_date'
+        };
+
+        function saveToLocalStorage() {
+            const serverAge = parseInt(document.getElementById('serverAge').value) || 1;
+            const currentUtcDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
+            
+            localStorage.setItem(STORAGE_KEYS.SERVER_AGE, serverAge.toString());
+            localStorage.setItem(STORAGE_KEYS.EVENT_VISIBILITY, JSON.stringify(eventVisibility));
+            localStorage.setItem(STORAGE_KEYS.SAVED_UTC_DATE, currentUtcDate);
+        }
+
+        function loadFromLocalStorage() {
+            const savedServerAge = localStorage.getItem(STORAGE_KEYS.SERVER_AGE);
+            const savedEventVisibility = localStorage.getItem(STORAGE_KEYS.EVENT_VISIBILITY);
+            const savedUtcDate = localStorage.getItem(STORAGE_KEYS.SAVED_UTC_DATE);
+            
+            return {
+                serverAge: savedServerAge ? parseInt(savedServerAge) : null,
+                eventVisibility: savedEventVisibility ? JSON.parse(savedEventVisibility) : null,
+                savedUtcDate: savedUtcDate || null
+            };
+        }
+
+        function calculateDayDifference(savedDate, currentDate) {
+            const saved = new Date(savedDate);
+            const current = new Date(currentDate);
+            const diffTime = current - saved;
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays;
+        }
+
         // Function to sanitize event titles for use as identifiers
         function sanitizeTitle(title) {
             return title.toLowerCase()
@@ -972,21 +999,76 @@
             // Display current UTC date and weekday
             updateCurrentUtcDisplay();
             
-            // Server age input
+            // Load saved data from localStorage
+            const savedData = loadFromLocalStorage();
+            const currentUtcDate = new Date().toISOString().split('T')[0];
+            
+            let serverAge = 1; // Default value
+            
+            // Auto-adjust server age based on date difference
+            if (savedData.serverAge !== null && savedData.savedUtcDate !== null) {
+                const dayDifference = calculateDayDifference(savedData.savedUtcDate, currentUtcDate);
+                serverAge = savedData.serverAge + dayDifference;
+                
+                // Ensure server age is at least 1
+                if (serverAge < 1) {
+                    serverAge = 1;
+                }
+                
+                console.log(`Loaded server age: ${savedData.serverAge}, Days passed: ${dayDifference}, New server age: ${serverAge}`);
+            }
+            
+            // Set the server age input
+            document.getElementById('serverAge').value = serverAge;
+            alignmentDay = serverAge;
+            
+            // Server age input event listener
             document.getElementById('serverAge').addEventListener('input', function () {
-                const serverAge = parseInt(this.value) || 1;
+                const newServerAge = parseInt(this.value) || 1;
                 // Update alignment day to match server age
-                alignmentDay = serverAge;
+                alignmentDay = newServerAge;
                 generateTimeline();
+                saveToLocalStorage(); // Save when server age changes
             });
 
-            // Initialize event visibility (all events visible by default)
-            eventsData.events.forEach(event => {
-                eventVisibility[sanitizeTitle(event.title)] = true;
-            });
+            // Initialize event visibility
+            if (savedData.eventVisibility !== null) {
+                // Load saved visibility
+                eventVisibility = savedData.eventVisibility;
+            } else {
+                // Initialize all events visible by default
+                eventsData.events.forEach(event => {
+                    eventVisibility[sanitizeTitle(event.title)] = true;
+                });
+            }
 
-            // Generate event list
+            // Generate event list (this must come after eventVisibility is set)
             generateEventList();
+            
+            // Update legend items visual state based on loaded visibility
+            updateLegendItemsState();
+            
+            // Save initial state after loading
+            saveToLocalStorage();
+        }
+        
+        function updateLegendItemsState() {
+            // Get unique categories
+            const categories = [...new Set(eventsData.events.map(e => e.category))];
+            
+            categories.forEach(category => {
+                const eventsInCategory = eventsData.events.filter(e => e.category === category);
+                const allVisible = eventsInCategory.every(e => eventVisibility[sanitizeTitle(e.title)]);
+                
+                const legendItem = document.querySelector(`.legend-item[data-category="${category}"]`);
+                if (legendItem) {
+                    if (allVisible) {
+                        legendItem.classList.add('active');
+                    } else {
+                        legendItem.classList.remove('active');
+                    }
+                }
+            });
         }
         
         function updateCurrentUtcDisplay() {
@@ -1379,12 +1461,25 @@
 
         function toggleEvent(sanitizedTitle) {
             eventVisibility[sanitizedTitle] = !eventVisibility[sanitizedTitle];
+            saveToLocalStorage(); // Save when event visibility changes
             refreshUI();
         }
 
         function toggleAllEvents(show) {
             const eventTitles = eventsData.events.map(event => sanitizeTitle(event.title));
             updateEventVisibility(eventTitles, show);
+            
+            // Update all legend items visual state
+            const legendItems = document.querySelectorAll('.legend-item.clickable');
+            legendItems.forEach(item => {
+                if (show) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+            
+            saveToLocalStorage(); // Save when visibility changes
             refreshUI();
         }
 
@@ -1394,6 +1489,18 @@
             const eventTitles = eventsInCategory.map(event => sanitizeTitle(event.title));
 
             updateEventVisibility(eventTitles, !allVisible);
+            
+            // Update legend item visual state
+            const legendItem = document.querySelector(`.legend-item[data-category="${category}"]`);
+            if (legendItem) {
+                if (!allVisible) {
+                    legendItem.classList.add('active');
+                } else {
+                    legendItem.classList.remove('active');
+                }
+            }
+            
+            saveToLocalStorage(); // Save when visibility changes
             refreshUI();
         }
 
