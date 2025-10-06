@@ -226,24 +226,27 @@
                 <thead>
                     <tr>
                         <th>Method</th>
-                        <th>HOG Points</th>
-                        <th>Power Points</th>
+                        <th>HOG Points (Train Troops)</th>
+                        <th>HOG Points (Power Boost)</th>
+                        <th>HOG Points (Hero Development)</th>
                         <th>KVK Points</th>
                         <th>STG Points</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr id="speedupRow">
-                        <td>Using Speedups (300 points per minute)</td>
+                        <td>Points From Using Speedups</td>
+                        <td>-</td>
+                        <td>-</td>
                         <td id="speedupHogPoints">-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
+                        <td id="speedupKvkPoints">-</td>
+                        <td id="speedupStgPoints">-</td>
                     </tr>
                     <tr id="bestTrainingRow">
                         <td>Highest Points From Training</td>
                         <td>(<span id="trainingHogLevel">-</span>) <span id="trainingHogPoints">-</span></td>
                         <td>(<span id="trainingPowerLevel">-</span>) <span id="trainingPowerPoints">-</span></td>
+                        <td>-</td>
                         <td>(<span id="trainingKvkLevel">-</span>) <span id="trainingKvkPoints">-</span></td>
                         <td>(<span id="trainingStgLevel">-</span>) <span id="trainingStgPoints">-</span></td>
                     </tr>
@@ -251,6 +254,7 @@
                         <td>Highest Points From Promotion</td>
                         <td>(<span id="promotionHogLevels">-</span>) <span id="promotionHogPoints">-</span></td>
                         <td>(<span id="promotionPowerLevels">-</span>) <span id="promotionPowerPoints">-</span></td>
+                        <td>-</td>
                         <td>(<span id="promotionKvkLevels">-</span>) <span id="promotionKvkPoints">-</span></td>
                         <td>(<span id="promotionStgLevels">-</span>) <span id="promotionStgPoints">-</span></td>
                     </tr>
@@ -433,10 +437,13 @@
             const maxLevel = parseInt(document.getElementById('maxLevel').value);
             const currentLevel = parseInt(document.getElementById('currentLevel').value);
             const pointsPerPower = 20; // Fixed value for power points
+            const pointsPerMinuteKvk = 30;
 
             // Calculate speedup points
             const speedupPoints = speedupMinutes * pointsPerMinute;
-            document.getElementById('speedupHogPoints').textContent = speedupPoints;
+            document.getElementById('speedupHogPoints').textContent = formatNumber(speedupPoints);
+            document.getElementById('speedupKvkPoints').textContent = formatNumber(speedupMinutes * pointsPerMinuteKvk);
+            document.getElementById('speedupStgPoints').textContent = formatNumber(speedupMinutes * pointsPerMinuteKvk);
 
             // Find best training option
             let bestTrainingHogPoints = 0;

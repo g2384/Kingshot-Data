@@ -108,7 +108,8 @@
             5: 14000, 6: 18000, 7: 22000, 8: 26000,
             9: 30000, 10: 34000, 11: 38000, 12: 41500,
             13: 45000, 14: 48500, 15: 56000, 16: 56000,
-            17: 62500, 18: 66500, 26: 119000, 27: 133500
+            17: 62500, 18: 66500, 19: 70500, 26: 119000, 27: 133500,
+            28: 149000
         };
 
         const recommendedPower = {
@@ -116,7 +117,8 @@
             5: 1320, 6: 2400, 7: 3840, 8: 6200,
             9: 9000, 10: 14130, 11: 20670, 12: 34380,
             13: 48200, 14: 64530, 15: 100157, 16: 177168,
-            17: 295832, 18: 567112, 26: 29366064, 27: 40787929
+            17: 295832, 18: 567112, 19: 926361, 26: 29366064, 27: 40787929,
+            28: 61464000
         }
 
         function getBeastName(level) {
@@ -124,8 +126,8 @@
             if (level <= 8) return "Lynx";
             if (level <= 12) return "Bison";
             if (level <= 16) return "Cheetah";
-            if (level <= 17) return "Moose";
-            if (level <= 27) return "Grizzly Bear";
+            if (level <= 19) return "Moose";
+            if (level <= 28) return "Grizzly Bear";
             throw new Error("Invalid level");
         }
 
@@ -139,8 +141,10 @@
             if (level <= 16) return "Day 10";
             if (level <= 17) return "Day 13";
             if (level <= 18) return "Day 18";
+            if (level <= 19) return "Day 23";
             if (level <= 26) return "Day 74";
             if (level <= 27) return "Day 79";
+            if (level <= 28) return "Day 92";
             throw new Error("Invalid level");
         }
 
@@ -149,7 +153,6 @@
                 terror: "Giant Rhino",
                 specialRewards: "Quinn Shard * 1 (50%)<br>10 Gem (50%)",
                 bread: 20000,
-                gem: 10,
                 healing: "5m",
                 training: "5m"
             },
@@ -157,7 +160,6 @@
                 terror: "Mighty Bison",
                 specialRewards: "Quinn Shard * 1 (50%)<br>15 Gem (50%)",
                 bread: 40000,
-                gem: 15,
                 healing: "10m",
                 training: "5m"
             },
@@ -165,16 +167,24 @@
                 terror: "Great Moose",
                 specialRewards: "Quinn Shard * 1 (50%)<br>20 Gem (50%)",
                 bread: 60000,
-                gem: 20,
                 healing: "15m",
                 training: "10m",
                 satin: 15
             },
+            4: {
+                terror: "Alpha Black Panther",
+                specialRewards: "Epic General Hero Shard * 1 (50%)<br>25 Gem (50%)",
+                bread: 80000,
+                healing: "20m",
+                training: "10m",
+                satin: 20
+            }
         };
 
         function getUnlockText(level) {
             if (level <= 2) return "Day 3 or 1st Dreadwolf Trial event";
             if (level <= 3) return "Day 12";
+            if (level <= 4) return "Day 20";
         }
 
         function calculateResources(bread) {
@@ -182,7 +192,8 @@
             const ironLookup = {
                 133500: 6650,
                 62500: 3100,
-                66500: 3350
+                66500: 3350,
+                70500: 3500
             };
 
             const wood = bread;

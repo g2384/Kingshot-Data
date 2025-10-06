@@ -230,7 +230,16 @@ Fog 1 erased
 
 ### Desert Trial
 
-## Day 26 (1009)
+## Day 26 (1009 Thursday)
+
+## Day 27 (1010 Friday)
+
+### Buccaneer Bounty
+
+### Power Up
+
+### Sanctuary Battle
+
 
 ---
 
@@ -604,9 +613,14 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 
 ## Day 90 (Saturday)
 
-### [Kingdom of Power] Matchmaking Phase
+### [Kingdom of Power]
 
-- Duration: 2 Days
+- Matchmaking Phase
+  - Duration: 2 Days
+- Preparation Phase
+  - Duration: 5 Days
+  - Stages:
+    - 1: save intel boss
 
 ## Day 91 (Sunday)
 
@@ -617,6 +631,7 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 ### Golden Glaives
 
 - Duration: 2 Days
+- Sold-out items won't be refilled the next day
 
 ### Alliance Championship
 
@@ -656,4 +671,4 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 
 ### Kingdom Feast (Mid August - Late August)
 
-### Moonlit Celebration (Late Sept ~ Early Oct)
+### Moonlit Celebration (Late Sept ~ Early Oct, 20250930-20251006)
