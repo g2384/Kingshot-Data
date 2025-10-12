@@ -240,6 +240,33 @@ Fog 1 erased
 
 ### Sanctuary Battle
 
+## Day 28 (1011 Saturday)
+
+## Day 29 (1012)
+
+## Day 30
+
+### Plan your city
+
+### Alliance Mobilization
+
+### Swordland Showdown
+
+### Alliance Championship
+
+## Day 31 (1014 Tuesday)
+
+### Sanctuary Battle
+
+## Day 32 (1015)
+
+### War Preparation
+
+### Desert Trial
+
+## Day 33 (1016 Thursday)
+
+
 
 ---
 
@@ -663,7 +690,37 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 
 ## Day 95 (Thursday)
 
-### 
+## Day 96
+
+## Day 97 (Saturday)
+
+### Cesares Fury
+
+### Castle Battle
+
+## Day 98
+
+## Day 99 (Monday)
+
+### Armament COmpetition
+
+### Merchant Empire
+
+### Alliance Brawl
+
+### Alliance Championship
+
+### Swordland Showdown
+
+## Day 100 (1014 Tuesday)
+
+### Sanctuary Battle
+
+## Day 101 (1015 Wed)
+
+### Office Project
+
+### Desert Trial
 
 ----
 
