@@ -648,6 +648,7 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
   - Duration: 5 Days
   - Stages:
     - 1: save intel boss
+- Day 1004 - 1013
 
 ## Day 91 (Sunday)
 
