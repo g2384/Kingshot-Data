@@ -246,6 +246,8 @@ Fog 1 erased
 
 ## Day 30
 
+### In-Game Survey
+
 ### Plan your city
 
 ### Alliance Mobilization
