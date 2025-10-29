@@ -260,6 +260,10 @@ Fog 1 erased
 
 ### Sanctuary Battle
 
+### Call of the Sovereign
+
+### Unlock of Terror Lv 5
+
 ## Day 32 (1015)
 
 ### War Preparation
@@ -268,7 +272,53 @@ Fog 1 erased
 
 ## Day 33 (1016 Thursday)
 
+## Day 34 (1017 Friday)
 
+### City development
+
+### Mystic Divination
+
+## Day 35 (1018 Sat)
+
+### Cesares Fury
+
+## Day 36 (1019 Sun)
+
+## Day 37 (1020 Mon)
+
+### Alliance Championship
+
+### Hall of Governors
+
+## Day 38 (1021 Tue)
+
+### Eternity Reach
+
+### Defeat nearby beasts
+
+### Hero Roulette
+
+### Viking Vengeance
+
+### Sanctuary Battle
+
+## Day 39
+
+## Day 40 (1023 Thurs)
+
+lvl 22 Beast unlocked
+
+## Day 41 (1024 Fri)
+
+### All Out
+
+## Day 42
+
+## Day 43 (Sun)
+
+## Day 44 (Mon)
+
+### Gen 2 Hero unlocked
 
 ---
 
@@ -293,6 +343,18 @@ Fog 1 erased
 ## Day 62
 
 ## Day 63 (0907)
+
+### Champange Fair
+
+### Alliance Mobilization
+
+### Swordland Showdown
+
+### Working Overtime
+
+### Alliance Mobilization
+
+
 
 ---- start ---
 ## Day 64 (20250908, Monday)
@@ -705,9 +767,11 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 
 ## Day 99 (Monday)
 
-### Armament COmpetition
+### Armament COmpetition (artisans * 22)
 
 ### Merchant Empire
+
+- Duration: 7 Days
 
 ### Alliance Brawl
 
@@ -719,11 +783,77 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 
 ### Sanctuary Battle
 
+### Call of the Sovereign
+
+### Unlock of Terror lv 7
+
 ## Day 101 (1015 Wed)
 
-### Office Project
+### Office Project (diamond, hammer)
 
 ### Desert Trial
+
+## Day 102 (1016)
+
+## Day 103 (1017)
+
+### Armanent Competition (diamond)
+
+### Mystic Divination (2 days)
+
+## Day 104 (1018 Sat)
+
+## Day 105 (1019 Sun)
+
+### Officer Project (diamond, charm design)
+
+## Day 106 (1020 Mon)
+
+### Golden Glaives
+
+### Strongest Governor
+
+### Alliance Championship
+
+## Day 107 (1021 Tue)
+
+### Eternity's Reach
+
+### Defeat nearby beasts
+
+### Viking Vengeance
+
+### Hero Roulette
+
+### Sancturary Battle
+
+## Day 108
+
+## Day 109
+
+## Day 110 (1024 Fri)
+
+### All Out
+
+## Day 111
+
+## Day 112 (Sunday)
+
+## Day 113 (1027 Mon)
+
+### Champagne Fair
+
+### Alliance Championship
+
+### Swordland Showdown
+
+### Armament Competition (gem & artisan's vision)
+
+### Alliance Mobilization
+
+### Tri-Alliance Clash
+
+### Gen 3 heros appear in swordland shop
 
 ----
 
