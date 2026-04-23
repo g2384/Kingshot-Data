@@ -1,0 +1,3538 @@
+[
+    {
+        "name": "Olive",
+        "rarity": "Rare",
+        "generation": 1,
+        "class": "Archer",
+        "description": "Growth-focused hero who boosts Town Bread Output and increases Bread Gathering Speed when included in a gathering march.",
+        "unlock_methods": [
+            "Hero Recruitment",
+            "Intel Missions"
+        ],
+        "stats": {
+            "attack": 1752,
+            "defense": 2220,
+            "health": 10822
+        },
+        "skills": [
+            {
+                "name": "Rain of Arrows",
+                "description": "Olive launches a hail of arrows, dealing Attack * 252% Area of Effect Damage around the target.",
+                "upgrade_preview": {
+                    "area_of_effect_damage_up": [
+                        "180%",
+                        "198%",
+                        "216%",
+                        "234%",
+                        "252%"
+                    ]
+                }
+            },
+            {
+                "name": "Target Lock",
+                "description": "Olive paints a bullseye on a target, raising damage inflicted on the target by 30% for this attack.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Archer units.",
+                "effects": {
+                    "archer_attack": "+90.07%",
+                    "archer_defense": "+90.07%"
+                }
+            },
+            {
+                "name": "Green Thumb",
+                "description": "Increases the Town’s Mill Output by 25%.",
+                "upgrade_preview": {
+                    "mill_income": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Forager’s Luck",
+                "description": "Increases Resource Gathering Speed in the Wilderness by 25%.",
+                "upgrade_preview": {
+                    "bread_gathering_speed": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "name": "Edwin",
+        "rarity": "Rare",
+        "generation": 1,
+        "class": "Cavalry",
+        "description": "Growth-focused hero who boosts Town Stone Output and increases Stone Gathering Speed when included in a gathering march.",
+        "unlock_methods": [
+            "Hero Recruitment",
+            "Intel Missions"
+        ],
+        "stats": {
+            "attack": 1442,
+            "defense": 2220,
+            "health": 14430
+        },
+        "skills": [
+            {
+                "name": "Shrapnel Load",
+                "description": "Edwin throws out a homemade explosive, dealing Attack * 196% Area of Effect Damage to the target and nearby enemies.",
+                "upgrade_preview": {
+                    "area_of_effect_damage_up": [
+                        "140%",
+                        "154%",
+                        "168%",
+                        "182%",
+                        "196%"
+                    ]
+                }
+            },
+            {
+                "name": "Detonate",
+                "description": "Edwin’s explosives have a chance to stun targets.",
+                "effects": {
+                    "stun_chance": "20%",
+                    "stun_time": "1.5s"
+                },
+                "upgrade_preview": {
+                    "stun_chance": [
+                        "10%",
+                        "15%",
+                        "15%",
+                        "20%",
+                        "20%"
+                    ],
+                    "stun_time": [
+                        "0.5s",
+                        "0.5s",
+                        "1s",
+                        "1s",
+                        "1.5s"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Cavalry units.",
+                "effects": {
+                    "cavalry_attack": "+90.07%",
+                    "cavalry_defense": "+90.07%"
+                }
+            },
+            {
+                "name": "Demolitions Expert",
+                "description": "Increases the Town’s Quarry Output by 25%.",
+                "upgrade_preview": {
+                    "quarry_income": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Stone Mining",
+                "description": "Increases Stone Mining Speed in the Wilderness by 25%.",
+                "upgrade_preview": {
+                    "stone_gathering_speed": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "name": "Seth",
+        "rarity": "Rare",
+        "generation": 1,
+        "class": "Infantry",
+        "description": "Growth-focused hero who boosts Town Iron Output and increases Iron Gathering Speed when included in a gathering march.",
+        "unlock_methods": [
+            "Hero Recruitment",
+            "Intel Missions"
+        ],
+        "stats": {
+            "attack": 1106,
+            "defense": 2220,
+            "health": 21644
+        },
+        "skills": [
+            {
+                "name": "Hammer Burn",
+                "description": "Seth swings his hammer forward in a devastating arc, dealing Attack * 280% damage.",
+                "upgrade_preview": {
+                    "area_of_effect_damage_up": [
+                        "200%",
+                        "220%",
+                        "240%",
+                        "260%",
+                        "280%"
+                    ]
+                }
+            },
+            {
+                "name": "Armor Enhancement",
+                "description": "Seth upgrades his armor to reduce damage taken by 30%.",
+                "upgrade_preview": {
+                    "damage_taken_down": [
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Infantry units.",
+                "effects": {
+                    "infantry_attack": "+90.07%",
+                    "infantry_defense": "+90.07%"
+                }
+            },
+            {
+                "name": "Burnished Iron",
+                "description": "Increases the Town’s Iron Output by 25%.",
+                "upgrade_preview": {
+                    "iron_mine_income": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Craftsmanship",
+                "description": "Increases Iron Mining Speed in the Wilderness by 25%.",
+                "upgrade_preview": {
+                    "iron_mining_speed": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "name": "Forrest",
+        "rarity": "Rare",
+        "generation": 1,
+        "class": "Infantry",
+        "description": "Growth-focused hero who boosts Town Wood Output and increases Wood Gathering Speed when included in a gathering march.",
+        "unlock_methods": [
+            "Hero Recruitment",
+            "Intel Missions"
+        ],
+        "stats": {
+            "attack": 1106,
+            "defense": 2220,
+            "health": 21644
+        },
+        "skills": [
+            {
+                "name": "Axe Whirl",
+                "description": "Forrest’s axe pirouette deals damage of Attack * 110% per 0.5s to nearby enemies for 3s.",
+                "upgrade_preview": {
+                    "area_of_effect_damage_up": [
+                        "80%",
+                        "88%",
+                        "96%",
+                        "104%",
+                        "110%"
+                    ]
+                }
+            },
+            {
+                "name": "Razor Sharp",
+                "description": "Forrest’s sharpened axe deals 30% more damage per second.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Infantry units.",
+                "effects": {
+                    "infantry_attack": "+90.07%",
+                    "infantry_defense": "+90.07%"
+                }
+            },
+            {
+                "name": "Woodland Inheritor",
+                "description": "Increases the Town’s Sawmill Output by 25%.",
+                "upgrade_preview": {
+                    "logging_income": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Master Woodcutter",
+                "description": "Increases Wood Gathering Speed in the Wilderness by 25%.",
+                "upgrade_preview": {
+                    "wood_gathering_speed": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "name": "Amane",
+        "rarity": "Epic",
+        "generation": 1,
+        "class": "Archer",
+        "description": "Epic hero introduced in the June 26, 2025 update. Provides strong team-wide buffs and offensive abilities.",
+        "unlock_methods": [
+            "Hero Recruitment",
+            "Oasis & Beyond Event"
+        ],
+        "stats": {
+            "attack": 2157,
+            "defense": 2220,
+            "health": 13320
+        },
+        "skills": [
+            {
+                "name": "Sakura Blossom",
+                "description": "Amane summons a protective enchantment, increasing all Heroes’ and Escorts’ Attack and Attack Speed for 4 seconds.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "1.5%",
+                        "2%",
+                        "2.5%",
+                        "3%",
+                        "3.5%"
+                    ],
+                    "attack_speed_up": [
+                        "2.5%",
+                        "3%",
+                        "3.5%",
+                        "4%",
+                        "4.5%"
+                    ]
+                }
+            },
+            {
+                "name": "Fire Sigil",
+                "description": "Amane lobs a fiery sigil at the enemy, dealing Attack * 210% damage.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "150%",
+                        "165%",
+                        "180%",
+                        "195%",
+                        "210%"
+                    ]
+                }
+            },
+            {
+                "name": "Divine Melody",
+                "description": "Every 3 basic attacks increase Amane’s Attack Speed by 5% until the end of the battle.",
+                "upgrade_preview": {
+                    "attack_speed_up": [
+                        "1%",
+                        "2%",
+                        "3%",
+                        "4%",
+                        "5%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Archer units.",
+                "effects": {
+                    "archer_attack": "+140.11%",
+                    "archer_defense": "+140.11%"
+                }
+            },
+            {
+                "name": "Tri-Phalanx",
+                "description": "Amane’s formation increases all Squads’ total Attack by 25%.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Exorcism",
+                "description": "Increases Infirmary Healing Speed by 50%.",
+                "upgrade_preview": {
+                    "healing_speed_up": [
+                        "10%",
+                        "20%",
+                        "30%",
+                        "40%",
+                        "50%"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "name": "Yeonwoo",
+        "rarity": "Epic",
+        "generation": 1,
+        "class": "Archer",
+        "description": "Epic hero introduced with the June 26, 2025 update. Strong joiner hero for Bear Hunt due to Lethality boost. Also increases Academy Research Speed.",
+        "unlock_methods": [
+            "Hero Recruitment",
+            "Oasis & Beyond Event"
+        ],
+        "stats": {
+            "attack": 2157,
+            "defense": 2220,
+            "health": 13320
+        },
+        "skills": [
+            {
+                "name": "Petalbloom",
+                "description": "Yeonwoo arcs Petalbloom outward in three waves, dealing Attack * 100%, Attack * 175%, and Attack * 210% damage respectively, with the third being area of effect damage.",
+                "upgrade_preview": {
+                    "2nd_wave_damage_up": [
+                        "125%",
+                        "137.5%",
+                        "150%",
+                        "162.5%",
+                        "175%"
+                    ],
+                    "3rd_wave_damage_up": [
+                        "150%",
+                        "165%",
+                        "180%",
+                        "195%",
+                        "210%"
+                    ]
+                }
+            },
+            {
+                "name": "Falling Swallow",
+                "description": "Deals Attack * 140% damage and reduces the target’s Attack Speed by 50% for 2 seconds.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "100%",
+                        "110%",
+                        "120%",
+                        "130%",
+                        "140%"
+                    ],
+                    "enemy_attack_speed_down": [
+                        "30%",
+                        "35%",
+                        "40%",
+                        "45%",
+                        "50%"
+                    ]
+                }
+            },
+            {
+                "name": "Twin Fangs",
+                "description": "Increases Yeonwoo’s Attack by 24%.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "8%",
+                        "12%",
+                        "16%",
+                        "20%",
+                        "24%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Archer units.",
+                "effects": {
+                    "archer_attack": "+140.11%",
+                    "archer_defense": "+140.11%"
+                }
+            },
+            {
+                "name": "On Guard",
+                "description": "Increases all Squads’ total Lethality by 25%.",
+                "upgrade_preview": {
+                    "lethality_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Well-Traveled",
+                "description": "Increases Research Speed by 15%.",
+                "upgrade_preview": {
+                    "research_speed_up": [
+                        "3%",
+                        "6%",
+                        "9%",
+                        "12%",
+                        "15%"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "name": "Fahd",
+        "rarity": "Epic",
+        "generation": 1,
+        "class": "Cavalry",
+        "description": "Epic hero introduced with the June 26, 2025 update. Specializes in weakening enemies and boosting allied attack and march speed.",
+        "unlock_methods": [
+            "Hero Recruitment",
+            "Oasis & Beyond Event"
+        ],
+        "stats": {
+            "attack": 1776,
+            "defense": 2220,
+            "health": 17760
+        },
+        "skills": [
+            {
+                "name": "Sandstorm",
+                "description": "The blinding sandstorm reduces Enemy Squads’ Attack by 5% for 2 seconds.",
+                "upgrade_preview": {
+                    "enemy_attack_down": [
+                        "1%",
+                        "2%",
+                        "3%",
+                        "4%",
+                        "5%"
+                    ]
+                }
+            },
+            {
+                "name": "Eagle Wings",
+                "description": "After unleashing Sandstorm, Fahd’s eagle directs allies’ attack, increasing his and nearby friendly Squads’ Attack by 35% for 2 seconds.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%",
+                        "35%"
+                    ]
+                }
+            },
+            {
+                "name": "Dune General",
+                "description": "Fahd’s desert instincts increase his Attack Speed by 30%.",
+                "upgrade_preview": {
+                    "attack_speed_up": [
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Cavalry units.",
+                "effects": {
+                    "cavalry_attack": "+140.11%",
+                    "cavalry_defense": "+140.11%"
+                }
+            },
+            {
+                "name": "Desert Eclipse",
+                "description": "A rising cloud of sand reduces all Enemy Squads’ Damage Dealt by 20%.",
+                "upgrade_preview": {
+                    "enemy_damage_down": [
+                        "4%",
+                        "8%",
+                        "12%",
+                        "16%",
+                        "20%"
+                    ]
+                }
+            },
+            {
+                "name": "Pathfinder",
+                "description": "Increases Solo Hunting March Speed by 100%.",
+                "upgrade_preview": {
+                    "hunting_march_speed": [
+                        "20%",
+                        "40%",
+                        "60%",
+                        "80%",
+                        "100%"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "name": "Chenko",
+        "rarity": "Epic",
+        "generation": 1,
+        "class": "Cavalry",
+        "description": "Epic Cavalry hero. Top-tier joiner hero due to strong expedition skills, especially Stand of Arms for Bear Hunt.",
+        "unlock_methods": [
+            "Path of Growth Event",
+            "Hero Recruitment",
+            "Intel Missions – Watchtower"
+        ],
+        "stats": {
+            "attack": 1776,
+            "defense": 2220,
+            "health": 17760
+        },
+        "skills": [
+            {
+                "name": "Burst Fire",
+                "description": "Unleashes a rapid barrage, dealing Attack * 75% damage to enemies in front every 0.5s for 2s.",
+                "upgrade_preview": {
+                    "area_of_effect_damage_up": [
+                        "55%",
+                        "60%",
+                        "65%",
+                        "70%",
+                        "75%"
+                    ]
+                }
+            },
+            {
+                "name": "Defense Upgrade",
+                "description": "Chenko upgrades her armor, increasing Defense by 70%.",
+                "upgrade_preview": {
+                    "defense_up": [
+                        "25%",
+                        "37.5%",
+                        "50%",
+                        "62.5%",
+                        "70%"
+                    ]
+                }
+            },
+            {
+                "name": "Weapon Upgrade",
+                "description": "Chenko’s upgraded weapon boosts Attack by 24%.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "8%",
+                        "12%",
+                        "16%",
+                        "20%",
+                        "24%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Cavalry units.",
+                "effects": {
+                    "cavalry_attack": "+140.11%",
+                    "cavalry_defense": "+140.11%"
+                }
+            },
+            {
+                "name": "Stand of Arms",
+                "description": "Increases total Squads’ Lethality by 25%.",
+                "upgrade_preview": {
+                    "lethality_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Shield Wall",
+                "description": "Reduces damage taken by 20% for all troops.",
+                "upgrade_preview": {
+                    "damage_taken_down": [
+                        "4%",
+                        "8%",
+                        "12%",
+                        "16%",
+                        "20%"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "name": "Gordon",
+        "rarity": "Epic",
+        "generation": 1,
+        "class": "Cavalry",
+        "description": "Epic Cavalry hero mainly used as a joiner hero for Garrison due to his strong Health-boosting expedition skill.",
+        "unlock_methods": [
+            "Hero Recruitment",
+            "Intel Missions",
+            "Alliance Championship Store"
+        ],
+        "stats": {
+            "attack": 1776,
+            "defense": 2220,
+            "health": 17760
+        },
+        "skills": [
+            {
+                "name": "BBQ Feast",
+                "description": "Restores Health by Attack * 280% to all troops and increases Attack by 7% for all troops for 4 seconds.",
+                "upgrade_preview": {
+                    "health_up": [
+                        "200%",
+                        "220%",
+                        "240%",
+                        "260%",
+                        "280%"
+                    ],
+                    "attack_up": [
+                        "5%",
+                        "5.5%",
+                        "6%",
+                        "6.5%",
+                        "7%"
+                    ]
+                }
+            },
+            {
+                "name": "Culinary Chaos",
+                "description": "Reduces Gordon’s damage taken by 30%.",
+                "upgrade_preview": {
+                    "damage_taken_down": [
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Emergency Snack",
+                "description": "Restores Health equal to Attack * 70% every 5 seconds.",
+                "upgrade_preview": {
+                    "health_up": [
+                        "50%",
+                        "55%",
+                        "60%",
+                        "65%",
+                        "70%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Cavalry units.",
+                "effects": {
+                    "cavalry_attack": "+140.11%",
+                    "cavalry_defense": "+140.11%"
+                }
+            },
+            {
+                "name": "Super Nutrients",
+                "description": "Increases total Squads’ Health by 25%.",
+                "upgrade_preview": {
+                    "health_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Trash Talk",
+                "description": "Increases total Squads’ Attack by 25%.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "name": "Diana",
+        "rarity": "Epic",
+        "generation": 1,
+        "class": "Archer",
+        "description": "Epic Archer hero unlocked exclusively through the Desert Trial event. Highly valuable due to stamina‑saving expedition skills and extremely high march speed potential.",
+        "unlock_methods": [
+            "Desert Trial Event"
+        ],
+        "stats": {
+            "attack": 2157,
+            "defense": 2220,
+            "health": 13320
+        },
+        "skills": [
+            {
+                "name": "Incendiary Arrows",
+                "description": "Diana fires an Incendiary Shot, dealing Attack * 290% damage to the target and Attack * 98% damage to nearby enemies.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "210%",
+                        "230%",
+                        "250%",
+                        "270%",
+                        "290%"
+                    ],
+                    "area_of_effect_damage_up": [
+                        "70%",
+                        "77%",
+                        "84%",
+                        "91%",
+                        "98%"
+                    ]
+                }
+            },
+            {
+                "name": "Sharpshooter",
+                "description": "Increases Attack Speed by 30%.",
+                "upgrade_preview": {
+                    "attack_speed_up": [
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Deadly Strike",
+                "description": "Increases Crit Rate by 20%.",
+                "upgrade_preview": {
+                    "crit_rate": [
+                        "7%",
+                        "10%",
+                        "13%",
+                        "16%",
+                        "20%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Archer units.",
+                "effects": {
+                    "archer_attack": "+110.08%",
+                    "archer_defense": "+110.08%"
+                }
+            },
+            {
+                "name": "Iron Constitution",
+                "description": "Reduces Governor Stamina Cost by 20%.",
+                "upgrade_preview": {
+                    "stamina_cost_down": [
+                        "10%",
+                        "12%",
+                        "15%",
+                        "18%",
+                        "20%"
+                    ]
+                }
+            },
+            {
+                "name": "Quick Paced",
+                "description": "Increases March Speed by 100%.",
+                "upgrade_preview": {
+                    "wilderness_march_speed": [
+                        "20%",
+                        "40%",
+                        "60%",
+                        "80%",
+                        "100%"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "name": "Howard",
+        "rarity": "Epic",
+        "generation": 1,
+        "class": "Infantry",
+        "description": "Epic Infantry hero. Provides strong defensive buffs and enemy weakening effects, making him valuable for garrison and defensive roles.",
+        "unlock_methods": [
+            "Hero Recruitment",
+            "Intel Missions"
+        ],
+        "stats": {
+            "attack": 1361,
+            "defense": 2220,
+            "health": 26640
+        },
+        "skills": [
+            {
+                "name": "Shielded Strike",
+                "description": "Howard gives an enemy a solid whack with his heavy shield, knocking the target back while dealing Attack * 280% Area of Effect damage.",
+                "upgrade_preview": {
+                    "area_of_effect_damage_up": [
+                        "200%",
+                        "220%",
+                        "240%",
+                        "260%",
+                        "280%"
+                    ]
+                }
+            },
+            {
+                "name": "Joint Defense",
+                "description": "Howard leads the effort to fortify defenses, increasing Defense by 15% for all heroes.",
+                "upgrade_preview": {
+                    "defense_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            },
+            {
+                "name": "Shield Block",
+                "description": "Howard trades in his shield for an upgraded model, reducing damage taken by 30%.",
+                "upgrade_preview": {
+                    "damage_taken_down": [
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Infantry units.",
+                "effects": {
+                    "infantry_attack": "+140.11%",
+                    "infantry_defense": "+140.11%"
+                }
+            },
+            {
+                "name": "Defenders’ Edge",
+                "description": "Howard guards allied troops with his shield, reducing damage taken by 20% for all troops.",
+                "upgrade_preview": {
+                    "damage_taken_down": [
+                        "4%",
+                        "8%",
+                        "12%",
+                        "16%",
+                        "20%"
+                    ]
+                }
+            },
+            {
+                "name": "Weaken",
+                "description": "Howard’s intimidating presence reduces total Enemy Squads’ Attack by 20%.",
+                "upgrade_preview": {
+                    "enemy_attack_down": [
+                        "4%",
+                        "8%",
+                        "12%",
+                        "16%",
+                        "20%"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "name": "Quinn",
+        "rarity": "Epic",
+        "generation": 1,
+        "class": "Archer",
+        "description": "Epic Archer hero unlocked during the tutorial. Additional shards can be obtained through Hero Recruitment or Intel Missions.",
+        "unlock_methods": [
+            "Hero Recruitment",
+            "Intel Missions"
+        ],
+        "stats": {
+            "attack": 2157,
+            "defense": 2220,
+            "health": 13320
+        },
+        "skills": [
+            {
+                "name": "Headshot",
+                "description": "The upgraded Crossbow deals Attack * 560% damage.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "400%",
+                        "440%",
+                        "480%",
+                        "520%",
+                        "560%"
+                    ]
+                }
+            },
+            {
+                "name": "Quick Shot",
+                "description": "Years of training increases Quinn’s Attack Speed by 30%.",
+                "upgrade_preview": {
+                    "attack_speed_up": [
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Natural Selection",
+                "description": "Quinn’s expert survival skills increase his damage dealt by 30%.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Archer units.",
+                "effects": {
+                    "archer_attack": "+140.11%",
+                    "archer_defense": "+140.11%"
+                }
+            },
+            {
+                "name": "Sixth Sense",
+                "description": "Senses for dangers ahead, reducing damage taken by 20% for all troops.",
+                "upgrade_preview": {
+                    "damage_taken_down": [
+                        "4%",
+                        "8%",
+                        "12%",
+                        "16%",
+                        "20%"
+                    ]
+                }
+            },
+            {
+                "name": "Precision Shot",
+                "description": "Quinn grants all soldiers a 50% chance of dealing 50% more damage when attacking.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "10%",
+                        "20%",
+                        "30%",
+                        "40%",
+                        "50%"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "name": "Jabel",
+        "rarity": "Mythic",
+        "generation": 1,
+        "class": "Cavalry",
+        "description": "Mythic Generation 1 Cavalry hero. Easiest Mythic to unlock due to multiple acquisition paths including 7‑day sign‑in rewards and Hero Hall recruitment.",
+        "unlock_methods": [
+            "7-day Sign-in Gift",
+            "Path of Growth Event",
+            "Recruit Heroes",
+            "Watchtower Intel",
+            "Hall of Heroes",
+            "Swordland Showdown Shop",
+            "Jabel’s Courage Pack"
+        ],
+        "stats": {
+            "attack": 2220,
+            "defense": 2220,
+            "health": 22200
+        },
+        "skills": [
+            {
+                "name": "Gallant Throw",
+                "description": "Throws a spear that pierces defenses, dealing Attack * 252% area damage and pinning targets for 1.5s.",
+                "upgrade_preview": {
+                    "area_of_effect_damage_up": [
+                        "180%",
+                        "198%",
+                        "216%",
+                        "234%",
+                        "252%"
+                    ]
+                }
+            },
+            {
+                "name": "Brave the Storm",
+                "description": "Deals Attack * 210% damage to the target.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "150%",
+                        "165%",
+                        "180%",
+                        "195%",
+                        "210%"
+                    ]
+                }
+            },
+            {
+                "name": "Persistence",
+                "description": "Increases Attack Speed by 60% when Health is below 50%.",
+                "upgrade_preview": {
+                    "attack_speed_up": [
+                        "20%",
+                        "30%",
+                        "40%",
+                        "50%",
+                        "60%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Cavalry units.",
+                "effects": {
+                    "cavalry_attack": "+200.16%",
+                    "cavalry_defense": "+200.16%"
+                }
+            },
+            {
+                "name": "Rally Flag",
+                "description": "40% chance to reduce damage taken by 50% for all squads.",
+                "upgrade_preview": {
+                    "damage_taken_chance_down": [
+                        "8%",
+                        "16%",
+                        "24%",
+                        "32%",
+                        "40%"
+                    ]
+                }
+            },
+            {
+                "name": "Hero’s Domain",
+                "description": "Grants all squads a 50% chance of dealing 50% more damage when attacking.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "10%",
+                        "20%",
+                        "30%",
+                        "40%",
+                        "50%"
+                    ]
+                }
+            },
+            {
+                "name": "Youthful Rage",
+                "description": "Increases damage dealt by 25% for all squads.",
+                "upgrade_preview": {
+                    "lethality_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Crimson Spirit",
+                "description": "Conquest Skill: Increases damage dealt by 30%.",
+                "upgrade_preview": {
+                    "damage_dealt_up": [
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Divine Strength",
+                "description": "Expedition Skill: Increases Defender Troops’ Lethality by 15%.",
+                "upgrade_preview": {
+                    "defender_troops_lethality_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            }
+        ],
+        "exclusive_gear": {
+            "name": "Greaves of Faith",
+            "max_level_stats": {
+                "power": 225000,
+                "hero_attack": 450,
+                "hero_defense": 450,
+                "hero_health": 4500,
+                "escort_attack": 150,
+                "escort_defense": 150,
+                "escort_health": 1500,
+                "cavalry_lethality": "+50%",
+                "cavalry_health": "+50%"
+            }
+        }
+    },
+    {
+        "name": "Amadeus",
+        "rarity": "Mythic",
+        "generation": 1,
+        "class": "Infantry",
+        "description": "Generation 1 Infantry hero. Unlockable through Hall of Governors during Gen 1 or VIP packs afterward.",
+        "unlock_methods": [
+            "Hall of Governors",
+            "VIP Packs"
+        ],
+        "stats": {
+            "attack": 2128,
+            "defense": 2220,
+            "health": 41624
+        },
+        "skills": [
+            {
+                "name": "Born Leader",
+                "description": "Boosts Lethality and Health for all deployed soldiers by 15%, even when absent.",
+                "upgrade_preview": {
+                    "lethality_and_health_up": [
+                        "3%",
+                        "6%",
+                        "9%",
+                        "12%",
+                        "15%"
+                    ]
+                }
+            },
+            {
+                "name": "Combo Slash",
+                "description": "Launches enemies upward and follows with three slashes, each dealing Attack * 224% damage.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "160%",
+                        "176%",
+                        "192%",
+                        "208%",
+                        "224%"
+                    ]
+                }
+            },
+            {
+                "name": "Arcane Swordship",
+                "description": "Releases arcane energy with each slash, dealing Attack * 23% damage to frontal foes.",
+                "upgrade_preview": {
+                    "defense_up": [
+                        "15%",
+                        "17%",
+                        "19%",
+                        "21%",
+                        "23%"
+                    ]
+                }
+            },
+            {
+                "name": "Onslaught",
+                "description": "Increases Attack by 48% when Health is below 50%.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "16%",
+                        "24%",
+                        "32%",
+                        "40%",
+                        "48%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Infantry units.",
+                "effects": {
+                    "infantry_attack": "+260.20%",
+                    "infantry_defense": "+260.20%"
+                }
+            },
+            {
+                "name": "Battle Ready",
+                "description": "Increases total Squads’ Lethality by 25%.",
+                "upgrade_preview": {
+                    "lethality_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Way of the Blade",
+                "description": "Increases total Squads’ Attack by 25%.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Unrighteous Strike",
+                "description": "40% chance to increase damage dealt by 50% for all squads.",
+                "upgrade_preview": {
+                    "damage_dealt_chance_up": [
+                        "8%",
+                        "16%",
+                        "24%",
+                        "32%",
+                        "40%"
+                    ]
+                }
+            },
+            {
+                "name": "Double Parry",
+                "description": "Conquest Skill: Reduces damage taken by 30%.",
+                "upgrade_preview": {
+                    "damage_taken_down": [
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Discernment",
+                "description": "Expedition Skill: Increases Rally Attack by 15%.",
+                "upgrade_preview": {
+                    "rally_attack_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            }
+        ],
+        "exclusive_gear": {
+            "name": "Aegis of Fate",
+            "max_level_stats": {
+                "power": 281250,
+                "hero_attack": 431,
+                "hero_defense": 562,
+                "hero_health": 8437,
+                "escort_attack": 143,
+                "escort_defense": 187,
+                "escort_health": 2812,
+                "infantry_lethality": "+62.50%",
+                "infantry_health": "+62.50%"
+            }
+        }
+    },
+    {
+        "name": "Helga",
+        "rarity": "Mythic",
+        "generation": 1,
+        "class": "Infantry",
+        "description": "Mythic Generation 1 Infantry hero. Unlocks from first purchase and provides strong defensive and offensive buffs.",
+        "unlock_methods": [
+            "1st Purchase",
+            "VIP Special Packs"
+        ],
+        "stats": {
+            "attack": 1873,
+            "defense": 2220,
+            "health": 36630
+        },
+        "skills": [
+            {
+                "name": "Power of the Deer",
+                "description": "Helga’s manifold talent bolsters all deployed soldiers’ Attack and Defense by 10% even in her absence.",
+                "upgrade_preview": {
+                    "attack_and_defense_up": [
+                        "2%",
+                        "4%",
+                        "6%",
+                        "8%",
+                        "10%"
+                    ]
+                }
+            },
+            {
+                "name": "Antler Assault",
+                "description": "Performs an antler charge, dealing Attack * 224% area damage, knocking targets back, and stunning them for 1s.",
+                "upgrade_preview": {
+                    "area_of_effect_damage_up": [
+                        "160%",
+                        "176%",
+                        "192%",
+                        "208%",
+                        "224%"
+                    ]
+                }
+            },
+            {
+                "name": "Spear Charge",
+                "description": "Deals Attack * 210% damage to the target.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "150%",
+                        "165%",
+                        "180%",
+                        "195%",
+                        "210%"
+                    ]
+                }
+            },
+            {
+                "name": "Fury",
+                "description": "When taking damage, 10% chance to increase Attack by 12% for 3s. Stacks up to 5 times.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "4%",
+                        "6%",
+                        "8%",
+                        "10%",
+                        "12%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Infantry units.",
+                "effects": {
+                    "infantry_attack": "+200.16%",
+                    "infantry_defense": "+200.16%"
+                }
+            },
+            {
+                "name": "Oath of Guardian",
+                "description": "40% chance of reducing damage taken by 50% for all squads.",
+                "upgrade_preview": {
+                    "damage_taken_chance_down": [
+                        "8%",
+                        "16%",
+                        "24%",
+                        "32%",
+                        "40%"
+                    ]
+                }
+            },
+            {
+                "name": "Echoes of Valhalla",
+                "description": "Increases total Squads’ Attack by 25%.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Nature’s Balance",
+                "description": "Increases total Squads’ Lethality by 25%.",
+                "upgrade_preview": {
+                    "lethality_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Valiant Fury",
+                "description": "Conquest Skill: Increases damage dealt by 30%.",
+                "upgrade_preview": {
+                    "damage_dealt_up": [
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Zeal",
+                "description": "Expedition Skill: Increases Rally Troops’ Lethality by 15%.",
+                "upgrade_preview": {
+                    "rally_troops_lethality_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            }
+        ],
+        "exclusive_gear": {
+            "name": "Bands of Tyre",
+            "max_level_stats": {
+                "power": 247500,
+                "hero_attack": 379,
+                "hero_defense": 495,
+                "hero_health": 7425,
+                "escort_attack": 126,
+                "escort_defense": 165,
+                "escort_health": 2475,
+                "infantry_lethality": "+55.50%",
+                "infantry_health": "+55.50%"
+            }
+        }
+    },
+    {
+        "name": "Saul",
+        "rarity": "Mythic",
+        "generation": 1,
+        "class": "Archer",
+        "description": "Mythic-quality Generation 1 Archer hero. Provides strong offensive burst, powerful defensive scaling, and excellent construction buffs.",
+        "unlock_methods": [
+            "Hero Roulette",
+            "Hall of Heroes",
+            "Swordland Showdown Shop"
+        ],
+        "stats": {
+            "attack": 2697,
+            "defense": 2220,
+            "health": 16650
+        },
+        "skills": [
+            {
+                "name": "Rapidfire",
+                "description": "Delivers multiple hits, each dealing Attack * 75% damage and stunning the target for 2 seconds.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "55%",
+                        "60%",
+                        "65%",
+                        "70%",
+                        "75%"
+                    ]
+                }
+            },
+            {
+                "name": "Final Prayer",
+                "description": "When Health is below 50%, Saul’s Defense increases by 150%.",
+                "upgrade_preview": {
+                    "defense_up": [
+                        "50%",
+                        "75%",
+                        "100%",
+                        "125%",
+                        "150%"
+                    ]
+                }
+            },
+            {
+                "name": "Superior Techniques",
+                "description": "Increases Attack Speed by 30%.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Archer units.",
+                "effects": {
+                    "archer_attack": "+200.16%",
+                    "archer_defense": "+200.16%"
+                }
+            },
+            {
+                "name": "Taskforce Training",
+                "description": "Increases total Squads’ Defense by 10% and Health by 15%.",
+                "upgrade_preview": {
+                    "defense_up": [
+                        "2%",
+                        "4%",
+                        "6%",
+                        "8%",
+                        "10%"
+                    ],
+                    "health_up": [
+                        "3%",
+                        "6%",
+                        "9%",
+                        "12%",
+                        "15%"
+                    ]
+                }
+            },
+            {
+                "name": "Resourceful",
+                "description": "Increases Construction Speed by 15% and reduces Construction Costs by 15%.",
+                "upgrade_preview": {
+                    "construction_speed_up": [
+                        "3%",
+                        "6%",
+                        "9%",
+                        "12%",
+                        "15%"
+                    ],
+                    "construction_cost_down": [
+                        "3%",
+                        "6%",
+                        "9%",
+                        "12%",
+                        "15%"
+                    ]
+                }
+            },
+            {
+                "name": "Positional Batter",
+                "description": "Increases total Squads’ Lethality by 25%.",
+                "upgrade_preview": {
+                    "lethality_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Fearless Advance",
+                "description": "Conquest Skill: Increases Saul’s Attack by 24%.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "6%",
+                        "12%",
+                        "16%",
+                        "20%",
+                        "24%"
+                    ]
+                }
+            },
+            {
+                "name": "Defend to Attack",
+                "description": "Expedition Skill: Increases Defender Troops’ Attack by 15%.",
+                "upgrade_preview": {
+                    "defender_troops_attack_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            }
+        ],
+        "exclusive_gear": {
+            "name": "Rabbitgear Cannon",
+            "max_level_stats": {
+                "power": 225000,
+                "hero_attack": 546,
+                "hero_defense": 450,
+                "hero_health": 3375,
+                "escort_attack": 182,
+                "escort_defense": 150,
+                "escort_health": 1125,
+                "archer_lethality": "+50%",
+                "archer_health": "+50%"
+            }
+        }
+    },
+    {
+        "name": "Hilde",
+        "rarity": "Mythic",
+        "generation": 2,
+        "class": "Cavalry",
+        "description": "Mythic-quality Generation 2 Cavalry hero. Provides powerful healing, disabling, and strong expedition and conquest buffs.",
+        "unlock_methods": [
+            "Strongest Governor",
+            "Hero Rally",
+            "Champion's Way (Gen 4)",
+            "Hall of Heroes (Gen 3+)",
+            "Kingdom of Power"
+        ],
+        "stats": {
+            "attack": 2664,
+            "defense": 2220,
+            "health": 26640
+        },
+        "skills": [
+            {
+                "name": "Rejuvenating Plea",
+                "description": "Immediately restores Health equal to Attack * 280% to all friendly heroes.",
+                "upgrade_preview": {
+                    "heal_up": [
+                        "200%",
+                        "220%",
+                        "240%",
+                        "260%",
+                        "280%"
+                    ]
+                }
+            },
+            {
+                "name": "Redeemer",
+                "description": "Restores Health equal to Attack * 140% to the weakest friendly hero.",
+                "upgrade_preview": {
+                    "heal_up": [
+                        "100%",
+                        "110%",
+                        "120%",
+                        "130%",
+                        "140%"
+                    ]
+                }
+            },
+            {
+                "name": "Intimidation",
+                "description": "Disables the enemy target for 1 second while dealing Attack * 196% damage.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "140%",
+                        "154%",
+                        "168%",
+                        "182%",
+                        "196%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Cavalry units.",
+                "effects": {
+                    "cavalry_attack": "+240.19%",
+                    "cavalry_defense": "+240.19%"
+                }
+            },
+            {
+                "name": "Noble Path",
+                "description": "Increases total Squads’ Attack by 15% and Defense by 10%.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "3%",
+                        "6%",
+                        "9%",
+                        "12%",
+                        "15%"
+                    ],
+                    "defense_up": [
+                        "2%",
+                        "4%",
+                        "6%",
+                        "8%",
+                        "10%"
+                    ]
+                }
+            },
+            {
+                "name": "Elixir of Strength",
+                "description": "Grants all squads a 25% chance of dealing 200% damage.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "120%",
+                        "140%",
+                        "160%",
+                        "180%",
+                        "200%"
+                    ]
+                }
+            },
+            {
+                "name": "Trial by Fire",
+                "description": "40% chance of reducing damage taken by 50% for all squads.",
+                "upgrade_preview": {
+                    "damage_taken_chance_down": [
+                        "8%",
+                        "16%",
+                        "24%",
+                        "32%",
+                        "40%"
+                    ]
+                }
+            },
+            {
+                "name": "Holy Invocation",
+                "description": "Conquest Skill: Increases Hilde’s healing effects by 70%.",
+                "upgrade_preview": {
+                    "healing_effects_up": [
+                        "30%",
+                        "40%",
+                        "50%",
+                        "60%",
+                        "70%"
+                    ]
+                }
+            },
+            {
+                "name": "Fortitude",
+                "description": "Expedition Skill: Increases Defender Squads’ Health by 15%.",
+                "upgrade_preview": {
+                    "defender_squads_health_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            }
+        ],
+        "exclusive_gear": {
+            "name": "Revelation",
+            "max_level_stats": {
+                "power": 270000,
+                "hero_attack": 540,
+                "hero_defense": 540,
+                "hero_health": 5400,
+                "escort_attack": 180,
+                "escort_defense": 180,
+                "escort_health": 1800,
+                "cavalry_lethality": "+60%",
+                "cavalry_health": "+60%"
+            }
+        }
+    },
+    {
+        "name": "Zoe",
+        "rarity": "Mythic",
+        "generation": 2,
+        "class": "Infantry",
+        "description": "Mythic-quality Generation 2 Infantry hero. Specializes in damage amplification, sustain, and powerful expedition and conquest buffs.",
+        "unlock_methods": [
+            "Hero Roulette",
+            "Hall of Heroes (Gen 3+)"
+        ],
+        "stats": {
+            "attack": 2043,
+            "defense": 2664,
+            "health": 39960
+        },
+        "skills": [
+            {
+                "name": "Shield Strike",
+                "description": "Deals Attack * 84% damage every 0.5s and increases enemy damage taken by 30% for 2 seconds.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "60%",
+                        "66%",
+                        "72%",
+                        "78%",
+                        "84%"
+                    ],
+                    "enemy_damage_taken_up": [
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Agony Rush",
+                "description": "When Zoe falls below 50% Health, she instantly restores 40% of max Health. Triggers once per battle.",
+                "upgrade_preview": {
+                    "heal_up": [
+                        "20%",
+                        "25%",
+                        "30%",
+                        "35%",
+                        "40%"
+                    ]
+                }
+            },
+            {
+                "name": "Holy Might",
+                "description": "Increases all heroes’ Attack Speed by 7%.",
+                "upgrade_preview": {
+                    "attack_speed_up": [
+                        "3%",
+                        "4%",
+                        "5%",
+                        "6%",
+                        "7%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Infantry units.",
+                "effects": {
+                    "infantry_attack": "+240.19%",
+                    "infantry_defense": "+240.19%"
+                }
+            },
+            {
+                "name": "Sundering Wound",
+                "description": "Your squads’ attacks gain a 20% chance to inflict Sunder, dealing 40% damage per turn for 3 turns.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "8%",
+                        "16%",
+                        "24%",
+                        "32%",
+                        "40%"
+                    ]
+                }
+            },
+            {
+                "name": "Stoic",
+                "description": "Increases total Squads’ Attack by 25%.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Infinite Arsenal",
+                "description": "Your squads’ attacks gain a 50% chance to increase enemy damage taken by 50%.",
+                "upgrade_preview": {
+                    "enemy_damage_taken_up": [
+                        "10%",
+                        "20%",
+                        "30%",
+                        "40%",
+                        "50%"
+                    ]
+                }
+            },
+            {
+                "name": "Death or Glory",
+                "description": "Conquest Skill: After Agony Rush triggers, Zoe gains +24% Attack for the rest of the battle.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "8%",
+                        "12%",
+                        "16%",
+                        "20%",
+                        "24%"
+                    ]
+                }
+            },
+            {
+                "name": "Dark Lady",
+                "description": "Expedition Skill: Increases Defender Squads’ Attack by 15%.",
+                "upgrade_preview": {
+                    "defender_troops_attack_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            }
+        ],
+        "exclusive_gear": {
+            "name": "The Unrighteous",
+            "max_level_stats": {
+                "power": 270000,
+                "hero_attack": 414,
+                "hero_defense": 540,
+                "hero_health": 8100,
+                "escort_attack": 138,
+                "escort_defense": 180,
+                "escort_health": 2700,
+                "infantry_lethality": "+60%",
+                "infantry_health": "+60%"
+            }
+        }
+    },
+    {
+        "name": "Marlin",
+        "rarity": "Mythic",
+        "generation": 2,
+        "class": "Archer",
+        "description": "Mythic-quality Generation 2 Archer hero. Unlockable through Hall of Heroes and Daily Deals. Specializes in AoE damage, stuns, and strong expedition and conquest buffs.",
+        "unlock_methods": [
+            "Hall of Heroes"
+        ],
+        "stats": {
+            "attack": 3235,
+            "defense": 2220,
+            "health": 19980
+        },
+        "skills": [
+            {
+                "name": "Tidal Rush",
+                "description": "Unleashes a pulse dealing Attack * 280% Area of Effect damage and immobilizes the enemy for 1.5 seconds.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "200%",
+                        "220%",
+                        "240%",
+                        "260%",
+                        "280%"
+                    ]
+                }
+            },
+            {
+                "name": "Fermented Blow",
+                "description": "Deals Attack * 70% Area of Effect damage.",
+                "upgrade_preview": {
+                    "area_of_effect_damage_up": [
+                        "50%",
+                        "55%",
+                        "60%",
+                        "65%",
+                        "70%"
+                    ]
+                }
+            },
+            {
+                "name": "Lucky Hit",
+                "description": "Stuns targets for 0.5 seconds after every 5 strikes.",
+                "upgrade_preview": {
+                    "no_of_attacks": [
+                        "8",
+                        "7",
+                        "7",
+                        "6",
+                        "5"
+                    ],
+                    "stun_time": [
+                        "0.2s",
+                        "0.2s",
+                        "0.4s",
+                        "0.4s",
+                        "0.5s"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Archer units.",
+                "effects": {
+                    "archer_attack": "+240.19%",
+                    "archer_defense": "+240.19%"
+                }
+            },
+            {
+                "name": "Wild Card",
+                "description": "40% chance of increasing damage dealt by 50% for all squads.",
+                "upgrade_preview": {
+                    "damage_dealt_chance_up": [
+                        "8%",
+                        "16%",
+                        "24%",
+                        "32%",
+                        "40%"
+                    ]
+                }
+            },
+            {
+                "name": "Rumhead",
+                "description": "20% chance of reducing total Enemy Squads’ Lethality by 50% for 2 turns when attacking.",
+                "upgrade_preview": {
+                    "enemy_lethality_down": [
+                        "10%",
+                        "20%",
+                        "30%",
+                        "40%",
+                        "50%"
+                    ]
+                }
+            },
+            {
+                "name": "Dynamo",
+                "description": "Grants your squads’ attacks a 50% chance of increasing damage dealt by 50%.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "10%",
+                        "20%",
+                        "30%",
+                        "40%",
+                        "50%"
+                    ]
+                }
+            },
+            {
+                "name": "Servant of Wine",
+                "description": "Conquest Skill: Heals your weakest hero by Attack * 15% with each basic attack.",
+                "upgrade_preview": {
+                    "weakest_hero_health_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            },
+            {
+                "name": "Admiral of the Line",
+                "description": "Expedition Skill: Increases Rally Squads’ Lethality by 15%.",
+                "upgrade_preview": {
+                    "rally_squads_lethality_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            }
+        ],
+        "exclusive_gear": {
+            "name": "Mistweaver",
+            "max_level_stats": {
+                "power": 270000,
+                "hero_attack": 655,
+                "hero_defense": 540,
+                "hero_health": 4050,
+                "escort_attack": 218,
+                "escort_defense": 180,
+                "escort_health": 1350,
+                "archer_lethality": "+60%",
+                "archer_health": "+60%"
+            }
+        }
+    },
+    {
+        "name": "Petra",
+        "rarity": "Mythic",
+        "generation": 3,
+        "class": "Cavalry",
+        "description": "Mythic-quality Generation 3 Cavalry hero. Specializes in fluctuating damage, random healing, and strong expedition and conquest buffs.",
+        "unlock_methods": [
+            "Hero Roulette",
+            "Swordland Showdown Shop"
+        ],
+        "stats": {
+            "attack": 3330,
+            "defense": 3330,
+            "health": 33300
+        },
+        "skills": [
+            {
+                "name": "Dichotomy",
+                "description": "Throws a tarot card dealing Attack * 378% damage and either reduces enemy Attack by 20% for 2s or stuns for 1.5s.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "270%",
+                        "297%",
+                        "324%",
+                        "351%",
+                        "378%"
+                    ]
+                }
+            },
+            {
+                "name": "Change of Fate",
+                "description": "Deals fluctuating damage based on Attack * 70%, final damage between 5% and 600% of base value.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "50%",
+                        "55%",
+                        "60%",
+                        "65%",
+                        "70%"
+                    ]
+                }
+            },
+            {
+                "name": "Turn Card",
+                "description": "Heals lowest-HP hero based on Attack * 140%, final heal between 5% and 400% of base value.",
+                "upgrade_preview": {
+                    "heal_up": [
+                        "100%",
+                        "110%",
+                        "120%",
+                        "130%",
+                        "140%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Cavalry units.",
+                "effects": {
+                    "cavalry_attack": "+290.23%",
+                    "cavalry_defense": "+290.23%"
+                }
+            },
+            {
+                "name": "Evil Eye",
+                "description": "50% chance to increase enemy damage taken by 50%.",
+                "upgrade_preview": {
+                    "enemy_damage_taken_up": [
+                        "10%",
+                        "20%",
+                        "30%",
+                        "40%",
+                        "50%"
+                    ]
+                }
+            },
+            {
+                "name": "The Favor",
+                "description": "50% chance to increase squads’ Attack by 50%.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "10%",
+                        "20%",
+                        "30%",
+                        "40%",
+                        "50%"
+                    ]
+                }
+            },
+            {
+                "name": "The Shield",
+                "description": "40% chance to reduce damage taken by 50% for all squads.",
+                "upgrade_preview": {
+                    "damage_taken_down": [
+                        "10%",
+                        "20%",
+                        "30%",
+                        "40%",
+                        "50%"
+                    ]
+                }
+            },
+            {
+                "name": "Weighted Deck",
+                "description": "Conquest Skill: Increases upper and lower limits of fluctuating skills by 150%.",
+                "upgrade_preview": {
+                    "fluctuating_skills_effects_up": [
+                        "30%",
+                        "60%",
+                        "90%",
+                        "120%",
+                        "150%"
+                    ]
+                }
+            },
+            {
+                "name": "Cosmic Eye",
+                "description": "Expedition Skill: Increases Rally Squad Attack by 15%.",
+                "upgrade_preview": {
+                    "rally_squad_attack_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            }
+        ],
+        "exclusive_gear": {
+            "name": "Fate’s Writ",
+            "max_level_stats": {
+                "power": 315000,
+                "hero_attack": 630,
+                "hero_defense": 630,
+                "hero_health": 6300,
+                "escort_attack": 210,
+                "escort_defense": 210,
+                "escort_health": 2100,
+                "cavalry_lethality": "+70%",
+                "cavalry_health": "+70%"
+            }
+        }
+    },
+    {
+        "name": "Jaeger",
+        "rarity": "Mythic",
+        "generation": 3,
+        "class": "Archer",
+        "description": "Mythic-quality Generation 3 Archer hero. Specializes in AoE damage, stuns, silencing, and strong expedition and conquest buffs.",
+        "unlock_methods": [
+            "Strongest Governor",
+            "Swordland Showdown Shop",
+            "Hero Rally",
+            "Kingdom of Power"
+        ],
+        "stats": {
+            "attack": 4045,
+            "defense": 3330,
+            "health": 24974
+        },
+        "skills": [
+            {
+                "name": "Fatal Attraction",
+                "description": "Deals Attack * 224% AoE damage and stuns enemies for 2 seconds.",
+                "upgrade_preview": {
+                    "area_of_effect_damage_up": [
+                        "160%",
+                        "176%",
+                        "192%",
+                        "208%",
+                        "224%"
+                    ]
+                }
+            },
+            {
+                "name": "Game of Chance",
+                "description": "Either deals Attack * 300% damage or heals the target for Attack * 50%.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "220%",
+                        "240%",
+                        "260%",
+                        "280%",
+                        "300%"
+                    ]
+                }
+            },
+            {
+                "name": "Rumormonger",
+                "description": "Increases enemy damage taken by 30% for 3 seconds.",
+                "upgrade_preview": {
+                    "enemy_damage_taken_up": [
+                        "1%",
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Archer units.",
+                "effects": {
+                    "archer_attack": "+290.23%",
+                    "archer_defense": "+290.23%"
+                }
+            },
+            {
+                "name": "The Tempest",
+                "description": "20% chance to increase squad damage by 40% for 3 turns.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "8%",
+                        "16%",
+                        "24%",
+                        "32%",
+                        "40%"
+                    ]
+                }
+            },
+            {
+                "name": "The Resistance",
+                "description": "20% chance to reduce enemy lethality by 50% for 2 turns.",
+                "upgrade_preview": {
+                    "enemy_lethality_down": [
+                        "10%",
+                        "20%",
+                        "30%",
+                        "40%",
+                        "50%"
+                    ]
+                }
+            },
+            {
+                "name": "The Celebration",
+                "description": "Increases total squads’ Health by 25%.",
+                "upgrade_preview": {
+                    "health_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Sound of Silence",
+                "description": "Conquest Skill: Silences target for 5s and deals Attack * 300% damage.",
+                "upgrade_preview": {
+                    "skill_prevention_duration": [
+                        "3s",
+                        "3.5s",
+                        "4s",
+                        "4.5s",
+                        "5s"
+                    ],
+                    "damage_up": [
+                        "220%",
+                        "240%",
+                        "260%",
+                        "280%",
+                        "300%"
+                    ]
+                }
+            },
+            {
+                "name": "Hymn to Survival",
+                "description": "Expedition Skill: Increases Defender Squads’ Health by 15%.",
+                "upgrade_preview": {
+                    "defender_squads_health_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            }
+        ],
+        "exclusive_gear": {
+            "name": "Wanderwail",
+            "max_level_stats": {
+                "power": 315000,
+                "hero_attack": 764,
+                "hero_defense": 630,
+                "hero_health": 4725,
+                "escort_attack": 254,
+                "escort_defense": 210,
+                "escort_health": 1575,
+                "archer_lethality": "+70%",
+                "archer_health": "+70%"
+            }
+        }
+    },
+    {
+        "name": "Eric",
+        "rarity": "Mythic",
+        "generation": 3,
+        "class": "Infantry",
+        "description": "Mythic-quality Generation 3 Infantry hero. Specializes in stuns, defense stacking, and strong expedition and conquest buffs.",
+        "unlock_methods": [
+            "Hall of Heroes",
+            "Swordland Showdown Shop"
+        ],
+        "stats": {
+            "attack": 2554,
+            "defense": 3330,
+            "health": 49950
+        },
+        "skills": [
+            {
+                "name": "Ground Shock",
+                "description": "Deals Attack * 168% damage and reduces enemy Attack Speed by 50% for 4 seconds.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "120%",
+                        "132%",
+                        "144%",
+                        "156%",
+                        "168%"
+                    ]
+                }
+            },
+            {
+                "name": "Veterancy",
+                "description": "16% chance when hit to increase Defense by 20% for 2 seconds (max 5 stacks).",
+                "upgrade_preview": {
+                    "probability_up": [
+                        "8%",
+                        "10%",
+                        "12%",
+                        "14%",
+                        "16%"
+                    ],
+                    "defense_up": [
+                        "8%",
+                        "11%",
+                        "14%",
+                        "17%",
+                        "20%"
+                    ]
+                }
+            },
+            {
+                "name": "Hammer of Justice",
+                "description": "Deals Attack * 112% damage in a fan arc with a 30% chance to stun for 1 second.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "80%",
+                        "88%",
+                        "96%",
+                        "104%",
+                        "112%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Infantry units.",
+                "effects": {
+                    "infantry_attack": "+290.23%",
+                    "infantry_defense": "+290.23%"
+                }
+            },
+            {
+                "name": "Holy Warrior",
+                "description": "Reduces total enemy squads’ Attack by 20%.",
+                "upgrade_preview": {
+                    "enemy_troop_attack_down": [
+                        "4%",
+                        "8%",
+                        "12%",
+                        "16%",
+                        "20%"
+                    ]
+                }
+            },
+            {
+                "name": "Conviction",
+                "description": "Reduces squads’ damage taken by 20%.",
+                "upgrade_preview": {
+                    "damage_taken_down": [
+                        "4%",
+                        "8%",
+                        "12%",
+                        "16%",
+                        "20%"
+                    ]
+                }
+            },
+            {
+                "name": "Exhortation",
+                "description": "Increases total squads’ Health by 25%.",
+                "upgrade_preview": {
+                    "health_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Blessed Hammer",
+                "description": "Conquest Skill: Increases damage by 30%.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Vanguard",
+                "description": "Expedition Skill: Increases Defender Squad Defense by 15%.",
+                "upgrade_preview": {
+                    "defender_defense_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            }
+        ],
+        "exclusive_gear": {
+            "name": "Anvil of Truth",
+            "max_level_stats": {
+                "power": 315000,
+                "hero_attack": 482,
+                "hero_defense": 630,
+                "hero_health": 9450,
+                "escort_attack": 161,
+                "escort_defense": 210,
+                "escort_health": 3150,
+                "infantry_lethality": "+70%",
+                "infantry_health": "+70%"
+            }
+        }
+    },
+    {
+        "name": "Margot",
+        "rarity": "Mythic",
+        "generation": 4,
+        "class": "Cavalry",
+        "description": "Mythic-quality Generation 4 Cavalry hero. Specializes in AoE burst, dodge mechanics, extra attacks, and strong expedition and conquest buffs.",
+        "unlock_methods": [
+            "Hall of Heroes",
+            "Swordland Showdown Shop"
+        ],
+        "stats": {
+            "attack": 4106,
+            "defense": 4106,
+            "health": 41070
+        },
+        "skills": [
+            {
+                "name": "Ambush",
+                "description": "Deals Attack * 420% Area of Effect damage.",
+                "upgrade_preview": {
+                    "area_of_effect_damage_up": [
+                        "300%",
+                        "330%",
+                        "360%",
+                        "390%",
+                        "420%"
+                    ]
+                }
+            },
+            {
+                "name": "Parry",
+                "description": "25% chance to parry and avoid all damage.",
+                "upgrade_preview": {
+                    "dodge_probability_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Stiletto",
+                "description": "Deals Attack * 140% damage and immobilizes the target for 1.5s.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "100%",
+                        "110%",
+                        "120%",
+                        "130%",
+                        "140%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Cavalry units.",
+                "effects": {
+                    "cavalry_attack": "+370.29%",
+                    "cavalry_defense": "+370.29%"
+                }
+            },
+            {
+                "name": "Warbringer",
+                "description": "Increases total Squads’ Attack by 25%.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Subterfuge",
+                "description": "Grants all squads a 20% chance to dodge Normal Attacks.",
+                "upgrade_preview": {
+                    "dodge_probability_up": [
+                        "4%",
+                        "8%",
+                        "12%",
+                        "16%",
+                        "20%"
+                    ]
+                }
+            },
+            {
+                "name": "Sleight Hand",
+                "description": "25% chance for Cavalry to perform an extra attack dealing 200% damage.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "120%",
+                        "140%",
+                        "160%",
+                        "180%",
+                        "200%"
+                    ]
+                }
+            },
+            {
+                "name": "Indefensible",
+                "description": "Conquest Skill: 40% chance to launch a second Normal Attack dealing Attack * 45% damage.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "25%",
+                        "30%",
+                        "35%",
+                        "40%",
+                        "45%"
+                    ]
+                }
+            },
+            {
+                "name": "Pugilist",
+                "description": "Expedition Skill: Increases Defender Squads’ Lethality by 15%.",
+                "upgrade_preview": {
+                    "defender_lethality_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            }
+        ],
+        "exclusive_gear": {
+            "name": "Revel Fang",
+            "max_level_stats": {
+                "power": 416250,
+                "hero_attack": 832,
+                "hero_defense": 832,
+                "hero_health": 8325,
+                "escort_attack": 277,
+                "escort_defense": 277,
+                "escort_health": 2775,
+                "cavalry_lethality": "+92.50%",
+                "cavalry_health": "+92.50%"
+            }
+        }
+    },
+    {
+        "name": "Alcar",
+        "rarity": "Mythic",
+        "generation": 4,
+        "class": "Infantry",
+        "description": "Mythic-quality Generation 4 Infantry hero. Specializes in invulnerability, damage reduction, healing, and powerful expedition and conquest buffs.",
+        "unlock_methods": [
+            "Hero Rally",
+            "Strongest Governor",
+            "Kingdom of Power",
+            "Swordland Showdown Shop"
+        ],
+        "stats": {
+            "attack": 3150,
+            "defense": 4106,
+            "health": 61604
+        },
+        "skills": [
+            {
+                "name": "Glorious Mark",
+                "description": "Enters invulnerable state for 2s and reduces friendly squads’ damage taken by 70%.",
+                "upgrade_preview": {
+                    "friendly_damage_taken_down": [
+                        "30%",
+                        "40%",
+                        "50%",
+                        "60%",
+                        "70%"
+                    ]
+                }
+            },
+            {
+                "name": "Boneshatter",
+                "description": "Deals Attack * 98% damage in a line and increases enemy damage taken by 20% for 2s.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "70%",
+                        "77%",
+                        "84%",
+                        "91%",
+                        "98%"
+                    ]
+                }
+            },
+            {
+                "name": "Second Wind",
+                "description": "Glorious Mark restores Attack * 42% Health every second for 5s.",
+                "upgrade_preview": {
+                    "heal_up": [
+                        "30%",
+                        "33%",
+                        "36%",
+                        "39%",
+                        "42%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Infantry units.",
+                "effects": {
+                    "infantry_attack": "+370.29%",
+                    "infantry_defense": "+370.29%"
+                }
+            },
+            {
+                "name": "Rescuing Hands",
+                "description": "Reduces Infantry & Archer Damage Taken by 70% every 5 turns for 2 turns.",
+                "upgrade_preview": {
+                    "damage_taken_down": [
+                        "14%",
+                        "28%",
+                        "42%",
+                        "56%",
+                        "70%"
+                    ]
+                }
+            },
+            {
+                "name": "Praetorian Will",
+                "description": "Increases Infantry Damage Dealt by 100% and Cavalry/Archer Damage Dealt by 10%.",
+                "upgrade_preview": {
+                    "infantry_damage_up": [
+                        "20%",
+                        "40%",
+                        "60%",
+                        "80%",
+                        "100%"
+                    ],
+                    "cavalry_archer_damage_up": [
+                        "2%",
+                        "4%",
+                        "6%",
+                        "8%",
+                        "10%"
+                    ]
+                }
+            },
+            {
+                "name": "Capre Diem",
+                "description": "Increases Infantry Damage Dealt by 60% and enemy Damage Taken by 25% for 1 turn.",
+                "upgrade_preview": {
+                    "extra_damage_up": [
+                        "12%",
+                        "24%",
+                        "36%",
+                        "48%",
+                        "60%"
+                    ],
+                    "enemy_damage_taken_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Flagbearer",
+                "description": "Conquest Skill: Glorious Mark increases friendly Attack by 42% for 2.5s.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "30%",
+                        "33%",
+                        "36%",
+                        "39%",
+                        "42%"
+                    ]
+                }
+            },
+            {
+                "name": "Vow of Honor",
+                "description": "Expedition Skill: Increases Defender Squads’ Health by 15%.",
+                "upgrade_preview": {
+                    "defender_health_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            }
+        ],
+        "exclusive_gear": {
+            "name": "Praetorian Guard",
+            "max_level_stats": {
+                "power": 416250,
+                "hero_attack": 638,
+                "hero_defense": 832,
+                "hero_health": 12487,
+                "escort_attack": 212,
+                "escort_defense": 277,
+                "escort_health": 4162,
+                "infantry_lethality": "+92.50%",
+                "infantry_health": "+92.50%"
+            }
+        }
+    },
+    {
+        "name": "Rosa",
+        "rarity": "Mythic",
+        "generation": 4,
+        "class": "Archer",
+        "description": "Mythic-quality Generation 4 Archer hero. Specializes in debuff cleansing, AoE burst, healing reduction, and strong expedition and conquest buffs.",
+        "unlock_methods": [
+            "Hero Roulette",
+            "Swordland Showdown Shop"
+        ],
+        "stats": {
+            "attack": 4989,
+            "defense": 4106,
+            "health": 30802
+        },
+        "skills": [
+            {
+                "name": "Battle Focus",
+                "description": "Clears all debuffs for all squads, increases Attack by 7% for 5s, and grants debuff immunity.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "3%",
+                        "4%",
+                        "5%",
+                        "6%",
+                        "7%"
+                    ],
+                    "effect_duration": [
+                        "3s",
+                        "3.5s",
+                        "4s",
+                        "4.5s",
+                        "5s"
+                    ]
+                }
+            },
+            {
+                "name": "Flutterfang",
+                "description": "Deals Attack * 300% damage in a line.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "220%",
+                        "240%",
+                        "260%",
+                        "280%",
+                        "300%"
+                    ]
+                }
+            },
+            {
+                "name": "Swoon Chakra",
+                "description": "Reduces enemy Attack Speed by 3% and healing effects by 60%.",
+                "upgrade_preview": {
+                    "enemy_attack_speed_down": [
+                        "1%",
+                        "1.5%",
+                        "2%",
+                        "2.5%",
+                        "3%"
+                    ],
+                    "enemy_healing_down": [
+                        "40%",
+                        "45%",
+                        "50%",
+                        "55%",
+                        "60%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Archer units.",
+                "effects": {
+                    "archer_attack": "+370.29%",
+                    "archer_defense": "+370.29%"
+                }
+            },
+            {
+                "name": "Chaos Gambit",
+                "description": "40% chance to increase all Squads’ Damage Dealt by 50%.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "10%",
+                        "20%",
+                        "30%",
+                        "40%",
+                        "50%"
+                    ]
+                }
+            },
+            {
+                "name": "Rose of War",
+                "description": "Reduces enemy squads’ Damage Dealt by 20%.",
+                "upgrade_preview": {
+                    "enemy_damage_down": [
+                        "4%",
+                        "8%",
+                        "12%",
+                        "16%",
+                        "20%"
+                    ]
+                }
+            },
+            {
+                "name": "Golden Rhythm",
+                "description": "Increases Archers’ total Attack by 30%.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "6%",
+                        "12%",
+                        "18%",
+                        "24%",
+                        "30%"
+                    ]
+                }
+            },
+            {
+                "name": "Night Reverie",
+                "description": "Conquest Skill: After casting Battle Focus, increases Rosa’s Attack by 15% for the rest of the battle.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            },
+            {
+                "name": "Perihelion",
+                "description": "Expedition Skill: Increases Rally Squad Lethality by 15%.",
+                "upgrade_preview": {
+                    "rally_squad_lethality_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            }
+        ],
+        "exclusive_gear": {
+            "name": "Aeolian",
+            "max_level_stats": {
+                "power": 416250,
+                "hero_attack": 1010,
+                "hero_defense": 832,
+                "hero_health": 6243,
+                "escort_attack": 336,
+                "escort_defense": 277,
+                "escort_health": 2081,
+                "archer_lethality": "+92.50%",
+                "archer_health": "+92.50%"
+            }
+        }
+    },
+    {
+        "name": "Thrud",
+        "rarity": "Mythic",
+        "generation": 5,
+        "class": "Cavalry",
+        "description": "Mythic-quality Generation 5 Cavalry hero. Specializes in AoE burst, stuns, extra damage triggers, and strong expedition and conquest buffs.",
+        "unlock_methods": [
+            "Hero Rally",
+            "Strongest Governor",
+            "Kingdom of Power",
+            "Swordland Showdown Shop"
+        ],
+        "stats": {
+            "attack": 4928,
+            "defense": 4928,
+            "health": 49284
+        },
+        "skills": [
+            {
+                "name": "Axe Flurry",
+                "description": "Throws five axes at random targets (heroes first), dealing Attack * 84% AoE damage.",
+                "upgrade_preview": {
+                    "area_of_effect_damage_up": [
+                        "60%",
+                        "66%",
+                        "72%",
+                        "78%",
+                        "84%"
+                    ]
+                }
+            },
+            {
+                "name": "Brutal Throw",
+                "description": "Throws a spinning axe dealing Attack * 70% damage and stunning enemies for 1.5s.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "50%",
+                        "55%",
+                        "60%",
+                        "65%",
+                        "70%"
+                    ]
+                }
+            },
+            {
+                "name": "Feast of the Pack",
+                "description": "Increases all squads’ Attack by 5%.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "3%",
+                        "3.5%",
+                        "4%",
+                        "4.5%",
+                        "5%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Cavalry units.",
+                "effects": {
+                    "cavalry_attack": "+444.35%",
+                    "cavalry_defense": "+444.35%"
+                }
+            },
+            {
+                "name": "Battle Hunger",
+                "description": "Reduces Infantry & Archer damage taken by 15% and increases their damage dealt by 15%.",
+                "upgrade_preview": {
+                    "damage_taken_down": [
+                        "3%",
+                        "6%",
+                        "9%",
+                        "12%",
+                        "15%"
+                    ],
+                    "damage_up": [
+                        "3%",
+                        "6%",
+                        "9%",
+                        "12%",
+                        "15%"
+                    ]
+                }
+            },
+            {
+                "name": "Reckless Charge",
+                "description": "20% chance for Cavalry to deal 100% extra damage to all enemies.",
+                "upgrade_preview": {
+                    "extra_damage_up": [
+                        "20%",
+                        "40%",
+                        "60%",
+                        "80%",
+                        "100%"
+                    ]
+                }
+            },
+            {
+                "name": "Ancestral Guidance",
+                "description": "Every 4 Cavalry attacks: +25% damage dealt and -25% damage taken for all squads (2 turns).",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ],
+                    "damage_taken_down": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Berserker’s Edge",
+                "description": "Conquest Skill: Axe Flurry gains a 35% chance to stun targets for 1s.",
+                "upgrade_preview": {
+                    "stun_chance_up": [
+                        "25%",
+                        "27.5%",
+                        "30%",
+                        "32.5%",
+                        "35%"
+                    ],
+                    "stun_duration": [
+                        "0.6s",
+                        "0.7s",
+                        "0.8s",
+                        "0.9s",
+                        "1s"
+                    ]
+                }
+            },
+            {
+                "name": "Wolf-Kissed",
+                "description": "Expedition Skill: Increases Rally Squads’ Lethality by 15%.",
+                "upgrade_preview": {
+                    "rally_lethality_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            }
+        ],
+        "exclusive_gear": {
+            "name": "Bloodfang",
+            "max_level_stats": {
+                "power": 499500,
+                "hero_attack": 999,
+                "hero_defense": 999,
+                "hero_health": 9990,
+                "escort_attack": 333,
+                "escort_defense": 333,
+                "escort_health": 3330,
+                "cavalry_lethality": "+111.00%",
+                "cavalry_health": "+111.00%"
+            }
+        }
+    },
+    {
+        "name": "Long-Fei",
+        "rarity": "Mythic",
+        "generation": 5,
+        "class": "Infantry",
+        "description": "Mythic-quality Generation 5 Infantry hero. Specializes in attack speed bursts, damage reduction, extra damage, and strong expedition and conquest buffs.",
+        "unlock_methods": [
+            "Hero Roulette",
+            "Swordland Showdown Shop"
+        ],
+        "stats": {
+            "attack": 3780,
+            "defense": 4928,
+            "health": 73926
+        },
+        "skills": [
+            {
+                "name": "Ambrosia",
+                "description": "Gains 120% Attack Speed and immunity to control effects for 4s.",
+                "upgrade_preview": {
+                    "attack_speed_up": [
+                        "80%",
+                        "90%",
+                        "100%",
+                        "110%",
+                        "120%"
+                    ]
+                }
+            },
+            {
+                "name": "Above and Beyond",
+                "description": "Reduces damage taken by 60% when under 50% Health.",
+                "upgrade_preview": {
+                    "damage_taken_down": [
+                        "20%",
+                        "30%",
+                        "40%",
+                        "50%",
+                        "60%"
+                    ]
+                }
+            },
+            {
+                "name": "Mountain Mover",
+                "description": "Gains 48% Attack when under 50% Health.",
+                "upgrade_preview": {
+                    "attack_up": [
+                        "16%",
+                        "24%",
+                        "32%",
+                        "40%",
+                        "48%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Infantry units.",
+                "effects": {
+                    "infantry_attack": "+444.35%",
+                    "infantry_defense": "+444.35%"
+                }
+            },
+            {
+                "name": "Mighty Paragon",
+                "description": "40% chance to reduce all squads’ damage taken by 50%.",
+                "upgrade_preview": {
+                    "damage_taken_down": [
+                        "10%",
+                        "20%",
+                        "30%",
+                        "40%",
+                        "50%"
+                    ]
+                }
+            },
+            {
+                "name": "Celestial Sustenance",
+                "description": "Increases total Squads’ Defense by 25%.",
+                "upgrade_preview": {
+                    "defense_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Art of War",
+                "description": "25% chance for all squads to deal 200% extra damage.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "120%",
+                        "140%",
+                        "160%",
+                        "180%",
+                        "200%"
+                    ]
+                }
+            },
+            {
+                "name": "Strong Brew",
+                "description": "Conquest Skill: Extends Ambrosia by 1.5s and heals Long Fei for 15% of damage dealt.",
+                "upgrade_preview": {
+                    "health_up": [
+                        "7%",
+                        "9%",
+                        "11%",
+                        "13%",
+                        "15%"
+                    ]
+                }
+            },
+            {
+                "name": "Strategic Strike",
+                "description": "Expedition Skill: Increases Defender Squads’ Attack by 15%.",
+                "upgrade_preview": {
+                    "defender_attack_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            }
+        ],
+        "exclusive_gear": {
+            "name": "Immortal’s Flask",
+            "max_level_stats": {
+                "power": 499500,
+                "hero_attack": 765,
+                "hero_defense": 999,
+                "hero_health": 14985,
+                "escort_attack": 255,
+                "escort_defense": 333,
+                "escort_health": 4995,
+                "infantry_lethality": "+111.00%",
+                "infantry_health": "+111.00%"
+            }
+        }
+    },
+    {
+        "name": "Vivian",
+        "rarity": "Mythic",
+        "generation": 5,
+        "class": "Archer",
+        "description": "Mythic-quality Generation 5 Archer hero. Specializes in AoE burst, attack speed reduction, extra damage triggers, and strong expedition and conquest buffs.",
+        "unlock_methods": [
+            "Hall of Heroes",
+            "Swordland Showdown Shop"
+        ],
+        "stats": {
+            "attack": 5987,
+            "defense": 4928,
+            "health": 36962
+        },
+        "skills": [
+            {
+                "name": "Gilded Barrage",
+                "description": "Deals Attack * 252% AoE damage to back row and reduces Attack Speed by 50% for 2s.",
+                "upgrade_preview": {
+                    "area_of_effect_damage_up": [
+                        "180%",
+                        "198%",
+                        "216%",
+                        "234%",
+                        "252%"
+                    ]
+                }
+            },
+            {
+                "name": "Lucky Strike",
+                "description": "Deals Attack * 140% damage with a 50% chance to deal double damage.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "100%",
+                        "110%",
+                        "120%",
+                        "130%",
+                        "140%"
+                    ]
+                }
+            },
+            {
+                "name": "Priceless Shot",
+                "description": "Deals Attack * 49% damage per second for 3s.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "35%",
+                        "38.5%",
+                        "42%",
+                        "45.5%",
+                        "49%"
+                    ]
+                }
+            },
+            {
+                "name": "Expedition",
+                "description": "Expedition stat boosts for Archer units.",
+                "effects": {
+                    "archer_attack": "+444.35%",
+                    "archer_defense": "+444.35%"
+                }
+            },
+            {
+                "name": "Crouching Tiger",
+                "description": "All squads’ attacks increase enemy damage taken by 25%.",
+                "upgrade_preview": {
+                    "enemy_damage_taken_up": [
+                        "5%",
+                        "10%",
+                        "15%",
+                        "20%",
+                        "25%"
+                    ]
+                }
+            },
+            {
+                "name": "Focus Fire",
+                "description": "Every 4 attacks: +100% extra damage and target takes +15% extra damage.",
+                "upgrade_preview": {
+                    "extra_damage_up": [
+                        "20%",
+                        "40%",
+                        "60%",
+                        "80%",
+                        "100%"
+                    ],
+                    "enemy_damage_taken_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            },
+            {
+                "name": "Trap of Greed",
+                "description": "Every 4 attacks: Archers deal +60% extra damage.",
+                "upgrade_preview": {
+                    "extra_damage_up": [
+                        "12%",
+                        "24%",
+                        "36%",
+                        "48%",
+                        "60%"
+                    ]
+                }
+            },
+            {
+                "name": "Refined Gunplay",
+                "description": "Conquest Skill: Deals Attack * 70% damage to a random enemy whenever Vivian casts a skill.",
+                "upgrade_preview": {
+                    "damage_up": [
+                        "50%",
+                        "55%",
+                        "60%",
+                        "65%",
+                        "70%"
+                    ]
+                }
+            },
+            {
+                "name": "Money Driven",
+                "description": "Expedition Skill: Increases Defender Squad Defense by 15%.",
+                "upgrade_preview": {
+                    "defender_defense_up": [
+                        "5%",
+                        "7.5%",
+                        "10%",
+                        "12.5%",
+                        "15%"
+                    ]
+                }
+            }
+        ],
+        "exclusive_gear": {
+            "name": "Lucky Spinner",
+            "max_level_stats": {
+                "power": 499500,
+                "hero_attack": 1212,
+                "hero_defense": 999,
+                "hero_health": 7494,
+                "escort_attack": 404,
+                "escort_defense": 333,
+                "escort_health": 2497,
+                "archer_lethality": "+111.00%",
+                "archer_health": "+111.00%"
+            }
+        }
+    }
+]

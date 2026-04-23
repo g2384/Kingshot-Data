@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Heroes Table</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background: #f2f2f2;
+        }
+
+        /* Rarity row backgrounds */
+        .rarity-rare {
+            background-color: #e0efff;
+        }
+
+        .rarity-epic {
+            background-color: #f0e6ff;
+        }
+
+        .rarity-legendary {
+            background-color: #fff3d6;
+        }
+
+        .rarity-mythic {
+            background-color: #ffe0e0;
+        }
+
+        /* Progress bar container */
+        .stat-bar {
+            position: relative;
+            height: 16px;
+            background: #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        /* Progress bar fill */
+        .stat-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #2e7d32);
+            border-radius: 8px;
+        }
+
+        /* Numbers inside bar */
+        .stat-label {
+            position: absolute;
+            top: 0;
+            left: 6px;
+            right: 6px;
+            font-size: 12px;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 0 0 4px rgb(0 0 0);
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+
+        .skills {
+            max-width: 300px;
+        }
+
+        .hero-avatar {
+            width: 60px;
+            height: 60px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .class-avatar {
+            height: 30px;
+        }
+
+        .unlock-method-icon {
+            height: 40px;
+            vertical-align: middle;
+            margin: 0 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Heroes</h2>
+
+    <table id="heroes-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Generation</th>
+                <th>Class</th>
+                <th>Attack</th>
+                <th>Defense</th>
+                <th>Health</th>
+                <th>Unlock Methods</th>
+                <th>Skills</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        fetch("heroes2.json")
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.querySelector("#heroes-table tbody");
+
+                // Extract max values for scaling
+                const maxAttack = Math.max(...data.map(h => h.stats.attack));
+                const maxDefense = Math.max(...data.map(h => h.stats.defense));
+                const maxHealth = Math.max(...data.map(h => h.stats.health));
+
+                // Mapping of unlock methods to images
+                const unlockMethodImages = {
+                    "Hero Roulette": {
+                        path: "images/events/hero-roulette.webp"
+                    },
+                    "Champion's Way": {
+                        path: "images/events/champions-way.webp"
+                    },
+                    "Swordland Showdown Shop": {
+                        path: "images/events/swordland-showdown.webp"
+                    },
+                    "Kingdom of Power":{
+                        path: "images/events/kingdom-of-power.webp"
+                    },
+                    "Strongest Governor":{
+                        path: "images/events/strongest-governor.webp"
+                    },
+                    "Hall of Governors":{
+                        path: "images/events/hall-of-governors.webp"
+                    }
+                    // Add more unlock methods here as needed
+                };
+
+                // Render unlock method as image or text
+                function renderUnlockMethod(method) {
+                    for (const key in unlockMethodImages) {
+                        if (method.startsWith(key)) {
+                            const img = unlockMethodImages[key];
+                            return `<img src="${img.path}" alt="${method}" class="unlock-method-icon">`;
+                        }
+                    }
+                    return method;
+                }
+
+                data.forEach(hero => {
+                    const row = document.createElement("tr");
+
+                    // Add rarity class to row
+                    row.classList.add("rarity-" + hero.rarity.toLowerCase());
+
+                    const skillsList = hero.skills.map(s => s.name).join(", ");
+
+                    row.innerHTML = `
+                    <td><img src="images/heroes/${hero.name}.webp" alt="${hero.name}" class="hero-avatar"><div>${hero.name}</div></td>
+                    <td>${hero.generation}</td>
+                    <td><img src="images/heroes/${hero.class}.webp" alt="${hero.class}" class="class-avatar"></td>
+
+                    <td class="stat-attack" data-value="${hero.stats.attack}"></td>
+                    <td class="stat-defense" data-value="${hero.stats.defense}"></td>
+                    <td class="stat-health" data-value="${hero.stats.health}"></td>
+                    <td>${hero.unlock_methods.map(m => renderUnlockMethod(m)).join(", ")}</td>
+                    <td class="skills">${skillsList}</td>
+                `;
+
+                    tbody.appendChild(row);
+                });
+
+                // Convert stat cells into progress bars
+                function applyBars(selector, maxValue) {
+                    document.querySelectorAll(selector).forEach(cell => {
+                        const value = parseInt(cell.dataset.value);
+                        const pct = (value / maxValue) * 100;
+
+                        cell.innerHTML = `
+                        <div class="stat-bar">
+                            <div class="stat-fill" style="width:${pct}%"></div>
+                            <div class="stat-label">
+                                <span>${value}</span>
+                            </div>
+                        </div>
+                    `;
+                    });
+                }
+
+                applyBars(".stat-attack", maxAttack);
+                applyBars(".stat-defense", maxDefense);
+                applyBars(".stat-health", maxHealth);
+            })
+            .catch(err => console.error("Error loading heroes2.json:", err));
+    </script>
+
+</body>
+
+</html>

@@ -320,6 +320,180 @@ lvl 22 Beast unlocked
 
 ### Gen 2 Hero unlocked
 
+## Day 45 (Tue 1028)
+
+### Fishing Tournament
+
+### Sanctuary Battle
+
+## Day 46 (Wed 1029)
+
+### Desert Trial
+
+### War preparation
+
+### Halloween Party
+
+## Day 47 (Thursday)
+
+## Day 48 (Friday 1031)
+
+## City Development
+
+## Day 49 (1101 Saturday)
+
+??
+
+## Day 50 (1102 Sunday)
+
+### Grow your heroes
+
+## Day 51 (1103 Monday)
+
+### Alliance Championship
+
+## Day 52 (1104 tue)
+
+### Eternity's Reach
+
+### Defeat nearby beasts
+
+### Viking vengeance
+
+### Hero roulette
+
+### Sanctuary Battle
+
+## Day 53 (1105 Wed)
+
+## Day 54 (1106 Thur)
+
+### Castle Battle
+
+### Merchant Empire
+
+## Day 55 (1107 Fri)
+
+### All Out
+
+## Day 56 (1108 Sat)
+
+### Cesares Fury
+
+## Day 57 (1109 Sun)
+
+## Day 58 (1110 Mon)
+
+### Alliance Championship
+
+### Swordland SHowdown
+
+### Working Overtime
+
+### Alliance Mobilization
+
+## Day 59
+
+### Sanctuary Battle
+
+### Call of the Soverign
+
+## Day 60 (1112 Wed)
+
+### Desert Trial
+
+### Stand of Arms
+
+## Day 61
+
+## Day 62 (1114 Fri)
+
+### Mystic Divination
+
+### Power Up
+
+## Day 63 (1115)
+
+## Day 64 (1116 Sun)
+
+### Grow  your heroes
+
+## Day 65 (1117)
+
+### Hall of Governors
+
+### Alliance Championship
+
+## Day 66 (1118 Tue)
+
+### Eternity's Reach
+
+### Defeat nearby beasts
+
+### Viking Vengeance
+
+### Hero Roulette
+
+### Sanctuary Battle
+
+## Day 67 (1119 Wed)
+
+## Day 68 (1120 Thurs)
+
+## Day 69 (1121 Fri)
+
+### All Out
+
+## Day 70 (1122 Sat)
+
+## Castle Battle
+
+## Day 71 (1123 Sun)
+
+Bear hunt rewards have lucky chest
+
+## Day 72
+
+## Day 73 (25)
+
+### Fishing Tournament
+
+## Day 74 (26 Wed)
+
+### Officier Project
+
+## Day 75
+
+## Day 76 (28 Fri)
+
+## Day 77 (29)
+
+### Cesares Fury
+
+## Day 78 (30)
+
+### Officer Project (Charm Design)
+
+## Day 79 (1201 Mon)
+
+### Golden Glaives
+
+### Viking
+
+### Hero Roulette
+
+### Eternity's Reach
+
+### Defeat nearby beasts
+
+### Sanctuary Battle
+
+## Day 80
+
+## Day 81 (1203 Wed)
+
+### Buccaneer Bounty
+
 ---
 
 ## Day 54 (0829 Friday, Week 8)
@@ -855,6 +1029,185 @@ Earn Fortune Tokens by completing Daily Missions or by buying Fortune Token Pack
 
 ### Gen 3 heros appear in swordland shop
 
+## Day 114 (1028)
+
+### Fishing Tournament
+
+### Sanctuary Battle
+
+## Day 115 (1029 Wed)
+
+### Halloween Party
+
+### Desert Trial
+
+### Office Project (Mythic General Decoration Component)
+
+## Day 116 (1030)
+
+### ??
+
+## Day 117 (1031)
+
+### ??
+
+## Day 118 (1101)
+
+### Cesares Fury
+
+### Kingdom of Power
+
+## Day 119 (1102)
+
+### Officer Project
+
+## Day 120 (1103 Mon)
+
+### Golden Glaives
+
+### Alliance Championship
+
+## Day 121 (1104 Tue)
+
+### Eternity's Reach
+
+### Defeat nearby beasts
+
+### Hero Roulette
+
+### Viking Vengeance
+
+### Sanctuary Battle
+
+## Day 122 (1105 Wed)
+
+## Day 123 (1106 Thurs)
+
+## Day 124 (1107 Fri)
+
+## Day 125 (1108 Sat)
+
+Castle Battle
+
+## Day 126 (1109 Sun)
+
+## Day 127 (1110 Mon)
+
+### Alliance Brawl
+
+### Alliance Championship
+
+### Swordland Showdown
+
+### Armament Competition (Artisan's Vision)
+
+### Merchant Empire
+
+Duration 1110 - 1116
+
+## Day 128
+
+### Call of the Sovereign
+
+102 points without paying, true gold
+
+### Sanctuary Battle
+
+## Day 129 (1112 Wed)
+
+### Office Project (ForgeHammer)
+
+### Desert Trial
+
+## Day 130 (1113)
+
+## Day 131 (1114)
+
+### Mystic Divination
+
+### Armament Competition
+
+## Day 132 (1115)
+
+## Day 133 (1116)
+
+### Office Project (charm design)
+
+## Day 134 (1117 Monday)
+
+### Golden Glaives
+
+### Strongest Governor
+
+### Alliance Championship
+
+## Day 135 (1118 Tue)
+
+### Eternity's Reach
+
+### Defeat nearby beasts
+
+### Viking Vengeance
+
+### Hero Roulette
+
+### Sanctuary Battle
+
+## Day 136 (1119 Wed)
+
+## Day 137 (1120 Thurs)
+
+## Day 138 (1121 Fri)
+
+### All Out
+
+### Tryegold Refinement
+
+Duration: 2 days.
+
+Deal
+
+## Day 139 (1122 Sat)
+
+### Cesares Fury
+
+### Castle Battle
+
+## Day 140 (23 Sun)
+
+## Day 141 (24 Mon)
+
+## Day 142 (25 Tue)
+
+### Fishing Tournament
+
+## Day 143 (Wed)
+
+### Officer Project (hammer)
+
+## Day 144 (Thur)
+
+## Day 145 (Fri)
+
+### Buccaneer Bounty
+
+## Day 146 (Sat)
+
+## Day 147 (Sun)
+
+## Day 148 (Mon)
+
+### Golden Glaives
+
+### Viking
+
+### Hero Roulette
+
+### Eternity's Reach
+
+### Defeat nearby beasts
+
+### Sanctuary Battle
 ----
 
 ## Special Events
