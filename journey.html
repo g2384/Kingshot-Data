@@ -1,0 +1,402 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journey Options</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      color: #eaeaea;
+      background: #0f1117;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+    }
+
+    .table-wrap {
+      width: min(100%, 1200px);
+      overflow-x: auto;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      background: rgba(14, 16, 23, 0.95);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    thead {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    th,
+    td {
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    td:first-child {
+      font-weight: 600;
+      color: #c8d3ff;
+      width: 24%;
+      vertical-align: middle;
+      text-align: center;
+      padding: 16px 18px;
+    }
+
+    .screenshot-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .screenshot-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      display: block;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .screenshot-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #c8d3ff;
+      text-align: center;
+      word-break: break-word;
+    }
+
+    td:nth-child(2) {
+      width: 44%;
+      font-weight: 600;
+      color: #c8d3ff;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    td:nth-child(3) {
+      width: 32%;
+      font-weight: 600;
+      color: #c8d3ff;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .note {
+      padding: 0.85rem 1rem;
+      color: #b9bdc9;
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.04);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Screenshot</th>
+          <th>Option</th>
+          <th>Reward</th>
+        </tr>
+      </thead>
+      <tbody id="journey-body"></tbody>
+    </table>
+    <div class="note">Data is defined in inline JSON and rendered dynamically with row spans for multi-option screenshot
+      entries.</div>
+  </div>
+
+  <script id="journey-data" type="application/json">
+  [
+    {
+      "title": "Rock-Paper-Scissors Challenge",
+      "screenshot": "rock-paper-scissors.jpg",
+      "options": [
+        {"option": "Win", "reward": "2000 Gem (1st time always win), 2nd time: 60 Master's Manuscript"},
+        {"option": "Lose", "reward": ""},
+        {"option": "Tie", "reward": "40 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Vikings",
+      "screenshot": "vikings.jpg",
+      "options": [
+        {"option": "I won't pretend I didn't see that", "reward": ""},
+        {"option": "I don't have time for distractions", "reward": "2 Silver Goblet"}
+      ]
+    },
+    {
+      "title": "Vikings",
+      "screenshot": "vikings.jpg",
+      "options": [
+        {"option": "Face them head-on", "reward": ""},
+        {"option": "Use your wits", "reward": "40 Master's Manuscript"},
+        {"option": "Leave", "reward": "30 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Beast",
+      "screenshot": "beast.jpg",
+      "options": [
+        {"option": "Hunt vinegar-stealing beast", "reward": ""},
+        {"option": "I'll get it elsewhere", "reward": "3 Silver Goblet"}
+      ]
+    },
+    {
+      "title": "Olive",
+      "screenshot": "olive.jpg",
+      "options": [
+        {"option": "A true warrior does not deny a damsel in distress", "reward": ""},
+        {"option": "...Is that all?", "reward": "3 Silver Goblet"}
+      ]
+    },
+    {
+      "title": "Bear",
+      "screenshot": "bear.jpg",
+      "options": [
+        {"option": "Flank it", "reward": ""},
+        {"option": "Attack frontally", "reward": "30 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Mercenaries",
+      "screenshot": "mercenaries.jpg",
+      "options": [
+        {"option": "Suggest flanking", "reward": "100 Master's Manuscript"},
+        {"option": "Suggest supply sabotage", "reward": "70 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Bear cub",
+      "screenshot": "bear-cub.jpg",
+      "options": [
+        {"option": "Entrust it to someone's care", "reward": ""},
+        {"option": "Focus on the beast", "reward": "50 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Vikings",
+      "screenshot": "vikings2.jpg",
+      "options": [
+        {"option": "Face them head-on", "reward": "50 Master's Manuscript"},
+        {"option": "Use your wits", "reward": ""},
+        {"option": "Leave", "reward": ""}
+      ]
+    },
+    {
+      "title": "Hilde",
+      "screenshot": "hilde.jpg",
+      "options": [
+        {"option": "Make further inquiries", "reward": ""},
+        {"option": "Think of a way forward", "reward": "50 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Rebels, Caseras soldiers, Vikings",
+      "screenshot": "caseras-soldiers.jpg",
+      "options": [
+        {"option": "Fight", "reward": "50 Master's Manuscript"},
+        {"option": "Better run", "reward": "30 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Merchant",
+      "screenshot": "merchant.jpg",
+      "options": [
+        {"option": "Give directions", "reward": ""},
+        {"option": "I can't help", "reward": "30 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Beast",
+      "screenshot": "beast2.jpg",
+      "options": [
+        {"option": "Leave", "reward": "100 Master's Manuscript"},
+        {"option": "Hunt it", "reward": "70 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Signpost",
+      "screenshot": "signpost.jpg",
+      "options": [
+        {"option": "Fix sign", "reward": "20 Master's Manuscript"},
+        {"option": "Leave", "reward": "10 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Survivor",
+      "screenshot": "survivor.jpg",
+      "options": [
+        {"option": "Offer help", "reward": ""},
+        {"option": "Not my fight", "reward": "70 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Zoe & Pan",
+      "screenshot": "zoe-pan.jpg",
+      "options": [
+        {"option": "Listen to Pan's account", "reward": ""},
+        {"option": "Listen to Zoe's account", "reward": "1 Pan's Emblem"}
+      ]
+    },
+    {
+      "title": "Treasure",
+      "screenshot": "treasure.jpg",
+      "options": [
+        {"option": "Keep it all", "reward": "50 Master's Manuscript"},
+        {"option": "Share with survivors", "reward": "30 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Treasure, Roman",
+      "screenshot": "treasure-roman.jpg",
+      "options": [
+        {"option": "Trade", "reward": "80 Master's Manuscript"},
+        {"option": "No thanks", "reward": "20 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Edwin treasure trade",
+      "screenshot": "edwin-treasure-trade.jpg",
+      "options": [
+        {"option": "Trade", "reward": "50 Master's Manuscript"},
+        {"option": "No thanks", "reward": "30 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Survivor: Orphanage needs bread and medicine",
+      "screenshot": "survivor2.jpg",
+      "options": [
+        {"option": "Donate supplies", "reward": "50 Master's Manuscript"},
+        {"option": "Leave", "reward": "30 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Start cooking",
+      "screenshot": "start-cooking.jpg",
+      "options": [
+        {"option": "Perfect", "reward": "5 Silver Goblet"},
+        {"option": "Victory", "reward": "3 Silver Goblet"},
+        {"option": "Failed", "reward": "1 Silver Goblet"}
+      ]
+    },
+    {
+      "title": "Custom lock",
+      "screenshot": "custom-lock.jpg",
+      "options": [
+        {"option": "Break open", "reward": ""},
+        {"option": "Disarm", "reward": "200 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Wounded lion",
+      "screenshot": "wounded-lion.jpg",
+      "options": [
+        {"option": "Give food", "reward": ""},
+        {"option": "Leave", "reward": "30 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Vikings",
+      "screenshot": "vikings3.jpg",
+      "options": [
+        {"option": "Drive bandits away", "reward": ""},
+        {"option": "Go around", "reward": "30 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Stolen goods",
+      "screenshot": "stolen-goods.jpg",
+      "options": [
+        {"option": "I'll help you", "reward": ""},
+        {"option": "There's nothing I can do", "reward": "30 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Petra: Something fun going on?",
+      "screenshot": "petra.jpg",
+      "options": [
+        {"option": "Tell my fortune for today", "reward": ""},
+        {"option": "Ever heard of the Arena Championship?", "reward": ""},
+        {"option": "Come lend a hand. We've got work to do.", "reward": "50 Master's Manuscript"}
+      ]
+    },
+    {
+      "title": "Survivor: Give me a hand",
+      "screenshot": "survivor-give-me-a-hand.jpg",
+      "options": [
+        {"option": "Help out", "reward": "50 Master's Manuscript"},
+        {"option": "Keep going", "reward": ""}
+      ]
+    }
+  ]
+  </script>
+
+  <script>
+    const data = JSON.parse(document.getElementById('journey-data').textContent);
+    const tbody = document.getElementById('journey-body');
+
+    data.forEach(entry => {
+      entry.options.forEach((item, index) => {
+        const row = document.createElement('tr');
+        if (index === 0) {
+          const screenshotCell = document.createElement('td');
+          const container = document.createElement('div');
+          container.className = 'screenshot-container';
+
+          const title = document.createElement('div');
+          title.className = 'screenshot-title';
+          title.textContent = entry.title;
+
+          const img = document.createElement('img');
+          img.src = `images/journey/${entry.screenshot}`;
+          img.alt = entry.title;
+
+          container.appendChild(title);
+          container.appendChild(img);
+          screenshotCell.appendChild(container);
+          screenshotCell.rowSpan = entry.options.length;
+          row.appendChild(screenshotCell);
+        }
+        const optionCell = document.createElement('td');
+        optionCell.textContent = item.option;
+        const rewardCell = document.createElement('td');
+        rewardCell.textContent = item.reward;
+        row.appendChild(optionCell);
+        row.appendChild(rewardCell);
+        tbody.appendChild(row);
+      });
+    });
+  </script>
+</body>
+
+</html>
