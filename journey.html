@@ -105,6 +105,11 @@
       text-align: center;
     }
 
+    .best {
+      color: #ffd700;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+    }
+
     tr:hover td {
       background: rgba(255, 255, 255, 0.02);
     }
@@ -139,7 +144,7 @@
       "title": "Rock-Paper-Scissors Challenge",
       "screenshot": "rock-paper-scissors.webp",
       "options": [
-        {"option": "Win", "reward": "2000 Gem (1st time always win), 2nd time: 60 Master's Manuscript"},
+        {"option": "Win", "reward": "2000 Gem (1st time always win), 2nd time: 60 Master's Manuscript", "isBest": true},
         {"option": "Lose", "reward": ""},
         {"option": "Tie", "reward": "40 Master's Manuscript"}
       ]
@@ -154,9 +159,9 @@
     },
     {
       "title": "Vikings",
-      "screenshot": "vikings.webp",
+      "screenshot": "vikings2.webp",
       "options": [
-        {"option": "Face them head-on", "reward": "50 Master's Manuscript"},
+        {"option": "Face them head-on", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "Use your wits", "reward": "40 Master's Manuscript"},
         {"option": "Leave", "reward": "30 Master's Manuscript"}
       ]
@@ -189,7 +194,7 @@
       "title": "Mercenaries",
       "screenshot": "mercenaries.webp",
       "options": [
-        {"option": "Suggest flanking", "reward": "100 Master's Manuscript"},
+        {"option": "Suggest flanking", "reward": "100 Master's Manuscript", "isBest": true},
         {"option": "Suggest supply sabotage", "reward": "70 Master's Manuscript"}
       ]
     },
@@ -199,15 +204,6 @@
       "options": [
         {"option": "Entrust it to someone's care", "reward": ""},
         {"option": "Focus on the beast", "reward": "50 Master's Manuscript"}
-      ]
-    },
-    {
-      "title": "Vikings",
-      "screenshot": "vikings2.webp",
-      "options": [
-        {"option": "Face them head-on", "reward": "50 Master's Manuscript"},
-        {"option": "Use your wits", "reward": ""},
-        {"option": "Leave", "reward": ""}
       ]
     },
     {
@@ -222,7 +218,7 @@
       "title": "Rebels, Caseras soldiers, Vikings",
       "screenshot": "caseras-soldiers.webp",
       "options": [
-        {"option": "Fight", "reward": "50 Master's Manuscript"},
+        {"option": "Fight", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "Better run", "reward": "30 Master's Manuscript"}
       ]
     },
@@ -230,7 +226,7 @@
       "title": "Merchant",
       "screenshot": "merchant.webp",
       "options": [
-        {"option": "Give directions", "reward": "50 Master's Manuscript"},
+        {"option": "Give directions", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "I can't help", "reward": "30 Master's Manuscript"}
       ]
     },
@@ -238,7 +234,7 @@
       "title": "Beast",
       "screenshot": "beast2.webp",
       "options": [
-        {"option": "Leave", "reward": "100 Master's Manuscript"},
+        {"option": "Leave", "reward": "100 Master's Manuscript", "isBest": true},
         {"option": "Hunt it", "reward": "70 Master's Manuscript"}
       ]
     },
@@ -246,7 +242,7 @@
       "title": "Signpost",
       "screenshot": "signpost.webp",
       "options": [
-        {"option": "Fix sign", "reward": "20 Master's Manuscript"},
+        {"option": "Fix sign", "reward": "20 Master's Manuscript", "isBest": true},
         {"option": "Leave", "reward": "10 Master's Manuscript"}
       ]
     },
@@ -270,7 +266,7 @@
       "title": "Treasure",
       "screenshot": "treasure.webp",
       "options": [
-        {"option": "Keep it all", "reward": "50 Master's Manuscript"},
+        {"option": "Keep it all", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "Share with survivors", "reward": "30 Master's Manuscript"}
       ]
     },
@@ -278,7 +274,7 @@
       "title": "Treasure, Roman",
       "screenshot": "treasure-roman.webp",
       "options": [
-        {"option": "Trade", "reward": "80 Master's Manuscript"},
+        {"option": "Trade", "reward": "80 Master's Manuscript", "isBest": true},
         {"option": "No thanks", "reward": "20 Master's Manuscript"}
       ]
     },
@@ -286,7 +282,7 @@
       "title": "Edwin treasure trade",
       "screenshot": "edwin-treasure-trade.webp",
       "options": [
-        {"option": "Trade", "reward": "50 Master's Manuscript"},
+        {"option": "Trade", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "No thanks", "reward": "30 Master's Manuscript"}
       ]
     },
@@ -294,7 +290,7 @@
       "title": "Survivor: Orphanage needs bread and medicine",
       "screenshot": "survivor2.webp",
       "options": [
-        {"option": "Donate supplies", "reward": "50 Master's Manuscript"},
+        {"option": "Donate supplies", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "Leave", "reward": "30 Master's Manuscript"}
       ]
     },
@@ -302,7 +298,7 @@
       "title": "Gordon Start cooking",
       "screenshot": "gordon-cooking.webp",
       "options": [
-        {"option": "Perfect", "reward": "50 Master's Manuscript"},
+        {"option": "Perfect", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "Victory", "reward": "40 Master's Manuscript"},
         {"option": "Failed", "reward": "1 Silver Goblet?"}
       ]
@@ -311,7 +307,7 @@
       "title": "Valora/Pan Start cooking",
       "screenshot": "valora-cooking.webp",
       "options": [
-        {"option": "Perfect", "reward": "5 Silver Goblet"},
+        {"option": "Perfect", "reward": "5 Silver Goblet", "isBest": true},
         {"option": "Victory", "reward": "3 Silver Goblet"},
         {"option": "Failed", "reward": "1 Silver Goblet"}
       ]
@@ -321,14 +317,14 @@
       "screenshot": "custom-lock.webp",
       "options": [
         {"option": "Break open", "reward": "150 Master's Manuscript"},
-        {"option": "Disarm**", "reward": "200 Master's Manuscript"}
+        {"option": "Disarm**", "reward": "200 Master's Manuscript", "isBest": true}
       ]
     },
     {
       "title": "Wounded lion",
       "screenshot": "wounded-lion.webp",
       "options": [
-        {"option": "Give food", "reward": "50 Master's Manuscript"},
+        {"option": "Give food", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "Leave", "reward": "30 Master's Manuscript"}
       ]
     },
@@ -336,7 +332,7 @@
       "title": "Vikings",
       "screenshot": "vikings3.webp",
       "options": [
-        {"option": "Drive bandits away", "reward": "50 Master's Manuscript"},
+        {"option": "Drive bandits away", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "Go around", "reward": "30 Master's Manuscript"}
       ]
     },
@@ -344,7 +340,7 @@
       "title": "Stolen goods",
       "screenshot": "stolen-goods.webp",
       "options": [
-        {"option": "I'll help you", "reward": "50 Master's Manuscript"},
+        {"option": "I'll help you", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "There's nothing I can do", "reward": "30 Master's Manuscript"}
       ]
     },
@@ -352,7 +348,7 @@
       "title": "Transporter Captian",
       "screenshot": "transporter-captian.webp",
       "options": [
-        {"option": "Pay full price", "reward": "100 Master's Manuscript"},
+        {"option": "Pay full price", "reward": "100 Master's Manuscript", "isBest": true},
         {"option": "Haggle", "reward": ""}
       ]
     },
@@ -369,7 +365,7 @@
       "title": "Survivor: Give me a hand",
       "screenshot": "survivor-give-me-a-hand.webp",
       "options": [
-        {"option": "Help out", "reward": "50 Master's Manuscript"},
+        {"option": "Help out", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "Keep going", "reward": "30 Master's Manuscript"}
       ]
     },
@@ -377,7 +373,7 @@
       "title": "Pan Fishing",
       "screenshot": "fishing.webp",
       "options": [
-        {"option": "Haul depth 100m", "reward": "150 Master's Manuscript"},
+        {"option": "Haul depth 100m", "reward": "150 Master's Manuscript", "isBest": true},
         {"option": "", "reward": ""}
       ]
     },
@@ -385,7 +381,7 @@
       "title": "Merlin Fishing",
       "screenshot": "fishing.webp",
       "options": [
-        {"option": "Haul depth 100m", "reward": "100 Master's Manuscript"},
+        {"option": "Haul depth 100m", "reward": "100 Master's Manuscript", "isBest": true},
         {"option": "", "reward": ""}
       ]
     },
@@ -394,7 +390,7 @@
       "screenshot": "viking-hero.webp",
       "options": [
         {"option": "Come on, fight me!", "reward": ""},
-        {"option": "Go in swinging", "reward": "70 Master's Manuscript"}
+        {"option": "Go in swinging", "reward": "70 Master's Manuscript", "isBest": true}
       ]
     },
     {
@@ -402,7 +398,7 @@
       "screenshot": "lynx.webp",
       "options": [
         {"option": "Step in", "reward": ""},
-        {"option": "Create a distraction", "reward": "40 Master's Manuscript"},
+        {"option": "Create a distraction", "reward": "40 Master's Manuscript", "isBest": true},
         {"option": "Leave", "reward": "30 Master's Manuscript"}
       ]
     },
@@ -411,7 +407,7 @@
       "screenshot": "vikings-back-off.webp",
       "options": [
         {"option": "Step in", "reward": ""},
-        {"option": "Walk away", "reward": "50 Master's Manuscript"}
+        {"option": "Walk away", "reward": "50 Master's Manuscript", "isBest": true}
       ]
     },
     {
@@ -419,14 +415,14 @@
       "screenshot": "broke.webp",
       "options": [
         {"option": "Go for Broke (Costs double Action Points)", "reward": ""},
-        {"option": "Test Their Nerve (Chance to scare enemies off)", "reward": "30 Master's Manuscript"}
+        {"option": "Test Their Nerve (Chance to scare enemies off)", "reward": "30 Master's Manuscript", "isBest": true}
       ]
     },
     {
       "title": "Beast blocks your path",
       "screenshot": "rhino.webp",
       "options": [
-        {"option": "Fight!", "reward": "100 Master's Manuscript"},
+        {"option": "Fight!", "reward": "100 Master's Manuscript", "isBest": true},
         {"option": "Hide", "reward": "70 Master's Manuscript"}
       ]
     }
@@ -463,6 +459,9 @@
         optionCell.textContent = item.option;
         const rewardCell = document.createElement('td');
         rewardCell.textContent = item.reward;
+        if (item.isBest) {
+          rewardCell.classList.add('best');
+        }
         row.appendChild(optionCell);
         row.appendChild(rewardCell);
         tbody.appendChild(row);
