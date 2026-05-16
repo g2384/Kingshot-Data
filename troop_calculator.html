@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Troop Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6fb;
+      color: #1f2937;
+    }
+    .page {
+      max-width: 780px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(39, 52, 78, 0.08);
+      padding: 26px;
+      margin-bottom: 24px;
+    }
+    h1,
+    h2 {
+      margin: 0 0 16px;
+    }
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: 700;
+      color: #334155;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 12px 14px;
+      margin-top: 8px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 16px;
+      color: #0f172a;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 20px;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 12px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1d4ed8;
+    }
+    .grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .row:last-child {
+      border-bottom: none;
+    }
+    .label {
+      color: #475569;
+    }
+    .value {
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .note {
+      margin-top: 14px;
+      color: #475569;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="card">
+      <h1>Troop Calculator</h1>
+      <p class="note">Enter your maximum deployment capacity and march queue count. The calculator will show Bear Hunt composition and Viking Exchange troop needs.</p>
+      <label for="capacity">Max Deployment Capacity</label>
+      <input id="capacity" type="number" min="1" value="1000" />
+      <label for="queue">March Queue Count</label>
+      <input id="queue" type="number" min="1" value="5" />
+      <button id="calculate">Calculate</button>
+    </div>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Bear Hunt</h2>
+        <div class="row"><span class="label">Total troops</span><span id="bear-total" class="value">0</span></div>
+        <div class="row"><span class="label">Infantry</span><span id="bear-infantry" class="value">0</span></div>
+        <div class="row"><span class="label">Cavalry</span><span id="bear-cavalry" class="value">0</span></div>
+        <div class="row"><span class="label">Archer</span><span id="bear-archer" class="value">0</span></div>
+        <p class="note">Bear Hunt uses full deployment capacity. Infantry and cavalry each take 10%, with archers making up the remaining 80%.</p>
+      </section>
+
+      <section class="card">
+        <h2>Viking Exchange</h2>
+        <div class="row"><span class="label">Total troops</span><span id="viking-total" class="value">0</span></div>
+        <div class="row"><span class="label">Infantry</span><span id="viking-infantry-total" class="value">0</span></div>
+        <div class="row"><span class="label">Cavalry</span><span id="viking-cavalry-total" class="value">0</span></div>
+        <div class="row"><span class="label">Archer</span><span id="viking-archer-total" class="value">0</span></div>
+        <p class="note">Viking Exchange prioritises infantry. Cavalry matches the Bear Hunt cavalry allocation and archer deployment is zero.</p>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>Combined Total</h2>
+      <div class="row"><span class="label">Infantry</span><span id="combined-infantry" class="value">0</span></div>
+      <div class="row"><span class="label">Cavalry</span><span id="combined-cavalry" class="value">0</span></div>
+      <div class="row"><span class="label">Archer</span><span id="combined-archer" class="value">0</span></div>
+      <div class="row"><span class="label">Total troops</span><span id="combined-total" class="value">0</span></div>
+      <p class="note">Combined totals use Viking infantry and cavalry, and Bear Hunt archers.</p>
+    </section>
+    
+    <section class="card">
+      <h2>Calculation Rules</h2>
+      <div class="row"><span class="label">Bear Hunt total</span><span class="value">capacity × queue</span></div>
+      <div class="row"><span class="label">Bear infantry</span><span class="value">⌊total × 0.10⌋</span></div>
+      <div class="row"><span class="label">Bear cavalry</span><span class="value">⌊total × 0.10⌋</span></div>
+      <div class="row"><span class="label">Bear archer</span><span class="value">total − infantry − cavalry</span></div>
+      <div class="row"><span class="label">Viking total</span><span class="value">capacity × queue</span></div>
+      <div class="row"><span class="label">Viking cavalry</span><span class="value">Bear cavalry</span></div>
+      <div class="row"><span class="label">Viking infantry</span><span class="value">total − cavalry</span></div>
+      <div class="row"><span class="label">Viking archer</span><span class="value">0</span></div>
+      <div class="row"><span class="label">Combined infantry</span><span class="value">Viking infantry</span></div>
+      <div class="row"><span class="label">Combined cavalry</span><span class="value">Bear cavalry</span></div>
+      <div class="row"><span class="label">Combined archer</span><span class="value">Bear archer</span></div>
+      <div class="row"><span class="label">Combined total</span><span class="value">infantry + cavalry + archer</span></div>
+    </section>
+  </main>
+
+  <script>
+    const capacityInput = document.getElementById("capacity");
+    const queueInput = document.getElementById("queue");
+    const calculateButton = document.getElementById("calculate");
+
+    const STORAGE_KEY = "troopCalculatorInputs";
+
+    function formatNumber(value) {
+      return Number.isFinite(value) ? value.toLocaleString() : "0";
+    }
+
+    function saveInputs(capacity, queue) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ capacity, queue }));
+      } catch (error) {
+        console.warn("Unable to save inputs:", error);
+      }
+    }
+
+    function loadInputs() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (!stored) return;
+        const parsed = JSON.parse(stored);
+        if (parsed && parsed.capacity) capacityInput.value = parsed.capacity;
+        if (parsed && parsed.queue) queueInput.value = parsed.queue;
+      } catch (error) {
+        console.warn("Unable to load cached inputs:", error);
+      }
+    }
+
+    function calculateTroops() {
+      const capacity = Number(capacityInput.value);
+      const queue = Number(queueInput.value);
+
+      if (!capacity || capacity < 1 || !queue || queue < 1) {
+        return;
+      }
+
+      saveInputs(capacity, queue);
+
+      const total = capacity * queue;
+      const infantryBear = Math.floor(total * 0.10);
+      const cavalryBear = Math.floor(total * 0.10);
+      const archerBear = total - infantryBear - cavalryBear;
+      const infantryViking = total - cavalryBear;
+      const vikingArcher = 0;
+      const combinedInfantry = infantryViking;
+      const combinedCavalry = cavalryBear;
+      const combinedArcher = archerBear;
+      const combinedTotal = combinedInfantry + combinedCavalry + combinedArcher;
+
+      document.getElementById("bear-total").textContent = formatNumber(total);
+      document.getElementById("bear-infantry").textContent = formatNumber(infantryBear);
+      document.getElementById("bear-cavalry").textContent = formatNumber(cavalryBear);
+      document.getElementById("bear-archer").textContent = formatNumber(archerBear);
+
+      document.getElementById("viking-total").textContent = formatNumber(total);
+      document.getElementById("viking-infantry-total").textContent = formatNumber(infantryViking);
+      document.getElementById("viking-cavalry-total").textContent = formatNumber(cavalryBear);
+      document.getElementById("viking-archer-total").textContent = formatNumber(vikingArcher);
+
+      document.getElementById("combined-infantry").textContent = formatNumber(combinedInfantry);
+      document.getElementById("combined-cavalry").textContent = formatNumber(combinedCavalry);
+      document.getElementById("combined-archer").textContent = formatNumber(combinedArcher);
+      document.getElementById("combined-total").textContent = formatNumber(combinedTotal);
+    }
+
+    loadInputs();
+    calculateButton.addEventListener("click", calculateTroops);
+    capacityInput.addEventListener("input", calculateTroops);
+    queueInput.addEventListener("input", calculateTroops);
+    calculateTroops();
+  </script>
+</body>
+</html>
