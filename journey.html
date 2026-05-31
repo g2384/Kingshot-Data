@@ -34,9 +34,24 @@
       letter-spacing: -0.02em;
     }
 
-    .cards-container {
+    .journey-section {
       max-width: 1400px;
-      margin: 0 auto;
+      margin: 0 auto 2rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .journey-heading {
+      font-size: 1.6rem;
+      margin: 0 0 1rem;
+      color: #3d2817;
+      border-bottom: 2px solid rgba(185, 162, 131, 0.35);
+      padding-bottom: 0.5rem;
+    }
+
+    .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
       gap: 1.5rem;
@@ -60,14 +75,97 @@
     }
 
     .card-screenshot {
-      width: 25%;
-      aspect-ratio: 432/760;
+      width: 28%;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
       display: block;
       background: #c9b5a0;
       flex-shrink: 0;
       overflow: hidden;
-      border-radius: 10px 0px 0px 10px;
+      border-radius: 10px 0 0 10px;
+    }
+
+    .card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 1rem 1rem 1rem 1rem;
+    }
+
+    .card-header {
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(185, 162, 131, 0.3);
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #3d2817;
+      margin: 0;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+
+    .card-meta {
+      font-size: 0.85rem;
+      color: #5d4d3d;
+      margin-top: 0.45rem;
+    }
+
+    .card-options {
+      padding-top: 0.9rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      overflow-y: auto;
+    }
+
+    .option-item {
+      padding: 0.75rem 0.9rem;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(185, 162, 131, 0.3);
+      transition: all 0.2s ease;
+      cursor: default;
+    }
+
+    .option-item:hover {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: #B9A283;
+    }
+
+    .option-choice {
+      font-weight: 600;
+      color: #3d2817;
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .option-reward {
+      font-size: 0.82rem;
+      color: #5d4d3d;
+      font-weight: 500;
+    }
+
+    .option-item.best {
+      background: #ffe00024;
+      border-color: rgba(140, 87, 56, 0.3);
+    }
+
+    .option-item.best .option-choice {
+      color: #8C5738;
+    }
+
+    .option-item.best .option-reward {
+      color: #8C5738;
+      text-shadow: 0 0 12px rgba(140, 87, 56, 0.2);
+      font-weight: 600;
+    }
+
+    .option-reward:empty {
+      display: none;
     }
 
     .card-content {
@@ -156,7 +254,16 @@
   <div class="page-header">
     <h1 class="page-title">Journey Options</h1>
   </div>
-  <div class="cards-container" id="cards-container"></div>
+
+  <section class="journey-section">
+    <h2 class="journey-heading">Repeated Journeys</h2>
+    <div class="cards-grid" id="repeated-journeys"></div>
+  </section>
+
+  <section class="journey-section">
+    <h2 class="journey-heading">One-off Journeys</h2>
+    <div class="cards-grid" id="oneoff-journeys"></div>
+  </section>
 
   <script id="journey-data" type="application/json">
   [
@@ -172,6 +279,7 @@
     {
       "title": "Vikings",
       "screenshot": "vikings.webp",
+      "isOneoff": true,
       "options": [
         {"option": "I won't pretend I didn't see that", "reward": ""},
         {"option": "I don't have time for distractions", "reward": "2 Silver Goblet"}
@@ -189,6 +297,7 @@
     {
       "title": "Beast",
       "screenshot": "beast.webp",
+      "isOneoff": true,
       "options": [
         {"option": "Hunt vinegar-stealing beast", "reward": ""},
         {"option": "I'll get it elsewhere", "reward": "3 Silver Goblet"}
@@ -197,6 +306,7 @@
     {
       "title": "Olive",
       "screenshot": "olive.webp",
+      "isOneoff": true,
       "options": [
         {"option": "A true warrior does not deny a damsel in distress", "reward": ""},
         {"option": "...Is that all?", "reward": "3 Silver Goblet"}
@@ -205,6 +315,7 @@
     {
       "title": "Bear",
       "screenshot": "bear.webp",
+      "isOneoff": true,
       "options": [
         {"option": "Flank it", "reward": ""},
         {"option": "Attack frontally", "reward": "30 Master's Manuscript"}
@@ -221,6 +332,7 @@
     {
       "title": "Bear cub",
       "screenshot": "bear-cub.webp",
+      "isOneoff": true,
       "options": [
         {"option": "Entrust it to someone's care", "reward": ""},
         {"option": "Focus on the beast", "reward": "50 Master's Manuscript"}
@@ -277,6 +389,7 @@
     {
       "title": "Zoe & Pan",
       "screenshot": "zoe-pan.webp",
+      "isOneoff": true,
       "options": [
         {"option": "Listen to Pan's account", "reward": ""},
         {"option": "Listen to Zoe's account", "reward": "1 Pan's Emblem"}
@@ -531,10 +644,11 @@
 
   <script>
     const data = JSON.parse(document.getElementById('journey-data').textContent);
-    const container = document.getElementById('cards-container');
+    const repeatedContainer = document.getElementById('repeated-journeys');
+    const oneoffContainer = document.getElementById('oneoff-journeys');
 
-    data.forEach(entry => {
-      const card = document.createElement('div');
+    function makeCard(entry) {
+      const card = document.createElement('article');
       card.className = 'card';
 
       const img = document.createElement('img');
@@ -561,9 +675,7 @@
         if (item.option || item.reward) {
           const optionDiv = document.createElement('div');
           optionDiv.className = 'option-item';
-          if (item.isBest) {
-            optionDiv.classList.add('best');
-          }
+          if (item.isBest) optionDiv.classList.add('best');
 
           const choice = document.createElement('div');
           choice.className = 'option-choice';
@@ -581,7 +693,13 @@
 
       contentWrapper.appendChild(optionsContainer);
       card.appendChild(contentWrapper);
-      container.appendChild(card);
+      return card;
+    }
+
+    data.forEach(entry => {
+      const card = makeCard(entry);
+      if (entry.isOneoff) oneoffContainer.appendChild(card);
+      else repeatedContainer.appendChild(card);
     });
   </script>
 </body>
