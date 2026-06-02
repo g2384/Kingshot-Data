@@ -265,6 +265,11 @@
     <div class="cards-grid" id="oneoff-journeys"></div>
   </section>
 
+  <section class="journey-section">
+    <h2 class="journey-heading">Unknown Journeys</h2>
+    <div class="cards-grid" id="unknown-journeys"></div>
+  </section>
+
   <script id="journey-data" type="application/json">
   [
     {
@@ -341,7 +346,7 @@
     {
       "title": "Hilde",
       "screenshot": "hilde.webp",
-      isOneoff": true,
+      "isOneoff": true,
       "options": [
         {"option": "Make further inquiries", "reward": "30 Master's Manuscript"},
         {"option": "Think of a way forward**", "reward": "50 Master's Manuscript", "isBest": true}
@@ -394,7 +399,7 @@
       "screenshot": "zoe-pan.webp",
       "isOneoff": true,
       "options": [
-        {"option": "Listen to Pan's account", "reward": ""},
+        {"option": "Listen to Pan's account", "reward": "1 Pan's Emblem"},
         {"option": "Listen to Zoe's account", "reward": "1 Pan's Emblem"}
       ]
     },
@@ -528,6 +533,7 @@
     {
       "title": "Marlin Fishing",
       "screenshot": "marlin.webp",
+      "isRepeated": true,
       "options": [
         {"option": "Any depth, 10x fishes", "reward": "100 Master's Manuscript", "isBest": true},
         {"option": "Any depth, 1x fish", "reward": "50 Master's Manuscript"}
@@ -654,6 +660,7 @@
     const data = JSON.parse(document.getElementById('journey-data').textContent);
     const repeatedContainer = document.getElementById('repeated-journeys');
     const oneoffContainer = document.getElementById('oneoff-journeys');
+    const unknownContainer = document.getElementById('unknown-journeys');
 
     function makeCard(entry) {
       const card = document.createElement('article');
@@ -706,8 +713,13 @@
 
     data.forEach(entry => {
       const card = makeCard(entry);
-      if (entry.isOneoff) oneoffContainer.appendChild(card);
-      else repeatedContainer.appendChild(card);
+      if (entry.isOneoff) {
+        oneoffContainer.appendChild(card);
+      } else if (entry.isRepeated) {
+        repeatedContainer.appendChild(card);
+      } else {
+        unknownContainer.appendChild(card);
+      }
     });
   </script>
 </body>
