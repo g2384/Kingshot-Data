@@ -247,6 +247,59 @@
     .option-reward:empty {
       display: none;
     }
+
+    @media (max-width: 960px) {
+      .cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 0.75rem 0.5rem;
+      }
+
+      .page-header,
+      .journey-section {
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+      }
+
+      .page-title {
+        font-size: 2rem;
+      }
+
+      .journey-section {
+        padding: 0.75rem;
+      }
+
+      .journey-heading {
+        font-size: 1.3rem;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .card {
+        flex-direction: column;
+      }
+
+      .card-screenshot {
+        width: 100%;
+        border-radius: 15px 15px 0 0;
+        aspect-ratio: 16 / 5;
+      }
+
+      .card-content {
+        padding: 0.75rem;
+      }
+
+      .card-options {
+        padding-top: 0.6rem;
+      }
+    }
   </style>
 </head>
 
@@ -422,7 +475,7 @@
       "isRepeated": true,
       "options": [
         {"option": "Trade", "reward": "80 Master's Manuscript", "isBest": true},
-        {"option": "No thanks", "reward": "20 Master's Manuscript"}
+        {"option": "No thanks", "reward": "50 Master's Manuscript"}
       ]
     },
     {
