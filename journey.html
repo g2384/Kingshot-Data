@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -150,8 +149,8 @@
     }
 
     .option-item.best {
-      background: #ffe00024;
-      border-color: rgba(140, 87, 56, 0.3);
+      background: #f2dda0;
+      border-color: rgba(140, 87, 56);
     }
 
     .option-item.best .option-choice {
@@ -230,8 +229,8 @@
     }
 
     .option-item.best {
-      background: #ffe00038;
-      border-color: rgba(140, 87, 56, 0.3);
+      background: #f2dda0;
+      border-color: rgba(140, 87, 56);
     }
 
     .option-item.best .option-choice {
@@ -242,6 +241,26 @@
       color: #8C5738;
       text-shadow: 0 0 12px rgba(140, 87, 56, 0.3);
       font-weight: 600;
+    }
+
+    .card.chance-ultimate-luck {
+      background: #ffd99e;
+      border-color: #fe9f52;
+    }
+
+    .card.chance-stroke-of-luck {
+      background: #d5d0f0;
+      border-color: #a097cb;
+    }
+
+    .card.chance-lucky {
+      background: #c6e4ee;
+      border-color: #90bfcf;
+    }
+
+    .card.chance-routine {
+      background: #eeddcd;
+      border-color: #c0a989;
     }
 
     .option-reward:empty {
@@ -421,6 +440,7 @@
       "title": "Merchant",
       "screenshot": "merchant.webp",
       "isRepeated": true,
+      "chance": "blue",
       "options": [
         {"option": "Give directions", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "I can't help", "reward": "30 Master's Manuscript"}
@@ -473,6 +493,7 @@
       "title": "Roman treasure trade",
       "screenshot": "roman-trade.webp",
       "isRepeated": true,
+      "chance": "blue",
       "options": [
         {"option": "Trade", "reward": "80 Master's Manuscript", "isBest": true},
         {"option": "No thanks", "reward": "50 Master's Manuscript"}
@@ -537,6 +558,7 @@
       "title": "Wounded lion",
       "screenshot": "wounded-lion.webp",
       "isRepeated": true,
+      "chance": "blue",
       "options": [
         {"option": "Give food", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "Leave", "reward": "30 Master's Manuscript"}
@@ -754,6 +776,20 @@
     function makeCard(entry) {
       const card = document.createElement('article');
       card.className = 'card';
+
+      const chanceValue = (entry.chance || 'Routine').trim();
+      const chanceClassMap = {
+        'ultimate luck': 'chance-ultimate-luck',
+        'gold': 'chance-ultimate-luck',
+        'a stroke of luck': 'chance-stroke-of-luck',
+        'purple': 'chance-stroke-of-luck',
+        'lucky': 'chance-lucky',
+        'blue': 'chance-lucky',
+        'routine': 'chance-routine',
+        'grey': 'chance-routine'
+      };
+      const chanceClass = chanceClassMap[chanceValue.toLowerCase()] || 'chance-routine';
+      card.classList.add(chanceClass);
 
       const img = document.createElement('img');
       img.className = 'card-screenshot';
