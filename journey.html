@@ -431,6 +431,7 @@
       "title": "Rebels, Cesares soldiers, Vikings",
       "screenshot": "caseras-soldiers.webp",
       "isRepeated": true,
+      "chance": "blue",
       "options": [
         {"option": "Fight", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "Better run", "reward": "30 Master's Manuscript"}
@@ -466,6 +467,8 @@
     {
       "title": "Survivor",
       "screenshot": "survivor.webp",
+      "isRepeated": true,
+      "chance": "purple",
       "options": [
         {"option": "Offer help", "reward": "100 Master's Manuscript", "isBest": true},
         {"option": "Not my fight", "reward": "70 Master's Manuscript"}
@@ -484,6 +487,7 @@
       "title": "Treasure",
       "screenshot": "treasure.webp",
       "isRepeated": true,
+      "chance": "blue",
       "options": [
         {"option": "Keep it all", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "Share with survivors", "reward": "30 Master's Manuscript"}
@@ -511,6 +515,7 @@
       "title": "Edwin treasure trade",
       "screenshot": "edwin-treasure-trade.webp",
       "isRepeated": true,
+      "chance": "blue",
       "options": [
         {"option": "Trade", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "No thanks", "reward": "30 Master's Manuscript"}
@@ -539,6 +544,7 @@
       "title": "Valora/Pan Start cooking",
       "screenshot": "valora-cooking.webp",
       "isRepeated": true,
+      "chance": "blue",
       "options": [
         {"option": "Perfect", "reward": "5 Silver Goblet", "isBest": true},
         {"option": "Victory", "reward": "3 Silver Goblet"},
@@ -577,6 +583,7 @@
       "title": "Stolen goods",
       "screenshot": "stolen-goods.webp",
       "isRepeated": true,
+      "chance": "blue",
       "options": [
         {"option": "I'll help you", "reward": "50 Master's Manuscript", "isBest": true},
         {"option": "There's nothing I can do", "reward": "30 Master's Manuscript"}
@@ -586,6 +593,7 @@
       "title": "Transporter Captain",
       "screenshot": "transporter-captain.webp",
       "isRepeated": true,
+      "chance": "purple",
       "options": [
         {"option": "Pay full price", "reward": "100 Master's Manuscript", "isBest": true},
         {"option": "Haggle", "reward": "70 Master's Manuscript"}
@@ -632,6 +640,7 @@
       "title": "Viking Hero",
       "screenshot": "viking-hero.webp",
       "isRepeated": true,
+      "chance": "purple",
       "options": [
         {"option": "Come on, fight me!", "reward": "100 Master's Manuscript", "isBest": true},
         {"option": "Go in swinging", "reward": "70 Master's Manuscript"}
@@ -773,23 +782,39 @@
     const oneoffContainer = document.getElementById('oneoff-journeys');
     const unknownContainer = document.getElementById('unknown-journeys');
 
+    const chanceClassMap = {
+      'ultimate luck': 'chance-ultimate-luck',
+      'gold': 'chance-ultimate-luck',
+      'a stroke of luck': 'chance-stroke-of-luck',
+      'purple': 'chance-stroke-of-luck',
+      'lucky': 'chance-lucky',
+      'blue': 'chance-lucky',
+      'routine': 'chance-routine',
+      'grey': 'chance-routine'
+    };
+
+    function getChanceValue(chance) {
+      return (chance || 'Routine').trim();
+    }
+
+    function getChanceClass(chance) {
+      const normalized = getChanceValue(chance).toLowerCase();
+      return chanceClassMap[normalized] || 'chance-routine';
+    }
+
+    function getChanceRank(chance) {
+      const normalized = getChanceValue(chance).toLowerCase();
+      if (normalized === 'routine' || normalized === 'grey') return 0;
+      if (normalized === 'lucky' || normalized === 'blue') return 1;
+      if (normalized === 'a stroke of luck' || normalized === 'purple') return 2;
+      if (normalized === 'ultimate luck' || normalized === 'gold') return 3;
+      return 4;
+    }
+
     function makeCard(entry) {
       const card = document.createElement('article');
       card.className = 'card';
-
-      const chanceValue = (entry.chance || 'Routine').trim();
-      const chanceClassMap = {
-        'ultimate luck': 'chance-ultimate-luck',
-        'gold': 'chance-ultimate-luck',
-        'a stroke of luck': 'chance-stroke-of-luck',
-        'purple': 'chance-stroke-of-luck',
-        'lucky': 'chance-lucky',
-        'blue': 'chance-lucky',
-        'routine': 'chance-routine',
-        'grey': 'chance-routine'
-      };
-      const chanceClass = chanceClassMap[chanceValue.toLowerCase()] || 'chance-routine';
-      card.classList.add(chanceClass);
+      card.classList.add(getChanceClass(entry.chance));
 
       const img = document.createElement('img');
       img.className = 'card-screenshot';
@@ -836,16 +861,18 @@
       return card;
     }
 
-    data.forEach(entry => {
-      const card = makeCard(entry);
-      if (entry.isOneoff) {
-        oneoffContainer.appendChild(card);
-      } else if (entry.isRepeated) {
-        repeatedContainer.appendChild(card);
-      } else {
-        unknownContainer.appendChild(card);
-      }
-    });
+    function appendSortedCards(container, entries) {
+      entries
+        .slice()
+        .sort((a, b) => getChanceRank(a.chance) - getChanceRank(b.chance))
+        .forEach(entry => {
+          container.appendChild(makeCard(entry));
+        });
+    }
+
+    appendSortedCards(repeatedContainer, data.filter(entry => entry.isRepeated));
+    appendSortedCards(oneoffContainer, data.filter(entry => entry.isOneoff));
+    appendSortedCards(unknownContainer, data.filter(entry => !entry.isRepeated && !entry.isOneoff));
   </script>
 </body>
 
