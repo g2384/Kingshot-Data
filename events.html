@@ -59,7 +59,9 @@
         .event.biweekly { border-color: #8370ad; background: #f4f0fb; }
         .event.monthly { border-color: #c75b68; background: #fff0f2; }
         .event.span-event { align-self: stretch; margin: 7px 0; }
-        .event strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .9rem; }
+        .event strong { display: flex; align-items: flex-start; gap: 6px; min-width: 0; font-size: .9rem; line-height: 1.2; }
+        .event strong img { flex: 0 0 28px; width: 28px; height: 28px; object-fit: contain; }
+        .event strong span { min-width: 0; overflow-wrap: anywhere; }
         .event small { display: block; margin-top: 2px; color: var(--muted); font: 11px/1.3 Arial, sans-serif; }
 
         @media (max-width: 600px) {
@@ -93,14 +95,14 @@
         const DEFAULT_EVENTS = [
             { name: 'Bear Hunt', column: 1, startDay: 2, durationDays: 1, repeatEveryDays: 2, desc: 'Rally-based, free resources. 30 min.' },
             { name: "Eternity's Reach", column: 3, startDay: 9, durationDays: 1, repeatEveryDays: 14, desc: 'Multiple 30-min slots per day. Verify schedule in-game.' },
-            { name: 'Tri-Alliance Clash', column: 3, startDay: 14, durationDays: 1, repeatEveryDays: 28, desc: 'Saturday 60-min battle.' },
-            { name: 'Swordland Showdown', column: 3, startDay: 21, durationDays: 1, repeatEveryDays: 14, desc: 'Biweekly Sunday battle.' },
-            { name: 'Strongest Governor', column: 2, startDay: 8, durationDays: 7, repeatEveryDays: 28, desc: '7-day event. Rotates through five phases.' },
-            { name: 'KvK (Kingdom vs Kingdom)', column: 2, startDay: 22, durationDays: 7, repeatEveryDays: 28, desc: 'Monthly kingdom vs kingdom.' },
-            { name: 'Alliance Mobilization', column: 2, startDay: 15, durationDays: 6, repeatEveryDays: 28, desc: 'Coordinate with your alliance.' },
-            { name: 'Alliance Brawl', column: 2, startDay: 1, durationDays: 7, repeatEveryDays: 28, desc: 'Coordinate with your alliance.' },
-            { name: 'Call of the Sovereign', column: 3, startDay: 2, durationDays: 3, repeatEveryDays: 28, desc: '' },
-            { name: 'Treasure Raiders', column: 4, startDay: 2, durationDays: 5, repeatEveryDays: 28, desc: '' }
+            { name: 'Tri-Alliance Clash', icon: 'alliance_championship.png', column: 3, startDay: 14, durationDays: 1, repeatEveryDays: 28, desc: 'Saturday 60-min battle.' },
+            { name: 'Swordland Showdown', icon: 'swordland-showdown.webp', column: 3, startDay: 21, durationDays: 1, repeatEveryDays: 14, desc: 'Biweekly Sunday battle.' },
+            { name: 'Strongest Governor', icon: 'strongest-governor.webp', column: 2, startDay: 8, durationDays: 7, repeatEveryDays: 28, desc: '7-day event. Rotates through five phases.' },
+            { name: 'KvK (Kingdom vs Kingdom)', icon: 'kingdom-of-power.webp', column: 2, startDay: 22, durationDays: 7, repeatEveryDays: 28, desc: 'Monthly kingdom vs kingdom.' },
+            { name: 'Alliance Mobilization', icon: 'champions-way.webp', column: 2, startDay: 15, durationDays: 6, repeatEveryDays: 28, desc: 'Coordinate with your alliance.' },
+            { name: 'Alliance Brawl', icon: 'alliance-brawl.webp', column: 2, startDay: 1, durationDays: 7, repeatEveryDays: 28, desc: 'Coordinate with your alliance.' },
+            { name: 'Call of the Sovereign', icon: 'hall-of-governors.webp', column: 3, startDay: 2, durationDays: 3, repeatEveryDays: 28, desc: '' },
+            { name: 'Treasure Raiders', icon: 'hero-roulette.webp', column: 4, startDay: 2, durationDays: 5, repeatEveryDays: 28, desc: '' }
         ];
 
         const columnCount = 4;
@@ -193,7 +195,8 @@
                 card.style.gridColumn = event.column;
                 card.style.gridRow = `${visibleStart - weekStart + 1} / ${visibleEnd - weekStart + 1}`;
                 card.title = event.desc || event.name;
-                card.innerHTML = `<strong>${event.name}</strong>`;
+                const icon = event.icon ? `<img src="images/events/${event.icon}" alt="" aria-hidden="true">` : '';
+                card.innerHTML = `<strong>${icon}<span>${event.name}</span></strong>`;
                 eventsElement.appendChild(card);
             });
             weekGrid.appendChild(eventsElement);
