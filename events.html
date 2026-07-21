@@ -90,11 +90,10 @@
             { name: 'Bear Hunt', column: 1, startDay: 2, durationDays: 1, repeatEveryDays: 2, desc: 'Rally-based, free resources. 30 min.' },
             { name: "Eternity's Reach", column: 3, startDay: 9, durationDays: 1, repeatEveryDays: 14, desc: 'Multiple 30-min slots per day. Verify schedule in-game.' },
             { name: 'Tri-Alliance Clash', column: 3, startDay: 14, durationDays: 1, repeatEveryDays: 28, desc: 'Saturday 60-min battle.' },
-            { name: 'Swordland Showdown', column: 3, startDay: 16, durationDays: 7, repeatEveryDays: 14, desc: 'Biweekly Sunday battle.' },
-            { name: 'Alliance Championship', column: 2, startDay: 16, durationDays: 7, repeatEveryDays: 7, desc: 'Weekly alliance competition.' },
+            { name: 'Swordland Showdown', column: 3, startDay: 21, durationDays: 1, repeatEveryDays: 14, desc: 'Biweekly Sunday battle.' },
             { name: 'Strongest Governor', column: 2, startDay: 8, durationDays: 7, repeatEveryDays: 28, desc: '7-day event. Rotates through five phases.' },
-            { name: 'KvK (Kingdom vs Kingdom)', column: 2, startDay: 21, durationDays: 7, repeatEveryDays: 28, desc: 'Monthly kingdom vs kingdom.' },
-            { name: 'Alliance Mobilization', column: 2, startDay: 14, durationDays: 6, repeatEveryDays: 14, desc: 'Coordinate with your alliance.' },
+            { name: 'KvK (Kingdom vs Kingdom)', column: 2, startDay: 22, durationDays: 7, repeatEveryDays: 28, desc: 'Monthly kingdom vs kingdom.' },
+            { name: 'Alliance Mobilization', column: 2, startDay: 15, durationDays: 6, repeatEveryDays: 28, desc: 'Coordinate with your alliance.' },
             { name: 'Alliance Brawl', column: 2, startDay: 1, durationDays: 7, repeatEveryDays: 28, desc: 'Coordinate with your alliance.' },
             { name: 'Call of the Sovereign', column: 3, startDay: 2, durationDays: 3, repeatEveryDays: 28, desc: '' }
         ];
@@ -155,8 +154,8 @@
                         card.style.gridRow = row;
                         card.title = event.desc || event.name;
                         card.innerHTML = isStart
-                            ? `<strong>${event.name}</strong><small>${event.desc || frequencyNames[event.repeatEveryDays]}</small>`
-                            : `<strong>${event.name}</strong><small>Continues</small>`;
+                            ? `<strong>${event.name}</strong>`
+                            : `<strong>${event.name}</strong>`;
                         eventsElement.appendChild(card);
                     });
                 }
