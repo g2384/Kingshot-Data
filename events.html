@@ -43,29 +43,33 @@
         .week-title h2 { margin: 0; font-size: 1.1rem; }
         .week-title small { color: var(--muted); }
 
-        .day { display: grid; grid-template-columns: 112px minmax(0, 1fr); min-height: 74px; border-bottom: 1px solid var(--line); }
-        .day:last-child { border-bottom: 0; }
-        .day-name { padding: 17px 16px; color: var(--muted); font-weight: 700; }
+        .week-grid { display: grid; grid-template-columns: 112px minmax(0, 1fr) 180px; grid-template-rows: repeat(7, minmax(74px, auto)); }
+        .day-name, .day-notes { min-width: 0; border-bottom: 1px solid var(--line); }
+        .day-name { grid-column: 1; padding: 17px 16px; color: var(--muted); font-weight: 700; }
         .day-name strong { display: block; color: var(--ink); font-size: .95rem; }
-        .day-events { display: grid; gap: 7px; align-content: center; padding: 10px 14px 10px 0; }
-        .empty { color: #aab5b9; font-style: italic; align-self: center; }
+        .day-name span { white-space: nowrap; }
+        .day-notes { grid-column: 3; padding: 12px 14px; color: var(--muted); font: 12px/1.35 Arial, sans-serif; }
+        .day-notes strong { display: block; margin-bottom: 3px; color: var(--ink); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+        .day-notes textarea { display: block; width: 100%; min-height: 38px; padding: 0; resize: vertical; border: 0; outline: 0; color: inherit; background: transparent; font: inherit; }
+        .event-grid { display: grid; grid-column: 2; grid-row: 1 / -1; grid-template-columns: repeat(var(--event-columns), minmax(0, 1fr)); grid-template-rows: repeat(7, minmax(74px, auto)); gap: 0 10px; padding-right: 14px; }
 
         .event { min-width: 0; padding: 8px 10px; border-left: 4px solid var(--accent); border-radius: 4px; background: #fff4ee; }
         .event.daily { border-color: #3b82a0; background: #edf7fa; }
         .event.weekly { border-color: #d28a35; background: #fff7e9; }
         .event.biweekly { border-color: #8370ad; background: #f4f0fb; }
         .event.monthly { border-color: #c75b68; background: #fff0f2; }
-        .event.continuation { padding-top: 6px; padding-bottom: 6px; border-top: 0; border-radius: 0 4px 4px 0; }
-        .event.continuation strong { font-size: .78rem; opacity: .72; }
+        .event.span-event { align-self: stretch; margin: 7px 0; }
         .event strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .9rem; }
         .event small { display: block; margin-top: 2px; color: var(--muted); font: 11px/1.3 Arial, sans-serif; }
 
         @media (max-width: 600px) {
             main { padding: 28px 12px 40px; }
-            .day { grid-template-columns: 76px minmax(0, 1fr); }
+            .week-grid { grid-template-columns: 76px minmax(0, 1fr) 112px; grid-template-rows: repeat(7, minmax(86px, auto)); }
             .day-name { padding: 14px 10px; }
-            .day-events { grid-template-columns: 1fr !important; padding-right: 10px; }
-            .day-events .event { grid-column: 1 !important; }
+            .day-name span { font-size: 12px; }
+            .day-notes { grid-column: 3; padding: 8px 10px; border-bottom: 1px dashed var(--line); }
+            .event-grid { grid-column: 2; grid-row: 1 / -1; grid-template-columns: 1fr; grid-template-rows: repeat(7, minmax(86px, auto)); padding-right: 10px; }
+            .event { grid-column: 1 !important; }
         }
     </style>
 </head>
@@ -102,13 +106,16 @@
         const frequencyNames = { 2: 'Every 2 days', 7: 'Weekly', 14: 'Every 2 weeks', 28: 'Every 4 weeks' };
         const timeline = document.querySelector('#timeline');
         const eventsByDay = Array.from({ length: 28 }, () => []);
+        const eventOccurrences = [];
 
         DEFAULT_EVENTS.forEach(event => {
             const firstDay = Math.max(0, event.startDay - 1);
             for (let startDay = firstDay; startDay < 28; startDay += event.repeatEveryDays) {
                 const endDay = Math.min(28, startDay + event.durationDays);
+                const occurrence = { event, startDay, endDay };
+                eventOccurrences.push(occurrence);
                 for (let day = startDay; day < endDay; day += 1) {
-                    eventsByDay[day].push({ event, isStart: day === startDay });
+                    eventsByDay[day].push(occurrence);
                 }
             }
         });
@@ -116,51 +123,46 @@
         for (let week = 0; week < 4; week += 1) {
             const weekStart = week * 7;
             const weekEnd = weekStart + 7;
-            const weekEvents = [];
-
-            eventsByDay.slice(weekStart, weekEnd).forEach(dayEvents => {
-                dayEvents.forEach(({ event }) => {
-                    if (!weekEvents.includes(event)) {
-                        weekEvents.push(event);
-                    }
-                });
-            });
+            const weekOccurrences = eventOccurrences.filter(({ startDay, endDay }) => endDay > weekStart && startDay < weekEnd);
+            const weekEvents = weekOccurrences.map(({ event }) => event);
 
             const columnCount = Math.max(...weekEvents.map(event => event.column), 1);
             const weekElement = document.createElement('section');
             weekElement.className = 'week';
-            weekElement.innerHTML = `<div class="week-title"><h2>Week ${week + 1}</h2><small>Days ${week * 7 + 1}&ndash;${week * 7 + 7}</small></div>`;
+            weekElement.innerHTML = `<div class="week-title"><h2>Week ${week + 1}</h2><small>Days ${week * 7 + 1}&ndash;${week * 7 + 7}</small></div><div class="week-grid"></div>`;
+            const weekGrid = weekElement.querySelector('.week-grid');
+            weekGrid.style.setProperty('--event-columns', columnCount);
 
             for (let weekday = 0; weekday < 7; weekday += 1) {
                 const dayIndex = week * 7 + weekday;
-                const dayElement = document.createElement('div');
-                dayElement.className = 'day';
-                const events = eventsByDay[dayIndex];
-                dayElement.innerHTML = `<div class="day-name"><strong>${weekdays[weekday]}</strong><span>Day ${dayIndex + 1}</span></div><div class="day-events"></div>`;
-                const eventsElement = dayElement.querySelector('.day-events');
-                eventsElement.style.gridTemplateColumns = `repeat(${columnCount}, minmax(0, 1fr))`;
+                const dayName = document.createElement('div');
+                dayName.className = 'day-name';
+                dayName.style.gridRow = weekday + 1;
+                dayName.innerHTML = `<strong>${weekdays[weekday]}</strong><span>Day ${dayIndex + 1}</span>`;
+                weekGrid.appendChild(dayName);
 
-                if (!events.length) {
-                    eventsElement.innerHTML = `<span class="empty" style="grid-column: 1 / -1">No scheduled event</span>`;
-                } else {
-                    const eventsInColumn = new Map();
-                    events.forEach(({ event, isStart }) => {
-                        const card = document.createElement('article');
-                        const type = event.repeatEveryDays === 2 ? 'daily' : event.repeatEveryDays === 7 ? 'weekly' : event.repeatEveryDays === 14 ? 'biweekly' : 'monthly';
-                        card.className = `event ${type}${isStart ? '' : ' continuation'}`;
-                        card.style.gridColumn = event.column;
-                        const row = (eventsInColumn.get(event.column) || 0) + 1;
-                        eventsInColumn.set(event.column, row);
-                        card.style.gridRow = row;
-                        card.title = event.desc || event.name;
-                        card.innerHTML = isStart
-                            ? `<strong>${event.name}</strong>`
-                            : `<strong>${event.name}</strong>`;
-                        eventsElement.appendChild(card);
-                    });
-                }
-                weekElement.appendChild(dayElement);
+                const notes = document.createElement('div');
+                notes.className = 'day-notes';
+                notes.style.gridRow = weekday + 1;
+                notes.innerHTML = `<strong>Notes</strong><textarea aria-label="Notes for ${weekdays[weekday]}">Notes for ${weekdays[weekday].toLowerCase()}.</textarea>`;
+                weekGrid.appendChild(notes);
             }
+
+            const eventsElement = document.createElement('div');
+            eventsElement.className = 'event-grid';
+            weekOccurrences.forEach(({ event, startDay, endDay }) => {
+                const visibleStart = Math.max(startDay, weekStart);
+                const visibleEnd = Math.min(endDay, weekEnd);
+                const card = document.createElement('article');
+                const type = event.repeatEveryDays === 2 ? 'daily' : event.repeatEveryDays === 7 ? 'weekly' : event.repeatEveryDays === 14 ? 'biweekly' : 'monthly';
+                card.className = `event ${type} span-event`;
+                card.style.gridColumn = event.column;
+                card.style.gridRow = `${visibleStart - weekStart + 1} / ${visibleEnd - weekStart + 1}`;
+                card.title = event.desc || event.name;
+                card.innerHTML = `<strong>${event.name}</strong>`;
+                eventsElement.appendChild(card);
+            });
+            weekGrid.appendChild(eventsElement);
             timeline.appendChild(weekElement);
         }
     </script>
