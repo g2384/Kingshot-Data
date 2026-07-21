@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Timeline | Kingshot Data</title>
+    <style>
+        :root {
+            --ink: #24313a;
+            --muted: #71808a;
+            --line: #d9e2e7;
+            --paper: #f7f9f8;
+            --white: #ffffff;
+            --accent: #e17b55;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--paper);
+            font: 15px/1.45 Georgia, 'Times New Roman', serif;
+        }
+
+        main { max-width: 1050px; margin: 0 auto; padding: 42px 20px 60px; }
+
+        header { margin-bottom: 28px; }
+        h1 { margin: 0; font: 700 clamp(2rem, 5vw, 3.3rem)/1.05 Georgia, serif; letter-spacing: -.04em; }
+        header p { max-width: 650px; margin: 10px 0 0; color: var(--muted); }
+
+        .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 20px; color: var(--muted); font-size: .82rem; }
+        .legend span { display: inline-flex; align-items: center; gap: 6px; }
+        .legend i { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+        .legend .daily i { background: #3b82a0; }
+        .legend .weekly i { background: #d28a35; }
+        .legend .biweekly i { background: #8370ad; }
+        .legend .monthly i { background: #c75b68; }
+
+        .week { margin-top: 26px; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: var(--white); box-shadow: 0 8px 24px rgba(36, 49, 58, .05); }
+        .week-title { display: flex; justify-content: space-between; align-items: baseline; padding: 13px 18px; background: #edf2f0; border-bottom: 1px solid var(--line); }
+        .week-title h2 { margin: 0; font-size: 1.1rem; }
+        .week-title small { color: var(--muted); }
+
+        .day { display: grid; grid-template-columns: 112px minmax(0, 1fr); min-height: 74px; border-bottom: 1px solid var(--line); }
+        .day:last-child { border-bottom: 0; }
+        .day-name { padding: 17px 16px; color: var(--muted); font-weight: 700; }
+        .day-name strong { display: block; color: var(--ink); font-size: .95rem; }
+        .day-events { display: grid; gap: 7px; align-content: center; padding: 10px 14px 10px 0; }
+        .empty { color: #aab5b9; font-style: italic; align-self: center; }
+
+        .event { min-width: 0; padding: 8px 10px; border-left: 4px solid var(--accent); border-radius: 4px; background: #fff4ee; }
+        .event.daily { border-color: #3b82a0; background: #edf7fa; }
+        .event.weekly { border-color: #d28a35; background: #fff7e9; }
+        .event.biweekly { border-color: #8370ad; background: #f4f0fb; }
+        .event.monthly { border-color: #c75b68; background: #fff0f2; }
+        .event.continuation { padding-top: 6px; padding-bottom: 6px; border-top: 0; border-radius: 0 4px 4px 0; }
+        .event.continuation strong { font-size: .78rem; opacity: .72; }
+        .event strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .9rem; }
+        .event small { display: block; margin-top: 2px; color: var(--muted); font: 11px/1.3 Arial, sans-serif; }
+
+        @media (max-width: 600px) {
+            main { padding: 28px 12px 40px; }
+            .day { grid-template-columns: 76px minmax(0, 1fr); }
+            .day-name { padding: 14px 10px; }
+            .day-events { grid-template-columns: 1fr !important; padding-right: 10px; }
+            .day-events .event { grid-column: 1 !important; }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <header>
+            <h1>Event timeline</h1>
+            <p>A four-week view of recurring events, arranged from Monday through Sunday.</p>
+            <div class="legend" aria-label="Event frequency legend">
+                <span class="daily"><i></i>Every 2 days</span>
+                <span class="weekly"><i></i>Weekly</span>
+                <span class="biweekly"><i></i>Every 2 weeks</span>
+                <span class="monthly"><i></i>Every 4 weeks</span>
+            </div>
+        </header>
+        <section id="timeline" aria-label="Four week event timeline"></section>
+    </main>
+
+    <script>
+        const DEFAULT_EVENTS = [
+            { name: 'Bear Hunt', column: 1, startDay: 2, durationDays: 1, repeatEveryDays: 2, desc: 'Rally-based, free resources. 30 min.' },
+            { name: "Eternity's Reach", column: 3, startDay: 9, durationDays: 1, repeatEveryDays: 14, desc: 'Multiple 30-min slots per day. Verify schedule in-game.' },
+            { name: 'Tri-Alliance Clash', column: 3, startDay: 14, durationDays: 1, repeatEveryDays: 28, desc: 'Saturday 60-min battle.' },
+            { name: 'Swordland Showdown', column: 3, startDay: 16, durationDays: 7, repeatEveryDays: 14, desc: 'Biweekly Sunday battle.' },
+            { name: 'Alliance Championship', column: 2, startDay: 16, durationDays: 7, repeatEveryDays: 7, desc: 'Weekly alliance competition.' },
+            { name: 'Strongest Governor', column: 2, startDay: 8, durationDays: 7, repeatEveryDays: 28, desc: '7-day event. Rotates through five phases.' },
+            { name: 'KvK (Kingdom vs Kingdom)', column: 2, startDay: 21, durationDays: 7, repeatEveryDays: 28, desc: 'Monthly kingdom vs kingdom.' },
+            { name: 'Alliance Mobilization', column: 2, startDay: 14, durationDays: 6, repeatEveryDays: 14, desc: 'Coordinate with your alliance.' },
+            { name: 'Alliance Brawl', column: 2, startDay: 1, durationDays: 7, repeatEveryDays: 28, desc: 'Coordinate with your alliance.' },
+            { name: 'Call of the Sovereign', column: 3, startDay: 2, durationDays: 3, repeatEveryDays: 28, desc: '' }
+        ];
+
+        const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        const frequencyNames = { 2: 'Every 2 days', 7: 'Weekly', 14: 'Every 2 weeks', 28: 'Every 4 weeks' };
+        const timeline = document.querySelector('#timeline');
+        const eventsByDay = Array.from({ length: 28 }, () => []);
+
+        DEFAULT_EVENTS.forEach(event => {
+            const firstDay = Math.max(0, event.startDay - 1);
+            for (let startDay = firstDay; startDay < 28; startDay += event.repeatEveryDays) {
+                const endDay = Math.min(28, startDay + event.durationDays);
+                for (let day = startDay; day < endDay; day += 1) {
+                    eventsByDay[day].push({ event, isStart: day === startDay });
+                }
+            }
+        });
+
+        for (let week = 0; week < 4; week += 1) {
+            const weekStart = week * 7;
+            const weekEnd = weekStart + 7;
+            const weekEvents = [];
+
+            eventsByDay.slice(weekStart, weekEnd).forEach(dayEvents => {
+                dayEvents.forEach(({ event }) => {
+                    if (!weekEvents.includes(event)) {
+                        weekEvents.push(event);
+                    }
+                });
+            });
+
+            const columnCount = Math.max(...weekEvents.map(event => event.column), 1);
+            const weekElement = document.createElement('section');
+            weekElement.className = 'week';
+            weekElement.innerHTML = `<div class="week-title"><h2>Week ${week + 1}</h2><small>Days ${week * 7 + 1}&ndash;${week * 7 + 7}</small></div>`;
+
+            for (let weekday = 0; weekday < 7; weekday += 1) {
+                const dayIndex = week * 7 + weekday;
+                const dayElement = document.createElement('div');
+                dayElement.className = 'day';
+                const events = eventsByDay[dayIndex];
+                dayElement.innerHTML = `<div class="day-name"><strong>${weekdays[weekday]}</strong><span>Day ${dayIndex + 1}</span></div><div class="day-events"></div>`;
+                const eventsElement = dayElement.querySelector('.day-events');
+                eventsElement.style.gridTemplateColumns = `repeat(${columnCount}, minmax(0, 1fr))`;
+
+                if (!events.length) {
+                    eventsElement.innerHTML = `<span class="empty" style="grid-column: 1 / -1">No scheduled event</span>`;
+                } else {
+                    const eventsInColumn = new Map();
+                    events.forEach(({ event, isStart }) => {
+                        const card = document.createElement('article');
+                        const type = event.repeatEveryDays === 2 ? 'daily' : event.repeatEveryDays === 7 ? 'weekly' : event.repeatEveryDays === 14 ? 'biweekly' : 'monthly';
+                        card.className = `event ${type}${isStart ? '' : ' continuation'}`;
+                        card.style.gridColumn = event.column;
+                        const row = (eventsInColumn.get(event.column) || 0) + 1;
+                        eventsInColumn.set(event.column, row);
+                        card.style.gridRow = row;
+                        card.title = event.desc || event.name;
+                        card.innerHTML = isStart
+                            ? `<strong>${event.name}</strong><small>${event.desc || frequencyNames[event.repeatEveryDays]}</small>`
+                            : `<strong>${event.name}</strong><small>Continues</small>`;
+                        eventsElement.appendChild(card);
+                    });
+                }
+                weekElement.appendChild(dayElement);
+            }
+            timeline.appendChild(weekElement);
+        }
+    </script>
+</body>
+
+</html>
