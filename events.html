@@ -50,7 +50,7 @@
         .day-name span { white-space: nowrap; }
         .day-notes { grid-column: 3; padding: 12px 14px; color: var(--muted); font: 12px/1.35 Arial, sans-serif; }
         .day-notes strong { display: block; margin-bottom: 3px; color: var(--ink); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
-        .day-notes textarea { display: block; width: 100%; min-height: 38px; padding: 0; resize: vertical; border: 0; outline: 0; color: inherit; background: transparent; font: inherit; }
+        .day-notes textarea { display: block; width: 100%; min-height: 50px; padding: 0; resize: vertical; border: 0; outline: 0; color: inherit; background: transparent; font: inherit; }
         .event-grid { display: grid; grid-column: 2; grid-row: 1 / -1; grid-template-columns: repeat(var(--event-columns), minmax(0, 1fr)); grid-template-rows: repeat(7, minmax(74px, auto)); gap: 0 10px; padding-right: 14px; }
 
         .event { min-width: 0; padding: 8px 10px; border-left: 4px solid var(--accent); border-radius: 4px; background: #fff4ee; }
@@ -99,11 +99,43 @@
             { name: 'KvK (Kingdom vs Kingdom)', column: 2, startDay: 22, durationDays: 7, repeatEveryDays: 28, desc: 'Monthly kingdom vs kingdom.' },
             { name: 'Alliance Mobilization', column: 2, startDay: 15, durationDays: 6, repeatEveryDays: 28, desc: 'Coordinate with your alliance.' },
             { name: 'Alliance Brawl', column: 2, startDay: 1, durationDays: 7, repeatEveryDays: 28, desc: 'Coordinate with your alliance.' },
-            { name: 'Call of the Sovereign', column: 3, startDay: 2, durationDays: 3, repeatEveryDays: 28, desc: '' }
+            { name: 'Call of the Sovereign', column: 3, startDay: 2, durationDays: 3, repeatEveryDays: 28, desc: '' },
+            { name: 'Treasure Raiders', column: 4, startDay: 2, durationDays: 5, repeatEveryDays: 28, desc: '' }
         ];
 
+        const columnCount = 4;
         const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
         const frequencyNames = { 2: 'Every 2 days', 7: 'Weekly', 14: 'Every 2 weeks', 28: 'Every 4 weeks' };
+        const DAY_NOTES = {
+            "1": "Save UTC16:00 intel missions",
+            "2": "Before reset: gather resources. Low spender: buy $0.99 pack.",
+            "3": "Save UTC16:00 intel missions",
+            "4": "Save stamina for tomorrow.",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": "",
+            "10": "",
+            "11": "",
+            "12": "",
+            "13": "",
+            "14": "",
+            "15": "",
+            "16": "",
+            "17": "",
+            "18": "",
+            "19": "",
+            "20": "",
+            "21": "",
+            "22": "",
+            "23": "",
+            "24": "",
+            "25": "",
+            "26": "",
+            "27": "",
+            "28": "Before reset: gather resources."
+        };
         const timeline = document.querySelector('#timeline');
         const eventsByDay = Array.from({ length: 28 }, () => []);
         const eventOccurrences = [];
@@ -126,7 +158,6 @@
             const weekOccurrences = eventOccurrences.filter(({ startDay, endDay }) => endDay > weekStart && startDay < weekEnd);
             const weekEvents = weekOccurrences.map(({ event }) => event);
 
-            const columnCount = Math.max(...weekEvents.map(event => event.column), 1);
             const weekElement = document.createElement('section');
             weekElement.className = 'week';
             weekElement.innerHTML = `<div class="week-title"><h2>Week ${week + 1}</h2><small>Days ${week * 7 + 1}&ndash;${week * 7 + 7}</small></div><div class="week-grid"></div>`;
@@ -144,7 +175,10 @@
                 const notes = document.createElement('div');
                 notes.className = 'day-notes';
                 notes.style.gridRow = weekday + 1;
-                notes.innerHTML = `<strong>Notes</strong><textarea aria-label="Notes for ${weekdays[weekday]}">Notes for ${weekdays[weekday].toLowerCase()}.</textarea>`;
+                const noteInput = document.createElement('textarea');
+                noteInput.setAttribute('aria-label', `Notes for ${weekdays[weekday]}`);
+                noteInput.value = DAY_NOTES[String(dayIndex + 1)] || '';
+                notes.appendChild(noteInput);
                 weekGrid.appendChild(notes);
             }
 
