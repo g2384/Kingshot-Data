@@ -95,17 +95,22 @@
         const DEFAULT_EVENTS = [
             { name: 'Bear Hunt', column: 1, startDay: 2, durationDays: 1, repeatEveryDays: 2, desc: 'Rally-based, free resources. 30 min.' },
             { name: "Eternity's Reach", column: 3, startDay: 9, durationDays: 1, repeatEveryDays: 14, desc: 'Multiple 30-min slots per day. Verify schedule in-game.' },
-            { name: 'Tri-Alliance Clash', icon: 'alliance_championship.png', column: 3, startDay: 14, durationDays: 1, repeatEveryDays: 28, desc: 'Saturday 60-min battle.' },
+            { name: 'Tri-Alliance Clash', icon: 'alliance_championship.png', column: 3, startDay: 21, durationDays: 1, repeatEveryDays: 28, desc: 'Saturday 60-min battle.' },
             { name: 'Swordland Showdown', icon: 'swordland-showdown.webp', column: 3, startDay: 21, durationDays: 1, repeatEveryDays: 14, desc: 'Biweekly Sunday battle.' },
             { name: 'Strongest Governor', icon: 'strongest-governor.webp', column: 2, startDay: 8, durationDays: 7, repeatEveryDays: 28, desc: '7-day event. Rotates through five phases.' },
             { name: 'KvK (Kingdom vs Kingdom)', icon: 'kingdom-of-power.webp', column: 2, startDay: 22, durationDays: 7, repeatEveryDays: 28, desc: 'Monthly kingdom vs kingdom.' },
             { name: 'Alliance Mobilization', icon: 'champions-way.webp', column: 2, startDay: 15, durationDays: 6, repeatEveryDays: 28, desc: 'Coordinate with your alliance.' },
             { name: 'Alliance Brawl', icon: 'alliance-brawl.webp', column: 2, startDay: 1, durationDays: 7, repeatEveryDays: 28, desc: 'Coordinate with your alliance.' },
             { name: 'Call of the Sovereign', icon: 'hall-of-governors.webp', column: 3, startDay: 2, durationDays: 3, repeatEveryDays: 28, desc: '' },
-            { name: 'Treasure Raiders', icon: 'hero-roulette.webp', column: 4, startDay: 2, durationDays: 5, repeatEveryDays: 28, desc: '' }
+            { name: 'Treasure Raiders', icon: 'hero-roulette.webp', column: 4, startDay: 2, durationDays: 5, repeatEveryDays: 28, desc: '' },
+            { name: 'Windward Voyage', column: 4, startDay: 9, durationDays: 5, repeatEveryDays: 28, desc: '' },
+            { name: 'Champagne Fair', column: 4, startDay: 15, durationDays: 2, repeatEveryDays: 28, desc: '' },
+            { name: 'Cesares Fury', column: 5, startDay: 13, durationDays: 3, repeatEveryDays: 28, desc: '' },
+            { name: 'Castle Battle', column: 3, startDay: 13, durationDays: 1, repeatEveryDays: 28, desc: '' },
+            { name: 'All Out', column: 6, startDay: 12, durationDays: 2, repeatEveryDays: 28, desc: '' }
         ];
 
-        const columnCount = 4;
+        const columnCount = 6;
         const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
         const frequencyNames = { 2: 'Every 2 days', 7: 'Weekly', 14: 'Every 2 weeks', 28: 'Every 4 weeks' };
         const DAY_NOTES = {
@@ -115,13 +120,13 @@
             "4": "Save stamina for tomorrow.",
             "5": "",
             "6": "",
-            "7": "",
+            "7": "Save intel missions for tomorrow",
             "8": "",
             "9": "",
             "10": "",
             "11": "",
             "12": "",
-            "13": "",
+            "13": "Gather resources for tomorrow.",
             "14": "",
             "15": "",
             "16": "",
