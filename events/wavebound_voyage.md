@@ -2,12 +2,26 @@
 
 ## Unlock slots
 
-| Voyage Slot | Price | Average Voyage |
-| ----------- | ----- | -------------- |
-| 1           | 0     | 14             |
-| 2           | 1000  | 28             |
-| 3           | 10000 | 42             |
-| 4           | $$    | -              |
+| Voyage Slot | Price   | Average Voyage |
+| ----------- | ------- | -------------- |
+| 1           | 0       | 14             |
+| 2           | 1000    | 28             |
+| 3           | 10000   | 42             |
+| 4           | Unknown | -              |
+
+## Exploration Rewards
+
+| Count | Rewards          |
+| ----- | ---------------- |
+| 1     | 9 Charm Guides   |
+| 5     | 18 Charm Guides  |
+| 20    | 36 Charm Guides  |
+| 60    | 72 Charm Design  |
+| 120   | 162 Charm Design |
+| 200   | 216 Charm Design |
+| 350   | $$               |
+| 550   | $$               |
+| 800   | $$               |
 
 ## Treasures
 
