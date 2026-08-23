@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/webp" href="../images/events/alliance-brawl-favicon.webp" />
     <title>Alliance Brawl Guide</title>
     <style>
         :root {
@@ -39,9 +40,17 @@
         }
 
         header {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
             margin-bottom: 1.25rem;
             padding: 1.25rem 0.25rem 0.75rem;
             border-bottom: 1px solid rgba(255, 248, 233, 0.2);
+        }
+
+        .event-icon {
+            height: 7.5rem;
+            flex: 0 0 7.5rem;
         }
 
         h1,
@@ -288,6 +297,14 @@
                 padding: 0.75rem 0.5rem 1.5rem;
             }
 
+            header {
+                align-items: flex-start;
+            }
+
+            .event-icon {
+                height: 5.5rem;
+            }
+
             .everyday .checklist {
                 grid-template-columns: 1fr;
             }
@@ -302,6 +319,7 @@
 <body>
     <main>
         <header>
+            <img class="event-icon" src="../images/events/alliance-brawl.webp" alt="Alliance Brawl" />
             <h1>Alliance Brawl <small>Small Alliance</small> Guide</h1>
         </header>
 
@@ -351,7 +369,7 @@
                         </ul>
                     </article>
                     <article class="day">
-                        <h3>Day 3 (WED): Gather</h3>
+                        <h3>Day 3 (WED): Gather + save Intel</h3>
                         <ul class="checklist">
                             <li>Send troops to gather in the original alliance; recall them in the small alliance later
                             </li>
@@ -359,7 +377,7 @@
                         </ul>
                     </article>
                     <article class="day">
-                        <h3>Day 4 (THU): Gear + troops</h3>
+                        <h3>Day 4 (THU): Intel + troops</h3>
                         <ul class="checklist">
                             <li>Train troops</li>
                             <li>Finish Intel Missions</li>
@@ -372,7 +390,7 @@
                         </ul>
                     </article>
                     <article class="day">
-                        <h3>Day 6 (SAT): Final push</h3>
+                        <h3>Day 6 (SAT): Beasts</h3>
                         <ul class="checklist">
                             <li>Defeat beasts and hunt Terrors</li>
                         </ul>
