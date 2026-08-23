@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Alliance Brawl Guide</title>
+	<style>
+		:root {
+			color-scheme: light;
+			--brown: #8C5738;
+			--ink: #3d2817;
+			--muted: #5d4d3d;
+			--cream: #EDDCCC;
+			--line: #B9A283;
+			--gold: #f2dda0;
+			--green: #3f7655;
+			font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+			color: var(--ink);
+			background: var(--brown);
+		}
+
+		* { box-sizing: border-box; }
+
+		body {
+			margin: 0;
+			min-height: 100vh;
+			padding: 1.5rem 1rem 2.5rem;
+			background: var(--brown);
+		}
+
+		main { max-width: 1100px; margin: 0 auto; }
+
+		header {
+			margin-bottom: 1rem;
+			padding: 0.5rem 0;
+		}
+
+		h1, h2, h3, p { margin-top: 0; }
+		h1 { margin-bottom: 0.35rem; font-size: clamp(2rem, 5vw, 3rem); }
+		h2 { margin-bottom: 0.8rem; font-size: 1.35rem; }
+		p { color: var(--muted); line-height: 1.5; }
+
+		.subtitle { margin-bottom: 0; color: var(--ink); font-size: 1.05rem; }
+		.eyebrow { margin-bottom: 0.25rem; color: var(--gold); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+		.checklist { display: grid; gap: 0.45rem; margin: 0; padding: 0; list-style: none; }
+		.checklist li { display: flex; gap: 0.55rem; align-items: flex-start; color: var(--muted); font-size: 0.9rem; line-height: 1.35; }
+		.checklist li::before { content: "✓"; display: grid; flex: 0 0 1.15rem; height: 1.15rem; place-items: center; margin-top: 0.05rem; background: var(--green); border-radius: 4px; color: #fff; font-size: 0.78rem; font-weight: 800; }
+		.checklist strong { color: var(--ink); }
+		.everyday { margin-bottom: 1rem; padding: 0.85rem 1rem; background: rgba(242, 221, 160, 0.7); border: 2px solid var(--line); border-radius: 10px; }
+		.everyday h3 { margin-bottom: 0.5rem; color: var(--brown); font-size: 1rem; }
+		.everyday .checklist { grid-template-columns: repeat(2, 1fr); }
+		.timeline { position: relative; display: grid; gap: 0.7rem; }
+		.timeline::before { content: ""; position: absolute; top: 1rem; bottom: 1rem; left: 0.55rem; width: 3px; background: var(--green); opacity: 0.55; }
+		details summary { cursor: pointer; color: var(--brown); font-weight: 800; }
+		details[open] summary { margin-bottom: 0.8rem; }
+
+		.panel {
+			margin-bottom: 1rem;
+			padding: 1rem;
+			background: var(--cream);
+			border: 3px solid var(--line);
+			border-radius: 15px;
+		}
+
+		.days { display: grid; gap: 0.7rem; }
+
+		.day {
+			position: relative;
+			margin-left: 1.7rem;
+			padding: 0.85rem;
+			background: rgba(255, 255, 255, 0.5);
+			border: 1px solid rgba(185, 162, 131, 0.55);
+			border-radius: 8px;
+		}
+
+		.day h3 { margin-bottom: 0.4rem; color: var(--brown); font-size: 1rem; }
+		.day p { margin-bottom: 0.6rem; font-size: 0.85rem; }
+		.day strong { color: var(--ink); }
+		.day::before { content: "✓"; position: absolute; top: 0.85rem; left: -1.7rem; z-index: 1; display: grid; width: 1.15rem; height: 1.15rem; place-items: center; background: var(--green); border: 3px solid var(--cream); border-radius: 50%; color: #fff; font-size: 0.7rem; font-weight: 800; }
+
+		.score-wrap { overflow-x: auto; }
+		table { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 0.82rem; }
+		th, td { padding: 0.48rem 0.55rem; border-bottom: 1px solid rgba(185, 162, 131, 0.45); text-align: right; white-space: nowrap; }
+		th:first-child, td:first-child { width: 39%; text-align: left; white-space: normal; }
+		thead th { color: var(--brown); background: rgba(242, 221, 160, 0.55); }
+		tbody tr:last-child td { border-bottom: 0; }
+		tbody tr:hover { background: rgba(255, 255, 255, 0.45); }
+		.dash { color: #927e68; }
+
+		.note {
+			margin-bottom: 0;
+			padding: 0.75rem 0.9rem;
+			background: var(--gold);
+			border-left: 5px solid var(--brown);
+			border-radius: 8px;
+			color: var(--ink);
+			font-weight: 600;
+		}
+
+		@media (max-width: 700px) {
+			body { padding: 0.75rem 0.5rem 1.5rem; }
+			.everyday .checklist { grid-template-columns: 1fr; }
+			.panel { padding: 0.8rem; }
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Alliance Brawl Guide</h1>
+		</header>
+
+		<p class="note">Stay in your original alliance normally. Join the small alliance before the Day 1 reset to secure a top-20 rank, then join it again before Day 7 at 12:00 UTC to qualify for final rewards.</p>
+
+		<section class="panel">
+			<h2>Daily checklist</h2>
+			<div class="everyday">
+				<h3>Every day</h3>
+				<ul class="checklist"><li><strong>Escort trucks</strong> for 10,000 points each</li><li><strong>Raid trucks</strong> for 10,000 points each</li><li>Spend gems and top up</li></ul>
+			</div>
+			<div class="timeline">
+				<div class="days">
+					<article class="day"><h3>Day 0: Join + qualify</h3><ul class="checklist"><li><strong>Before the Day 1 reset, join the small alliance</strong></li><li>Ensure the alliance ranks in the top 20</li></ul></article>
+					<article class="day"><h3>Day 1: Gather + save Intel</h3><ul class="checklist"><li><strong>Gather resources</strong></li><li><strong>Save Intel for Day 2</strong></li></ul></article>
+					<article class="day"><h3>Day 2: Intel + shards</h3><ul class="checklist"><li><strong>Finish saved Intel: 3,000 each</strong></li></ul></article>
+					<article class="day"><h3>Day 3: Gather + pets</h3><ul class="checklist"><li><strong>Gather resources</strong></li><li><strong>Save Intel for Day 4</strong></li></ul></article>
+					<article class="day"><h3>Day 4: Gear + troops</h3><ul class="checklist"><li>Train troops</li><li><strong>Finish saved Intel: 3,000 each</strong></li></ul></article>
+					<article class="day"><h3>Day 5: Beasts</h3><ul class="checklist"><li><strong>Defeat beasts: 4,000-6,000 each</strong></li><li>Hunt Terrors in rallies: 15,000 each</li></ul></article>
+					<article class="day"><h3>Day 6: Final push</h3><ul class="checklist"><li><strong>Defeat beasts and hunt Terrors</strong></li><li>Use remaining upgrade materials</li><li>Check 300K personal points</li></ul></article>
+					<article class="day"><h3>Day 7: Join + claim</h3><ul class="checklist"><li><strong>Join the small alliance before 12:00 UTC</strong></li><li>Confirm alliance points exceed 20M</li><li>Check 300K personal points</li><li>Claim final rewards</li></ul></article>
+				</div>
+			</div>
+		</section>
+
+		<section class="panel">
+			<details>
+				<summary>Show complete points reference</summary>
+			<div class="score-wrap">
+				<table>
+					<thead><tr><th>Task</th><th>Day 1</th><th>Day 2</th><th>Day 3</th><th>Day 4</th><th>Day 5</th><th>Day 6</th></tr></thead>
+					<tbody>
+						<tr><td>Escort or raid a truck of any grade</td><td>10,000</td><td>10,000</td><td>10,000</td><td>10,000</td><td>10,000</td><td>10,000</td></tr>
+						<tr><td>Use 1 Gem</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+						<tr><td>Every 1 Top-Up point</td><td>6</td><td>6</td><td>6</td><td>6</td><td>6</td><td>6</td></tr>
+						<tr><td>Use 1 Truegold</td><td>1,250</td><td>1,250</td><td class="dash">-</td><td class="dash">-</td><td>1,250</td><td>1,250</td></tr>
+						<tr><td>Use 1 min construction/research/training speedup</td><td>18</td><td>18</td><td class="dash">-</td><td class="dash">-</td><td>18</td><td>18</td></tr>
+						<tr><td>Gather 2,000 Bread / Wood, 400 Stone / Iron</td><td>2</td><td class="dash">-</td><td>2</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td></tr>
+						<tr><td>Finish 1 Intel Mission</td><td class="dash">-</td><td>3,000</td><td class="dash">-</td><td>3,000</td><td class="dash">-</td><td class="dash">-</td></tr>
+						<tr><td>Use 1 Rare / Epic / Mythic Hero Shard</td><td class="dash">-</td><td>210 / 750 / 1,875</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td>210 / 750 / 1,875</td></tr>
+						<tr><td>Raise Governor Gear Charm max score by 1</td><td class="dash">-</td><td class="dash">-</td><td>45</td><td>45</td><td class="dash">-</td><td>45</td></tr>
+						<tr><td>Raise Pet Advancement Score by 1</td><td class="dash">-</td><td class="dash">-</td><td>30</td><td class="dash">-</td><td class="dash">-</td><td>30</td></tr>
+						<tr><td>Use 1 Advanced / Common Taming Mark</td><td class="dash">-</td><td class="dash">-</td><td>9,370 / 680</td><td class="dash">-</td><td class="dash">-</td><td>9,370 / 680</td></tr>
+						<tr><td>Use 1 Forgehammer / Widget / Mithril</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td>1,875 / 3,750 / 18,750</td><td class="dash">-</td><td>1,875 / 3,750 / 18,750</td></tr>
+						<tr><td>Train 1 Level X Troop</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td>1-24</td><td class="dash">-</td><td class="dash">-</td></tr>
+						<tr><td>Raise Governor Gear max score by 1</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td>22</td><td>22</td></tr>
+						<tr><td>Defeat 1 Beast</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td>4,000-6,000</td><td>4,000-6,000</td></tr>
+						<tr><td>Call a rally and hunt down a Terror</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td>15,000</td><td>15,000</td></tr>
+					</tbody>
+				</table>
+			</div>
+			</details>
+		</section>
+	</main>
+</body>
+</html>
